@@ -1,5 +1,5 @@
 import logo from '../../logo.svg';
-import styles from  './app.module.css';
+import styles from './App.css';
 import { Home } from "../../pages";
 
 const App = () => {

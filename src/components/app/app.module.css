@@ -8,7 +8,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-
   .logo {
     animation: app-logo-spin infinite 20s linear;
   }
@@ -21,7 +20,7 @@
   justify-content: center;
   align-items: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ffffff;
   background-color: #282c34;
 }
 
@@ -33,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

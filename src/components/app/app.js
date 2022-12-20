@@ -1,5 +1,5 @@
-import logo from '../../logo.svg';
-import styles from  './app.module.css';
+import logo from "../../logo.svg";
+import styles from "./app.module.css";
 import { Home } from "../../pages";
 
 const App = () => {
@@ -14,14 +14,13 @@ const App = () => {
           className={styles.link}
           href="https://reactjs.org"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           Learn React
         </a>
         <Home />
       </header>
     </div>
   );
-}
+};
 
 export default App;

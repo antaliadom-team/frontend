@@ -1,6 +1,6 @@
 import styles from "./header.module.css";
 import { NavLink } from "react-router-dom";
-import logo from "../../logo.svg";
+import logo from "../../images/logo.svg";
 
 const Header = () => {
   const toggleClass = (isActive) => (isActive ? styles.active : styles.link);

@@ -1,4 +1,4 @@
-import logo from "../../logo.svg";
+import logo from "../../images/logo.svg";
 import styles from "./app.module.css";
 import { Routes, Route } from "react-router-dom";
 import { About, Catalog, Home, Profile } from "../../pages";

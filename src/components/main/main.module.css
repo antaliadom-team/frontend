@@ -6,7 +6,7 @@
 
 .promo {
     position: relative;
-    height: 1063px;
+    height: 705px;
 }
 
 .mainImage {
@@ -49,5 +49,55 @@
 }
 
 .advantages {
+    padding: 120px 0 46px;
+}
+
+.columns {
     display: flex;
+    flex-direction: row;
+}
+
+.about {
+    margin: 0;
+    margin-top: 54px;
+    padding: 0;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    text-align: left;
+    color: #0d1b44;
+}
+
+.paragraph_about {
+    margin: 36px 32px 40px 0;
+    padding: 0;
+    width: 550px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    text-align: left;
+    color: #234a58;
+}
+
+.blockUnderImage {
+    position: absolute;
+    z-index: 0;
+    top: 74px;
+    left: -22px;
+    width: 674px;
+    height: 371px;
+    background-color: none;
+    border: 0.781236px solid #dd9b5c;
+}
+
+.column {
+    position: relative;
+    height: 399px;
+}
+
+.advantageImage {
+    position: relative;
+    z-index: 1;
+    width: 738px;
+    height: 399px;
 }

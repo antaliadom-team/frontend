@@ -1,11 +1,16 @@
 import styles from "./main.module.css";
-import mainImage from "../../images/pic_main.png";
+import promoImage from "../../images/pic_main.png";
+import advantageImage from "../../images/advantage_main.png";
 
 const Main = () => {
   return (
     <div className={styles.main}>
       <section className={styles.promo}>
-        <img className={styles.mainImage} src={mainImage} alt="фото квартиры" />
+        <img
+          className={styles.mainImage}
+          src={promoImage}
+          alt="фото квартиры"
+        />
         <div className={styles.frontBlock}>
           <h3 className={styles.title}>Анталия Дом</h3>
           <p className={styles.subtitle}>
@@ -20,15 +25,26 @@ const Main = () => {
           <div className={styles.column}>
             <h3 className={styles.about}>О нас</h3>
             <p className={styles.paragraph_about}>
-              Мы поможем вам найти квартиру мечты в Анталье. В нашей базе
-              собрано более 200 актуальных объявлений о сдаче и продаже
-              недвижимости в Анталье. А если вы не найдете ничего подходящего,
-              наш менеджер свяжется с вами и поможет подобрать что-то на ваш
-              вкус
+              Мы поможем вам найти квартиру мечты в Анталье.
+              <br />В нашей базе собрано более 200 актуальных
+              <br />
+              объявлений о сдаче и продаже недвижимости в Анталье.
+              <br />А если вы не найдете ничего подходящего, наш
+              <br />
+              менеджер свяжется с вами и поможет подобрать что-то
+              <br />
+              на ваш вкус
             </p>
             <button className={styles.button}>Смотреть каталог</button>
           </div>
-          <div className={styles.column}></div>
+          <div className={styles.column}>
+            <img
+              className={styles.advantageImage}
+              src={advantageImage}
+              alt="фото квартиры"
+            />
+            <div className={styles.blockUnderImage} />
+          </div>
         </div>
       </section>
     </div>

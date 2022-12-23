@@ -52,6 +52,10 @@
     padding: 120px 0 46px;
 }
 
+.advantages_container {
+    margin: 0 auto;
+}
+
 .columns {
     display: flex;
     flex-direction: row;
@@ -71,7 +75,7 @@
 .paragraph_about {
     margin: 36px 32px 40px 0;
     padding: 0;
-    width: 550px;
+    width: 515px;
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;

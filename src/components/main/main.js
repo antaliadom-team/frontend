@@ -4,7 +4,7 @@ import photo_1 from "../../images/photo_1.png";
 import photo_2 from "../../images/photo_2.png";
 import photo_3 from "../../images/photo_3.png";
 import photo_4 from "../../images/photo_4.png";
-import advantageImage from "../../images/advantage_main.png";
+import aboutImage from "../../images/about_main.png";
 
 const Main = () => {
   return (
@@ -24,7 +24,7 @@ const Main = () => {
         </div>
       </section>
 
-      <section className={styles.advantages}>
+      <section className={styles.aboutUs}>
         <div className={styles.columns}>
           <div className={styles.column}>
             <h3 className={styles.about}>О нас</h3>
@@ -43,40 +43,40 @@ const Main = () => {
           </div>
           <div className={styles.column}>
             <img
-              className={styles.advantageImage}
-              src={advantageImage}
+              className={styles.aboutImage}
+              src={aboutImage}
               alt="фото квартиры"
             />
             <div className={styles.blockUnderImage} />
           </div>
         </div>
       </section>
-      <section className={styles.aboutUs}>
-        <h2 className={styles.aboutUs__title}>Наша команда</h2>
-        <ul className={styles.aboutUs__container}>
-          <li className={styles.aboutUs__element}>
+      <section className={styles.aboutTeam}>
+        <h2 className={styles.aboutTeam__title}>Наша команда</h2>
+        <ul className={styles.aboutTeam__container}>
+          <li className={styles.aboutTeam__element}>
             <img src={photo_1} alt="фото команды" />
-            <p className={styles.aboutUs__name}>Михаил</p>
-            <div className={styles.aboutUs__underline} />
-            <p className={styles.aboutUs__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__name}>Михаил</p>
+            <div className={styles.aboutTeam__underline} />
+            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
-          <li className={styles.aboutUs__element}>
+          <li className={styles.aboutTeam__element}>
             <img src={photo_2} alt="фото команды" />
-            <p className={styles.aboutUs__name}>Михаил</p>
-            <div className={styles.aboutUs__underline} />
-            <p className={styles.aboutUs__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__name}>Михаил</p>
+            <div className={styles.aboutTeam__underline} />
+            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
-          <li className={styles.aboutUs__element}>
+          <li className={styles.aboutTeam__element}>
             <img src={photo_3} alt="фото команды" />
-            <p className={styles.aboutUs__name}>Михаил</p>
-            <div className={styles.aboutUs__underline} />
-            <p className={styles.aboutUs__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__name}>Михаил</p>
+            <div className={styles.aboutTeam__underline} />
+            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
-          <li className={styles.aboutUs__element}>
+          <li className={styles.aboutTeam__element}>
             <img src={photo_4} alt="фото команды" />
-            <p className={styles.aboutUs__name}>Михаил</p>
-            <div className={styles.aboutUs__underline} />
-            <p className={styles.aboutUs__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__name}>Михаил</p>
+            <div className={styles.aboutTeam__underline} />
+            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
         </ul>
       </section>

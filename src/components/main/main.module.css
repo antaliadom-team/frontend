@@ -47,8 +47,13 @@
     margin: 40px auto auto;
 }
 
-.advantages {
+.aboutUs {
     padding: 120px 80px 46px;
+    width: 100%;
+}
+
+.aboutTeam {
+    padding: 80px 80px 0;
     width: 100%;
 }
 
@@ -95,9 +100,16 @@
     height: 399px;
 }
 
-.advantageImage {
+.aboutImage {
     position: relative;
     z-index: 1;
     width: 738px;
     height: 399px;
+}
+
+.aboutTeam__title {
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    color: #0d1b44;
 }

@@ -16,7 +16,7 @@ const Main = () => {
           alt="фото квартиры"
         />
         <div className={styles.frontBlock}>
-          <h3 className={styles.title}>Анталия Дом</h3>
+          <h1 className={styles.title}>Анталия Дом</h1>
           <p className={styles.subtitle}>
             Поможем найти квартиру на море с легкостью
           </p>
@@ -27,7 +27,7 @@ const Main = () => {
       <section className={styles.aboutUs}>
         <div className={styles.columns}>
           <div className={styles.column}>
-            <h3 className={styles.about}>О нас</h3>
+            <h2 className={styles.about}>О нас</h2>
             <p className={styles.paragraph_about}>
               Мы поможем вам найти квартиру мечты в Анталье.
               <br />В нашей базе собрано более 200 актуальных
@@ -55,25 +55,41 @@ const Main = () => {
         <h2 className={styles.aboutTeam__title}>Наша команда</h2>
         <ul className={styles.aboutTeam__container}>
           <li className={styles.aboutTeam__element}>
-            <img src={photo_1} alt="фото команды" />
+            <img
+              className={styles.aboutTeam__photo}
+              src={photo_1}
+              alt="фото команды"
+            />
             <p className={styles.aboutTeam__name}>Михаил</p>
             <div className={styles.aboutTeam__underline} />
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
           <li className={styles.aboutTeam__element}>
-            <img src={photo_2} alt="фото команды" />
+            <img
+              className={styles.aboutTeam__photo}
+              src={photo_2}
+              alt="фото команды"
+            />
             <p className={styles.aboutTeam__name}>Михаил</p>
             <div className={styles.aboutTeam__underline} />
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
           <li className={styles.aboutTeam__element}>
-            <img src={photo_3} alt="фото команды" />
+            <img
+              className={styles.aboutTeam__photo}
+              src={photo_3}
+              alt="фото команды"
+            />
             <p className={styles.aboutTeam__name}>Михаил</p>
             <div className={styles.aboutTeam__underline} />
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
           <li className={styles.aboutTeam__element}>
-            <img src={photo_4} alt="фото команды" />
+            <img
+              className={styles.aboutTeam__photo}
+              src={photo_4}
+              alt="фото команды"
+            />
             <p className={styles.aboutTeam__name}>Михаил</p>
             <div className={styles.aboutTeam__underline} />
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>

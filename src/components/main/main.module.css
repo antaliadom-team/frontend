@@ -1,18 +1,17 @@
 .main {
-    margin: 0;
-    padding: 40px 80px 80px;
     background-color: #f5f5f5;
 }
 
 .promo {
     position: relative;
+    padding: 0 80px;
     height: 705px;
 }
 
 .mainImage {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 80px;
     width: 1063px;
     height: 705px;
 }
@@ -20,7 +19,7 @@
 .frontBlock {
     position: absolute;
     top: 131px;
-    left: 0;
+    left: 80px;
     width: 630px;
     height: 352px;
     background-color: rgba(35, 74, 88, 0.4);
@@ -49,11 +48,8 @@
 }
 
 .advantages {
-    padding: 120px 0 46px;
-}
-
-.advantages_container {
-    margin: 0 auto;
+    padding: 120px 80px 46px;
+    width: 100%;
 }
 
 .columns {
@@ -75,7 +71,7 @@
 .paragraph_about {
     margin: 36px 32px 40px 0;
     padding: 0;
-    width: 515px;
+    width: 510px;
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;

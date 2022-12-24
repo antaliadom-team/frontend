@@ -1,0 +1,110 @@
+.mainForm {
+    position: relative;
+    margin: 40px auto 0;
+    width: 846px;
+}
+
+.mainForm__block {
+    position: absolute;
+    z-index: 0;
+    top: -41px;
+    left: -57px;
+    width: 667px;
+    height: 1118px;
+    background-color: none;
+    border: 1px solid rgba(221, 155, 92, 1);
+}
+
+.mainForm__container {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(13, 27, 68, 1);
+}
+
+.mainForm__title {
+    margin: 40px auto 36px;
+    width: 462px;
+    font-family: "Montserrat";
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    text-align: center;
+    color: #0d1b44;
+}
+
+.mainForm__subtitle {
+    width: 634px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    text-align: center;
+    color: #0d1b44;
+}
+
+.mainForm__form {
+    margin: 0 auto 0;
+    width: 470px;
+    list-style-type: none;
+}
+
+.mainForm__item {
+    margin-top: 36px;
+}
+
+.mainForm__itemTitle {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    text-align: left;
+    color: #0d1b44;
+}
+
+.mainForm__input {
+    margin: 8px 0 0;
+    padding-left: 10px;
+    width: 100%;
+    height: 40px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+.mainForm__input_comment {
+    margin: 8px 0 0;
+    padding: 19px 10px;
+    width: 100%;
+    min-height: 115px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+.mainForm__checkbox {
+    margin: 31px auto 34px;
+    display: flex;
+}
+
+.mainForm__accept {
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    width: 415px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    text-align: left;
+    color: rgba(13, 27, 68, 1);
+}
+
+.mainForm__accept_color {
+    color: rgba(221, 155, 92, 1);
+}

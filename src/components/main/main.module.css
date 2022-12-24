@@ -224,6 +224,12 @@
 }
 
 .hotAdvertisement__container {
+    margin: 0 auto;
+    width: 1280px;
+}
+
+.hotAdvertisement__list {
+    margin-top: 36px;
     display: flex;
     flex-direction: row;
     gap: 20px;

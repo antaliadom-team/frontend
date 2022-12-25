@@ -42,6 +42,13 @@ const Header = () => {
                 About
               </NavLink>
             </li>
+            <li className={styles.item}>
+              <NavLink
+                to="/sample-product-page"
+                className={({ isActive }) => toggleClass(isActive)}>
+                Product-Page
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <button className={styles.button}>LogIn</button>

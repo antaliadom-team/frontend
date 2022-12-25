@@ -9,19 +9,19 @@
     width: 1280px;
 }
 
-.promo__mainImage {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .promo__frontBlock {
     position: absolute;
     top: 131px;
-    left: 80px;
+    left: 0;
     width: 630px;
     height: 352px;
     background-color: #234a5866;
     backdrop-filter: blur(25px);
+}
+
+.promo__mainImage {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .promo__title {

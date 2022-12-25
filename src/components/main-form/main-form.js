@@ -1,5 +1,5 @@
 import styles from "./main-form.module.css";
-import checkbox from "../../../images/checkbox.svg";
+import checkbox from "../../images/checkbox.svg";
 
 const MainForm = () => {
   return (

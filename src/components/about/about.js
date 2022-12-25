@@ -1,12 +1,12 @@
 import styles from "./about.module.css";
-import photo_1 from "../../../images/photo_1.png";
-import photo_2 from "../../../images/photo_2.png";
-import photo_3 from "../../../images/photo_3.png";
-import photo_4 from "../../../images/photo_4.png";
-import aboutImage from "../../../images/about_main.png";
-import advantage1 from "../../../images/advantage1.svg";
-import advantage2 from "../../../images/advantage2.svg";
-import advantage3 from "../../../images/advantage3.svg";
+import photo_1 from "../../images/photo_1.png";
+import photo_2 from "../../images/photo_2.png";
+import photo_3 from "../../images/photo_3.png";
+import photo_4 from "../../images/photo_4.png";
+import aboutImage from "../../images/about_main.png";
+import advantage1 from "../../images/advantage1.svg";
+import advantage2 from "../../images/advantage2.svg";
+import advantage3 from "../../images/advantage3.svg";
 
 const About = () => {
   return (

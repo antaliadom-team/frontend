@@ -1,5 +1,5 @@
 import styles from "./promo.module.css";
-import promoImage from "../../../images/pic_main.png";
+import promoImage from "../../images/pic_main.png";
 
 const Promo = () => {
   return (

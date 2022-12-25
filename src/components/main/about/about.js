@@ -39,49 +39,51 @@ const About = () => {
         </div>
       </section>
       <section className={styles.aboutTeam}>
-        <h2 className={styles.aboutTeam__title}>Наша команда</h2>
-        <ul className={styles.aboutTeam__container}>
-          <li className={styles.aboutTeam__element}>
-            <img
-              className={styles.aboutTeam__photo}
-              src={photo_1}
-              alt="фото команды"
-            />
-            <p className={styles.aboutTeam__name}>Михаил</p>
-            <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
-          </li>
-          <li className={styles.aboutTeam__element}>
-            <img
-              className={styles.aboutTeam__photo}
-              src={photo_2}
-              alt="фото команды"
-            />
-            <p className={styles.aboutTeam__name}>Михаил</p>
-            <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
-          </li>
-          <li className={styles.aboutTeam__element}>
-            <img
-              className={styles.aboutTeam__photo}
-              src={photo_3}
-              alt="фото команды"
-            />
-            <p className={styles.aboutTeam__name}>Михаил</p>
-            <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
-          </li>
-          <li className={styles.aboutTeam__element}>
-            <img
-              className={styles.aboutTeam__photo}
-              src={photo_4}
-              alt="фото команды"
-            />
-            <p className={styles.aboutTeam__name}>Михаил</p>
-            <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
-          </li>
-        </ul>
+        <div className={styles.aboutTeam__container}>
+          <h2 className={styles.aboutTeam__title}>Наша команда</h2>
+          <ul className={styles.aboutTeam__list}>
+            <li className={styles.aboutTeam__element}>
+              <img
+                className={styles.aboutTeam__photo}
+                src={photo_1}
+                alt="фото команды"
+              />
+              <p className={styles.aboutTeam__name}>Михаил</p>
+              <div className={styles.aboutTeam__underline} />
+              <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            </li>
+            <li className={styles.aboutTeam__element}>
+              <img
+                className={styles.aboutTeam__photo}
+                src={photo_2}
+                alt="фото команды"
+              />
+              <p className={styles.aboutTeam__name}>Михаил</p>
+              <div className={styles.aboutTeam__underline} />
+              <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            </li>
+            <li className={styles.aboutTeam__element}>
+              <img
+                className={styles.aboutTeam__photo}
+                src={photo_3}
+                alt="фото команды"
+              />
+              <p className={styles.aboutTeam__name}>Михаил</p>
+              <div className={styles.aboutTeam__underline} />
+              <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            </li>
+            <li className={styles.aboutTeam__element}>
+              <img
+                className={styles.aboutTeam__photo}
+                src={photo_4}
+                alt="фото команды"
+              />
+              <p className={styles.aboutTeam__name}>Михаил</p>
+              <div className={styles.aboutTeam__underline} />
+              <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            </li>
+          </ul>
+        </div>
       </section>
       <section className={styles.advantages}>
         <h2 className={styles.advantages__title}>Наши преимущества</h2>

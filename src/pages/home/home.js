@@ -1,14 +1,18 @@
 import Advertisement from "../../components/advertisement/advertisement";
 import Promo from "../../components/promo/promo";
-import About from "../../components/about/about";
+import Advantages from "../../components/advantages/advantages";
 import MainForm from "../../components/main-form/main-form";
 import styles from "./home.module.css";
+import AboutUs from "../../components/about-us/about-us";
+import AboutTeam from "../../components/about-team/about-team";
 
 const Home = () => {
   return (
     <div className={styles.home}>
       <Promo />
-      <About />
+      <AboutUs />
+      <AboutTeam />
+      <Advantages />
       <Advertisement />
       <MainForm />
     </div>

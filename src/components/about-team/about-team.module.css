@@ -1,0 +1,54 @@
+.aboutTeam {
+    padding: 80px;
+}
+
+.aboutTeam__title {
+    margin: 0 auto;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    color: #0d1b44;
+}
+
+.aboutTeam__container {
+    margin: 0 auto;
+    width: 1280px;
+}
+
+.aboutTeam__list {
+    margin: 36px auto 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style-type: none;
+}
+
+.aboutTeam__photo {
+    width: 305px;
+    height: 355px;
+}
+
+.aboutTeam__name {
+    margin: 5px auto 8px;
+    font-family: "Montserrat";
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    text-align: left;
+    color: #0d1b44;
+}
+
+.aboutTeam__underline {
+    margin-left: 28px;
+    width: 169px;
+    border-bottom: 1px solid #dd9b5c;
+}
+
+.aboutTeam__number {
+    margin: 13px auto 2px 128px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    text-align: left;
+    color: #0d1b44;
+}

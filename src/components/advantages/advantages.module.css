@@ -1,0 +1,53 @@
+.advantages {
+    padding: 80px 80px 53px;
+}
+
+.advantages__title {
+    margin: 0 auto 49px;
+    font-family: "Montserrat";
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    color: #0d1b44;
+}
+
+.advantages__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.advantages__image {
+    width: 413px;
+    height: 229px;
+}
+
+.advantages__item {
+    position: relative;
+    height: 229px;
+}
+
+.advantages__line1 {
+    position: absolute;
+    right: 0;
+    bottom: -12px;
+    width: 169px;
+    border-bottom: 1px solid #dd9b5c;
+}
+
+.advantages__line2 {
+    position: absolute;
+    top: -12px;
+    right: 0;
+    width: 169px;
+    border-bottom: 1px solid #dd9b5c;
+}
+
+.advantages__line3 {
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 169px;
+    border-bottom: 1px solid #dd9b5c;
+}

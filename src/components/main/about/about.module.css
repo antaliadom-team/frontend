@@ -4,6 +4,11 @@
     width: 100%;
 }
 
+.aboutUs__container {
+    margin: 0 auto;
+    width: 1280px;
+}
+
 .aboutUs__columns {
     display: flex;
     flex-direction: row;

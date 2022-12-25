@@ -106,5 +106,6 @@
 }
 
 .mainForm__accept_color {
+    text-decoration: none;
     color: rgba(221, 155, 92, 1);
 }

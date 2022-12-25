@@ -79,13 +79,13 @@ const MainForm = () => {
             />
             <p className={styles.mainForm__accept}>
               Я согласен с{" "}
-              <span className={styles.mainForm__accept_color}>
+              <a className={styles.mainForm__accept_color} href="#">
                 Политикой конфиденциальности{" "}
-              </span>
+              </a>
               и{" "}
-              <span className={styles.mainForm__accept_color}>
+              <a className={styles.mainForm__accept_color} href="#">
                 Условиями использования сервиса{" "}
-              </span>
+              </a>
             </p>
           </div>
           <button className={styles.mainForm__send}>Отправить заявку</button>

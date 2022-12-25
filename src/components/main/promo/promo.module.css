@@ -1,0 +1,44 @@
+
+.promo {
+    padding: 0 80px;
+}
+
+.promo__container {
+    position: relative;
+    margin: 0 auto;
+    width: 1280px;
+}
+
+.promo__mainImage {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.promo__frontBlock {
+    position: absolute;
+    top: 131px;
+    left: 80px;
+    width: 630px;
+    height: 352px;
+    background-color: #234a5866;
+    backdrop-filter: blur(25px);
+}
+
+.promo__title {
+    margin: 52px auto 36px;
+    font-family: "Montserrat";
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.promo__subtitle {
+    margin: 0 auto;
+    width: 403px;
+    font-family: "Montserrat";
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    color: #ffffff;
+}

@@ -14,6 +14,9 @@ const Advantages = () => {
             src={advantage1}
             alt="картинка преимущества команды"
           />
+          <p className={styles.advantages__text}>
+            Мы работаем быстро. Возможность показа объекта в день заявки
+          </p>
           <div className={styles.advantages__line1} />
         </div>
         <div className={styles.advantages__item}>
@@ -22,6 +25,9 @@ const Advantages = () => {
             src={advantage2}
             alt="картинка преимущества команды"
           />
+          <p className={styles.advantages__text}>
+            Мы работаем быстро. Возможность показа объекта в день заявки
+          </p>
           <div className={styles.advantages__line2} />
         </div>
         <div className={styles.advantages__item}>
@@ -30,6 +36,9 @@ const Advantages = () => {
             src={advantage3}
             alt="картинка преимущества команды"
           />
+          <p className={styles.advantages__text}>
+            Мы работаем быстро. Возможность показа объекта в день заявки
+          </p>
           <div className={styles.advantages__line3} />
         </div>
       </div>

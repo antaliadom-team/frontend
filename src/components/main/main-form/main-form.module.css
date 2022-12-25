@@ -12,7 +12,7 @@
     width: 667px;
     height: 1118px;
     background-color: none;
-    border: 1px solid rgba(221, 155, 92, 1);
+    border: 1px solid #dd9b5c;
 }
 
 .mainForm__container {
@@ -23,8 +23,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(13, 27, 68, 1);
+    background-color: #ffffff;
+    border: 1px solid #0d1b44;
 }
 
 .mainForm__title {
@@ -102,10 +102,10 @@
     line-height: 25px;
     font-weight: 400;
     text-align: left;
-    color: rgba(13, 27, 68, 1);
+    color: #0d1b44;
 }
 
 .mainForm__accept_color {
     text-decoration: none;
-    color: rgba(221, 155, 92, 1);
+    color: #dd9b5c;
 }

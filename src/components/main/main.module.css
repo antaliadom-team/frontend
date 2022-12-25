@@ -22,7 +22,7 @@
     left: 80px;
     width: 630px;
     height: 352px;
-    background-color: rgba(35, 74, 88, 0.4);
+    background-color: #234a5866;
     backdrop-filter: blur(25px);
 }
 
@@ -32,7 +32,7 @@
     font-size: 44px;
     line-height: 54px;
     font-weight: 600;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
 }
 
 .promo__subtitle {
@@ -42,7 +42,7 @@
     font-size: 24px;
     line-height: 29px;
     font-weight: 600;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
 }
 
 .hotAdvertisement {

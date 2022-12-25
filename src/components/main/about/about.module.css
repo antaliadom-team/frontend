@@ -107,7 +107,7 @@
 .aboutTeam__underline {
     margin-left: 28px;
     width: 169px;
-    border-bottom: 1px solid rgba(221, 155, 92, 1);
+    border-bottom: 1px solid #dd9b5c;
 }
 
 .aboutTeam__number {
@@ -154,7 +154,7 @@
     right: 0;
     bottom: -12px;
     width: 169px;
-    border-bottom: 1px solid rgba(221, 155, 92, 1);
+    border-bottom: 1px solid #dd9b5c;
 }
 
 .advantages__line2 {
@@ -162,7 +162,7 @@
     top: -12px;
     right: 0;
     width: 169px;
-    border-bottom: 1px solid rgba(221, 155, 92, 1);
+    border-bottom: 1px solid #dd9b5c;
 }
 
 .advantages__line3 {
@@ -170,5 +170,5 @@
     bottom: -12px;
     left: 0;
     width: 169px;
-    border-bottom: 1px solid rgba(221, 155, 92, 1);
+    border-bottom: 1px solid #dd9b5c;
 }

@@ -9,7 +9,6 @@ const App = () => {
     <div className={styles.app}>
       <Header />
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/" element={<Main />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/profile" element={<Profile />} />

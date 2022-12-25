@@ -1,7 +1,7 @@
 import styles from "./main.module.css";
 import promoImage from "../../images/pic_main.png";
 
-import MainForm from "./mainForm/mainForm";
+import MainForm from "./main-form/main-form";
 import About from "./about/about";
 
 const Main = () => {

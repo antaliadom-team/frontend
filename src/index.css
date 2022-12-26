@@ -15,8 +15,8 @@
 }
 
 body {
-    margin: 0;
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --text-color: #0d1b44;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

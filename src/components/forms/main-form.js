@@ -66,7 +66,7 @@ const MainForm = () => {
                 type="text"
                 placeholder="Например, нужно рассмотреть как можно скорее"
                 className={styles.mainForm__input_comment}
-                maxlength="100"
+                maxLength="100"
                 cols="1"
                 rows="3"
               />

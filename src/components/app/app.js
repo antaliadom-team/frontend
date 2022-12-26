@@ -3,6 +3,7 @@ import styles from "./app.module.css";
 import { Routes, Route } from "react-router-dom";
 import { About, Catalog, Home, Profile } from "../../pages";
 import Header from "../header/header";
+import Footer from "../footer/footer";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
+        <Footer />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import styles from "./header.module.css";
 import { NavLink } from "react-router-dom";
-import logo from "../../logo.svg";
 
 const Header = () => {
   const toggleClass = (isActive) => (isActive ? styles.active : styles.link);
@@ -9,8 +8,7 @@ const Header = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <NavLink to="/" className={styles.logo}>
-          <img src={logo} className={styles.image} alt="logo" />
-          React v18.2.0
+          ЛОГО
         </NavLink>
         <nav className={styles.nav}>
           <ul className={styles.list}>
@@ -18,28 +16,28 @@ const Header = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) => toggleClass(isActive)}>
-                Home
-              </NavLink>
-            </li>
-            <li className={styles.item}>
-              <NavLink
-                to="/catalog"
-                className={({ isActive }) => toggleClass(isActive)}>
-                Catalog
-              </NavLink>
-            </li>
-            <li className={styles.item}>
-              <NavLink
-                to="/profile"
-                className={({ isActive }) => toggleClass(isActive)}>
-                Profile
+                Главная
               </NavLink>
             </li>
             <li className={styles.item}>
               <NavLink
                 to="/about"
                 className={({ isActive }) => toggleClass(isActive)}>
-                About
+                О нас
+              </NavLink>
+            </li>
+            <li className={styles.item}>
+              <NavLink
+                to="/catalog"
+                className={({ isActive }) => toggleClass(isActive)}>
+                Каталог
+              </NavLink>
+            </li>
+            <li className={styles.item}>
+              <NavLink
+                to="/send"
+                className={({ isActive }) => toggleClass(isActive)}>
+                Отправить заявку
               </NavLink>
             </li>
             <li className={styles.item}>
@@ -51,7 +49,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <button className={styles.button}>LogIn</button>
+        <button className={styles.button}>Вход</button>
       </header>
     </div>
   );

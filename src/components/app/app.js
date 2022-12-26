@@ -1,8 +1,9 @@
-import logo from "../../logo.svg";
+import logo from "../../images/logo.svg";
 import styles from "./app.module.css";
 import { Routes, Route } from "react-router-dom";
 import { About, Catalog, Home, Profile, ProductPage } from "../../pages";
 import Header from "../header/header";
+import Footer from "../footer/footer";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/sample-product-page" element={<ProductPage />} />
         </Routes>
       </div>
+        <Footer />
     </div>
   );
 };

@@ -1,0 +1,37 @@
+.amenities_item {
+    padding-left: 30px;
+    padding-bottom: 20px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: left;
+    /* временно у всех одинаковая иконка */
+    background-image: url("./icons/amen_wifi.svg");
+    background-repeat: no-repeat;
+    background-position: top 3px left 0;
+}
+
+.amenities_item_disabled {
+    color: #cbcbcb;
+    composes: amenities_item;
+}
+
+.amenities_item_wifi {
+    background-image: url("./icons/amen_wifi.svg");
+    background-repeat: no-repeat;
+}
+
+.amenities_item_wash {
+    background-image: url("./icons/amen_wash.svg");
+    background-repeat: no-repeat;
+}
+
+.amenities_item_parking {
+    background-image: url("./icons/amen_parking.svg");
+    background-repeat: no-repeat;
+}
+
+.amenities_item_ac {
+    background-image: url("./icons/amen_ac.svg");
+    background-repeat: no-repeat;
+}

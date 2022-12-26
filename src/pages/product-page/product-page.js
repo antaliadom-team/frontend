@@ -1,4 +1,7 @@
 import styles from "./product-page.module.css";
+import { NavLink } from "react-bootstrap";
+import '../../components/ui/icons/index.js'
+import AmenityItem from "../../components/amenity-item/amenity-item";
 
 const ProductPage = () => {
   const breadcrumb1 = 'Аренда';
@@ -18,23 +21,23 @@ const ProductPage = () => {
   - служба безопасности 24/7.`
 
   return (
-    <section class={styles.section}>
+    <section className={styles.section}>
       <nav aria-label="breadcrumb">
         <ol className={styles.breadcrumbs}>
-          <li>     
-            <a className={styles.breadcrumbs_link} href="/sample-product-page">
-                {breadcrumb1}<span>&nbsp; / &nbsp;</span>
-            </a> 
+          <li>
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
+              {breadcrumb1}<span>&nbsp; / &nbsp;</span>
+            </NavLink>  
           </li>
           <li>     
-            <a className={styles.breadcrumbs_link} href="/sample-product-page">
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
                 {breadcrumb2}<span>&nbsp; / &nbsp;</span>
-            </a> 
+            </NavLink> 
           </li>
           <li>
-            <a className={styles.breadcrumbs_link} href="/sample-product-page">
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
                 {breadcrumb3}
-            </a> 
+            </NavLink> 
           </li>
         </ol>
       </nav>
@@ -48,20 +51,20 @@ const ProductPage = () => {
         <div className={styles.amenities}>
           <h3 className={styles.amenities_title}>Удобства</h3>
           <ul className={styles.amenities_list}>
-            <li className={styles.amenities_item}>Интернет</li>
-            <li className={styles.amenities_item}>Кондиционер</li>
-            <li className={styles.amenities_item}>Стиральная машина</li>
-            <li className={styles.amenities_item}>Паркинг</li>
-            <li className={styles.amenities_item}>Интернет</li>
-            <li className={styles.amenities_item}>Кондиционер</li>
-            <li className={styles.amenities_item}>Домашние животные</li>  
-            <li className={styles.amenities_item}>Интернет</li>
-            <li className={styles.amenities_item}>Кондиционер</li>
-            <li className={styles.amenities_item}>Стиральная машина</li>
-            <li className={styles.amenities_item}>Паркинг</li>
-            <li className={styles.amenities_item}>Интернет</li>
-            <li className={styles.amenities_item_off}>Кондиционер</li>
-            <li className={styles.amenities_item_off}>Домашние животные</li>
+            <AmenityItem title="Интернет" isAvailable={true} />
+            <AmenityItem title="Парковка" isAvailable={true} />
+            <AmenityItem title="Кондиционер" isAvailable={true} />
+            <AmenityItem title="Инфраструктура" isAvailable={true} />
+            <AmenityItem title="Парковка" isAvailable={true} />
+            <AmenityItem title="Кондиционер" isAvailable={true} />
+            <AmenityItem title="Интернет" isAvailable={true} />
+            <AmenityItem title="Вид из окна" isAvailable={true} />
+            <AmenityItem title="Домашние животные" isAvailable={true} />
+            <AmenityItem title="Парковка" isAvailable={true} />
+            <AmenityItem title="Кондиционер" isAvailable={true} />
+            <AmenityItem title="Микроволновка" isAvailable={false} />
+            <AmenityItem title="Стиральная машина" isAvailable={false} />
+            <AmenityItem title="Злые соседи" isAvailable={false} />
           </ul>
         </div>
         <div className={styles.stats_container}>
@@ -72,7 +75,7 @@ const ProductPage = () => {
         </div>
         <button>Оформить заявку</button>
       </div>
-      <hr className={styles.hr}></hr>
+      <hr className={styles.hr} />
       <h2 className={styles.description_title}>Описание</h2>
       <p className={styles.description_text}>{description}</p>
       <button>Оформить заявку</button>

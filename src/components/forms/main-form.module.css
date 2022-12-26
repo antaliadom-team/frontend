@@ -6,13 +6,12 @@
 
 .mainForm__block {
     position: absolute;
-    z-index: 0;
     top: -41px;
     left: -57px;
     width: 667px;
     height: 1118px;
     background-color: none;
-    border: 1px solid #dd9b5c;
+    border: 1px solid var(--brown-color);
 }
 
 .mainForm__container {
@@ -24,7 +23,7 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    border: 1px solid #0d1b44;
+    border: 1px solid var(--blue-color);
 }
 
 .mainForm__title {
@@ -35,7 +34,7 @@
     line-height: 39px;
     font-weight: 600;
     text-align: center;
-    color: #0d1b44;
+    color: var(--blue-color);
 }
 
 .mainForm__subtitle {
@@ -44,7 +43,7 @@
     line-height: 25px;
     font-weight: 400;
     text-align: center;
-    color: #0d1b44;
+    color: var(--blue-color);
 }
 
 .mainForm__form {
@@ -62,7 +61,7 @@
     line-height: 25px;
     font-weight: 400;
     text-align: left;
-    color: #0d1b44;
+    color: var(--blue-color);
 }
 
 .mainForm__input {
@@ -102,10 +101,10 @@
     line-height: 25px;
     font-weight: 400;
     text-align: left;
-    color: #0d1b44;
+    color: var(--blue-color);
 }
 
 .mainForm__accept_color {
     text-decoration: none;
-    color: #dd9b5c;
+    color: var(--brown-color);
 }

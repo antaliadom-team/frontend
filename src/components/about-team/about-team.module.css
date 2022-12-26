@@ -7,7 +7,7 @@
     font-size: 32px;
     line-height: 39px;
     font-weight: 600;
-    color: #0d1b44;
+    color: var(--blue-color);
 }
 
 .aboutTeam__container {
@@ -35,7 +35,7 @@
     line-height: 29px;
     font-weight: 600;
     text-align: left;
-    color: #0d1b44;
+    color: var(--blue-color);
 }
 
 .aboutTeam__underline {
@@ -50,5 +50,5 @@
     line-height: 25px;
     font-weight: 400;
     text-align: left;
-    color: #0d1b44;
+    color: var(--blue-color);
 }

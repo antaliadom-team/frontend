@@ -15,7 +15,7 @@ const MainForm = () => {
           время
         </p>
         <form className={styles.mainForm__form}>
-          <ui className={styles.mainForm__items}>
+          <ul className={styles.mainForm__items}>
             <li className={styles.mainForm__item}>
               <p className={styles.mainForm__itemTitle}>Имя*</p>
               <input
@@ -68,9 +68,10 @@ const MainForm = () => {
                 className={styles.mainForm__input_comment}
                 maxlength="100"
                 cols="1"
-                rows="3"></textarea>
+                rows="3"
+              />
             </li>
-          </ui>
+          </ul>
           <div className={styles.mainForm__checkbox}>
             <img
               className={styles.mainForm__checkboxImage}
@@ -78,13 +79,13 @@ const MainForm = () => {
               alt="чекбокс"
             />
             <p className={styles.mainForm__accept}>
-              Я согласен с{" "}
+              Я согласен с&nbsp;
               <a className={styles.mainForm__accept_color} href="#">
                 Политикой конфиденциальности{" "}
               </a>
-              и{" "}
+              и&nbsp;
               <a className={styles.mainForm__accept_color} href="#">
-                Условиями использования сервиса{" "}
+                Условиями использования сервиса
               </a>
             </p>
           </div>

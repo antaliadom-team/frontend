@@ -1,11 +1,10 @@
 .aboutUs {
-    padding: 120px 80px 46px;
-    width: 100%;
+    margin: 0 auto;
+    width: 1280px;
 }
 
 .aboutUs__container {
-    margin: 0 auto;
-    width: 1280px;
+    margin: 120px 0 46px 0;
 }
 
 .aboutUs__columns {
@@ -19,20 +18,17 @@
 }
 
 .aboutUs__title {
-    margin: 0;
     margin-top: 54px;
-    padding: 0;
     font-family: "Montserrat";
     font-size: 32px;
     line-height: 39px;
     font-weight: 600;
     text-align: left;
-    color: #0d1b44;
+    color: var(--blue-color);
 }
 
 .aboutUs__paragraph {
     margin: 36px 32px 40px 0;
-    padding: 0;
     width: 510px;
     font-size: 18px;
     line-height: 25px;
@@ -60,5 +56,5 @@
     width: 674px;
     height: 371px;
     background-color: none;
-    border: 0.781236px solid #dd9b5c;
+    border: 1px solid var(--brown-color);
 }

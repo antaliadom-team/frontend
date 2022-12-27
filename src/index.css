@@ -9,8 +9,8 @@
 }
 
 :root {
-    --main-color: #61dafb;
     --text-color: #0d1b44;
+    --border-color: #dd9b5c;
 }
 
 body {

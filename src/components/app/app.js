@@ -1,4 +1,3 @@
-import logo from "../../images/logo.svg";
 import styles from "./app.module.css";
 import { Routes, Route } from "react-router-dom";
 import { About, Catalog, Home, Profile, ProductPage } from "../../pages";
@@ -9,8 +8,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <Header />
-      <div className={styles.header}>
-        <img src={logo} className={styles.logo} alt="logo" />
+      <div className={styles.main}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />

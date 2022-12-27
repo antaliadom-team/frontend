@@ -1,7 +1,7 @@
 .section {
-    padding: 0 0 139px 0;
+    padding: 92px 0 139px 0;
     display: flex;
-    width: 100%;
+    width: 1280px;
     max-width: 1280px;
     flex-direction: column;
     justify-content: flex-start;
@@ -115,6 +115,7 @@
     font-weight: 500;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 25px;
+    row-gap: 20px;
 }
 
 .amenities_list li:last-of-type {
@@ -185,6 +186,24 @@
     line-height: 22px;
     font-weight: 400;
     text-align: left;
+}
+
+.description_text p {
+    margin-bottom: 20px;
+}
+
+.description_text ul {
+    list-style-type: none;
+}
+
+.description_text ul li {
+    margin-left: 10px;
+}
+
+.description_text ul li::before {
+    position: relative;
+    left: -10px;
+    content: "-";
 }
 
 button {

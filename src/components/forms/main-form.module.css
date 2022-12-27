@@ -1,17 +1,16 @@
 .mainForm {
     position: relative;
-    margin: 40px auto 0;
+    margin: 120px auto 0;
     width: 846px;
 }
 
-.mainForm__block {
+.border {
     position: absolute;
     top: -41px;
     left: -57px;
     width: 667px;
     height: 1118px;
-    background-color: none;
-    border: 1px solid var(--brown-color);
+    border: 1px solid var(--border-color);
 }
 
 .mainForm__container {
@@ -23,18 +22,18 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    border: 1px solid var(--blue-color);
+    border: 1px solid var(--text-color);
 }
 
 .mainForm__title {
     margin: 40px auto 36px;
     width: 462px;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-size: 32px;
     line-height: 39px;
     font-weight: 600;
     text-align: center;
-    color: var(--blue-color);
+    color: var(--text-color);
 }
 
 .mainForm__subtitle {
@@ -43,12 +42,16 @@
     line-height: 25px;
     font-weight: 400;
     text-align: center;
-    color: var(--blue-color);
+    color: var(--text-color);
 }
 
 .mainForm__form {
     margin: 0 auto 0;
     width: 470px;
+    list-style-type: none;
+}
+
+.mainForm__list {
     list-style-type: none;
 }
 
@@ -61,7 +64,7 @@
     line-height: 25px;
     font-weight: 400;
     text-align: left;
-    color: var(--blue-color);
+    color: var(--text-color);
 }
 
 .mainForm__input {
@@ -69,7 +72,7 @@
     padding-left: 10px;
     width: 100%;
     height: 40px;
-    font-family: "Open Sans";
+    font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;
@@ -80,7 +83,7 @@
     padding: 19px 10px;
     width: 100%;
     min-height: 115px;
-    font-family: "Open Sans";
+    font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;
@@ -92,19 +95,25 @@
 }
 
 .mainForm__accept {
-    margin: 0;
     margin-left: 20px;
     padding: 0;
     width: 415px;
-    font-family: "Open Sans";
+    font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;
     text-align: left;
-    color: var(--blue-color);
+    color: var(--text-color);
 }
 
 .mainForm__accept_color {
     text-decoration: none;
-    color: var(--brown-color);
+    color: var(--border-color);
+}
+
+.mainForm__button {
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

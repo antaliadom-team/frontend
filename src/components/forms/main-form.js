@@ -3,8 +3,8 @@ import checkbox from "../../images/checkbox.svg";
 
 const MainForm = () => {
   return (
-    <section className={styles.mainForm}>
-      <div className={styles.mainForm__block} />
+    <section id="send" className={styles.mainForm}>
+      <div className={styles.border} />
       <div className={styles.mainForm__container}>
         <h2 className={styles.mainForm__title}>
           Оставить заявку <br />
@@ -15,7 +15,7 @@ const MainForm = () => {
           время
         </p>
         <form className={styles.mainForm__form}>
-          <ul className={styles.mainForm__items}>
+          <ul className={styles.mainForm__list}>
             <li className={styles.mainForm__item}>
               <p className={styles.mainForm__itemTitle}>Имя*</p>
               <input
@@ -63,7 +63,6 @@ const MainForm = () => {
             <li className={styles.mainForm__item}>
               <p className={styles.mainForm__itemTitle}>Комментарий</p>
               <textarea
-                type="text"
                 placeholder="Например, нужно рассмотреть как можно скорее"
                 className={styles.mainForm__input_comment}
                 maxLength="100"
@@ -81,15 +80,18 @@ const MainForm = () => {
             <p className={styles.mainForm__accept}>
               Я согласен с&nbsp;
               <a className={styles.mainForm__accept_color} href="#">
-                Политикой конфиденциальности{" "}
+                Политикой конфиденциальности
               </a>
-              и&nbsp;
+              &nbsp;и&nbsp;
               <a className={styles.mainForm__accept_color} href="#">
                 Условиями использования сервиса
               </a>
             </p>
           </div>
-          <button className={styles.mainForm__send}>Отправить заявку</button>
+          <div className={styles.mainForm__button}>
+            <button>Отправить заявку</button>
+          </div>
+
         </form>
       </div>
     </section>

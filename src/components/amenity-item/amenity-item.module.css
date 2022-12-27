@@ -1,0 +1,14 @@
+.amenities_item {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: start;
+    gap: 15px;
+}
+
+.amenities_item_disabled {
+    color: #cbcbcb;
+    composes: amenities_item;
+}

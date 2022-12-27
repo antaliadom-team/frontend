@@ -3,8 +3,7 @@ import promoImage from "../../images/pic_main.png";
 
 const Promo = () => {
   return (
-    <section className={styles.promo}>
-      <div className={styles.promo__container}>
+      <section className={styles.promo}>
         <div className={styles.promo__mainImage}>
           <img src={promoImage} alt="фото квартиры" />
         </div>
@@ -13,10 +12,9 @@ const Promo = () => {
           <p className={styles.promo__subtitle}>
             Поможем найти квартиру на море с легкостью
           </p>
-          <button className={styles.promo__button}>Смотреть каталог</button>
+          <button>Смотреть каталог</button>
         </div>
-      </div>
-    </section>
+      </section>
   );
 };
 

@@ -1,4 +1,4 @@
-import Advertisement from "../../components/advertisement/advertisement";
+import Ads from "../../components/ads/ads";
 import Promo from "../../components/promo/promo";
 import Advantages from "../../components/advantages/advantages";
 import MainForm from "../../components/forms/main-form";
@@ -13,7 +13,7 @@ const Home = () => {
       <AboutUs />
       <AboutTeam />
       <Advantages />
-      <Advertisement />
+      <Ads />
       <MainForm />
     </div>
   );

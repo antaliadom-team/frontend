@@ -1,24 +1,18 @@
 .aboutTeam {
-    padding: 80px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--text-color);
 }
 
 .aboutTeam__title {
-    margin: 0 auto;
+    margin-top: 120px;
     font-size: 32px;
     line-height: 39px;
     font-weight: 600;
-    color: var(--blue-color);
-}
-
-.aboutTeam__container {
-    margin: 0 auto;
-    width: 1280px;
 }
 
 .aboutTeam__list {
-    margin: 36px auto 0;
+    margin-top: 36px;
     display: flex;
-    flex-direction: row;
     gap: 20px;
     list-style-type: none;
 }
@@ -29,19 +23,16 @@
 }
 
 .aboutTeam__name {
-    margin: 5px auto 8px;
-    font-family: "Montserrat";
+    margin: 5px 0 8px;
     font-size: 24px;
     line-height: 29px;
     font-weight: 600;
-    text-align: left;
-    color: var(--blue-color);
 }
 
 .aboutTeam__underline {
     margin-left: 28px;
     width: 169px;
-    border-bottom: 1px solid #dd9b5c;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .aboutTeam__number {
@@ -49,6 +40,4 @@
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;
-    text-align: left;
-    color: var(--blue-color);
 }

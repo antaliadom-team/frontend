@@ -6,11 +6,10 @@ import photo_4 from "../../images/photo_4.png";
 
 const AboutTeam = () => {
   return (
-    <section className={styles.aboutTeam}>
-      <div className={styles.aboutTeam__container}>
+      <section className={styles.aboutTeam}>
         <h2 className={styles.aboutTeam__title}>Наша команда</h2>
         <ul className={styles.aboutTeam__list}>
-          <li className={styles.aboutTeam__element}>
+          <li>
             <img
               className={styles.aboutTeam__photo}
               src={photo_1}
@@ -20,7 +19,7 @@ const AboutTeam = () => {
             <div className={styles.aboutTeam__underline} />
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
-          <li className={styles.aboutTeam__element}>
+          <li>
             <img
               className={styles.aboutTeam__photo}
               src={photo_2}
@@ -30,7 +29,7 @@ const AboutTeam = () => {
             <div className={styles.aboutTeam__underline} />
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
-          <li className={styles.aboutTeam__element}>
+          <li>
             <img
               className={styles.aboutTeam__photo}
               src={photo_3}
@@ -40,7 +39,7 @@ const AboutTeam = () => {
             <div className={styles.aboutTeam__underline} />
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
-          <li className={styles.aboutTeam__element}>
+          <li>
             <img
               className={styles.aboutTeam__photo}
               src={photo_4}
@@ -51,8 +50,7 @@ const AboutTeam = () => {
             <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
           </li>
         </ul>
-      </div>
-    </section>
+      </section>
   );
 };
 

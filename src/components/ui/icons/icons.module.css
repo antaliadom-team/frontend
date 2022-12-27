@@ -1,0 +1,31 @@
+:root {
+    --icon-color: #a7b7bc;
+    --icon-animate: fill 0.3s ease;
+}
+
+.vkontakte path {
+    fill: var(--icon-color);
+    transition: var(--icon-animate);
+}
+
+.vkontakte:hover path {
+    fill: #4c75a3;
+}
+
+.telegram path {
+    fill: var(--icon-color);
+    transition: var(--icon-animate);
+}
+
+.telegram:hover path {
+    fill: #0088cc;
+}
+
+.instagram path {
+    fill: var(--icon-color);
+    transition: var(--icon-animate);
+}
+
+.instagram:hover path {
+    fill: #e4405f;
+}

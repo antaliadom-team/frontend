@@ -1,0 +1,50 @@
+.form {
+    border: 2px solid var(--text-color);
+}
+
+.sign_in {
+    margin-top: 56px;
+}
+
+.container {
+    margin: 40px;
+}
+
+.title {
+    margin-bottom: 36px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.list {
+    list-style: none;
+}
+
+.input {
+    margin-bottom: 20px;
+    width: 360px;
+    height: 40px;
+    border: 2px solid var(--text-color);
+}
+
+.link {
+    text-decoration: none;
+    color: var(--border-color);
+}
+
+.buttons {
+    margin-bottom: 20px;
+    width: 166px;
+}
+
+.text {
+    margin-top: 20px;
+    font-family: "Inter";
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: var(--text-color);
+}

@@ -1,12 +1,12 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./auth-form.module.css";
 
-const SignUp = () => {
+const EditProfile = () => {
   return (
-    <Route path="/signup">
+    <form className={styles.form}>
       <h2 className={styles.title}>Редактировать профиль</h2>
-      <Link className={styles.change_password} to="/change-password">
+      <Link className={styles.link} to="/auth/change-password">
         Изменить пароль
       </Link>
       <ul className={styles.list}>
@@ -39,8 +39,40 @@ const SignUp = () => {
         <button>Сохранить</button>
         <button>Отменить</button>
       </div>
-    </Route>
+    </form>
   );
 };
 
-export default SignUp;
+const SignIn = () => {
+  return (
+    <form className={`${styles.form} ${styles.sign_in}`}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Вход</h2>
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <p className={styles.itemTitle}>E-mail</p>
+            <input type="text" className={styles.input} />
+          </li>
+          <li className={styles.item}>
+            <p className={styles.itemTitle}>Пароль</p>
+            <input type="text" className={styles.input} />
+          </li>
+        </ul>
+        <div className={styles.buttons}>
+          <button>Вход</button>
+        </div>
+        <Link className={styles.link} to="/auth/change-password">
+          Забыли пароль?
+        </Link>
+        <p className={styles.text}>
+          Нет аккаунта?&nbsp;
+          <Link className={styles.link} to="/auth/signup">
+            Зарегистрироваться
+          </Link>
+        </p>
+      </div>
+    </form>
+  );
+};
+
+export { EditProfile, SignIn };

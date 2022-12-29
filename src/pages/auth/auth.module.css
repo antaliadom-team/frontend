@@ -1,0 +1,40 @@
+.back_to_lk_btn {
+    text-decoration: none;
+    color: var(--border-color);
+}
+
+.auth {
+    margin: 100px auto;
+    width: 1280px;
+}
+
+.container {
+    margin-top: 80px;
+    display: flex;
+    min-height: 678px;
+}
+
+.image_and_block {
+    position: relative;
+}
+
+.block {
+    position: absolute;
+    z-index: 0;
+    right: -44px;
+    bottom: 0;
+    width: 674px;
+    height: 371px;
+    border: 2px solid var(--border-color);
+}
+
+.image {
+    position: relative;
+    z-index: 1;
+    width: 630px;
+    height: 632px;
+}
+
+.form {
+    margin-left: 128px;
+}

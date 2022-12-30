@@ -3,7 +3,11 @@
 }
 
 .sign_in {
-    margin-top: 56px;
+    margin-top: 156px;
+}
+
+.sign_up {
+    margin-top: 0;
 }
 
 .container {
@@ -19,6 +23,15 @@
     color: var(--text-color);
 }
 
+.itemTitle {
+    margin-bottom: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
 .list {
     list-style: none;
 }
@@ -28,6 +41,10 @@
     width: 360px;
     height: 40px;
     border: 2px solid var(--text-color);
+}
+
+.input:focus {
+    outline: none;
 }
 
 .link {
@@ -47,4 +64,10 @@
     line-height: 17px;
     font-weight: 400;
     color: var(--text-color);
+}
+
+.accept {
+    display: flex;
+    width: 300px;
+    flex-wrap: wrap;
 }

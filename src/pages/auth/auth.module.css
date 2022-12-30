@@ -9,7 +9,6 @@
 }
 
 .container {
-    margin-top: 80px;
     display: flex;
     min-height: 678px;
 }
@@ -22,7 +21,7 @@
     position: absolute;
     z-index: 0;
     right: -44px;
-    bottom: 0;
+    bottom: -44px;
     width: 674px;
     height: 371px;
     border: 2px solid var(--border-color);
@@ -31,6 +30,7 @@
 .image {
     position: relative;
     z-index: 1;
+    margin-top: 80px;
     width: 630px;
     height: 632px;
 }

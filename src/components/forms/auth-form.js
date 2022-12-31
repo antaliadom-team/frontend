@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./auth-form.module.css";
 import checkbox from "../../images/checkbox.svg";
 import stylesMainform from "./main-form.module.css";
+import question from "../../images/ic_question.svg";
 
 const EditProfile = () => {
   return (
@@ -107,11 +108,20 @@ const SignUp = () => {
               className={styles.input}
             />
           </li>
+          <li className={styles.item}>
+            <p className={styles.itemTitle}>
+              Пароль*
+              <img className={styles.question} src={question} />
+            </p>
+            <input type="text" placeholder=" " className={styles.input} />
+          </li>
+          <li className={styles.item}>
+            <p className={styles.itemTitle}>Подтвердите пароль*</p>
+            <input type="text" placeholder=" " className={styles.input} />
+          </li>
         </ul>
-        <div className={styles.buttons}>
-          <button>Зарегистрироваться</button>
-        </div>
-        <div className={stylesMainform.mainForm__checkbox}>
+        <div
+          className={`${stylesMainform.mainForm__checkbox} ${styles.checkbox}`}>
           <img
             className={stylesMainform.mainForm__checkboxImage}
             src={checkbox}
@@ -127,6 +137,9 @@ const SignUp = () => {
               Условиями использования сервиса
             </a>
           </p>
+        </div>
+        <div className={styles.buttons}>
+          <button>Зарегистрироваться</button>
         </div>
         <p className={styles.text}>
           Уже есть аккаунт?&nbsp;

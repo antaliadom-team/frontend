@@ -20,8 +20,8 @@
 .block {
     position: absolute;
     z-index: 0;
-    right: -44px;
-    bottom: -44px;
+    top: 405px;
+    right: 34px;
     width: 674px;
     height: 371px;
     border: 2px solid var(--border-color);

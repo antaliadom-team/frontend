@@ -71,3 +71,12 @@
     width: 300px;
     flex-wrap: wrap;
 }
+
+.question {
+    margin-left: 6px;
+}
+
+.checkbox {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}

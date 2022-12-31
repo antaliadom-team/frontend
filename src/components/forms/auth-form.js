@@ -152,17 +152,30 @@ const SignUp = () => {
   );
 };
 
-const LogOut = () => {
+const LogOut = ({ isLoggedIn }) => {
   return (
     <form className={`${styles.form} ${styles.sign_in}`}>
       <div className={styles.container}>
-        <h2 className={`${styles.title} ${styles.title_logout}`}>
-          Вы уверены, что хотите выйти из учетной записи?
-        </h2>
-        <div className={`${styles.buttons} ${styles.buttons_logout}`}>
-          <button>Да, выйти</button>
-          <button>Нет, вернуться в личный кабинет</button>
-        </div>
+        {isLoggedIn ? (
+          <>
+            <h2 className={`${styles.title} ${styles.title_logout}`}>
+              Вы уверены, что хотите выйти из учетной записи?
+            </h2>
+            <div className={`${styles.buttons} ${styles.buttons_logout}`}>
+              <button>Да, выйти</button>
+              <button>Нет, вернуться в личный кабинет</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <h2 className={`${styles.title} ${styles.title_logout}`}>
+              Вы вышли из личного кабинета!
+            </h2>
+            <div className={`${styles.buttons} ${styles.buttons_logout}`}>
+              <button>На главную</button>
+            </div>
+          </>
+        )}
       </div>
     </form>
   );

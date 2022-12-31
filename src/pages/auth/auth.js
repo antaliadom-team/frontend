@@ -8,7 +8,7 @@ import {
   SignUp,
 } from "../../components/forms/auth-form";
 
-const Auth = () => {
+const Auth = ({ isLoggedIn }) => {
   return (
     <section className={styles.auth}>
       <div className={styles.container}>
@@ -23,7 +23,11 @@ const Auth = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/change-password" element={<SignIn />} />
             <Route path="/change-profile" element={<EditProfile />} />
-            <Route path="/logout" element={<LogOut />} />
+            <Route
+              path="/logout"
+              element={<LogOut />}
+              isLoggedIn={isLoggedIn}
+            />
           </Routes>
         </div>
       </div>

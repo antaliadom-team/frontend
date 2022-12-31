@@ -1,7 +1,12 @@
 import styles from "./auth.module.css";
 import signupImage from "../../images/reg-auth.png";
 import { Routes, Route, Link } from "react-router-dom";
-import { EditProfile, SignIn, SignUp } from "../../components/forms/auth-form";
+import {
+  EditProfile,
+  LogOut,
+  SignIn,
+  SignUp,
+} from "../../components/forms/auth-form";
 
 const Auth = () => {
   return (
@@ -18,6 +23,7 @@ const Auth = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/change-password" element={<SignIn />} />
             <Route path="/change-profile" element={<EditProfile />} />
+            <Route path="/logout" element={<LogOut />} />
           </Routes>
         </div>
       </div>

@@ -23,6 +23,11 @@
     color: var(--text-color);
 }
 
+.title_logout {
+    margin-bottom: 0;
+    text-align: center;
+}
+
 .itemTitle {
     margin-bottom: 8px;
     font-family: "Open Sans", sans-serif;
@@ -55,6 +60,15 @@
 .buttons {
     margin-bottom: 20px;
     width: 166px;
+}
+
+.buttons_logout {
+    margin: 20px auto 0;
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
 }
 
 .text {

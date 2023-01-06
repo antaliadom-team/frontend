@@ -46,9 +46,14 @@
 }
 
 .itemEditPassword {
+    position: relative;
     margin: 20px auto 0;
     width: 360px;
     list-style: none;
+}
+
+.itemEditPassword:last-child {
+    margin-top: 0;
 }
 
 .list_editProfile {
@@ -134,4 +139,12 @@
     position: absolute;
     top: 42px;
     right: 12px;
+}
+
+.showPassword:hover {
+    cursor: pointer;
+}
+
+.question:hover {
+    cursor: pointer;
 }

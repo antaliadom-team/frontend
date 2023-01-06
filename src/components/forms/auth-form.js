@@ -51,29 +51,62 @@ const EditProfile = () => {
   );
 };
 
-const EditPassword = () => {
+const EditPassword = ({ isUserEmailCorrect }) => {
   return (
     <form className={`${styles.form} ${styles.sign_in}`}>
       <div className={styles.container}>
         <h2 className={`${styles.title} ${styles.title_logout}`}>
           Изменить пароль
         </h2>
-        <p className={`${styles.text} ${styles.text_editPassword}`}>
-          Для изменения пароля введите, пожалуйста, ваш
-        </p>
-        <p className={`${styles.text} ${styles.text_withoutMargin}`}>
-          e-mail и мы пришлем вам на почту письмо со
-        </p>
-        <p className={`${styles.text} ${styles.text_withoutMargin}`}>
-          ссылкой для сброса пароля
-        </p>
-        <li className={styles.itemEditPassword}>
-          <p className={styles.itemTitle}>Ваш e-mail</p>
-          <input type="text" className={styles.input} />
-        </li>
-        <div className={`${styles.buttons} ${styles.buttons_editPassword}`}>
-          <button>Сбросить пароль</button>
-        </div>
+        {isUserEmailCorrect ? (
+          <>
+            <p className={`${styles.text} ${styles.text_editPassword}`}>
+              Для изменения пароля введите, пожалуйста, ваш
+            </p>
+            <p className={`${styles.text} ${styles.text_withoutMargin}`}>
+              e-mail и мы пришлем вам на почту письмо со
+            </p>
+            <p className={`${styles.text} ${styles.text_withoutMargin}`}>
+              ссылкой для сброса пароля
+            </p>
+            <div className={styles.itemEditPassword}>
+              <p className={styles.itemTitle}>Ваш e-mail</p>
+              <input type="text" className={styles.input} />
+            </div>
+            <div className={`${styles.buttons} ${styles.buttons_editPassword}`}>
+              <button>Сбросить пароль</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className={`${styles.text} ${styles.text_editPassword}`}>
+              Введите новый пароль
+            </p>
+            <ul className={styles.list}>
+              <li className={styles.itemEditPassword}>
+                <p className={styles.itemTitle}>
+                  Пароль*
+                  <img className={styles.question} src={question} />
+                </p>
+                <input type="text" placeholder=" " className={styles.input} />
+                <img
+                  src={showPassword}
+                  alt="show password"
+                  className={styles.showPassword}
+                />
+              </li>
+              <li className={styles.itemEditPassword}>
+                <p className={styles.itemTitle}>Подтвердите пароль*</p>
+                <input type="text" placeholder=" " className={styles.input} />
+                <img
+                  src={showPassword}
+                  alt="show password"
+                  className={styles.showPassword}
+                />
+              </li>
+            </ul>
+          </>
+        )}
       </div>
     </form>
   );

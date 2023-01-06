@@ -4,6 +4,7 @@ import styles from "./auth-form.module.css";
 import checkbox from "../../images/checkbox.svg";
 import stylesMainform from "./main-form.module.css";
 import question from "../../images/ic_question.svg";
+import showPassword from "../../images/showPassword.svg";
 
 const EditProfile = () => {
   return (
@@ -91,6 +92,11 @@ const SignIn = () => {
           <li className={styles.item}>
             <p className={styles.itemTitle}>Пароль</p>
             <input type="text" className={styles.input} />
+            <img
+              src={showPassword}
+              alt="show password"
+              className={styles.showPassword}
+            />
           </li>
         </ul>
         <div className={styles.buttons}>
@@ -146,10 +152,20 @@ const SignUp = () => {
               <img className={styles.question} src={question} />
             </p>
             <input type="text" placeholder=" " className={styles.input} />
+            <img
+              src={showPassword}
+              alt="show password"
+              className={styles.showPassword}
+            />
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Подтвердите пароль*</p>
             <input type="text" placeholder=" " className={styles.input} />
+            <img
+              src={showPassword}
+              alt="show password"
+              className={styles.showPassword}
+            />
           </li>
         </ul>
         <div

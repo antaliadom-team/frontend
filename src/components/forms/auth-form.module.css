@@ -125,3 +125,13 @@
     margin-top: 16px;
     margin-bottom: 32px;
 }
+
+.item {
+    position: relative;
+}
+
+.showPassword {
+    position: absolute;
+    top: 42px;
+    right: 12px;
+}

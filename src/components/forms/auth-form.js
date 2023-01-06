@@ -9,11 +9,13 @@ const EditProfile = () => {
   return (
     <form className={styles.form}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Редактировать профиль</h2>
-        <Link className={styles.link} to="/auth/change-password">
+        <h2 className={`${styles.title} ${styles.title_editProfile}`}>
+          Редактировать профиль
+        </h2>
+        <Link className={styles.link} to="/auth/edit-password">
           Изменить пароль
         </Link>
-        <ul className={styles.list}>
+        <ul className={`${styles.list} ${styles.list_editProfile}`}>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Ваше имя*</p>
             <input type="text" placeholder="Иван" className={styles.input} />
@@ -48,6 +50,34 @@ const EditProfile = () => {
   );
 };
 
+const EditPassword = () => {
+  return (
+    <form className={`${styles.form} ${styles.sign_in}`}>
+      <div className={styles.container}>
+        <h2 className={`${styles.title} ${styles.title_logout}`}>
+          Изменить пароль
+        </h2>
+        <p className={`${styles.text} ${styles.text_editPassword}`}>
+          Для изменения пароля введите, пожалуйста, ваш
+        </p>
+        <p className={`${styles.text} ${styles.text_withoutMargin}`}>
+          e-mail и мы пришлем вам на почту письмо со
+        </p>
+        <p className={`${styles.text} ${styles.text_withoutMargin}`}>
+          ссылкой для сброса пароля
+        </p>
+        <li className={styles.itemEditPassword}>
+          <p className={styles.itemTitle}>Ваш e-mail</p>
+          <input type="text" className={styles.input} />
+        </li>
+        <div className={`${styles.buttons} ${styles.buttons_editPassword}`}>
+          <button>Сбросить пароль</button>
+        </div>
+      </div>
+    </form>
+  );
+};
+
 const SignIn = () => {
   return (
     <form className={`${styles.form} ${styles.sign_in}`}>
@@ -66,7 +96,7 @@ const SignIn = () => {
         <div className={styles.buttons}>
           <button>Вход</button>
         </div>
-        <Link className={styles.link} to="/auth/change-password">
+        <Link className={styles.link} to="/auth/edit-password">
           Забыли пароль?
         </Link>
         <p className={styles.text}>
@@ -183,4 +213,4 @@ const LogOut = ({ isLoggedIn }) => {
   );
 };
 
-export { EditProfile, SignIn, SignUp, LogOut };
+export { EditProfile, SignIn, SignUp, LogOut, EditPassword };

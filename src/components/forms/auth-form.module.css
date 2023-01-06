@@ -28,6 +28,10 @@
     text-align: center;
 }
 
+.title_editProfile {
+    margin-bottom: 12px;
+}
+
 .itemTitle {
     margin-bottom: 8px;
     font-family: "Open Sans", sans-serif;
@@ -41,8 +45,19 @@
     list-style: none;
 }
 
+.itemEditPassword {
+    margin: 20px auto 0;
+    width: 360px;
+    list-style: none;
+}
+
+.list_editProfile {
+    margin-top: 36px;
+}
+
 .input {
     margin-bottom: 20px;
+    padding-left: 12px;
     width: 360px;
     height: 40px;
     border: 2px solid var(--text-color);
@@ -59,7 +74,12 @@
 
 .buttons {
     margin-bottom: 20px;
-    width: 166px;
+    width: 346px;
+}
+
+.buttons_editPassword {
+    margin: 0 auto;
+    align-self: center;
 }
 
 .buttons_logout {
@@ -78,6 +98,17 @@
     line-height: 17px;
     font-weight: 400;
     color: var(--text-color);
+}
+
+.text_editPassword {
+    margin-top: 16px;
+    width: 456px;
+    text-align: center;
+}
+
+.text_withoutMargin {
+    margin-top: 0;
+    text-align: center;
 }
 
 .accept {

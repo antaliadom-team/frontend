@@ -1,5 +1,6 @@
 import styles from "./promo.module.css";
 import promoImage from "../../images/pic_main.png";
+import { Button } from "../ui/buttons";
 
 const Promo = () => {
   return (
@@ -12,7 +13,7 @@ const Promo = () => {
           <p className={styles.promo__subtitle}>
             Поможем найти квартиру на море с легкостью
           </p>
-          <button>Смотреть каталог</button>
+          <Button type="primary">Смотреть каталог</Button>
         </div>
       </section>
   );

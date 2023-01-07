@@ -68,29 +68,3 @@
 .item {
     line-height: 25px;
 }
-
-.button {
-    z-index: 1;
-    padding: 12px 60px;
-    width: 166px;
-    height: 49px;
-    font-family: "Open Sans", sans-serif;
-    font-size: var(--text-size);
-    line-height: 25px;
-    font-weight: 700;
-    color: #dd9b5c;
-    background-color: transparent;
-    border: 1px solid #dd9b5c;
-    transition: background-color var(--animation-time) ease, color var(--animation-time) ease;
-    cursor: pointer;
-}
-
-.button:hover {
-    color: #ffffff;
-    background-color: #dd9b5c;
-}
-
-.button:active {
-    color: #ffffff;
-    background-color: #be6d20;
-}

@@ -1,5 +1,6 @@
 import styles from "./about-us.module.css";
 import aboutImage from "../../images/about_main.png";
+import { Button } from "../ui/buttons";
 
 const AboutUs = () => {
   return (
@@ -14,7 +15,7 @@ const AboutUs = () => {
             непорядочных брокеров — мы видели и слышали это на протяжении многих
             лет.
           </p>
-          <button className={styles.aboutUs__button}>Смотреть каталог</button>
+          <Button type="primary">Смотреть каталог</Button>
         </div>
         <div className={styles.aboutUs__column}>
           <img

@@ -1,6 +1,7 @@
 import styles from "./header.module.css";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Button } from "../ui/buttons";
 
 const Header = () => {
   const location = useLocation();
@@ -69,7 +70,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <button className={styles.button}>Вход</button>
+        <Button type="ghost">Вход</Button>
       </header>
     </div>
   );

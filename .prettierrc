@@ -4,5 +4,5 @@
   "semi": true,
   "singleQuote": false,
   "bracketSameLine": true,
-  "endOfLine": "lf"
+  "endOfLine": "crlf"
 }

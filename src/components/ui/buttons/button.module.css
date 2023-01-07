@@ -1,0 +1,85 @@
+:root {
+    --button-color-default: #dd9b5c;
+    --button-color-hover: #db812a;
+    --button-color-active: #be6d20;
+    --button-color-inactive: #e9e9e9;
+}
+
+.button {
+    z-index: 1;
+    padding: 12px 60px;
+    font-family: "Open Sans", sans-serif;
+    font-size: var(--text-size);
+    line-height: 25px;
+    font-weight: 700;
+    border: 1px solid var(--button-color-default);
+    transition: background-color var(--animation-time) ease, color var(--animation-time) ease, border-color var(--animation-time) ease;
+    cursor: pointer;
+}
+
+.primary {
+    color: #ffffff;
+    background-color: var(--button-color-default);
+}
+
+.primary:hover {
+    background-color: var(--button-color-hover);
+    border-color: var(--button-color-hover);
+}
+
+.primary:active {
+    background-color: var(--button-color-active);
+    border-color: var(--button-color-active);
+}
+
+.primary:disabled {
+    color: #ffffff;
+    background-color: var(--button-color-inactive);
+    border-color: var(--button-color-inactive);
+    cursor: default;
+}
+
+.ghost {
+    color: var(--button-color-default);
+    background-color: #ffffff;
+}
+
+.ghost:hover {
+    color: var(--button-color-hover);
+    border-color: var(--button-color-hover);
+}
+
+.ghost:active {
+    color: var(--button-color-active);
+    border-color: var(--button-color-active);
+}
+
+.ghost:disabled {
+    color: var(--button-color-inactive);
+    background-color: #ffffff;
+    border-color: var(--button-color-inactive);
+    cursor: default;
+}
+
+.text {
+    color: var(--button-color-default);
+    background-color: #ffffff;
+    border: none;
+}
+
+.text:hover {
+    color: var(--button-color-hover);
+    border-color: var(--button-color-hover);
+}
+
+.text:active {
+    color: var(--button-color-active);
+    border-color: var(--button-color-active);
+}
+
+.text:disabled {
+    color: var(--button-color-inactive);
+    background-color: #ffffff;
+    border: none;
+    cursor: default;
+}

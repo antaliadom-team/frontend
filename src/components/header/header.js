@@ -63,9 +63,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <button className={styles.button}>
-          <Link to="/auth">Вход</Link>
-        </button>
+        <button className={styles.button}>Вход</button>
       </header>
     </div>
   );

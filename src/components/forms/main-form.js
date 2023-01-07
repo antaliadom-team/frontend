@@ -1,5 +1,6 @@
 import styles from "./main-form.module.css";
 import checkbox from "../../images/checkbox.svg";
+import { Button } from "../ui/buttons";
 
 const MainForm = () => {
   return (
@@ -89,7 +90,7 @@ const MainForm = () => {
             </p>
           </div>
           <div className={styles.mainForm__button}>
-            <button>Отправить заявку</button>
+            <Button type="primary">Отправить заявку</Button>
           </div>
 
         </form>

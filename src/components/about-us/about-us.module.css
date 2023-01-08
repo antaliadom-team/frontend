@@ -23,6 +23,7 @@
 }
 
 .aboutUs__title {
+    margin-bottom: 36px;
     font-family: "Montserrat", sans-serif;
     font-size: 32px;
     line-height: 39px;
@@ -30,6 +31,7 @@
 }
 
 .aboutUs__paragraph {
+    margin-bottom: 36px;
     width: 489px;
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
@@ -37,23 +39,8 @@
     font-weight: 400;
 }
 
-.aboutUs__paragraph:nth-child(2) {
-    margin-top: 36px;
-}
-
-.aboutUs__paragraph:nth-child(5) {
-    margin-top: 26px;
-}
-
-.aboutUs__paragraph_bottom:nth-child(2) {
-    margin: 0;
-}
-
-.aboutUs__paragraph_bottom:nth-child(3) {
-    margin-top: 28px;
-}
-
 .aboutUs__paragraph span {
+    margin-bottom: 36px;
     font-family: "Montserrat", sans-serif;
     font-size: 24px;
     line-height: 29px;
@@ -61,8 +48,6 @@
 }
 
 .aboutUs__button {
-    margin: 40px auto auto;
-    margin-left: 0;
     width: 290px;
 }
 

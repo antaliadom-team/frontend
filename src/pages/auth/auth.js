@@ -8,13 +8,18 @@ import {
   SignIn,
   SignUp,
 } from "../../components/forms/auth-form";
+import React from "react";
 
 const Auth = ({ isLoggedIn }) => {
+  const { isUserEmailCorrect, setIsUserEmailCorrect } = React.useState(true);
+
   return (
     <section className={styles.auth}>
       <div className={styles.container}>
         <div className={styles.image_and_block}>
-          <Link className={styles.back_to_lk_btn}>Назад в личный кабинет</Link>
+          <Link to="/auth/signup" className={styles.back_to_lk_btn}>
+            Назад в личный кабинет
+          </Link>
           <img className={styles.image} src={signupImage} alt="фото комнаты" />
           <div className={styles.block} />
         </div>
@@ -22,7 +27,11 @@ const Auth = ({ isLoggedIn }) => {
           <Routes className={styles.form}>
             <Route path="/" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/edit-password" element={<EditPassword />} />
+            <Route
+              path="/edit-password"
+              isUserEmailCorrect={isUserEmailCorrect}
+              element={<EditPassword />}
+            />
             <Route path="/edit-profile" element={<EditProfile />} />
             <Route
               path="/logout"

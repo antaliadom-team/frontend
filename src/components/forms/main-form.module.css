@@ -39,7 +39,7 @@
 .mainForm__subtitle {
     width: 634px;
     font-size: 18px;
-    line-height: 25px;
+    line-height: 27px;
     font-weight: 400;
     text-align: center;
     color: var(--text-color);
@@ -61,7 +61,7 @@
 
 .mainForm__itemTitle {
     font-size: 18px;
-    line-height: 25px;
+    line-height: 27px;
     font-weight: 400;
     text-align: left;
     color: var(--text-color);
@@ -74,7 +74,7 @@
     height: 40px;
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
-    line-height: 25px;
+    line-height: 27px;
     font-weight: 400;
 }
 
@@ -99,8 +99,8 @@
     padding: 0;
     width: 415px;
     font-family: "Open Sans", sans-serif;
-    font-size: 18px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 17px;
     font-weight: 400;
     text-align: left;
     color: var(--text-color);

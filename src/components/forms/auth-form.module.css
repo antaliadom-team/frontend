@@ -1,0 +1,150 @@
+.form {
+    border: 2px solid var(--text-color);
+}
+
+.sign_in {
+    margin-top: 156px;
+}
+
+.sign_up {
+    margin-top: 0;
+}
+
+.container {
+    margin: 40px;
+}
+
+.title {
+    margin-bottom: 36px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.title_logout {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.title_editProfile {
+    margin-bottom: 12px;
+}
+
+.itemTitle {
+    margin-bottom: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.list {
+    list-style: none;
+}
+
+.itemEditPassword {
+    position: relative;
+    margin: 20px auto 0;
+    width: 360px;
+    list-style: none;
+}
+
+.itemEditPassword:last-child {
+    margin-top: 0;
+}
+
+.list_editProfile {
+    margin-top: 36px;
+}
+
+.input {
+    margin-bottom: 20px;
+    padding-left: 12px;
+    width: 360px;
+    height: 40px;
+    border: 2px solid var(--text-color);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--border-color);
+}
+
+.buttons {
+    margin-bottom: 20px;
+    width: 346px;
+}
+
+.buttons_editPassword {
+    margin: 0 auto;
+    align-self: center;
+}
+
+.buttons_logout {
+    margin: 20px auto 0;
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text {
+    margin-top: 20px;
+    font-family: "Inter";
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.text_editPassword {
+    margin-top: 16px;
+    /* width: 456px; */
+    text-align: center;
+}
+
+.text_withoutMargin {
+    margin-top: 0;
+    text-align: center;
+}
+
+.accept {
+    display: flex;
+    width: 300px;
+    flex-wrap: wrap;
+}
+
+.question {
+    margin-left: 6px;
+}
+
+.checkbox {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.item {
+    position: relative;
+}
+
+.showPassword {
+    position: absolute;
+    top: 42px;
+    right: 12px;
+}
+
+.showPassword:hover {
+    cursor: pointer;
+}
+
+.question:hover {
+    cursor: pointer;
+}

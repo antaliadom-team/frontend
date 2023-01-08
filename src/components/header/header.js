@@ -1,5 +1,5 @@
 import styles from "./header.module.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Header = () => {
@@ -13,12 +13,12 @@ const Header = () => {
     setFormTarget(document.getElementById("send"));
   }, [location]);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     event.preventDefault();
     if (event.target.href === "http://localhost:3000/#about") {
-      aboutTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      aboutTarget.scrollIntoView({ behavior: "smooth", block: "start" });
     } else if (event.target.href === "http://localhost:3000/#send") {
-      formTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      formTarget.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -38,10 +38,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li className={styles.item}>
-              <a
-                href="#about"
-                onClick={handleClick}
-                className={styles.link}>
+              <a href="#about" onClick={handleClick} className={styles.link}>
                 О нас
               </a>
             </li>
@@ -53,10 +50,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li className={styles.item}>
-              <a
-                  href="#send"
-                  onClick={handleClick}
-                  className={styles.link}>
+              <a href="#send" onClick={handleClick} className={styles.link}>
                 Отправить заявку
               </a>
             </li>

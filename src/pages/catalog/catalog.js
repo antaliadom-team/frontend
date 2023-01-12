@@ -1,7 +1,8 @@
 import styles from "./catalog.module.css";
+import { ButtonWithLike } from "../../components/ui/buttons";
 
 const Catalog = () => {
-    return <h1 className={styles.title}>Catalog page</h1>;
+    return <ButtonWithLike>1</ButtonWithLike>;
 };
 
 export default Catalog;

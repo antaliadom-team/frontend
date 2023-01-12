@@ -29,3 +29,16 @@
 .instagram:hover path {
     fill: #e4405f;
 }
+
+.like path {
+    fill: #dd9b5c;
+    transition: var(--icon-animate);
+}
+
+.like:hover path {
+    fill: #db812a;
+}
+
+.disabled path {
+    fill: #e9e9e9;
+}

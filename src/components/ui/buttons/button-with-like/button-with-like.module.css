@@ -1,0 +1,33 @@
+:root {
+    --button-color-default: #dd9b5c;
+    --button-color-hover: #db812a;
+    --button-color-active: #be6d20;
+    --button-color-inactive: #e9e9e9;
+}
+
+.like {
+    position: absolute;
+    top: -1px;
+    right: -51px;
+    width: 51px;
+    max-height: 51px;
+    border: 1px solid var(--button-color-default);
+    transition: border-color 0.3s ease;
+}
+
+.block {
+    border: none;
+    outline: none;
+}
+
+.block:hover .like {
+    border-color: var(--button-color-hover);
+}
+
+.block:active .like {
+    border-color: var(--button-color-active);
+}
+
+.block[data-disabled="true"] .like {
+    border-color: var(--button-color-inactive);
+}

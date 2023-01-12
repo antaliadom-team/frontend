@@ -1,0 +1,39 @@
+.nav {
+    position: absolute;
+    display: flex;
+    min-width: var(--screen-width);
+    flex-direction: row;
+    justify-content: center;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    font-family: "Open Sans", sans-serif;
+    gap: 44px;
+}
+
+.item {
+    line-height: 25px;
+}
+
+.link {
+    font-size: var(--text-size);
+    text-decoration: none;
+
+    color: var(--text-color);
+}
+
+.active {
+    font-size: var(--text-size);
+    text-decoration: none;
+    text-shadow: 0.5px 0 var(--text-color), -0.5px 0 var(--text-color);
+    color: var(--text-color);
+}
+
+.link:hover {
+    text-shadow: 0.25px 0 var(--text-color), -0.25px 0 var(--text-color);
+}

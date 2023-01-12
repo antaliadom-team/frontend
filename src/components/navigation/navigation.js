@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./navigation.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
   const toggleClass = (isActive) => (isActive ? styles.active : styles.link);
+  const [aboutTarget, setAboutTarget] = useState(null);
+  const [formTarget, setFormTarget] = useState(null);
+
+  useEffect(() => {
+    setAboutTarget(document.getElementById("about"));
+    setFormTarget(document.getElementById("send"));
+  }, [location]);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    if (event.target.href === "http://localhost:3000/#about") {
+      aboutTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (event.target.href === "http://localhost:3000/#send") {
+      formTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => toggleClass(isActive)}>
+          <NavLink to="/" className={({ isActive }) => toggleClass(isActive)}>
             Главная
           </NavLink>
         </li>
         <li className={styles.item}>
           <NavLink
-            to="/about"
-            className={({ isActive }) => toggleClass(isActive)}>
+            to="/#about"
+            onClick={handleClick}
+            className={styles.link}>
             О нас
           </NavLink>
         </li>
@@ -31,16 +47,17 @@ const Navigation = () => {
         </li>
         <li className={styles.item}>
           <NavLink
-            to="/send"
-            className={({ isActive }) => toggleClass(isActive)}>
+            to="/#send"
+            onClick={handleClick}
+            className={styles.link}>
             Отправить заявку
           </NavLink>
         </li>
         <li className={styles.item}>
           <NavLink
-            to="/contacts"
+            to="/sample-product-page"
             className={({ isActive }) => toggleClass(isActive)}>
-            Контакты
+            Карточка объекта
           </NavLink>
         </li>
       </ul>

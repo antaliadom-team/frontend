@@ -1,10 +1,17 @@
 import React from "react";
+import styles from "./checkbox.module.css";
 
-const Checkbox = () => {
+const Checkbox = ({children}) => {
   return (
-    <div>
-      
-    </div>
+      <label  className={styles.label}>
+        <input
+          type="checkbox"
+          name="policy"
+          className={styles.real_checkbox}
+        />
+        <span className={styles.custom_checkbox} />
+        <span className={styles.text}>{children}</span>
+      </label>
   );
 };
 

@@ -1,0 +1,43 @@
+:root {
+    --input-color: #0d1b44;
+}
+
+.wrapper {
+    padding-bottom: 16px;
+}
+
+.field {
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+}
+
+.input {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    padding: 6px 12px;
+    width: 100%;
+    min-height: 120px;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    resize: vertical;
+    color: var(--input-color);
+    border: 2px solid var(--input-color);
+    outline: none;
+    appearance: none;
+
+}
+
+.input:focus {
+    box-shadow: 0 0 0 0.2rem rgb(167 183 188/ 50%);
+}
+
+.text {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+}
+
+.input::placeholder {
+    color: #818181;
+}

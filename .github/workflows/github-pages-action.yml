@@ -28,14 +28,10 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn export
+            ${{ runner.os }}-node-
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

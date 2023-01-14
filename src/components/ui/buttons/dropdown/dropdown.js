@@ -1,38 +1,40 @@
 import React, { useRef, useState } from "react";
 import styles from "./dropdown.module.css";
-const Dropdown = () => {
+const Dropdown = ({ text, options }) => {
   const dropdownRef = useRef();
-  const [field, setField] = useState("Локация");
-  const handleDropdown = () => {
-      dropdownRef.current.classList.toggle(styles.active);
+  const [field, setField] = useState("");
+  const [optionBox, setOptionBox] = useState(null);
+  const handleDropdown = (e) => {
+    e.preventDefault();
+    dropdownRef.current.classList.toggle(styles.active);
   };
   const handleOption = (e) => {
-    e.target.children[0].classList.toggle(styles.activeBox);
+    e.preventDefault();
+    setOptionBox((prev) => {
+      if (prev !== null) {
+        optionBox.classList.remove(styles.activeBox)
+      }
+      return e.target.children[0]
+    });
+
+    e.target.children[0].classList.add(styles.activeBox);
     setField(e.target.textContent);
   };
 
   return (
     <div className={styles.dropdown} onClick={handleDropdown}>
+      <span className={styles.text}>{text}</span>
       <button className={styles.button} ref={dropdownRef}>
-        {field} <div className={styles.arrow} />
+        {field}
+        <div className={styles.arrow} />
       </button>
       <div className={styles.menu}>
-        <div className={styles.option} onClick={handleOption}>
-          <div className={styles.box} />
-          content 1
-        </div>
-        <div className={styles.option} onClick={handleOption}>
-          <div className={styles.box} />
-          content 2
-        </div>
-        <div className={styles.option} onClick={handleOption}>
-          <div className={styles.box} />
-          content 3
-        </div>
-        <div className={styles.option} onClick={handleOption}>
-          <div className={styles.box} />
-          content 4
-        </div>
+        {options.map((option, index) => (
+          <div className={styles.option} onClick={handleOption} key={index}>
+            <div className={styles.box} />
+            {option}
+          </div>
+        ))}
       </div>
     </div>
   );

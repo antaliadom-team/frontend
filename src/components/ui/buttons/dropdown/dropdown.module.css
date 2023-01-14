@@ -1,15 +1,22 @@
 .dropdown {
     position: relative;
+    margin-bottom: 36px;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+}
+
+.text {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
 }
 
 .button {
     position: relative;
-    z-index: 1;
+    margin-top: 8px;
+    margin-bottom: 4px;
     padding: 6px 12px;
-    display: flex;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
     font-size: 18px;
     line-height: 27px;
     font-weight: 400;
@@ -18,16 +25,17 @@
     background-color: #ffffff;
     border: 2px solid var(--input-color);
     outline: none;
-    transition: box-shadow 0.3s, color 0.3s, border-color 0.3s;
     appearance: none;
 }
 
 .arrow {
     position: relative;
+    float: right;
     width: 30px;
     height: 30px;
     transition: transform 0.3s;
     transform: rotate(0);
+
 }
 
 .arrow::after {
@@ -58,6 +66,7 @@
 
 .menu {
     position: absolute;
+    z-index: 1;
     top: calc(100% + 4px);
     left: 0;
     width: 100%;
@@ -66,7 +75,7 @@
     background-color: #ffffff;
     border: 2px solid var(--input-color);
     transition: opacity 0.3s, transform 0.3s;
-    transform: translateY(-50px);
+    transform: translateY(-30px);
 }
 
 .dropdown > .button.active + .menu {

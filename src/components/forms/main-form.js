@@ -1,6 +1,6 @@
 import styles from "./main-form.module.css";
-import checkbox from "../../images/checkbox.svg";
 import { Button } from "../ui/buttons";
+import { Checkbox, Dropdown, TextareaInput, TextInput } from "../ui/inputs";
 
 const MainForm = () => {
   return (
@@ -12,87 +12,69 @@ const MainForm = () => {
           на подбор недвижимости
         </h2>
         <p className={styles.mainForm__subtitle}>
-          Пожалуйста, заполните ваши данные и мы свяжемся с Вами в ближайшее
-          время
+          Пожалуйста, заполните ваши данные и мы свяжемся с Вами в
+          ближайшее&nbsp;время
         </p>
         <form className={styles.mainForm__form}>
           <ul className={styles.mainForm__list}>
             <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Имя*</p>
-              <input
-                type="text"
-                placeholder="Иван"
-                className={styles.mainForm__input}
+              <TextInput text={"Имя*"} placeholder={"Иван"} />
+            </li>
+            <li className={styles.mainForm__item}>
+              <TextInput text={"Фамилия*"} placeholder={"Иванов"} />
+            </li>
+            <li className={styles.mainForm__item}>
+              <TextInput
+                text={"Номер телефона*"}
+                placeholder={"+7 999 123 45 67"}
               />
             </li>
             <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Фамилия*</p>
-              <input placeholder="Иванов" className={styles.mainForm__input} />
+              <TextInput text={"Email*"} placeholder={"mymail@mail.ru"} />
             </li>
             <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Номер телефона*</p>
-              <input
-                type="text"
-                placeholder="+7 921 123 45 67"
-                className={styles.mainForm__input}
+              <Dropdown
+                text={"Аренда/Покупка"}
+                options={["Аренда", "Покупка"]}
               />
             </li>
             <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Email*</p>
-              <input
-                type="text"
-                placeholder="ivanov@mail.ru"
-                className={styles.mainForm__input}
+              <Dropdown
+                text={"Локация"}
+                options={["Анталия", "Северный Кипр", "Стамбул", "другое"]}
               />
             </li>
             <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Аренда/Покупка</p>
-              <input type="text" className={styles.mainForm__input} />
-            </li>
-            <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Область</p>
-              <input type="text" className={styles.mainForm__input} />
-            </li>
-            <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Тип недвижимости</p>
-              <input type="text" className={styles.mainForm__input} />
-            </li>
-            <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Количество комнат</p>
-              <input type="text" className={styles.mainForm__input} />
-            </li>
-            <li className={styles.mainForm__item}>
-              <p className={styles.mainForm__itemTitle}>Комментарий</p>
-              <textarea
-                placeholder="Например, нужно рассмотреть как можно скорее"
-                className={styles.mainForm__input_comment}
-                maxLength="100"
-                cols="1"
-                rows="3"
+              <Dropdown
+                text={"Тип недвижимости"}
+                options={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]}
               />
+            </li>
+            <li className={styles.mainForm__item}>
+              <Dropdown
+                text={"Количество комнат"}
+                options={["1", "2", "3", "4+"]}
+              />
+            </li>
+            <li className={styles.mainForm__item}>
+              <TextareaInput />
             </li>
           </ul>
           <div className={styles.mainForm__checkbox}>
-            <img
-              className={styles.mainForm__checkboxImage}
-              src={checkbox}
-              alt="чекбокс"
-            />
-            <p className={styles.mainForm__accept}>
+            <Checkbox>
               Я согласен с&nbsp;
-              <a className={styles.mainForm__accept_color} href="#">
+              <a href="/policy" className={styles.mainForm__link}>
                 Политикой конфиденциальности
               </a>
               &nbsp;и&nbsp;
-              <a className={styles.mainForm__accept_color} href="#">
+              <a href="/policy" className={styles.mainForm__link}>
                 Условиями использования сервиса
               </a>
-            </p>
+            </Checkbox>
           </div>
           <div className={styles.mainForm__button}>
             <Button type="primary">Отправить заявку</Button>
           </div>
-
         </form>
       </div>
     </section>

@@ -2,6 +2,7 @@ import styles from "./product-page.module.css";
 import { NavLink } from "react-router-dom";
 import "../../components/ui/icons/index.js";
 import AmenityItem from "../../components/amenity-item/amenity-item";
+import { ButtonWithLike } from "../../components/ui/buttons";
 
 const ProductPage = () => {
   const breadcrumb1 = "Аренда";
@@ -121,12 +122,12 @@ const ProductPage = () => {
             2010 год<span className={styles.stats_desc}>построен</span>
           </p>
         </div>
-        <button>Оформить заявку</button>
+        <ButtonWithLike type="primary">Оформить заявку</ButtonWithLike>
       </div>
       <hr className={styles.hr} />
       <h2 className={styles.description_title}>Описание</h2>
       <div className={styles.description_text}>{description}</div>
-      <button>Оформить заявку</button>
+      <ButtonWithLike type="primary">Оформить заявку</ButtonWithLike>
     </section>
   );
 };

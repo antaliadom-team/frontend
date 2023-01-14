@@ -39,7 +39,7 @@
 .mainForm__subtitle {
     width: 634px;
     font-size: 18px;
-    line-height: 25px;
+    line-height: 27px;
     font-weight: 400;
     text-align: center;
     color: var(--text-color);
@@ -55,13 +55,13 @@
     list-style-type: none;
 }
 
-.mainForm__item {
+.mainForm__item:nth-child(1) {
     margin-top: 36px;
 }
 
 .mainForm__itemTitle {
     font-size: 18px;
-    line-height: 25px;
+    line-height: 27px;
     font-weight: 400;
     text-align: left;
     color: var(--text-color);
@@ -74,7 +74,7 @@
     height: 40px;
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
-    line-height: 25px;
+    line-height: 27px;
     font-weight: 400;
 }
 
@@ -99,8 +99,8 @@
     padding: 0;
     width: 415px;
     font-family: "Open Sans", sans-serif;
-    font-size: 18px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 17px;
     font-weight: 400;
     text-align: left;
     color: var(--text-color);
@@ -116,4 +116,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.mainForm__link {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #dd9b5c;
 }

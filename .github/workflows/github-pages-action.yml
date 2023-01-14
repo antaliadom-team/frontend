@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Starting Node.js
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
       - name: Install modules
-      - run: npm install
+        run: npm install
       - name: Deploy to Github pages
-      - run: npm run deploy
+        run: npm run deploy
       

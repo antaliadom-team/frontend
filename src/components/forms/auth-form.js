@@ -86,7 +86,7 @@ const EditPassword = ({ isUserEmailCorrect }) => {
               <li className={styles.itemEditPassword}>
                 <p className={styles.itemTitle}>
                   Пароль*
-                  <img className={styles.question} src={question} />
+                  <img className={styles.question} src={question} alt={"Вопрос"} />
                 </p>
                 <input type="text" placeholder=" " className={styles.input} />
                 <img
@@ -182,7 +182,7 @@ const SignUp = () => {
           <li className={styles.item}>
             <p className={styles.itemTitle}>
               Пароль*
-              <img className={styles.question} src={question} />
+              <img className={styles.question} src={question} alt={"Вопрос"} />
             </p>
             <input type="text" placeholder=" " className={styles.input} />
             <img

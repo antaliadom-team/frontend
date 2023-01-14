@@ -1,0 +1,114 @@
+.dropdown {
+    position: relative;
+    margin-bottom: 36px;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+}
+
+.text {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+}
+
+.button {
+    position: relative;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    padding: 6px 12px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    text-align: start;
+    color: var(--input-color);
+    background-color: #ffffff;
+    border: 2px solid var(--input-color);
+    outline: none;
+    appearance: none;
+}
+
+.arrow {
+    position: relative;
+    float: right;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+    transform: rotate(0);
+
+}
+
+.arrow::after {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    width: 1px;
+    height: 15px;
+    content: "";
+    background-color: #0d1b44;
+    border: 2px solid #0d1b44;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+}
+
+.arrow::before {
+    position: absolute;
+    top: 25%;
+    right: 29%;
+    width: 1px;
+    height: 15px;
+    content: "";
+    background-color: #0d1b44;
+    border: 2px solid #0d1b44;
+    border-radius: 2px;
+    transform: rotate(45deg);
+}
+
+.menu {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background-color: #ffffff;
+    border: 2px solid var(--input-color);
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-30px);
+}
+
+.dropdown > .button.active + .menu {
+    overflow: hidden;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.dropdown > .button.active > .arrow {
+    transform: rotate(180deg);
+}
+
+.option {
+    position: relative;
+    padding: 6px 38px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.option:hover {
+    background-color: #e9f3f5;
+}
+
+.box {
+    position: absolute;
+    top: 30%;
+    left: 16px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #0d1b44;
+}
+
+.activeBox {
+    background-color: #0d1b44;
+}

@@ -1,6 +1,7 @@
 import styles from "./about-us.module.css";
 import aboutImageRight from "../../images/about-us-right.png";
 import aboutImageLeft from "../../images/about-us-left.png";
+import { Button } from "../ui/buttons";
 
 const AboutUs = () => {
   return (
@@ -59,7 +60,7 @@ const AboutUs = () => {
             <span>Мы хотим,</span> чтобы вы любили место, где живете. Это
             желание управляет всем, что мы делаем.
           </p>
-          <button className={styles.aboutUs__button}>Смотреть каталог</button>
+          <Button type={"primary"}>Смотреть каталог</Button>
         </div>
       </div>
     </section>

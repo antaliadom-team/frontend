@@ -2,6 +2,7 @@ import styles from "./header.module.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Navigation from "../navigation/navigation";
+import { Button } from "../ui/buttons";
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
           <img src={logo} alt={"логотип"} />
         </NavLink>
         <Navigation />
-        <button className={styles.button}>Вход</button>
+        <Button type={"ghost"}>Вход</Button>
       </header>
     </div>
   );

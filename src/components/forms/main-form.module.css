@@ -55,7 +55,7 @@
     list-style-type: none;
 }
 
-.mainForm__item {
+.mainForm__item:nth-child(1) {
     margin-top: 36px;
 }
 
@@ -116,4 +116,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.mainForm__link {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #dd9b5c;
 }

@@ -205,14 +205,3 @@
     left: -10px;
     content: "-";
 }
-
-button {
-    width: 346px;
-    height: 49px;
-    font-size: 18px;
-    line-height: 25px;
-    font-weight: 700;
-    color: #ffffff;
-    background-color: #dd9b5c;
-    border: none;
-}

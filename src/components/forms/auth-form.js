@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./auth-form.module.css";
-import checkbox from "../../images/checkbox.svg";
 import stylesMainform from "./main-form.module.css";
 import question from "../../images/ic_question.svg";
 import showPassword from "../../images/showPassword.svg";
+import { Checkbox } from "../ui/inputs";
 
 const EditProfile = () => {
   return (
@@ -203,21 +203,16 @@ const SignUp = () => {
         </ul>
         <div
           className={`${stylesMainform.mainForm__checkbox} ${styles.checkbox}`}>
-          <img
-            className={stylesMainform.mainForm__checkboxImage}
-            src={checkbox}
-            alt="чекбокс"
-          />
-          <p className={`${stylesMainform.mainForm__accept} ${styles.accept}`}>
+          <Checkbox>
             Я согласен с&nbsp;
-            <a className={stylesMainform.mainForm__accept_color} href="#">
+            <a href="/policy" className={styles.mainForm__link}>
               Политикой конфиденциальности
             </a>
             &nbsp;и&nbsp;
-            <a className={stylesMainform.mainForm__accept_color} href="#">
+            <a href="/policy" className={styles.mainForm__link}>
               Условиями использования сервиса
             </a>
-          </p>
+          </Checkbox>
         </div>
         <div className={styles.buttons}>
           <button>Зарегистрироваться</button>

@@ -11,7 +11,7 @@ import {
 import React from "react";
 
 const Auth = ({ isLoggedIn }) => {
-  const { isUserEmailCorrect, setIsUserEmailCorrect } = React.useState(true);
+  const { isUserEmailCorrect } = React.useState(true);
 
   return (
     <section className={styles.auth}>

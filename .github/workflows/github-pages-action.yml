@@ -1,14 +1,10 @@
 name: Deploy to GitHub Pages Action
 on:
-  pull_request:
+  push:
     branches:
       - dev
-    types:
-      - closed
 
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,4 +14,5 @@ jobs:
         run: npm install
       - name: Deploy to Github pages
         run: npm run deploy
-      
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

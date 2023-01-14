@@ -2,6 +2,7 @@
   "name": "antalia-dom",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://antaliadom-team.github.io/frontend",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -17,6 +18,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint:css": "stylelint \"src/**/*.css\" ",
     "format:css": "prettier --write \"src/**/*.css\" && stylelint \"src/**/*.css\" --fix"
   },
@@ -48,7 +51,8 @@
     "stylelint-config-standard": "^29.0.0",
     "stylelint-no-unsupported-browser-features": "^6.0.1",
     "stylelint-order": "^5.0.0",
-    "stylelint-scss": "^4.3.0"
+    "stylelint-scss": "^4.3.0",
+    "gh-pages": "^4.0.0"
   },
   "husky": {
     "hooks": {

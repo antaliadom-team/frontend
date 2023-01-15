@@ -1,6 +1,7 @@
 import styles from "./promo.module.css";
 import promoImage from "../../images/pic_main.png";
 import { Button } from "../ui/buttons";
+import { Link } from "react-router-dom";
 
 const Promo = () => {
   return (
@@ -13,7 +14,10 @@ const Promo = () => {
           <p className={styles.promo__subtitle}>
             Поможем найти квартиру на море с легкостью
           </p>
-          <Button type="primary">Смотреть каталог</Button>
+          <Link to={"/catalog"} className={styles.link} >
+            <Button type="primary">Смотреть каталог</Button>
+          </Link>
+
         </div>
       </section>
   );

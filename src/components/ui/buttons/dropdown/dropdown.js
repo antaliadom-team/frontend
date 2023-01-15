@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import styles from "./dropdown.module.css";
-const Dropdown = ({ text, options }) => {
+const Dropdown = ({ text, options, placeholder, width }) => {
   const dropdownRef = useRef();
-  const [field, setField] = useState("");
+  const [field, setField] = useState(placeholder);
   const [optionBox, setOptionBox] = useState(null);
   const handleDropdown = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Dropdown = ({ text, options }) => {
   };
 
   return (
-    <div className={styles.dropdown} onClick={handleDropdown}>
+    <div className={styles.dropdown} style={{width: width}} onClick={handleDropdown}>
       <span className={styles.text}>{text}</span>
       <button className={styles.button} ref={dropdownRef}>
         {field}

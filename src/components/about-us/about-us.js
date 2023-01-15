@@ -2,6 +2,7 @@ import styles from "./about-us.module.css";
 import aboutImageRight from "../../images/about-us-right.png";
 import aboutImageLeft from "../../images/about-us-left.png";
 import { Button } from "../ui/buttons";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -60,7 +61,10 @@ const AboutUs = () => {
             <span>Мы хотим,</span> чтобы вы любили место, где живете. Это
             желание управляет всем, что мы делаем.
           </p>
-          <Button type={"primary"}>Смотреть каталог</Button>
+          <Link to={"/catalog"} className={styles.link}>
+            <Button type={"primary"}>Смотреть каталог</Button>
+          </Link>
+
         </div>
       </div>
     </section>

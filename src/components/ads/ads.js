@@ -1,18 +1,22 @@
 import styles from "./ads.module.css";
+import CatalogItem from "../catalog-item/catalog-item";
+import { Button } from "../ui/buttons";
+import { Link } from "react-router-dom";
 
 const Ads = () => {
   return (
     <section className={styles.ads}>
-        <h2 className={styles.ads__title}>Свежие объявления</h2>
-        <ul className={styles.ads__list}>
-          <li className={styles.ads__testCard} />
-          <li className={styles.ads__testCard} />
-          <li className={styles.ads__testCard} />
-          <li className={styles.ads__testCard} />
-        </ul>
-      <button className={styles.ads__moreButton}>
-        Смотреть все
-      </button>
+      <h2 className={styles.ads__title}>Свежие объявления</h2>
+      <div className={styles.wrapper}>
+        <CatalogItem />
+        <CatalogItem />
+        <CatalogItem />
+        <CatalogItem />
+      </div>
+
+      <Link to={"/catalog"} className={styles.btn_wrapper}>
+        <Button type={"primary"}>Смотреть все</Button>
+      </Link>
     </section>
   );
 };

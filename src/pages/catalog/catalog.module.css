@@ -1,4 +1,43 @@
-.wrapper {
-    margin-top: 100px;
-    width: 400px;
+.container {
+    margin-top: 130px;
+    width: 1280px;
+}
+
+.filters {
+    margin-bottom: 36px;
+    display: flex;
+    gap: 60px;
+}
+
+.filters_title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    font-style: normal;
+    color: #a7b7bc;
+    cursor: pointer;
+}
+
+.active {
+    color: #0d1b44;
+}
+
+.dropdowns {
+    margin-bottom: 80px;
+    display: flex;
+    gap: 36px;
+}
+
+.ads_title {
+    margin-bottom: 36px;
+    color: #0d1b44;
+    composes: filters_title;
+}
+
+.ads {
+    margin-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }

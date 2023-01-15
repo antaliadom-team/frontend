@@ -5,6 +5,7 @@ import stylesMainform from "./main-form.module.css";
 import question from "../../images/ic_question.svg";
 import showPassword from "../../images/showPassword.svg";
 import { Checkbox } from "../ui/inputs";
+import { Button } from "../ui/buttons";
 
 const EditProfile = () => {
   return (
@@ -133,7 +134,7 @@ const SignIn = () => {
           </li>
         </ul>
         <div className={styles.buttons}>
-          <button>Вход</button>
+          <Button type="primary">Вход</Button>
         </div>
         <Link className={styles.link} to="/auth/edit-password">
           Забыли пароль?
@@ -215,7 +216,7 @@ const SignUp = () => {
           </Checkbox>
         </div>
         <div className={styles.buttons}>
-          <button>Зарегистрироваться</button>
+          <Button type="primary">Зарегестрироваться</Button>
         </div>
         <p className={styles.text}>
           Уже есть аккаунт?&nbsp;

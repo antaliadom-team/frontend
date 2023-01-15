@@ -1,5 +1,5 @@
 import styles from "./header.module.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Navigation from "../navigation/navigation";
 import { Button } from "../ui/buttons";
@@ -12,7 +12,9 @@ const Header = () => {
           <img src={logo} alt={"логотип"} />
         </NavLink>
         <Navigation />
-        <Button type={"ghost"}>Вход</Button>
+        <Link to={"/auth"} className={styles.button}>
+          <Button type={"ghost"}>Вход</Button>
+        </Link>
       </header>
     </div>
   );

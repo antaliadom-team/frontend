@@ -68,3 +68,7 @@
 .item {
     line-height: 25px;
 }
+
+.button {
+    text-decoration: none;
+}

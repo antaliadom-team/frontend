@@ -3,6 +3,7 @@
 }
 
 .ads__title {
+    margin-bottom: 36px;
     font-family: "Montserrat", sans-serif;
     font-size: 32px;
     line-height: 39px;
@@ -11,24 +12,14 @@
     color: #0d1b44;
 }
 
-.ads__list {
-    margin-top: 36px;
+.wrapper {
     display: flex;
     gap: 20px;
-    list-style-type: none;
 }
 
-.ads__testCard {
-    width: 305px;
-    height: 478px;
-    background-color: #dfbda2;
-}
-
-.ads__moreButton {
-    margin: 62px auto 0;
-    width: 247px;
-    height: 49px;
-    color: #ffffff;
-    background-color: #dfbda2;
-    border: none;
+.btn_wrapper {
+    text-decoration: none;
+    margin-top: 62px;
+    display: flex;
+    justify-content: center;
 }

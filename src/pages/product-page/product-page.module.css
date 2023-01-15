@@ -75,7 +75,6 @@
     width: 24px;
     height: 40px;
     background-color: transparent;
-    background-image: url("./icon_arrow.svg");
     border: none;
     cursor: pointer;
 }

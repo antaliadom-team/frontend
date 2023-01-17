@@ -36,7 +36,7 @@
     width: 24px;
     height: 24px;
     content: "";
-    background-image: url("/src/components/ui/icons/check.svg");
+    background-image: url("/src/images/check.svg");
     background-repeat: no-repeat;
     background-size: contain;
     transition: 0.2s ease-in;

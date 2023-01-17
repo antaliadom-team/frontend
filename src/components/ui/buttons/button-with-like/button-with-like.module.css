@@ -7,11 +7,11 @@
 
 .like {
     position: absolute;
-    top: -1px;
+    top: -2px;
     right: -51px;
-    width: 51px;
-    max-height: 51px;
-    border: 1px solid var(--button-color-default);
+    width: 52px;
+    max-height: 53px;
+    border: 2px solid var(--button-color-default);
     transition: border-color 0.3s ease;
 }
 

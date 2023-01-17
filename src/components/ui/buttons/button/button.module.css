@@ -13,7 +13,7 @@
     font-size: var(--text-size);
     line-height: 25px;
     font-weight: 700;
-    border: 1px solid var(--button-color-default);
+    border: 2px solid var(--button-color-default);
     transition: background-color var(--animation-time) ease, color var(--animation-time) ease, border-color var(--animation-time) ease;
     cursor: pointer;
 }

@@ -1,11 +1,17 @@
-import React from "react";
+import { useContext } from "react";
 import styles from "./catalog-item.module.css";
 import image from "../../images/catalog-img.png";
 import arrow from "../../images/arrow.svg";
 import { ButtonWithLike } from "../ui/buttons";
 import button from "../ui/buttons/button/button";
+import { ModalContext } from "../../services/app-context";
 
-const CatalogItem = () => {
+const CatalogItem = ({ withBtn = true }) => {
+  const { setModal } = useContext(ModalContext);
+  const modalOpen = () => {
+    setModal(true);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.slider}>
@@ -37,10 +43,12 @@ const CatalogItem = () => {
           Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция
         </p>
       </div>
-      <div className={styles.button}>
-        <ButtonWithLike>Оформить заявку</ButtonWithLike>
-      </div>
 
+      {withBtn && (
+        <div className={styles.button}>
+          <ButtonWithLike onClick={modalOpen}>Оформить заявку</ButtonWithLike>
+        </div>
+      )}
     </div>
   );
 };

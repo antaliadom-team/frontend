@@ -7,21 +7,22 @@ import arrow from "../../images/arrow.svg";
 const Slider = () => {
   const [slideIndex, setSlideIndex] = React.useState(1);
 
-  function setSlide(slideIndex) {
-    if (slideIndex > images.length) {
+  function setSlide(n) {
+    if (n > images.length) {
       setSlideIndex(1);
-    }
-    if (slideIndex < 1) {
+    } else if (n < 1) {
       setSlideIndex(images.length);
+    } else {
+      setSlideIndex(n);
     }
   }
 
   function plusSlides() {
-    setSlide(1);
+    setSlide(slideIndex + 1);
   }
 
   function minusSlides() {
-    setSlide(-1);
+    setSlide(slideIndex - 1);
   }
 
   function currentSlide(n) {

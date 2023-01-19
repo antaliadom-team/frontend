@@ -48,9 +48,13 @@ const Slider = () => {
         <img src={arrow} alt="следующая" className={styles.arrow_img} />
       </button>
       <div className={styles.pagination}>
-        <div className={styles.pagination_item} onClick={currentSlide} />
-        <div className={styles.pagination_item} onClick={currentSlide} />
-        <div className={styles.pagination_item} onClick={currentSlide} />
+        {images.map((image) => (
+          <div
+            key={image.id}
+            className={styles.pagination_item}
+            onClick={currentSlide}
+          />
+        ))}
       </div>
     </div>
   );

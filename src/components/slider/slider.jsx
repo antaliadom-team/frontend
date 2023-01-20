@@ -26,7 +26,7 @@ const Slider = () => {
   }
 
   function currentSlide(n) {
-    setSlideIndex(n);
+    setSlide(n);
   }
 
   return (
@@ -52,7 +52,7 @@ const Slider = () => {
           <div
             key={image.id}
             className={styles.pagination_item}
-            onClick={currentSlide}
+            onClick={() => currentSlide(image.id)}
           />
         ))}
       </div>

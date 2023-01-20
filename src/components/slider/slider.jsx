@@ -27,6 +27,7 @@ const Slider = () => {
 
   function currentSlide(n) {
     setSlide(n);
+    console.log(slideIndex === n);
   }
 
   return (
@@ -51,7 +52,11 @@ const Slider = () => {
         {images.map((image) => (
           <div
             key={image.id}
-            className={styles.pagination_item}
+            className={
+              slideIndex === image.id
+                ? `${styles.pagination_item} ${styles.pagination_item_active}`
+                : styles.pagination_item
+            }
             onClick={() => currentSlide(image.id)}
           />
         ))}

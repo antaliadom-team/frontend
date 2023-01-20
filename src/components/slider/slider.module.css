@@ -58,6 +58,10 @@
     border-radius: 50%;
 }
 
+.pagination_item_active {
+    background-color: #db812a;
+}
+
 .pagination_item:hover {
     cursor: pointer;
 }

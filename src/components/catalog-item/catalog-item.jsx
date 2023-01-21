@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import styles from "./catalog-item.module.css";
-import image from "../../images/catalog-img.png";
-import arrow from "../../images/arrow.svg";
 import { ButtonWithLike } from "../ui/buttons";
-import button from "../ui/buttons/button/button";
 import { ModalContext } from "../../services/app-context";
+import Slider from "../slider/slider";
 
 const CatalogItem = ({ withBtn = true }) => {
   const { setModal } = useContext(ModalContext);
@@ -15,21 +13,7 @@ const CatalogItem = ({ withBtn = true }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.slider}>
-        <img src={image} alt="картинка каталога" className={image} />
-        <button className={styles.arrow_left}>
-          <img src={arrow} alt={"стрелка"} className={styles.arrow_img} />
-        </button>
-        <button className={styles.arrow_right}>
-          <img src={arrow} alt={"стрелка"} className={styles.arrow_img} />
-        </button>
-        <div className={styles.pagination}>
-          <div
-            className={`${styles.pagination_item} ${styles.pagination_active}`}
-          />
-          <div className={styles.pagination_item} />
-          <div className={styles.pagination_item} />
-          <div className={styles.pagination_item} />
-        </div>
+        <Slider />
       </div>
       <div className={styles.price}>1000€/месяц</div>
       <div className={styles.description}>

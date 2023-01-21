@@ -2,8 +2,7 @@ import styles from "./product-page.module.css";
 import { NavLink } from "react-router-dom";
 import AmenityItem from "../../components/amenity-item/amenity-item";
 import { ButtonWithLike } from "../../components/ui/buttons";
-import image from "../../images/reg-auth.png";
-import arrow from "../../images/arrow.svg";
+import Slider from "../../components/slider/slider";
 
 const ProductPage = () => {
   const breadcrumb1 = "Аренда";
@@ -77,13 +76,7 @@ const ProductPage = () => {
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.description_container}>
         <div className={styles.slider}>
-          <button className={styles.slider_arrow}>
-            <img src={arrow} alt={"стрелка"} />
-          </button>
-          <button className={styles.slider_arrow_right}>
-            <img src={arrow} alt={"стрелка"} />
-          </button>
-          <img className={styles.slider_image} src={image} alt={title} />
+          <Slider bigSize={true}/>
         </div>
         <div className={styles.amenities}>
           <h3 className={styles.amenities_title}>Удобства</h3>

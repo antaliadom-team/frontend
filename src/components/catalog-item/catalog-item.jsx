@@ -1,11 +1,20 @@
+import { useContext } from "react";
 import styles from "./catalog-item.module.css";
 import { ButtonWithLike } from "../ui/buttons";
+import { ModalContext } from "../../services/app-context";
 import Slider from "../slider/slider";
 
-const CatalogItem = () => {
+const CatalogItem = ({ withBtn = true }) => {
+  const { setModal } = useContext(ModalContext);
+  const modalOpen = () => {
+    setModal(true);
+  };
+
   return (
     <div className={styles.wrapper}>
-      <Slider />
+      <div className={styles.slider}>
+        <Slider />
+      </div>
       <div className={styles.price}>1000€/месяц</div>
       <div className={styles.description}>
         <p className={styles.text}>Аренда</p>
@@ -18,9 +27,12 @@ const CatalogItem = () => {
           Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция
         </p>
       </div>
-      <div className={styles.button}>
-        <ButtonWithLike>Оформить заявку</ButtonWithLike>
-      </div>
+
+      {withBtn && (
+        <div className={styles.button}>
+          <ButtonWithLike onClick={modalOpen}>Оформить заявку</ButtonWithLike>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,46 @@
+.modal {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    overflow-y: scroll;
+    width: 700px;
+    max-height: calc(100vh - 200px);
+    background: #ffffff;
+    border: 2px solid #0d1b44;
+    transform: translate(-50%, -50%);
+}
+
+.cross {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.cross::before {
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 28px;
+    content: "";
+    background-color: #0d1b44;
+    border: 2px solid #0d1b44;
+    border-radius: 2px;
+    transform: rotate(45deg);
+}
+
+.cross::after {
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 28px;
+    content: "";
+    background-color: #0d1b44;
+    border: 2px solid #0d1b44;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+}

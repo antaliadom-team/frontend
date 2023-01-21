@@ -1,40 +1,53 @@
-import React from "react";
+import { useState } from "react";
 import styles from "./slider.module.css";
 import images from "./images";
 import arrow from "../../images/arrow.svg";
-// import image3 from "../../images/sliderImages/about-us-left.png";
 
-const Slider = () => {
-  const [slideIndex, setSlideIndex] = React.useState(1);
+const Slider = ({ bigSize = false }) => {
+  const [slideIndex, setSlideIndex] = useState(1);
 
-  function setSlide(n) {
-    if (n > images.length) {
+  const size = () => {
+    if (bigSize) {
+      return {
+        width: "738px",
+        height: "632px",
+      };
+    } else {
+      return {
+        width: "305px",
+        height: "261px",
+      };
+    }
+  };
+
+  const setSlide = (imgIndex) => {
+    if (imgIndex > images.length) {
       setSlideIndex(1);
-    } else if (n < 1) {
+    } else if (imgIndex < 1) {
       setSlideIndex(images.length);
     } else {
-      setSlideIndex(n);
+      setSlideIndex(imgIndex);
     }
-  }
+  };
 
-  function plusSlides() {
+  const nextSlide = () => {
     setSlide(slideIndex + 1);
-  }
+  };
 
-  function minusSlides() {
+  const prevSlide = () => {
     setSlide(slideIndex - 1);
-  }
+  };
 
-  function currentSlide(n) {
-    setSlide(n);
-    console.log(slideIndex === n);
-  }
+  const currentSlide = (imgIndex) => {
+    setSlide(imgIndex);
+  };
 
   return (
     <div className={styles.slider}>
       {images.map((image) => (
         <img
           key={image.id}
+          style={size()}
           className={
             image.id === slideIndex ? styles.activeImage : styles.fadeImage
           }
@@ -42,10 +55,10 @@ const Slider = () => {
           alt="фото квартиры"
         />
       ))}
-      <button className={styles.arrow_left} onClick={minusSlides}>
+      <button className={styles.arrow_left} onClick={prevSlide}>
         <img src={arrow} alt="предыдущая" className={styles.arrow_img} />
       </button>
-      <button className={styles.arrow_right} onClick={plusSlides}>
+      <button className={styles.arrow_right} onClick={nextSlide}>
         <img src={arrow} alt="следующая" className={styles.arrow_img} />
       </button>
       <div className={styles.pagination}>

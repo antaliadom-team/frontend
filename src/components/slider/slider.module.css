@@ -1,23 +1,14 @@
 .slider {
     position: relative;
-    width: 305px;
 }
 
 .activeImage {
     display: block;
-    width: 305px;
-    height: 261px;
     object-fit: cover;
 }
 
 .fadeImage {
     display: none;
-}
-
-.mySlides {
-    width: 305px;
-    height: 261px;
-    object-fit: contain;
 }
 
 .arrow_img {

@@ -1,6 +1,6 @@
 import styles from "./app.module.css";
 import { Routes, Route } from "react-router-dom";
-import { Catalog, Home, ProductPage, Auth } from "../../pages";
+import { Catalog, Home, ProductPage, Auth, Profile } from "../../pages";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { ModalContext } from "../../services/app-context";
@@ -32,6 +32,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/sample-product-page" element={<ProductPage />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/auth/*" element={<Auth />} />
           </Routes>
           {modal && (

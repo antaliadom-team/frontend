@@ -17,7 +17,7 @@ const Auth = ({ isLoggedIn }) => {
     <section className={styles.auth}>
       <div className={styles.container}>
         <div className={styles.image_and_block}>
-          <Link to="/auth/signup" className={styles.back_to_lk_btn}>
+          <Link to="/profile" className={styles.back_to_lk_btn}>
             Назад в личный кабинет
           </Link>
           <img className={styles.image} src={signupImage} alt="фото комнаты" />

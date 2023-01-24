@@ -9,7 +9,7 @@ import Modal from "../modal/modal";
 import ObjectForm from "../forms/object-form";
 
 const App = () => {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
 
   const modalClose = () => {
     setModal(false);
@@ -18,7 +18,9 @@ const App = () => {
   if (modal) {
     const x = window.scrollX;
     const y = window.scrollY;
-    window.onscroll = () => {window.scrollTo(x, y)}
+    window.onscroll = () => {
+      window.scrollTo(x, y);
+    };
   } else {
     window.onscroll = () => {};
   }

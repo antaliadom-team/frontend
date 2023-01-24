@@ -2,12 +2,12 @@ import React, { useRef, useState } from "react";
 import { useFormValidation } from "../../../hooks/formValidation";
 import styles from "./text.module.css";
 
-const TextInput = ({ text, placeholder, disabled = false }) => {
-  const { values, handleChange, errors, isValid, resetErrors } =
+const TextInput = ({ text, placeholder, disabled }) => {
+  const { value, handleChange, error, isValid, resetErrors, inputRef } =
     useFormValidation({});
 
   React.useEffect(() => {
-    resetErrors({ name: "", email: "" });
+    resetErrors();
   }, []);
 
   return (
@@ -15,18 +15,16 @@ const TextInput = ({ text, placeholder, disabled = false }) => {
       <label className={styles.field}>
         <span className={styles.text}>{text}</span>
         <input
-          className={`${styles.input} ${isValid ? "" : styles.warning}`}
+          className={!isValid ? styles.input : styles.warning}
           type="text"
-          id="name"
-          name="name"
+          ref={inputRef}
           onChange={handleChange}
-          value={values.name || ""}
+          onBlur={() => error}
+          value={value}
           placeholder={disabled ? null : placeholder}
-          required
+          disabled={disabled}
         />
-        <span className={!isValid ? styles.error : styles.hide}>
-          {errors.name}
-        </span>
+        <span className={error ? styles.error : styles.hide}>Ошибка</span>
       </label>
     </div>
   );

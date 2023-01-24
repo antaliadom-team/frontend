@@ -1,32 +1,29 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { regularEmail } from "../../services/consts";
 
 export function useFormValidation() {
-  const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
+  const [value, setValue] = useState("");
+  const [error, setError] = useState("");
+  const [isValid, setIsValid] = useState("");
+  const inputRef = useRef(null);
 
   function handleChange(e) {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: e.target.validationMessage });
-    if (name === "email") {
-      setIsValid(
-        regularEmail.test(value) &&
-          e.target.closest(".main-form_mainForm__form__LkiO9").checkValidity()
-      );
+    setValue(() => e.target.value);
+    const reg = /[/!$()*+.<>?^{|}_0-9]/;
+    const match = inputRef.current.value.match(reg);
+    if (match) {
+      setError(e.target.validationMessage);
     } else {
-      setIsValid(
-        e.target.closest(".main-form_mainForm__form__LkiO9").checkValidity()
-      );
+      setError(false);
+      setIsValid("");
     }
   }
 
-  function resetErrors(data) {
-    setValues(data);
-    setErrors({});
+  function resetErrors() {
+    setValue("");
+    setError("");
     setIsValid(true);
   }
 
-  return { values, handleChange, errors, isValid, resetErrors, setValues };
+  return { value, handleChange, error, isValid, resetErrors, inputRef };
 }

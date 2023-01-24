@@ -35,7 +35,7 @@
 }
 
 .input:focus {
-    box-shadow: 0 0 0 0.2rem rgb(167 183 188/ 50%);
+    box-shadow: 0 0 0 0.2rem #a7b7bc80;
 }
 
 .text {
@@ -68,16 +68,16 @@
 }
 
 .warning {
-    color: #f0000f;
-    border-color: #ff4850;
+    color: #c51818;
+    border: 2px solid#c51818;
 }
 
 .warning:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 170, 170, 0.5);
+    box-shadow: 0 0 0 0.2rem #ffaaaa80;
 }
 
 .warning + .error {
-    color: #f0000f;
+    color: #c51818;
 }
 
 .input:disabled {

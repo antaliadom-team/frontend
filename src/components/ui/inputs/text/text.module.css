@@ -58,6 +58,7 @@
     line-height: 17px;
     font-weight: 400;
     font-style: normal;
+    color: #c51818;
     transition: color 0.3s, opacity 0.3s, transform 0.3s;
 }
 

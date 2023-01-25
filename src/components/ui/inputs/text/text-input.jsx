@@ -1,30 +1,90 @@
 import React, { useRef, useState } from "react";
-import { useFormValidation } from "../../../hooks/formValidation";
+import { useEffect } from "react";
+// import { useFormValidation } from "../../../hooks/formValidation";
 import styles from "./text.module.css";
 
-const TextInput = ({ text, placeholder, disabled }) => {
-  const { value, handleChange, error, isValid, resetErrors, inputRef } =
-    useFormValidation({});
+function useValidation(value, validations) {
+  const [isEmpty, setEmpty] = useState(true);
+  const [minLengthError, setMinLengthError] = useState(false);
+  const [validationMessage, setValidatonMessage] = useState("");
 
-  React.useEffect(() => {
-    resetErrors();
-  }, []);
+  useEffect(() => {
+    for (const validation in value) {
+      switch (validation) {
+        case "minlength":
+          value.length < validations[validation]
+            ? setMinLengthError(true)
+            : setMinLengthError(false);
+          break;
+        case "isEmpty":
+          value ? setEmpty(false) : setEmpty(true);
+          break;
+      }
+    }
+  });
+  return { isEmpty, minLengthError };
+}
+
+function useInput(initialValue, validations) {
+  const [value, setValue] = useState(initialValue);
+  const [valueDirty, setValueDirty] = useState(false);
+  const valid = useValidation(value, validations);
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+
+  function onBlur(e) {
+    setValueDirty(true);
+  }
+
+  return { value, handleChange, onBlur, valueDirty, ...valid };
+}
+
+const TextInput = ({ text, placeholder, disabled }) => {
+  const name = useInput("", { isEmpty: true, minLengthError: 1 });
+
+  //   React.useEffect(() => {
+  //     resetErrors();
+  //   }, []);
+
+  //   const handleChange = (e) => {
+  //     setValue(e.target.value);
+  //     if (!e.target.value) {
+  //       setError("Поле не может быть пустым");
+  //     } else {
+  //       setError("");
+  //     }
+  //   };
+
+  //   const [value, setValue] = React.useState("");
+  //   const [valueDirty, setValueDirty] = React.useState(false);
+  //   const [error, setError] = React.useState("Поле не может быть пустым");
+
+  //   const blurHandler = (e) => {
+  //     switch (e.target.name) {
+  //       case "name":
+  //         setValueDirty(true);
+  //         break;
+  //     }
+  //   };
 
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
         <span className={styles.text}>{text}</span>
         <input
-          className={!isValid ? styles.input : styles.warning}
+          className={styles.input}
           type="text"
-          ref={inputRef}
-          onChange={handleChange}
-          onBlur={() => error}
-          value={value}
+          onChange={(e) => name.handleChange(e)}
+          onBlur={(e) => name.onBlur(e)}
+          name="name"
+          value={name.value}
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
         />
-        <span className={error ? styles.error : styles.hide}>Ошибка</span>
+        {name.valueDirty && name.isEmpty && (
+          <span className={styles.error}>{name.value}</span>
+        )}
       </label>
     </div>
   );

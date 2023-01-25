@@ -1,28 +1,69 @@
-import React, { useRef, useState } from "react";
-import { useEffect } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 // import { useFormValidation } from "../../../hooks/formValidation";
 import styles from "./text.module.css";
 
 function useValidation(value, validations) {
   const [isEmpty, setEmpty] = useState(true);
   const [minLengthError, setMinLengthError] = useState(false);
-  const [validationMessage, setValidatonMessage] = useState("");
+  const [maxLengthError, setMaxLengthError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [validationMessage, setValidationMessage] = useState("");
 
   useEffect(() => {
-    for (const validation in value) {
+    for (const validation in validations) {
       switch (validation) {
-        case "minlength":
-          value.length < validations[validation]
-            ? setMinLengthError(true)
-            : setMinLengthError(false);
-          break;
         case "isEmpty":
-          value ? setEmpty(false) : setEmpty(true);
+          if (!value) {
+            console.log("isEmpty");
+            setEmpty(false);
+            setValidationMessage("Поле не может быть пустым");
+          } else {
+            setEmpty(true);
+            setValidationMessage("");
+          }
           break;
+        case "maxLength":
+          if (value.length > validations[validation]) {
+            console.log(value.length);
+            setMaxLengthError(true);
+            setValidationMessage("Слишком длинное имя");
+          } else {
+            setMaxLengthError(false);
+          }
+          break;
+        case "isName":
+          const reg = /[/!$()*+.<>?^{|}_0-9]/;
+          if (reg.test(String(value).toLowerCase())) {
+            setNameError(false);
+            setValidationMessage("Имя может содержать только буквы");
+          } else {
+            setNameError(true);
+          }
+          break;
+
+        case "minLength":
+          if (value.length < validations[validation]) {
+            setMinLengthError(true);
+            setValidationMessage(
+              `Необходимо ввести хотя бы ${validations[validation]} символа`
+            );
+          } else {
+            setMinLengthError(false);
+          }
+          break;
+        default:
+          console.log("Error!");
       }
     }
-  });
-  return { isEmpty, minLengthError };
+  }, [value]);
+  return {
+    isEmpty,
+    minLengthError,
+    validationMessage,
+    maxLengthError,
+    nameError,
+  };
 }
 
 function useInput(initialValue, validations) {
@@ -41,32 +82,11 @@ function useInput(initialValue, validations) {
 }
 
 const TextInput = ({ text, placeholder, disabled }) => {
-  const name = useInput("", { isEmpty: true, minLengthError: 1 });
-
-  //   React.useEffect(() => {
-  //     resetErrors();
-  //   }, []);
-
-  //   const handleChange = (e) => {
-  //     setValue(e.target.value);
-  //     if (!e.target.value) {
-  //       setError("Поле не может быть пустым");
-  //     } else {
-  //       setError("");
-  //     }
-  //   };
-
-  //   const [value, setValue] = React.useState("");
-  //   const [valueDirty, setValueDirty] = React.useState(false);
-  //   const [error, setError] = React.useState("Поле не может быть пустым");
-
-  //   const blurHandler = (e) => {
-  //     switch (e.target.name) {
-  //       case "name":
-  //         setValueDirty(true);
-  //         break;
-  //     }
-  //   };
+  const name = useInput("", {
+    isEmpty: true,
+    isName: true,
+    maxLength: 25,
+  });
 
   return (
     <div className={styles.wrapper}>
@@ -82,8 +102,8 @@ const TextInput = ({ text, placeholder, disabled }) => {
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
         />
-        {name.valueDirty && name.isEmpty && (
-          <span className={styles.error}>{name.value}</span>
+        {name.valueDirty && name.validationMessage && (
+          <span className={styles.error}>{name.validationMessage}</span>
         )}
       </label>
     </div>

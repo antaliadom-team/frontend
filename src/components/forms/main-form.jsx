@@ -1,6 +1,13 @@
 import styles from "./main-form.module.css";
 import { Button } from "../ui/buttons";
-import { Checkbox, Dropdown, TextareaInput, TextInput } from "../ui/inputs";
+import {
+  Checkbox,
+  Dropdown,
+  EmailInput,
+  PhoneInput,
+  TextareaInput,
+  TextInput,
+} from "../ui/inputs";
 
 const MainForm = () => {
   return (
@@ -24,13 +31,13 @@ const MainForm = () => {
               <TextInput text={"Фамилия*"} placeholder={"Иванов"} />
             </li>
             <li className={styles.mainForm__item}>
-              <TextInput
+              <PhoneInput
                 text={"Номер телефона*"}
                 placeholder={"+7 999 123 45 67"}
               />
             </li>
             <li className={styles.mainForm__item}>
-              <TextInput text={"Email*"} placeholder={"mymail@mail.ru"} />
+              <EmailInput text={"Email*"} placeholder={"mymail@mail.ru"} />
             </li>
             <li className={styles.mainForm__item}>
               <Dropdown

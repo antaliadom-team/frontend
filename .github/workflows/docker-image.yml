@@ -41,6 +41,6 @@ jobs:
           key: ${{ secrets.DEV_KEY }}
           script: |
             cd ./infra
-            sudo docker pull ${{ secrets.FRONTEND_DOCKERHUB_USER }}/${{ secrets.FRONTEND_DOCKERHUB_NAME }}:latest
-            sudo docker-compose stop
-            sudo docker-compose up -d --build
+            echo ${{ DEV_PASSWORD }} | sudo docker pull ${{ secrets.FRONTEND_DOCKERHUB_USER }}/${{ secrets.FRONTEND_DOCKERHUB_NAME }}:latest
+            echo ${{ DEV_PASSWORD }} | sudo docker-compose stop
+            echo ${{ DEV_PASSWORD }} | sudo docker-compose up -d --build

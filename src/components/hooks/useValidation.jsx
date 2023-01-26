@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { regularEmail, regularName } from "../../services/consts";
+import { regularEmail, regularName, regularPhone } from "../../services/consts";
 
 export function useValidation(value, validations) {
   const [isEmpty, setEmpty] = useState(true);
@@ -7,6 +7,7 @@ export function useValidation(value, validations) {
   const [maxLengthError, setMaxLengthError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
   const [validationMessage, setValidationMessage] = useState("");
 
   useEffect(() => {
@@ -14,7 +15,6 @@ export function useValidation(value, validations) {
       switch (validation) {
         case "isEmpty":
           if (!value) {
-            console.log("isEmpty");
             setEmpty(false);
             setValidationMessage("Поле не может быть пустым");
           } else {
@@ -24,7 +24,6 @@ export function useValidation(value, validations) {
           break;
         case "maxLength":
           if (value.length > validations[validation]) {
-            console.log(value.length);
             setMaxLengthError(true);
             setValidationMessage("Слишком длинное имя");
           } else {
@@ -46,6 +45,16 @@ export function useValidation(value, validations) {
             setValidationMessage("Некорректный email");
           } else {
             setEmailError(true);
+          }
+          break;
+
+        case "isPhone":
+          console.log(regularPhone.test(String(value).toLowerCase()));
+          if (!regularPhone.test(String(value).toLowerCase())) {
+            setPhoneError(false);
+            setValidationMessage("Некорректный номер телефона");
+          } else {
+            setPhoneError(true);
           }
           break;
 
@@ -72,5 +81,6 @@ export function useValidation(value, validations) {
     maxLengthError,
     nameError,
     emailError,
+    phoneError,
   };
 }

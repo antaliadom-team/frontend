@@ -2,7 +2,13 @@ import React, { useContext, useState } from "react";
 import styles from "./object-form.module.css";
 import mainForm from "./main-form.module.css";
 import CatalogItem from "../catalog-item/catalog-item";
-import { Checkbox, EmailInput, TextareaInput, TextInput } from "../ui/inputs";
+import {
+  Checkbox,
+  EmailInput,
+  PhoneInput,
+  TextareaInput,
+  TextInput,
+} from "../ui/inputs";
 import { Button } from "../ui/buttons";
 import { ModalContext } from "../../services/app-context";
 import { useNavigate } from "react-router-dom";
@@ -49,7 +55,7 @@ const ObjectForm = () => {
                 <TextInput text={"Фамилия*"} placeholder={"Иванов"} />
               </li>
               <li className={mainForm.mainForm__item}>
-                <TextInput
+                <PhoneInput
                   text={"Номер телефона*"}
                   placeholder={"+7 999 123 45 67"}
                 />

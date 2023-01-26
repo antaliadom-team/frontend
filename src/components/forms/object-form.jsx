@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "./object-form.module.css";
 import mainForm from "./main-form.module.css";
 import CatalogItem from "../catalog-item/catalog-item";
-import { Checkbox, TextareaInput, TextInput } from "../ui/inputs";
+import { Checkbox, EmailInput, TextareaInput, TextInput } from "../ui/inputs";
 import { Button } from "../ui/buttons";
 import { ModalContext } from "../../services/app-context";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const ObjectForm = () => {
   const toHome = (e) => {
     e.preventDefault();
     setModal(false);
-    navigate("/", {replace: true})
+    navigate("/", { replace: true });
   };
 
   return (
@@ -55,7 +55,7 @@ const ObjectForm = () => {
                 />
               </li>
               <li className={mainForm.mainForm__item}>
-                <TextInput text={"Email*"} placeholder={"mymail@mail.ru"} />
+                <EmailInput text={"Email*"} placeholder={"mymail@mail.ru"} />
               </li>
               <li className={mainForm.mainForm__item}>
                 <TextareaInput />

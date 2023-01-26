@@ -41,11 +41,11 @@ export function useValidation(value, validations) {
           break;
 
         case "isEmail":
-          if (regularEmail.test(String(value).toLowerCase())) {
+          if (!regularEmail.test(String(value).toLowerCase())) {
             setEmailError(false);
             setValidationMessage("Некорректный email");
           } else {
-            setNameError(true);
+            setEmailError(true);
           }
           break;
 

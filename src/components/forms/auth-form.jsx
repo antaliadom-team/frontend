@@ -4,7 +4,7 @@ import styles from "./auth-form.module.css";
 import stylesMainform from "./main-form.module.css";
 import question from "../../images/ic_question.svg";
 import showPassword from "../../images/showPassword.svg";
-import { Checkbox } from "../ui/inputs";
+import { Checkbox, EmailInput } from "../ui/inputs";
 import { Button } from "../ui/buttons";
 
 const EditProfile = () => {
@@ -71,8 +71,7 @@ const EditPassword = ({ isUserEmailCorrect }) => {
               ссылкой для сброса пароля
             </p>
             <div className={styles.itemEditPassword}>
-              <p className={styles.itemTitle}>Ваш e-mail</p>
-              <input type="text" className={styles.input} />
+              <EmailInput text={"Ваш e-mail"} placeholder={"mymail@mail.ru"} />
             </div>
             <div className={`${styles.buttons} ${styles.buttons_editPassword}`}>
               <button>Сбросить пароль</button>
@@ -87,7 +86,11 @@ const EditPassword = ({ isUserEmailCorrect }) => {
               <li className={styles.itemEditPassword}>
                 <p className={styles.itemTitle}>
                   Пароль*
-                  <img className={styles.question} src={question} alt={"Вопрос"} />
+                  <img
+                    className={styles.question}
+                    src={question}
+                    alt={"Вопрос"}
+                  />
                 </p>
                 <input type="text" placeholder=" " className={styles.input} />
                 <img
@@ -120,8 +123,7 @@ const SignIn = () => {
         <h2 className={styles.title}>Вход</h2>
         <ul className={styles.list}>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>E-mail</p>
-            <input type="text" className={styles.input} />
+            <EmailInput text={"Email"} placeholder={"mymail@mail.ru"} />
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Пароль</p>

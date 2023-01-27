@@ -8,15 +8,19 @@ const Profile = () => {
   const userName = useContext(UserName);
   const logout = (e) => {
     e.preventDefault();
-    console.log('вы вышли!')
-  }
+    console.log("вы вышли!");
+  };
 
   return (
     <section className={styles.section}>
       <h2 className={styles.header}>Здравствуйте, {userName}</h2>
       <div className={styles.btn_box}>
-        <Link className={styles.edit_btn} to='/edit-profile'>Редактировать профиль</Link>
-        <button className={styles.logout_btn} onClick={logout}>Выйти из профиля</button>
+        <Link className={styles.edit_btn} to="/auth/edit-profile">
+          Редактировать профиль
+        </Link>
+        <button className={styles.logout_btn} onClick={logout}>
+          Выйти из профиля
+        </button>
       </div>
       <h3 className={styles.header}>Избранное</h3>
       <div className={styles.grid}>
@@ -27,7 +31,7 @@ const Profile = () => {
         <CatalogItem />
       </div>
     </section>
-  )
+  );
 };
 
 export default Profile;

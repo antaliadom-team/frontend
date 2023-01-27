@@ -22,18 +22,20 @@ export function useValidation(value, validations) {
             setValidationMessage("");
           }
           break;
+
         case "maxLength":
           if (value.length > validations[validation]) {
             setMaxLengthError(true);
-            setValidationMessage("Слишком длинное имя");
+            setValidationMessage("Слишком длинное введенное слово");
           } else {
             setMaxLengthError(false);
           }
           break;
+
         case "isName":
           if (regularName.test(String(value).toLowerCase())) {
             setNameError(false);
-            setValidationMessage("Имя может содержать только буквы");
+            setValidationMessage("Поле может содержать только буквы");
           } else {
             setNameError(true);
           }
@@ -68,6 +70,7 @@ export function useValidation(value, validations) {
             setMinLengthError(false);
           }
           break;
+
         default:
           console.log("Error!");
       }

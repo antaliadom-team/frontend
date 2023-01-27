@@ -4,7 +4,7 @@ import styles from "./auth-form.module.css";
 import stylesMainform from "./main-form.module.css";
 import question from "../../images/ic_question.svg";
 import showPassword from "../../images/showPassword.svg";
-import { Checkbox, EmailInput } from "../ui/inputs";
+import { Checkbox, EmailInput, PhoneInput, TextInput } from "../ui/inputs";
 import { Button } from "../ui/buttons";
 
 const EditProfile = () => {
@@ -19,27 +19,18 @@ const EditProfile = () => {
         </Link>
         <ul className={`${styles.list} ${styles.list_editProfile}`}>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Ваше имя*</p>
-            <input type="text" placeholder="Иван" className={styles.input} />
+            <TextInput text={"Ваше имя*"} placeholder={"Имя"} />
           </li>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Ваша фамилия*</p>
-            <input placeholder="Иванов" className={styles.input} />
+            <TextInput text={"Ваша фамилия*"} placeholder={"Фамилия"} />
           </li>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Ваш e-mail*</p>
-            <input
-              type="text"
-              placeholder="ivanov@mail.ru"
-              className={styles.input}
-            />
+            <EmailInput text={"Ваш e-mail*"} placeholder={"mymail@mail.ru"} />
           </li>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Номер телефона*</p>
-            <input
-              type="text"
-              placeholder="+7 921 123 45 67"
-              className={styles.input}
+            <PhoneInput
+              text={"Номер телефона*"}
+              placeholder={"+7 999 123 45 67"}
             />
           </li>
         </ul>
@@ -159,27 +150,18 @@ const SignUp = () => {
         <h2 className={styles.title}>Регистрация</h2>
         <ul className={styles.list}>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Ваше имя*</p>
-            <input type="text" placeholder="Иван" className={styles.input} />
+            <TextInput text={"Ваше имя*"} placeholder={"Имя"} />
           </li>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Ваша фамилия*</p>
-            <input placeholder="Иванов" className={styles.input} />
+            <TextInput text={"Ваша фамилия*"} placeholder={"Фамилия"} />
           </li>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Ваш e-mail*</p>
-            <input
-              type="text"
-              placeholder="ivanov@mail.ru"
-              className={styles.input}
-            />
+            <EmailInput text={"Ваш e-mail"} placeholder={"mymail@mail.ru"} />
           </li>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Номер телефона*</p>
-            <input
-              type="text"
-              placeholder="+7 921 123 45 67"
-              className={styles.input}
+            <PhoneInput
+              text={"Номер телефона*"}
+              placeholder={"+7 999 123 45 67"}
             />
           </li>
           <li className={styles.item}>

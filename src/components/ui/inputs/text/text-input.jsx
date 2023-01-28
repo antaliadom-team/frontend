@@ -14,7 +14,11 @@ const TextInput = ({ text, placeholder, disabled }) => {
       <label className={styles.field}>
         <span className={styles.text}>{text}</span>
         <input
-          className={styles.input}
+          className={
+            name.validationMessage
+              ? `${styles.input} ${styles.warning}`
+              : styles.input
+          }
           type="text"
           onChange={(e) => name.handleChange(e)}
           onBlur={(e) => name.onBlur(e)}

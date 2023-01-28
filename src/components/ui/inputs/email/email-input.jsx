@@ -13,7 +13,11 @@ const EmailInput = ({ text, placeholder, disabled }) => {
       <label className={styles.field}>
         <span className={styles.text}>{text}</span>
         <input
-          className={styles.input}
+          className={
+            email.validationMessage
+              ? `${styles.input} ${styles.warning}`
+              : styles.input
+          }
           type="text"
           onChange={(e) => email.handleChange(e)}
           onBlur={(e) => email.onBlur(e)}

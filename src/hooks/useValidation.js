@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { regularEmail, regularName, regularPhone } from "../../services/consts";
+import { regularEmail, regularName, regularPhone } from "../services/consts";
 
 export function useValidation(value, validations) {
   const [isEmpty, setEmpty] = useState(true);

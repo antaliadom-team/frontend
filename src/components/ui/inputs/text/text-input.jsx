@@ -2,17 +2,16 @@ import React from "react";
 import { useInput } from "../../../../hooks/useInput";
 import styles from "./text.module.css";
 
-const TextInput = ({ text, placeholder, disabled }) => {
+const TextInput = ({ nameInput, placeholder, disabled }) => {
   const name = useInput("", {
-    isEmpty: true,
+    isEmpty: false,
     isName: true,
     maxLength: 25,
   });
-
+  console.log(name.validationMessage);
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
-        <span className={styles.text}>{text}</span>
         <input
           className={
             name.validationMessage
@@ -22,7 +21,7 @@ const TextInput = ({ text, placeholder, disabled }) => {
           type="text"
           onChange={(e) => name.handleChange(e)}
           onBlur={(e) => name.onBlur(e)}
-          name="name"
+          name={nameInput}
           value={name.value}
           placeholder={disabled ? null : placeholder}
           disabled={disabled}

@@ -68,6 +68,7 @@ export function useValidation(value, validations) {
             );
           } else {
             setMinLengthError(false);
+            setValidationMessage("");
           }
           break;
 

@@ -11,7 +11,7 @@ import {
 import React from "react";
 
 const Auth = ({ isLoggedIn }) => {
-  const [isUserEmailCorrect, setUserEmailCorrect] = React.useState(true);
+  const [isUserEmailCorrect, setUserEmailCorrect] = React.useState(false);
 
   return (
     <section className={styles.auth}>
@@ -29,8 +29,7 @@ const Auth = ({ isLoggedIn }) => {
             <Route path="/signup" element={<SignUp />} />
             <Route
               path="/edit-password"
-              isUserEmailCorrect={isUserEmailCorrect}
-              element={<EditPassword />}
+              element={<EditPassword isUserEmailCorrect={isUserEmailCorrect} />}
             />
             <Route path="/edit-profile" element={<EditProfile />} />
             <Route

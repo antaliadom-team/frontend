@@ -2,7 +2,7 @@ import React from "react";
 import { useInput } from "../../../../hooks/useInput";
 import styles from "../text/text.module.css";
 
-const EmailInput = ({ text, placeholder, disabled }) => {
+const EmailInput = ({ nameInput, placeholder, disabled }) => {
   const email = useInput("", {
     isEmpty: true,
     isEmail: true,
@@ -11,7 +11,6 @@ const EmailInput = ({ text, placeholder, disabled }) => {
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
-        <span className={styles.text}>{text}</span>
         <input
           className={
             email.validationMessage
@@ -21,7 +20,7 @@ const EmailInput = ({ text, placeholder, disabled }) => {
           type="text"
           onChange={(e) => email.handleChange(e)}
           onBlur={(e) => email.onBlur(e)}
-          name="email"
+          name={nameInput}
           value={email.value}
           placeholder={disabled ? null : placeholder}
           disabled={disabled}

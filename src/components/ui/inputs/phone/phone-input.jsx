@@ -2,7 +2,7 @@ import React from "react";
 import { useInput } from "../../../../hooks/useInput";
 import styles from "../text/text.module.css";
 
-const PhoneInput = ({ text, placeholder, disabled }) => {
+const PhoneInput = ({ nameInput, placeholder, disabled }) => {
   const phone = useInput("", {
     isEmpty: true,
     isPhone: true,
@@ -10,7 +10,6 @@ const PhoneInput = ({ text, placeholder, disabled }) => {
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
-        <span className={styles.text}>{text}</span>
         <input
           className={
             phone.validationMessage
@@ -20,7 +19,7 @@ const PhoneInput = ({ text, placeholder, disabled }) => {
           type="text"
           onChange={(e) => phone.handleChange(e)}
           onBlur={(e) => phone.onBlur(e)}
-          name="phone"
+          name={nameInput}
           value={phone.value}
           placeholder={disabled ? null : placeholder}
           disabled={disabled}

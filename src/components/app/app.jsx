@@ -9,7 +9,7 @@ import Modal from "../modal/modal";
 import ObjectForm from "../forms/object-form";
 
 const App = () => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const modalClose = () => {
     setModal(false);

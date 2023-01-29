@@ -4,7 +4,14 @@ import styles from "./auth-form.module.css";
 import stylesMainform from "./main-form.module.css";
 import question from "../../images/ic_question.svg";
 import showPassword from "../../images/showPassword.svg";
-import { Checkbox, EmailInput, PhoneInput, TextInput } from "../ui/inputs";
+
+import {
+  Checkbox,
+  EmailInput,
+  PasswordInput,
+  PhoneInput,
+  TextInput,
+} from "../ui/inputs";
 import { Button } from "../ui/buttons";
 
 const EditProfile = () => {
@@ -19,19 +26,20 @@ const EditProfile = () => {
         </Link>
         <ul className={`${styles.list} ${styles.list_editProfile}`}>
           <li className={styles.item}>
-            <TextInput text={"Ваше имя*"} placeholder={"Имя"} />
+            <p className={styles.itemTitle}>Ваше имя*</p>
+            <TextInput nameInput={"name"} placeholder={"Имя"} />
           </li>
           <li className={styles.item}>
-            <TextInput text={"Ваша фамилия*"} placeholder={"Фамилия"} />
+            <p className={styles.itemTitle}>Ваша фамилия*</p>
+            <TextInput nameInput={"name"} placeholder={"Фамилия"} />
           </li>
           <li className={styles.item}>
-            <EmailInput text={"Ваш e-mail*"} placeholder={"mymail@mail.ru"} />
+            <p className={styles.itemTitle}>Ваш e-mail*</p>
+            <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
           </li>
           <li className={styles.item}>
-            <PhoneInput
-              text={"Номер телефона*"}
-              placeholder={"+7 999 123 45 67"}
-            />
+            <p className={styles.itemTitle}>Номер телефона*</p>
+            <PhoneInput nameInput={"phone"} placeholder={"+7 999 123 45 67"} />
           </li>
         </ul>
         <div className={styles.buttons}>
@@ -62,7 +70,8 @@ const EditPassword = ({ isUserEmailCorrect }) => {
               ссылкой для сброса пароля
             </p>
             <div className={styles.itemEditPassword}>
-              <EmailInput text={"Ваш e-mail"} placeholder={"mymail@mail.ru"} />
+              <p className={styles.itemTitle}>Ваш e-mail</p>
+              <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
             </div>
             <div className={`${styles.buttons} ${styles.buttons_editPassword}`}>
               <button>Сбросить пароль</button>
@@ -83,21 +92,11 @@ const EditPassword = ({ isUserEmailCorrect }) => {
                     alt={"Вопрос"}
                   />
                 </p>
-                <input type="text" placeholder=" " className={styles.input} />
-                <img
-                  src={showPassword}
-                  alt="show password"
-                  className={styles.showPassword}
-                />
+                <PasswordInput name={"password"} placeholder={" "} />
               </li>
               <li className={styles.itemEditPassword}>
                 <p className={styles.itemTitle}>Подтвердите пароль*</p>
-                <input type="text" placeholder=" " className={styles.input} />
-                <img
-                  src={showPassword}
-                  alt="show password"
-                  className={styles.showPassword}
-                />
+                <PasswordInput name={"password"} placeholder={" "} />
               </li>
             </ul>
           </>
@@ -114,16 +113,12 @@ const SignIn = () => {
         <h2 className={styles.title}>Вход</h2>
         <ul className={styles.list}>
           <li className={styles.item}>
-            <EmailInput text={"Email"} placeholder={"mymail@mail.ru"} />
+            <p className={styles.itemTitle}>E-mail</p>
+            <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Пароль</p>
-            <input type="text" className={styles.input} />
-            <img
-              src={showPassword}
-              alt="show password"
-              className={styles.showPassword}
-            />
+            <PasswordInput nameInput={"password"} placeholder={" "} />
           </li>
         </ul>
         <div className={styles.buttons}>
@@ -150,40 +145,31 @@ const SignUp = () => {
         <h2 className={styles.title}>Регистрация</h2>
         <ul className={styles.list}>
           <li className={styles.item}>
-            <TextInput text={"Ваше имя*"} placeholder={"Имя"} />
+            <p className={styles.itemTitle}>Ваше имя*</p>
+            <TextInput nameInput={"name"} placeholder={"Имя"} />
           </li>
           <li className={styles.item}>
-            <TextInput text={"Ваша фамилия*"} placeholder={"Фамилия"} />
+            <p className={styles.itemTitle}>Ваша фамилия*</p>
+            <TextInput nameInput={"name"} placeholder={"Фамилия"} />
           </li>
           <li className={styles.item}>
-            <EmailInput text={"Ваш e-mail"} placeholder={"mymail@mail.ru"} />
+            <p className={styles.itemTitle}>Ваш e-mail*</p>
+            <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
           </li>
           <li className={styles.item}>
-            <PhoneInput
-              text={"Номер телефона*"}
-              placeholder={"+7 999 123 45 67"}
-            />
+            <p className={styles.itemTitle}>Номер телефона*</p>
+            <PhoneInput nameInput={"phone"} placeholder={"+7 999 123 45 67"} />
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>
               Пароль*
               <img className={styles.question} src={question} alt={"Вопрос"} />
             </p>
-            <input type="text" placeholder=" " className={styles.input} />
-            <img
-              src={showPassword}
-              alt="show password"
-              className={styles.showPassword}
-            />
+            <PasswordInput nameInput={"password"} placeholder={" "} />
           </li>
+          <p className={styles.itemTitle}>Подтвердите пароль*</p>
           <li className={styles.item}>
-            <p className={styles.itemTitle}>Подтвердите пароль*</p>
-            <input type="text" placeholder=" " className={styles.input} />
-            <img
-              src={showPassword}
-              alt="show password"
-              className={styles.showPassword}
-            />
+            <PasswordInput nameInput={"password"} placeholder={" "} />
           </li>
         </ul>
         <div

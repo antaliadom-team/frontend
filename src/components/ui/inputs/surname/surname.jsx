@@ -2,9 +2,9 @@ import React from "react";
 import { useInput } from "../../../../hooks/useInput";
 import styles from "./text.module.css";
 
-const TextInput = ({ nameInput, placeholder, disabled }) => {
+const Surname = ({ nameInput, placeholder, disabled }) => {
   const name = useInput("", {
-    isName: true,
+    isSurname: true,
   });
   return (
     <div className={styles.wrapper}>
@@ -31,4 +31,4 @@ const TextInput = ({ nameInput, placeholder, disabled }) => {
   );
 };
 
-export default TextInput;
+export default Surname;

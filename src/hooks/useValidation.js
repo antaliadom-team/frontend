@@ -23,21 +23,28 @@ export function useValidation(value, validations) {
           }
           break;
 
-        case "maxLength":
-          if (value.length > validations[validation]) {
-            setMaxLengthError(true);
-            setValidationMessage("Слишком длинное введенное слово");
-          } else {
-            setMaxLengthError(false);
-          }
-          break;
+        // case "maxLength":
+        //   if (value.length > validations[validation]) {
+        //     setMaxLengthError(true);
+        //     setValidationMessage("Слишком длинное введенное слово");
+        //   } else {
+        //     setMaxLengthError(false);
+        //   }
+        //   break;
 
         case "isName":
           if (regularName.test(String(value).toLowerCase())) {
             setNameError(false);
-            setValidationMessage("Поле может содержать только буквы");
+            setValidationMessage("Введите корректное имя");
+          } else if (value.length > 30) {
+            setNameError(false);
+            setValidationMessage("Введите корректное имя");
+          } else if (value.length < 2) {
+            setNameError(false);
+            setValidationMessage("Введите корректное имя");
           } else {
             setNameError(true);
+            setValidationMessage("");
           }
           break;
 
@@ -60,17 +67,17 @@ export function useValidation(value, validations) {
           }
           break;
 
-        case "minLength":
-          if (value.length < validations[validation]) {
-            setMinLengthError(true);
-            setValidationMessage(
-              `Необходимо ввести хотя бы ${validations[validation]} символа`
-            );
-          } else {
-            setMinLengthError(false);
-            setValidationMessage("");
-          }
-          break;
+        // case "minLength":
+        //   if (value.length < validations[validation]) {
+        //     setMinLengthError(true);
+        //     setValidationMessage(
+        //       `Необходимо ввести хотя бы ${validations[validation]} символа`
+        //     );
+        //   } else {
+        //     setMinLengthError(false);
+        //     setValidationMessage("");
+        //   }
+        //   break;
 
         default:
           console.log("Error!");

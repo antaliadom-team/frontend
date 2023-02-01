@@ -6,6 +6,8 @@ const PhoneInput = ({ nameInput, placeholder, disabled }) => {
   const phone = useInput("", {
     isEmpty: true,
     isPhone: true,
+    maxLength: 13,
+    minLength: 10,
   });
   return (
     <div className={styles.wrapper}>

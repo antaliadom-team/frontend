@@ -23,6 +23,7 @@ const PhoneInput = ({ text, placeholder, disabled = false }) => {
 
   const validate = (value) => {
     const phoneLength = value.length;
+    if (!value.length) { return };
     if (phoneLength > 14 && phoneLength < 19) {
       setError(false);
       setWarning("");

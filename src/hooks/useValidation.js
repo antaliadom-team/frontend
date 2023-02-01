@@ -2,96 +2,99 @@ import { useState, useEffect } from "react";
 import { regularEmail, regularName, regularPhone } from "../services/consts";
 
 export function useValidation(value, validations) {
-  const [isEmpty, setEmpty] = useState(true);
-  const [minLengthError, setMinLengthError] = useState(false);
-  const [maxLengthError, setMaxLengthError] = useState(false);
-  const [nameError, setNameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [phoneError, setPhoneError] = useState(false);
+  const [nameError, setNameError] = useState(true);
+  const [surnameError, setSurnameError] = useState(true);
+  const [emailError, setEmailError] = useState(true);
+  const [phoneError, setPhoneError] = useState(true);
+  const [passwordError, setPasswordError] = useState(true);
   const [validationMessage, setValidationMessage] = useState("");
 
   useEffect(() => {
-    for (const validation in validations) {
-      switch (validation) {
-        case "isEmpty":
-          if (!value) {
-            setEmpty(false);
-            setValidationMessage("Поле не может быть пустым");
-          } else {
-            setEmpty(true);
-            setValidationMessage("");
-          }
-          break;
+    if (value) {
+      for (const validation in validations) {
+        switch (validation) {
+          case "isSurname":
+            if (regularName.test(String(value).toLowerCase())) {
+              setSurnameError(false);
+              setValidationMessage("Введите корректную фамилию");
+            } else if (value.length > 30) {
+              setSurnameError(false);
+              setValidationMessage("Введите корректную фамилию");
+            } else if (value.length < 2) {
+              setSurnameError(false);
+              setValidationMessage("Введите корректную фамилию");
+            } else {
+              setSurnameError(true);
+            }
+            break;
 
-        // case "maxLength":
-        //   if (value.length > validations[validation]) {
-        //     setMaxLengthError(true);
-        //     setValidationMessage("Слишком длинное введенное слово");
-        //   } else {
-        //     setMaxLengthError(false);
-        //   }
-        //   break;
+          case "isName":
+            if (regularName.test(String(value).toLowerCase())) {
+              setNameError(false);
+              setValidationMessage("Введите корректное имя");
+            } else if (value.length > 30) {
+              setNameError(false);
+              setValidationMessage("Введите корректное имя");
+            } else if (value.length < 2) {
+              setNameError(false);
+              setValidationMessage("Введите корректное имя");
+            } else {
+              setNameError(true);
+            }
+            break;
 
-        case "isName":
-          if (regularName.test(String(value).toLowerCase())) {
-            setNameError(false);
-            setValidationMessage("Введите корректное имя");
-          } else if (value.length > 30) {
-            setNameError(false);
-            setValidationMessage("Введите корректное имя");
-          } else if (value.length < 2) {
-            setNameError(false);
-            setValidationMessage("Введите корректное имя");
-          } else {
-            setNameError(true);
-            setValidationMessage("");
-          }
-          break;
+          case "isEmail":
+            if (!regularEmail.test(String(value).toLowerCase())) {
+              setEmailError(false);
+              setValidationMessage("Введите корректный email");
+            } else if (value.length > 50) {
+              setNameError(false);
+              setValidationMessage("Введите корректный email");
+            } else if (value.length < 5) {
+              setNameError(false);
+              setValidationMessage("Введите корректный email");
+            } else {
+              setEmailError(true);
+            }
+            break;
 
-        case "isEmail":
-          if (!regularEmail.test(String(value).toLowerCase())) {
-            setEmailError(false);
-            setValidationMessage("Некорректный email");
-          } else {
-            setEmailError(true);
-          }
-          break;
+          case "isPhone":
+            if (!regularPhone.test(String(value).toLowerCase())) {
+              setPhoneError(false);
+              setValidationMessage("Введите корректный номер телефона");
+            } else if (value.length > 13) {
+              setNameError(false);
+              setValidationMessage("Введите корректный номер телефона");
+            } else if (value.length < 10) {
+              setNameError(false);
+              setValidationMessage("Введите корректный номер телефона");
+            } else {
+              setPhoneError(true);
+            }
+            break;
 
-        case "isPhone":
-          console.log(regularPhone.test(String(value).toLowerCase()));
-          if (!regularPhone.test(String(value).toLowerCase())) {
-            setPhoneError(false);
-            setValidationMessage("Некорректный номер телефона");
-          } else {
-            setPhoneError(true);
-          }
-          break;
+          case "isPassword":
+            if (value.length < 7) {
+              setPasswordError(false);
+              setValidationMessage("Введите корректный пароль");
+            } else {
+              setPasswordError(true);
+            }
+            break;
 
-        // case "minLength":
-        //   if (value.length < validations[validation]) {
-        //     setMinLengthError(true);
-        //     setValidationMessage(
-        //       `Необходимо ввести хотя бы ${validations[validation]} символа`
-        //     );
-        //   } else {
-        //     setMinLengthError(false);
-        //     setValidationMessage("");
-        //   }
-        //   break;
-
-        default:
-          console.log("Error!");
+          default:
+            console.log("Error!");
+        }
       }
     }
   }, [value]);
 
   return {
-    isEmpty,
-    minLengthError,
-    validationMessage,
-    maxLengthError,
     nameError,
     emailError,
     phoneError,
+    surnameError,
+    passwordError,
+    validationMessage,
   };
 }

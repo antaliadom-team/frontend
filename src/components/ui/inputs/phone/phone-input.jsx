@@ -4,19 +4,16 @@ import styles from "../text/text.module.css";
 
 const PhoneInput = ({ nameInput, placeholder, disabled }) => {
   const phone = useInput("", {
-    isEmpty: true,
     isPhone: true,
-    maxLength: 13,
-    minLength: 10,
   });
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
         <input
           className={
-            phone.validationMessage
-              ? `${styles.input} ${styles.warning}`
-              : styles.input
+            phone.phoneError
+              ? styles.input
+              : `${styles.input} ${styles.warning}`
           }
           type="text"
           onChange={(e) => phone.handleChange(e)}
@@ -26,7 +23,7 @@ const PhoneInput = ({ nameInput, placeholder, disabled }) => {
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
         />
-        {phone.valueDirty && phone.validationMessage && (
+        {phone.valueDirty && !phone.phoneError && (
           <span className={styles.error}>{phone.validationMessage}</span>
         )}
       </label>

@@ -13,6 +13,7 @@ import {
   TextInput,
 } from "../ui/inputs";
 import { Button } from "../ui/buttons";
+import Surname from "../ui/inputs/surname/surname";
 
 const EditProfile = () => {
   return (
@@ -150,7 +151,7 @@ const SignUp = () => {
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Ваша фамилия*</p>
-            <TextInput nameInput={"name"} placeholder={"Фамилия"} />
+            <Surname nameInput={"surname"} placeholder={"Фамилия"} />
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Ваш e-mail*</p>

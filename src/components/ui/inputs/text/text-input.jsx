@@ -11,9 +11,7 @@ const TextInput = ({ nameInput, placeholder, disabled }) => {
       <label className={styles.field}>
         <input
           className={
-            name.validationMessage
-              ? `${styles.input} ${styles.warning}`
-              : styles.input
+            name.nameError ? styles.input : `${styles.input} ${styles.warning}`
           }
           type="text"
           onChange={(e) => name.handleChange(e)}
@@ -23,7 +21,7 @@ const TextInput = ({ nameInput, placeholder, disabled }) => {
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
         />
-        {name.valueDirty && name.validationMessage && (
+        {name.valueDirty && !name.nameError && (
           <span className={styles.error}>{name.validationMessage}</span>
         )}
       </label>

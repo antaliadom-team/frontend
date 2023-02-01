@@ -4,7 +4,6 @@ import styles from "../text/text.module.css";
 
 const EmailInput = ({ nameInput, placeholder, disabled }) => {
   const email = useInput("", {
-    isEmpty: true,
     isEmail: true,
   });
 
@@ -13,9 +12,9 @@ const EmailInput = ({ nameInput, placeholder, disabled }) => {
       <label className={styles.field}>
         <input
           className={
-            email.validationMessage
-              ? `${styles.input} ${styles.warning}`
-              : styles.input
+            email.emailError
+              ? styles.input
+              : `${styles.input} ${styles.warning}`
           }
           type="text"
           onChange={(e) => email.handleChange(e)}
@@ -25,7 +24,7 @@ const EmailInput = ({ nameInput, placeholder, disabled }) => {
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
         />
-        {email.valueDirty && email.validationMessage && (
+        {email.valueDirty && !email.emailError && (
           <span className={styles.error}>{email.validationMessage}</span>
         )}
       </label>

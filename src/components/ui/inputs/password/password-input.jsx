@@ -6,17 +6,17 @@ import showPasswordError from "../../../../images/showPassword_error.svg";
 
 const PasswordInput = ({ nameInput, placeholder, disabled }) => {
   const password = useInput("", {
-    maxLength: 25,
-    minLength: 8,
+    isPassword: true,
   });
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
         <input
           className={
-            password.validationMessage
-              ? `${styles.input} ${styles.warning}`
-              : styles.input
+            password.passwordError
+              ? styles.input
+              : `${styles.input} ${styles.warning}`
           }
           type="text"
           onChange={(e) => password.handleChange(e)}
@@ -26,12 +26,12 @@ const PasswordInput = ({ nameInput, placeholder, disabled }) => {
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
         />
-        {password.valueDirty && password.validationMessage && (
+        {password.valueDirty && !password.passwordError && (
           <span className={styles.error}>{password.validationMessage}</span>
         )}
       </label>
       <img
-        src={password.validationMessage ? showPasswordError : showPassword}
+        src={password.passwordError ? showPassword : showPasswordError}
         alt="show password"
         className={styles.showPassword}
       />

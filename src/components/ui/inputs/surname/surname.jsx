@@ -1,9 +1,9 @@
 import React from "react";
 import { useInput } from "../../../../hooks/useInput";
-import styles from "./text.module.css";
+import styles from "../text/text.module.css";
 
 const Surname = ({ nameInput, placeholder, disabled }) => {
-  const name = useInput("", {
+  const surname = useInput("", {
     isSurname: true,
   });
   return (
@@ -11,20 +11,20 @@ const Surname = ({ nameInput, placeholder, disabled }) => {
       <label className={styles.field}>
         <input
           className={
-            name.validationMessage
-              ? `${styles.input} ${styles.warning}`
-              : styles.input
+            surname.surnameError
+              ? styles.input
+              : `${styles.input} ${styles.warning}`
           }
           type="text"
-          onChange={(e) => name.handleChange(e)}
-          onBlur={(e) => name.onBlur(e)}
+          onChange={(e) => surname.handleChange(e)}
+          onBlur={(e) => surname.onBlur(e)}
           name={nameInput}
-          value={name.value}
+          value={surname.value}
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
         />
-        {name.valueDirty && name.validationMessage && (
-          <span className={styles.error}>{name.validationMessage}</span>
+        {surname.valueDirty && !surname.surnameError && (
+          <span className={styles.error}>{surname.validationMessage}</span>
         )}
       </label>
     </div>

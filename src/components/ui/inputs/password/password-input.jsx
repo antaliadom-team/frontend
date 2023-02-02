@@ -1,13 +1,17 @@
-import React from "react";
+import { useEffect } from "react";
 import { useInput } from "../../../../hooks/useInput";
 import styles from "../text/text.module.css";
 import showPassword from "../../../../images/showPassword.svg";
 import showPasswordError from "../../../../images/showPassword_error.svg";
 
-const PasswordInput = ({ nameInput, placeholder, disabled }) => {
+const PasswordInput = ({ nameInput, placeholder, disabled, validPassword }) => {
   const password = useInput("", {
     isPassword: true,
   });
+
+  useEffect(() => {
+    validPassword(password.passwordError);
+  }, [password.passwordError]);
 
   return (
     <div className={styles.wrapper}>
@@ -18,7 +22,7 @@ const PasswordInput = ({ nameInput, placeholder, disabled }) => {
               ? styles.input
               : `${styles.input} ${styles.warning}`
           }
-          type="text"
+          type="password"
           onChange={(e) => password.handleChange(e)}
           onBlur={(e) => password.onBlur(e)}
           name={nameInput}

@@ -36,7 +36,7 @@ const EditProfile = () => {
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Ваш e-mail*</p>
-            <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
+            {/* <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} /> */}
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Номер телефона*</p>
@@ -72,7 +72,7 @@ const EditPassword = ({ isUserEmailCorrect }) => {
             </p>
             <div className={styles.itemEditPassword}>
               <p className={styles.itemTitle}>Ваш e-mail</p>
-              <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
+              {/* <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} /> */}
             </div>
             <div className={`${styles.buttons} ${styles.buttons_editPassword}`}>
               <button>Сбросить пароль</button>
@@ -107,38 +107,6 @@ const EditPassword = ({ isUserEmailCorrect }) => {
   );
 };
 
-const SignIn = () => {
-  return (
-    <form className={`${styles.form} ${styles.sign_in}`}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>Вход</h2>
-        <ul className={styles.list}>
-          <li className={styles.item}>
-            <p className={styles.itemTitle}>E-mail</p>
-            <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
-          </li>
-          <li className={styles.item}>
-            <p className={styles.itemTitle}>Пароль</p>
-            <PasswordInput nameInput={"password"} placeholder={" "} />
-          </li>
-        </ul>
-        <div className={styles.buttons}>
-          <Button type="primary">Вход</Button>
-        </div>
-        <Link className={styles.link} to="/auth/edit-password">
-          Забыли пароль?
-        </Link>
-        <p className={styles.text}>
-          Нет аккаунта?&nbsp;
-          <Link className={styles.link} to="/auth/signup">
-            Зарегистрироваться
-          </Link>
-        </p>
-      </div>
-    </form>
-  );
-};
-
 const SignUp = () => {
   return (
     <form className={`${styles.form} ${styles.sign_up}`}>
@@ -155,7 +123,7 @@ const SignUp = () => {
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Ваш e-mail*</p>
-            <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} />
+            {/* <EmailInput nameInput={"email"} placeholder={"mymail@mail.ru"} /> */}
           </li>
           <li className={styles.item}>
             <p className={styles.itemTitle}>Номер телефона*</p>
@@ -229,4 +197,4 @@ const LogOut = ({ isLoggedIn }) => {
   );
 };
 
-export { EditProfile, SignIn, SignUp, LogOut, EditPassword };
+export { EditProfile, SignUp, LogOut, EditPassword };

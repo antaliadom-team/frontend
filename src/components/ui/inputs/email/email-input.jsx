@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { useInput } from "../../../../hooks/useInput";
 import styles from "../text/text.module.css";
 
-const EmailInput = ({ nameInput, placeholder, disabled }) => {
+const EmailInput = ({ nameInput, placeholder, disabled, validEmail }) => {
   const email = useInput("", {
     isEmail: true,
   });
+
+  useEffect(() => {
+    validEmail(email.emailError);
+  }, [email.emailError]);
 
   return (
     <div className={styles.wrapper}>

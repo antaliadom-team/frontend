@@ -5,10 +5,11 @@ import {
   EditPassword,
   EditProfile,
   LogOut,
-  SignIn,
+  //   SignIn,
   SignUp,
 } from "../../components/forms/auth-form";
 import React from "react";
+import { SignIn } from "../../components/forms/signIn";
 
 const Auth = ({ isLoggedIn }) => {
   const [isUserEmailCorrect, setUserEmailCorrect] = React.useState(false);

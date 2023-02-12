@@ -21,18 +21,19 @@ const SignIn = () => {
   const [passwordValid, setPasswordValid] = useState(false);
 
   function handleValidEmail(valid) {
-    setEmailValid(!valid);
-    console.log(emailValid);
+    console.log(valid);
+    setEmailValid(valid);
   }
 
   function handleValidPassword(valid) {
-    setPasswordValid(!valid);
-    console.log(passwordValid);
+    console.log(valid);
+    setPasswordValid(valid);
   }
 
   useEffect(() => {
     console.log("emailValid: " + emailValid, "passwordValid: " + passwordValid);
-    if (emailValid || passwordValid) {
+    console.log(emailValid && passwordValid);
+    if (emailValid && passwordValid) {
       setFormValid(true);
     } else {
       setFormValid(false);
@@ -62,7 +63,7 @@ const SignIn = () => {
           </li>
         </ul>
         <div className={styles.buttons}>
-          <Button type="primary" inactive={formValid}>
+          <Button type="primary" inactive={!formValid}>
             Вход
           </Button>
         </div>

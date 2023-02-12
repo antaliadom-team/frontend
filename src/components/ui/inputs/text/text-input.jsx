@@ -1,11 +1,17 @@
-import React from "react";
+import { useEffect } from "react";
 import { useInput } from "../../../../hooks/useInput";
 import styles from "./text.module.css";
 
-const TextInput = ({ nameInput, placeholder, disabled }) => {
+const TextInput = ({ nameInput, placeholder, disabled, validName }) => {
   const name = useInput("", {
     isName: true,
   });
+
+  useEffect(() => {
+    // console.log(name);
+    // validName(name.nameError);
+  }, [name.nameError]);
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>

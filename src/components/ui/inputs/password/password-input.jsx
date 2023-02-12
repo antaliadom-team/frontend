@@ -9,9 +9,9 @@ const PasswordInput = ({ nameInput, placeholder, disabled, validPassword }) => {
     isPassword: true,
   });
 
-  useEffect(() => {
+  function passwordValidation() {
     validPassword(password.passwordError);
-  }, [password.passwordError]);
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -24,7 +24,10 @@ const PasswordInput = ({ nameInput, placeholder, disabled, validPassword }) => {
           }
           type="password"
           onChange={(e) => password.handleChange(e)}
-          onBlur={(e) => password.onBlur(e)}
+          onBlur={(e) => {
+            password.onBlur(e);
+            passwordValidation();
+          }}
           name={nameInput}
           value={password.value}
           placeholder={disabled ? null : placeholder}

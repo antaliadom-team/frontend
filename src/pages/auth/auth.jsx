@@ -1,13 +1,12 @@
 import styles from "./auth.module.css";
 import signupImage from "../../images/reg-auth.png";
 import { Routes, Route, Link } from "react-router-dom";
-import {
-  EditPassword,
-  EditProfile,
-  LogOut,
-  //   SignIn,
-  SignUp,
-} from "../../components/forms/auth-form";
+import //   EditPassword,
+//   EditProfile,
+//   LogOut,
+//   SignIn,
+//   SignUp,
+"../../components/forms/auth-form";
 import React from "react";
 import { SignIn } from "../../components/forms/signIn";
 
@@ -27,8 +26,8 @@ const Auth = ({ isLoggedIn }) => {
         <div className={styles.form}>
           <Routes className={styles.form}>
             <Route path="/" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route
+            {/* <Route path="/signup" element={<SignUp />} /> */}
+            {/* <Route
               path="/edit-password"
               element={<EditPassword isUserEmailCorrect={isUserEmailCorrect} />}
             />
@@ -37,7 +36,7 @@ const Auth = ({ isLoggedIn }) => {
               path="/logout"
               element={<LogOut />}
               isLoggedIn={isLoggedIn}
-            />
+            /> */}
           </Routes>
         </div>
       </div>

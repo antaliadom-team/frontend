@@ -72,3 +72,14 @@
 .button {
     text-decoration: none;
 }
+
+.username {
+    z-index: 1;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-color);
+    cursor: pointer;
+}

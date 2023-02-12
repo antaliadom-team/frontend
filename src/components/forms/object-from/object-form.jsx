@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import styles from "./object-form.module.css";
-import mainForm from "./main-form.module.css";
-import CatalogItem from "../catalog-item/catalog-item";
-import { Checkbox, TextareaInput, TextInput, PhoneInput } from "../ui/inputs";
-import { Button } from "../ui/buttons";
-import { ModalContext } from "../../services/app-context";
+import mainForm from "../main-form/main-form.module.css";
+import CatalogItem from "../../catalog-item/catalog-item";
+import { Checkbox, TextareaInput, TextInput, PhoneInput } from "../../ui/inputs";
+import { Button } from "../../ui/buttons";
+import { ModalContext } from "../../../services/app-context";
 import { useNavigate } from "react-router-dom";
 
 const ObjectForm = () => {

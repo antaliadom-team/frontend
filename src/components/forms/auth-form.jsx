@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./auth-form.module.css";
-import stylesMainform from "./main-form.module.css";
+import stylesMainform from "./main-form/main-form.module.css";
 import question from "../../images/ic_question.svg";
 import showPassword from "../../images/showPassword.svg";
 import { Checkbox } from "../ui/inputs";
@@ -113,42 +113,7 @@ const EditPassword = ({ isUserEmailCorrect }) => {
   );
 };
 
-const SignIn = () => {
-  return (
-    <form className={`${styles.form} ${styles.sign_in}`}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>Вход</h2>
-        <ul className={styles.list}>
-          <li className={styles.item}>
-            <p className={styles.itemTitle}>E-mail</p>
-            <input type="text" className={styles.input} />
-          </li>
-          <li className={styles.item}>
-            <p className={styles.itemTitle}>Пароль</p>
-            <input type="text" className={styles.input} />
-            <img
-              src={showPassword}
-              alt="show password"
-              className={styles.showPassword}
-            />
-          </li>
-        </ul>
-        <div className={styles.buttons}>
-          <Button type="primary">Вход</Button>
-        </div>
-        <Link className={styles.link} to="/auth/edit-password">
-          Забыли пароль?
-        </Link>
-        <p className={styles.text}>
-          Нет аккаунта?&nbsp;
-          <Link className={styles.link} to="/auth/signup">
-            Зарегистрироваться
-          </Link>
-        </p>
-      </div>
-    </form>
-  );
-};
+
 
 const SignUp = () => {
   return (
@@ -257,5 +222,3 @@ const LogOut = ({ isLoggedIn }) => {
     </form>
   );
 };
-
-export { EditProfile, SignIn, SignUp, LogOut, EditPassword };

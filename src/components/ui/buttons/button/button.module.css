@@ -63,6 +63,7 @@
 }
 
 .text {
+    padding: 0;
     color: var(--button-color-default);
     background-color: #ffffff;
     border: none;

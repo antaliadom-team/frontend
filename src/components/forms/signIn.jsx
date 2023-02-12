@@ -26,13 +26,10 @@ const SignIn = () => {
   }
 
   function handleValidPassword(valid) {
-    console.log(valid);
     setPasswordValid(valid);
   }
 
   useEffect(() => {
-    console.log("emailValid: " + emailValid, "passwordValid: " + passwordValid);
-    console.log(emailValid && passwordValid);
     if (emailValid && passwordValid) {
       setFormValid(true);
     } else {

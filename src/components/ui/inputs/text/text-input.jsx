@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "./text.module.css";
 
-const TextInput = ({ text, placeholder, disabled = false }) => {
+const TextInput = ({ text, placeholder, disabled = false, ...rest }) => {
   const inputRef = useRef(null);
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
@@ -33,6 +33,7 @@ const TextInput = ({ text, placeholder, disabled = false }) => {
           value={value}
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
+          {...rest}
         />
         <span className={error ? styles.error : styles.hide}>Ошибка</span>
       </label>

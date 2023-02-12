@@ -1,6 +1,6 @@
 import styles from "./main-form.module.css";
-import { Button } from "../ui/buttons";
-import { Checkbox, Dropdown, TextareaInput, TextInput, PhoneInput } from "../ui/inputs";
+import { Button } from "../../ui/buttons";
+import { Checkbox, Dropdown, TextareaInput, TextInput, PhoneInput } from "../../ui/inputs";
 
 const MainForm = () => {
   return (

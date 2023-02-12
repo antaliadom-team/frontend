@@ -1,20 +1,27 @@
 import styles from "./header.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Navigation from "../navigation/navigation";
 import { Button } from "../ui/buttons";
+import { useContext } from "react";
+import { AuthContext, UserContext } from "../../services/app-context";
 
 const Header = () => {
+  const { isAuth } = useContext(AuthContext);
+  const { name } = useContext(UserContext);
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <NavLink to="/" className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           <img src={logo} alt={"логотип"} />
-        </NavLink>
-        <Navigation />
-        <Link to={"/auth"} className={styles.button}>
-          <Button type={"ghost"}>Вход</Button>
         </Link>
+        <Navigation />
+        {(!isAuth
+          && <Button onClick={()=> navigate("/profile")} type={"ghost"}>Вход</Button>)
+          || <Link to={"/profile"} className={styles.username}>{name}</Link>
+        }
       </header>
     </div>
   );

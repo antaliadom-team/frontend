@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import styles from "./catalog-item.module.css";
 import { ButtonWithLike } from "../ui/buttons";
-import { ModalContext } from "../../services/app-context";
+import { ModalContext, ObjectsContext } from "../../services/app-context";
 import Slider from "../slider/slider";
 
-const CatalogItem = ({ withBtn = true }) => {
+const CatalogItem = ({ withBtn = true, id }) => {
   const { setModal } = useContext(ModalContext);
+  const { objects } = useContext(ObjectsContext);
   const modalOpen = () => {
     setModal(true);
   };

@@ -4,3 +4,5 @@ export const ModalContext = createContext(null);
 export const UserContext = createContext(null);
 export const AuthContext = createContext(null);
 
+export const ObjectsContext = createContext(null);
+

@@ -1,4 +1,4 @@
-import { useInput } from "../../../../hooks/useInput";
+import { useInput } from "../../../../hooks/use-input";
 import styles from "../text/text.module.css";
 
 const EmailInput = ({ nameInput, placeholder, disabled, validEmail }) => {

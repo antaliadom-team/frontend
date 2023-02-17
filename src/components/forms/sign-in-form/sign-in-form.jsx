@@ -32,7 +32,7 @@ const SignInForm = () => {
         <h2 className={styles.title}>Вход</h2>
         <ul className={styles.list}>
           <li className={styles.item}>
-            <TextInput text={"Email"} placeholder={"yourmail@mail.com"} name={"email"} />
+            <TextInput text={"Email"} placeholder={""} name={"email"} />
           </li>
           <li className={styles.item}>
             <TextInput text={"Пароль"} placeholder={""} name={"pass"} />

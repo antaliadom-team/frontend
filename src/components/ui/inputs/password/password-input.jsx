@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useInput } from "../../../../hooks/useInput";
+import { useInput } from "../../../../hooks/use-input";
 import styles from "../text/text.module.css";
 import showPassword from "../../../../images/showPassword.svg";
 import showPasswordError from "../../../../images/showPassword_error.svg";

@@ -14,12 +14,6 @@
     padding-bottom: 18px;
 }
 
-.showPassword {
-    position: absolute;
-    top: 18px;
-    right: 12px;
-}
-
 .field {
     font-family: "Open Sans", sans-serif;
     font-style: normal;
@@ -69,12 +63,14 @@
 }
 
 .hide {
+    display: none;
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     transform: translate(0, 10px);
 }
 
 .warning {
+    composes: input;
     color: #c51818;
     border: 2px solid#c51818;
 }

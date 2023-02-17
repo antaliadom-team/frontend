@@ -1,5 +1,5 @@
 import React from "react";
-import { useInput } from "../../../../hooks/useInput";
+import { useInput } from "../../../../hooks/use-input";
 import styles from "../text/text.module.css";
 
 const Surname = ({ nameInput, placeholder, disabled }) => {

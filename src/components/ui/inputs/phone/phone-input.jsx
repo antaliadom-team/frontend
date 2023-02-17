@@ -1,31 +1,57 @@
-import React from "react";
-import { useInput } from "../../../../hooks/useInput";
-import styles from "../text/text.module.css";
+import React, { useRef, useState } from "react";
+import MaskedInput from "react-text-mask";
+import styles from "./phone.module.css";
 
-const PhoneInput = ({ nameInput, placeholder, disabled }) => {
-  const phone = useInput("", {
-    isPhone: true,
-  });
+const PhoneInput = ({ text, placeholder, disabled = false }) => {
+  const inputRef = useRef(null);
+  const [error, setError] = useState(false);
+  const [warning, setWarning] = useState("");
+  const [dropdown, setDropdown] = useState(false);
+  const [selected, setSelected] = useState("+7");
+  const options = ["+7", "+90"];
+
+  const validate = () => {
+    const value = inputRef.current.inputElement.value.match(/\d+/g).join("");
+    if (value.length < 10) {
+      setError(true);
+    } else {
+      setError(false);
+      setWarning("");
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
-        <input
-          className={
-            phone.phoneError
-              ? styles.input
-              : `${styles.input} ${styles.warning}`
-          }
-          type="text"
-          onChange={(e) => phone.handleChange(e)}
-          onBlur={(e) => phone.onBlur(e)}
-          name={nameInput}
-          value={phone.value}
-          placeholder={disabled ? null : placeholder}
+        <span className={styles.text}>{text}</span>
+        <div className={styles.region_code} onClick={() => setDropdown(!dropdown)}>
+          {selected}
+          <span className={styles.arrow}></span>
+        </div>
+        {dropdown && (
+          <div className={styles.region_options}>
+            {options.map((option) => (
+              <div
+                onClick={() => {
+                  setSelected(option);
+                  setDropdown(!dropdown);
+                }}
+                className={styles.region_item}>
+                {option}
+              </div>
+            ))}
+          </div>
+        )}
+        <MaskedInput
+          mask={["(", /[1-9]/, /\d/, /\d/, ")", " ", /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
+          className={!warning ? styles.input : styles.warning}
+          ref={inputRef}
+          onChange={validate}
+          onBlur={() => error && setWarning(styles.warning)}
+          placeholder={disabled ? null : "(999) 123-4567"}
           disabled={disabled}
         />
-        {phone.valueDirty && !phone.phoneError && (
-          <span className={styles.error}>{phone.validationMessage}</span>
-        )}
+        <span className={error ? styles.error : styles.hide}>Введите корректный номер телефона</span>
       </label>
     </div>
   );

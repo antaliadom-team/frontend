@@ -53,20 +53,6 @@ const Navigation = () => {
             Отправить заявку
           </NavLink>
         </li>
-        <li className={styles.item}>
-          <NavLink
-            to="/sample-product-page"
-            className={({ isActive }) => toggleClass(isActive)}>
-            Карточка объекта
-          </NavLink>
-        </li>
-        <li className={styles.item}>
-          <NavLink
-            to="/profile"
-            className={({ isActive }) => toggleClass(isActive)}>
-            Профиль
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );

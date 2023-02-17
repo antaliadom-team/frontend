@@ -11,7 +11,7 @@
 
 .header {
     padding-bottom: 36px;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-size: 32px;
     line-height: 30px;
     font-weight: 600;
@@ -35,7 +35,7 @@
 }
 
 .edit_btn {
-    font-family: "Open Sans";
+    font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 25px;
     font-weight: 700;
@@ -46,7 +46,7 @@
 }
 
 .logout_btn {
-    font-family: "Open Sans";
+    font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 25px;
     font-weight: 700;
@@ -55,4 +55,5 @@
     color: var(--border-color);
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }

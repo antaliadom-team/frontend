@@ -33,16 +33,15 @@ export const refreshToken = async () => {
   }
 };
 
-//запрос выполняется как положено, но ответ не соответствует документации к api
-export const verifyToken = async (setAuth) => {
+//это не работает
+export const verifyToken = async () => {
   const config = {
     token: localStorage.getItem("refreshToken"),
   }
 
   try {
     const response = await axios.post(API_VERIFY_TOKEN, config);
-    setAuth(true)
+    console.log(response)
   } catch (error) {
-    setAuth(false)
   }
 }

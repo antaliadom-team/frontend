@@ -15,7 +15,7 @@ const Logout = () => {
     logoutUser(setAuth, setUser)
   }
 
-  if (isAuth === "allowed") {
+  if (isAuth) {
     return (
       <div className={styles.logout}>
         <div className={styles.container}>

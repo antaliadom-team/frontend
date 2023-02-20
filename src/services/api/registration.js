@@ -1,8 +1,8 @@
 import axios from "axios";
 import { API_REGISTER } from "./api";
 
-export const registration = async (form, setRegister) => {
-  const config = {
+export const registration = async (form, setAuth) => {
+  const testUser = {
     email: "vasya_pupkin@mail.com",
     first_name: "Vasya",
     last_name: "Pupkin",
@@ -12,9 +12,19 @@ export const registration = async (form, setRegister) => {
     agreement: true,
   };
 
+  const config = {
+    email: form.email,
+    first_name: form.first_name,
+    last_name: form.last_name,
+    password: form.password,
+    re_password: form.re_password,
+    phone: form.phone,
+    agreement: true,
+  };
+
   try {
     const response = await axios.post(API_REGISTER, config);
-    console.log(response);
+    setAuth(true);
   } catch (error) {
     console.error(error);
   }

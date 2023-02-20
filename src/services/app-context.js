@@ -1,14 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { refreshToken, verifyToken } from "./api/jwt";
-import { getUser, logoutUser } from "./api/user";
-import { set } from "husky";
+import { getUser } from "./api/user";
 
 export const ModalContext = createContext(null);
-export const UserContext = createContext(null);
+export const UserContext = createContext(localStorage.getItem("user"));
 export const AuthContext = createContext(null);
 export const ObjectsContext = createContext(null);
 export const RegisterContext = createContext(null);
-export const PendingContext = createContext(null);
 
 export const AppContext = ({ children }) => {
   const [objects, setObjects] = useState();
@@ -17,7 +14,11 @@ export const AppContext = ({ children }) => {
   const [register, setRegister] = useState();
   const [user, setUser] = useState();
 
-
+  useEffect(() => {
+    if(isAuth) {
+      getUser(setUser);
+    }
+  }, [isAuth])
 
   return (
       <RegisterContext.Provider value={{ register, setRegister }}>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_GET_USER, API_LOGOUT_USER } from "./api";
 import { deleteCookie, getCookie } from "./cookie";
 
-export const getUser = async () => {
+export const getUser = async (setUser) => {
   const config = {
     headers: {
       Authorization: `Bearer ${getCookie("accessToken")}`,
@@ -11,14 +11,14 @@ export const getUser = async () => {
 
   try {
     const response = await axios.get(API_GET_USER, config);
-    localStorage.setItem("user", JSON.stringify(response.data));
+    setUser(response.data)
   } catch (error) {
     console.error(error);
   }
 };
 
 //возвращает 400, что-то на сервере не так, запрос соответствует документации к api
-export const logoutUser = async (setAuth, setUser) => {
+export const logoutUser = async (setAuth) => {
   const data = {
     refresh: localStorage.getItem("refreshToken"),
   };
@@ -36,4 +36,5 @@ export const logoutUser = async (setAuth, setUser) => {
   // }
 
   deleteCookie("accessToken");
+  setAuth(false);
 };

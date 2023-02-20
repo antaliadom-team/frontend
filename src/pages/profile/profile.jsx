@@ -1,25 +1,13 @@
 import styles from "./profile.module.css";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CatalogItem from "../../components/catalog-item/catalog-item";
-import { PendingContext, UserContext } from "../../services/app-context";
+import { UserContext } from "../../services/app-context";
 import { Button } from "../../components/ui/buttons";
-import { getUser } from "../../services/api/user";
 
 const Profile = () => {
-  const { pending, setPending } = useContext(PendingContext)
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
-
-
-  useEffect(() => {
-    getUser(setUser, setPending)
-  }, [])
-
-
-  if (pending) {
-    return (<h1>loading...</h1>)
-  }
 
   return (
     <section className={styles.section}>

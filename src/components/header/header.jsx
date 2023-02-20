@@ -18,13 +18,13 @@ const Header = () => {
           <img src={logo} alt={"логотип"} />
         </Link>
         <Navigation />
-        {(isAuth && (
+        {(!isAuth && (
           <Button onClick={() => navigate("/profile")} type={"ghost"}>
             Вход
           </Button>
         )) || (
           <Link to={"/profile"} className={styles.username}>
-            Имя Ф.
+            {`${user?.first_name} ${user?.last_name[0]}.`}
           </Link>
         )}
       </header>

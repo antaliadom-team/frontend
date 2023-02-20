@@ -3,9 +3,9 @@ import { Button } from "../../ui/buttons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../../ui/inputs";
 import { useContext, useEffect, useState } from "react";
-import { UserContext, AuthContext, PendingContext } from "../../../services/app-context";
+import { AuthContext } from "../../../services/app-context";
 import { useForm } from "../../../hooks/use-form";
-import { createToken, verifyToken } from "../../../services/api/jwt";
+import { createToken } from "../../../services/api/jwt";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -42,9 +42,6 @@ const Login = () => {
       : setDisabled(true)
     }
 
-    useEffect(() => {
-      verifyToken(setAuth)
-    }, [])
 
   useEffect(() => {
     if (isAuth) {

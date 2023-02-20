@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const location = useLocation();
   const { isAuth } = useContext(AuthContext);
 
-  if (isAuth === "denied") {
+  if (!isAuth) {
     return (
       <Navigate to="/login" state={{ from: location }} replace />
     );

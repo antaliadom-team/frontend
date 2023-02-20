@@ -3,13 +3,13 @@ import { Button } from "../../ui/buttons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../../ui/inputs";
 import { useContext, useEffect, useState } from "react";
-import { UserContext, AuthContext } from "../../../services/app-context";
+import { UserContext, AuthContext, PendingContext } from "../../../services/app-context";
 import { useForm } from "../../../hooks/use-form";
+import { createToken, verifyToken } from "../../../services/api/jwt";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const user = useContext(UserContext);
   const { isAuth, setAuth } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
   const [error, setError]  = useState({email: "", password: ""});
@@ -20,18 +20,20 @@ const Login = () => {
   const handleForm = (e) => {
     e.preventDefault();
     const { email, password } = e.target.elements;
-    email.value === user.email && password.value === user.password ? setAuth(true) : setAuth(false);
 
     if (password.value === "") {
       setError({ ...error, password: "Введите пароль" });
       password.focus();
+      return;
     }
 
     if (email.value === "") {
       setError({ ...error, email: "Введите email"});
       email.focus();
+      return;
     }
 
+    createToken({email: email.value, password: password.value}, setAuth)
   };
 
   const handleButton = (e) => {
@@ -39,6 +41,10 @@ const Login = () => {
       ? setDisabled(false)
       : setDisabled(true)
     }
+
+    useEffect(() => {
+      verifyToken(setAuth)
+    }, [])
 
   useEffect(() => {
     if (isAuth) {

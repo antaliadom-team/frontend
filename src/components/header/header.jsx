@@ -8,7 +8,7 @@ import { AuthContext, UserContext } from "../../services/app-context";
 
 const Header = () => {
   const { isAuth } = useContext(AuthContext);
-  const { name } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -18,10 +18,15 @@ const Header = () => {
           <img src={logo} alt={"логотип"} />
         </Link>
         <Navigation />
-        {(!isAuth
-          && <Button onClick={()=> navigate("/profile")} type={"ghost"}>Вход</Button>)
-          || <Link to={"/profile"} className={styles.username}>{name}</Link>
-        }
+        {(isAuth && (
+          <Button onClick={() => navigate("/profile")} type={"ghost"}>
+            Вход
+          </Button>
+        )) || (
+          <Link to={"/profile"} className={styles.username}>
+            Имя Ф.
+          </Link>
+        )}
       </header>
     </div>
   );

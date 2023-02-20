@@ -1,17 +1,29 @@
 import styles from "./profile.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CatalogItem from "../../components/catalog-item/catalog-item";
-import { UserContext } from "../../services/app-context";
+import { PendingContext, UserContext } from "../../services/app-context";
 import { Button } from "../../components/ui/buttons";
+import { getUser } from "../../services/api/user";
 
 const Profile = () => {
-  const { name } = useContext(UserContext);
+  const { pending, setPending } = useContext(PendingContext)
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    getUser(setUser, setPending)
+  }, [])
+
+
+  if (pending) {
+    return (<h1>loading...</h1>)
+  }
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.header}>Здравствуйте, {name}</h2>
+      <h2 className={styles.header}>Здравствуйте, {user?.first_name} </h2>
       <div className={styles.btn_box}>
         <Button type={"text"} onClick={()=> navigate("/edit-profile")}>
           Редактировать профиль

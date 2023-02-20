@@ -1,0 +1,27 @@
+.logout {
+    margin-top: 156px;
+    border: 2px solid var(--text-color);
+}
+
+.container {
+    margin: 40px;
+}
+
+.title {
+    margin-bottom: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.buttons {
+    margin: 20px auto 0;
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}

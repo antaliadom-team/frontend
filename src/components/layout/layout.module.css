@@ -1,9 +1,4 @@
-.back_to_lk_btn {
-    text-decoration: none;
-    color: var(--border-color);
-}
-
-.login {
+.layout {
     margin: 100px auto;
     width: 1280px;
 }

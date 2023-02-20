@@ -136,12 +136,6 @@
     position: relative;
 }
 
-.showPassword {
-    position: absolute;
-    top: 42px;
-    right: 12px;
-}
-
 .showPassword:hover {
     cursor: pointer;
 }

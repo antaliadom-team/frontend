@@ -1,0 +1,43 @@
+.login {
+    margin-top: 156px;
+    border: 2px solid var(--text-color);
+}
+
+.container {
+    margin: 40px;
+    width: 536px;
+}
+
+.title {
+    margin-bottom: 36px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.list {
+    list-style: none;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--border-color);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.link:hover {
+    text-shadow: 0.1px 0 var(--link-color-hover), -0.1px 0 var(--link-color-hover);
+    color: var(--link-color-hover);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.text {
+    margin-top: 20px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: var(--text-color);
+}

@@ -10,8 +10,7 @@
 }
 
 .wrapper {
-    position: relative;
-    padding-bottom: 18px;
+    height: 120px;
 }
 
 .field {
@@ -35,7 +34,7 @@
 }
 
 .input:focus {
-    box-shadow: 0 0 0 0.2rem #a7b7bc80;
+    box-shadow: 0 0 0 0.2rem rgb(167 183 188/ 50%);
 }
 
 .text {
@@ -49,8 +48,6 @@
 }
 
 .error {
-    position: absolute;
-    bottom: 0;
     display: block;
     opacity: 1;
     font-family: "Inter", sans-serif;
@@ -58,29 +55,28 @@
     line-height: 17px;
     font-weight: 400;
     font-style: normal;
-    color: #c51818;
     transition: color 0.3s, opacity 0.3s, transform 0.3s;
 }
 
 .hide {
-    display: none;
+    composes: error;
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     transform: translate(0, 10px);
 }
 
 .warning {
+    color: #f0000f;
+    border-color: #ff4850;
     composes: input;
-    color: #c51818;
-    border: 2px solid#c51818;
 }
 
 .warning:focus {
-    box-shadow: 0 0 0 0.2rem #ffaaaa80;
+    box-shadow: 0 0 0 0.2rem rgba(255, 170, 170, 0.5);
 }
 
 .warning + .error {
-    color: #c51818;
+    color: #f0000f;
 }
 
 .input:disabled {

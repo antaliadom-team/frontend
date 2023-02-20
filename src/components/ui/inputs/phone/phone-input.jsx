@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import MaskedInput from "react-text-mask";
 import styles from "./phone.module.css";
 
-const PhoneInput = ({ text, placeholder, disabled = false }) => {
+const PhoneInput = ({ text, disabled = false }) => {
   const inputRef = useRef(null);
   const [error, setError] = useState(false);
   const [warning, setWarning] = useState("");

@@ -1,8 +1,8 @@
-import styles from "./main-form.module.css";
+import styles from "./main.module.css";
 import { Button } from "../../ui/buttons";
 import { Checkbox, Dropdown, TextareaInput, TextInput, PhoneInput } from "../../ui/inputs";
 
-const MainForm = () => {
+const Main = () => {
   return (
     <section id="send" className={styles.mainForm}>
       <div className={styles.border} />
@@ -83,4 +83,4 @@ const MainForm = () => {
   );
 };
 
-export default MainForm;
+export default Main;

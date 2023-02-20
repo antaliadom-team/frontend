@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
-import styles from "./object-form.module.css";
-import mainForm from "../main-form/main-form.module.css";
+import styles from "./object.module.css";
+import mainForm from "../main/main.module.css";
 import CatalogItem from "../../catalog-item/catalog-item";
 import { Checkbox, TextareaInput, TextInput, PhoneInput } from "../../ui/inputs";
 import { Button } from "../../ui/buttons";
 import { ModalContext } from "../../../services/app-context";
 import { useNavigate } from "react-router-dom";
 
-const ObjectForm = () => {
+const Object = () => {
   const [sendSuccess, setSendSuccess] = useState(false);
   const { setModal } = useContext(ModalContext);
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const ObjectForm = () => {
       {sendSuccess ? (
         <>
           <h1 className={styles.title}>Ваша заявка отправлена!</h1>
-          <div className={styles.mb32}></div>
+          <div className={styles.mb32}/>
           <CatalogItem withBtn={false} />
           <div className={styles.link} onClick={toHome}>
             <Button type="primary">На главную</Button>
@@ -83,4 +83,4 @@ const ObjectForm = () => {
   );
 };
 
-export default ObjectForm;
+export default Object;

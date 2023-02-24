@@ -17,11 +17,6 @@ export const AppContext = ({ children }) => {
   const [user, setUser] = useState();
   const [countObjects, setCountObjects] = useState(4);
 
-  //   useEffect(() => {
-  //     getObjects(setObjects);
-  //     console.log(objects);
-  //   }, []);
-
   useEffect(() => {
     if (isAuth) {
       getUser(setUser);
@@ -31,11 +26,13 @@ export const AppContext = ({ children }) => {
   return (
     <RegisterContext.Provider value={{ register, setRegister }}>
       <ObjectsContext.Provider value={{ objects, setObjects }}>
-        <UserContext.Provider value={{ user, setUser }}>
-          <AuthContext.Provider value={{ isAuth, setAuth }}>
-            <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
-          </AuthContext.Provider>
-        </UserContext.Provider>
+        <CountObjectsOnMainPageContext.Provider value={{ countObjects, setCountObjects }}>
+          <UserContext.Provider value={{ user, setUser }}>
+            <AuthContext.Provider value={{ isAuth, setAuth }}>
+              <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
+            </AuthContext.Provider>
+          </UserContext.Provider>
+        </CountObjectsOnMainPageContext.Provider>
       </ObjectsContext.Provider>
     </RegisterContext.Provider>
   );

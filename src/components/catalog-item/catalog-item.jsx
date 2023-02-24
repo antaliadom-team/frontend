@@ -4,11 +4,12 @@ import { ButtonWithLike } from "../ui/buttons";
 import { ModalContext } from "../../services/app-context";
 import Slider from "../slider/slider";
 
-const CatalogItem = ({ withBtn = true }) => {
+const CatalogItem = ({ withBtn = true, objectInfo }) => {
   const { setModal } = useContext(ModalContext);
   const modalOpen = () => {
     setModal(true);
   };
+  console.log(objectInfo);
 
   return (
     <div className={styles.wrapper}>
@@ -23,9 +24,7 @@ const CatalogItem = ({ withBtn = true }) => {
       </div>
       <div className={styles.hr} />
       <div className={styles.description}>
-        <p className={styles.text}>
-          Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция
-        </p>
+        <p className={styles.text}>Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция</p>
       </div>
 
       {withBtn && (

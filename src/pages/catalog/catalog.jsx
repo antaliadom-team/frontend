@@ -1,13 +1,11 @@
-import { useContext } from "react";
 import styles from "./catalog.module.css";
 import Dropdown from "../../components/ui/buttons/dropdown/dropdown";
 import CatalogItem from "../../components/catalog-item/catalog-item";
+import { useContext } from "react";
 import { ObjectsContext } from "../../services/app-context";
 
 const Catalog = () => {
   const titles = document.getElementsByClassName(styles.filters_title);
-  const { data } = useContext(ObjectsContext);
-  console.log(data);
 
   const toggleClass = (event) => {
     for (let title of titles) {

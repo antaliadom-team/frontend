@@ -1,6 +1,6 @@
 .container {
     margin-top: 130px;
-    width: 1280px;
+    width: var(--container);
 }
 
 .filters {

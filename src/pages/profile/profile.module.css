@@ -1,8 +1,8 @@
 .section {
     padding: 92px 0 0 0;
     display: flex;
-    width: 1280px;
-    max-width: 1280px;
+    width: var(--container);
+    max-width: var(--container);
     flex-direction: column;
     justify-content: flex-start;
     color: var(--text-color);

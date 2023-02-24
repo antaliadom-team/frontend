@@ -1,4 +1,4 @@
-.mainForm {
+.main {
     position: relative;
     margin: 120px auto 0;
     width: 846px;
@@ -13,7 +13,7 @@
     border: 1px solid var(--border-color);
 }
 
-.mainForm__container {
+.container {
     position: relative;
     z-index: 1;
     margin: 0 auto 80px;
@@ -25,7 +25,7 @@
     border: 1px solid var(--text-color);
 }
 
-.mainForm__title {
+.title {
     margin: 40px auto 36px;
     width: 462px;
     font-family: "Montserrat", sans-serif;
@@ -36,7 +36,7 @@
     color: var(--text-color);
 }
 
-.mainForm__subtitle {
+.subtitle {
     width: 634px;
     font-size: 18px;
     line-height: 27px;
@@ -45,21 +45,21 @@
     color: var(--text-color);
 }
 
-.mainForm__form {
+.form {
     margin: 0 auto 0;
     width: 470px;
     list-style-type: none;
 }
 
-.mainForm__list {
+.list {
     list-style-type: none;
 }
 
-.mainForm__item:nth-child(1) {
+.item:nth-child(1) {
     margin-top: 36px;
 }
 
-.mainForm__itemTitle {
+.itemTitle {
     font-size: 18px;
     line-height: 27px;
     font-weight: 400;
@@ -67,7 +67,7 @@
     color: var(--text-color);
 }
 
-.mainForm__input {
+.input {
     margin: 8px 0 0;
     padding-left: 10px;
     width: 100%;
@@ -78,7 +78,7 @@
     font-weight: 400;
 }
 
-.mainForm__input_comment {
+.input_comment {
     margin: 8px 0 0;
     padding: 19px 10px;
     width: 100%;
@@ -89,13 +89,13 @@
     font-weight: 400;
 }
 
-.mainForm__checkbox {
+.checkbox {
     margin: 31px auto 34px;
     display: flex;
 
 }
 
-.mainForm__accept {
+.accept {
     margin-left: 20px;
     padding: 0;
     width: 415px;
@@ -107,22 +107,38 @@
     color: var(--text-color);
 }
 
-.mainForm__accept_color {
+.accept_color {
     text-decoration: none;
     color: var(--border-color);
 }
 
-.mainForm__button {
+.button {
     margin-bottom: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.mainForm__link {
+.link {
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
     text-decoration: none;
     color: #dd9b5c;
+}
+
+@media screen and (max-width: 1280px) {
+    .main {
+        margin: 0;
+        width: var(--container);
+    }
+
+    .border {
+        display: none;
+    }
+
+    .container {
+        margin: 110px 40px;
+        border: none;
+    }
 }

@@ -1,6 +1,6 @@
 .layout {
     margin: 100px auto;
-    width: 1280px;
+    width: var(--container);
 }
 
 .container {

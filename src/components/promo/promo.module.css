@@ -1,5 +1,6 @@
 .promo {
     position: relative;
+    width: var(--container);
 }
 
 .promo__frontBlock {
@@ -39,4 +40,31 @@
 
 .link {
     text-decoration: none;
+}
+
+@media screen and (max-width: 1280px) {
+    .promo__mainImage {
+        height: 333px;
+    }
+
+    .promo__frontBlock {
+        top: 30px;
+        width: 416px;
+        height: 273px;
+    }
+
+    .promo__title {
+        margin: 28px auto 20px;
+        font-size: 32px;
+        line-height: 39px;
+        font-weight: 600;
+    }
+
+    .promo__subtitle {
+        width: 328px;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+        text-align: center;
+    }
 }

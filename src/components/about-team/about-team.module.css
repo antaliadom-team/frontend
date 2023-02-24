@@ -42,3 +42,35 @@
     line-height: 25px;
     font-weight: 400;
 }
+
+@media screen and (max-width: 1280px) {
+    .aboutTeam__list {
+        margin-top: 36px;
+        display: flex;
+        overflow: scroll;
+        list-style-type: none;
+        gap: 20px;
+    }
+
+    .aboutTeam__photo {
+        width: 240px;
+        height: 280px;
+    }
+
+    .aboutTeam__underline {
+        margin-bottom: 4px;
+        margin-left: 0;
+        width: 169px;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .aboutTeam__number {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        font-size: 18px;
+        line-height: 27px;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+}

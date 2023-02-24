@@ -4,12 +4,19 @@ import logo from "../../images/logo.svg";
 import Navigation from "../navigation/navigation";
 import { Button } from "../ui/buttons";
 import { useContext } from "react";
-import { AuthContext, UserContext } from "../../services/app-context";
+import { AuthContext, ScreenWidthContext, UserContext } from "../../services/app-context";
+import Mobile from "./mobile";
 
 const Header = () => {
+  const {screenWidth} = useContext(ScreenWidthContext)
   const { isAuth } = useContext(AuthContext);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+
+
+  if (screenWidth !== "desktop") {
+    return (<Mobile />)
+  }
 
   return (
     <div className={styles.container}>

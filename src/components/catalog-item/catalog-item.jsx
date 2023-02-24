@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import styles from "./catalog-item.module.css";
 import { ButtonWithLike } from "../ui/buttons";
-import { ModalContext } from "../../services/app-context";
+import { ModalContext, ScreenWidthContext } from "../../services/app-context";
 import Slider from "../slider/slider";
 
 const CatalogItem = ({ withBtn = true }) => {
+  const {screenWidth} = useContext(ScreenWidthContext)
   const { setModal } = useContext(ModalContext);
   const modalOpen = () => {
     setModal(true);
@@ -13,7 +14,7 @@ const CatalogItem = ({ withBtn = true }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.slider}>
-        <Slider />
+        <Slider tablet={screenWidth === "tablet"} mobile={screenWidth === "mobile"} />
       </div>
       <div className={styles.price}>1000€/месяц</div>
       <div className={styles.description}>

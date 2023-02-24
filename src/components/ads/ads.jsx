@@ -10,7 +10,6 @@ const Ads = () => {
   const { countObjects, setCountObjects } = useContext(CountObjectsOnMainPageContext);
   const { objectsFromContext } = useContext(ObjectsContext);
   const [objects, setObjects] = useState(objectsFromContext);
-  //   const [countObjects, setCountObjects] = useState();
 
   useEffect(() => {
     getObjects(setObjects);
@@ -18,13 +17,6 @@ const Ads = () => {
 
   function addObjects() {
     setCountObjects(countObjects + 4);
-    console.log("countObjects: " + countObjects);
-    console.log("objects: " + objects.length);
-    // movies={
-    //     movies.length === 0
-    //       ? movies
-    //       : movies.slice(0, countMovies)
-    //   }
   }
 
   return (

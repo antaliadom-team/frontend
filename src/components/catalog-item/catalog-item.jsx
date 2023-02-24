@@ -10,10 +10,12 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
     setModal(true);
   };
 
+  console.log(objectInfo.images);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.slider}>
-        <Slider />
+        <Slider images={objectInfo.images} />
       </div>
       <div className={styles.price}>1000€/месяц</div>
       <div className={styles.description}>

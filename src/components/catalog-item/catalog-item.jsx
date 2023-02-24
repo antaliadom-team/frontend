@@ -9,7 +9,6 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
   const modalOpen = () => {
     setModal(true);
   };
-  console.log(objectInfo);
 
   return (
     <div className={styles.wrapper}>

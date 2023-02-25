@@ -6,8 +6,6 @@ const Slider = ({ bigSize = false, images }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const size = (image) => {
-    console.log("image.id: " + images.indexOf(image));
-    console.log("slideIndex: " + slideIndex);
     if (bigSize) {
       return {
         width: "738px",
@@ -22,10 +20,10 @@ const Slider = ({ bigSize = false, images }) => {
   };
 
   const setSlide = (imgIndex) => {
-    if (imgIndex > images.length) {
-      setSlideIndex(1);
-    } else if (imgIndex < 1) {
-      setSlideIndex(images.length);
+    if (imgIndex > images.length - 1) {
+      setSlideIndex(0);
+    } else if (imgIndex < 0) {
+      setSlideIndex(images.length - 1);
     } else {
       setSlideIndex(imgIndex);
     }
@@ -69,11 +67,11 @@ const Slider = ({ bigSize = false, images }) => {
           <div
             key={image.id}
             className={
-              slideIndex === image.id
+              slideIndex === images.indexOf(image)
                 ? `${styles.pagination_item} ${styles.pagination_item_active}`
                 : styles.pagination_item
             }
-            onClick={() => currentSlide(image.id)}
+            onClick={() => currentSlide(images.indexOf(image))}
           />
         ))}
       </div>

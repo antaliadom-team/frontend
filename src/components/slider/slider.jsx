@@ -8,16 +8,15 @@ const Slider = ({ bigSize = false, images }) => {
 
   const [slideIndex, setSlideIndex] = useState(0);
   useEffect(() => {
-    console.log(images);
     images.length === 0 ? setSlideIndex(images.length) : setSlideIndex(images[images.length - 1].id);
   }, []);
 
   //   const [slideIndex, setSlideIndex] = useState(images[images.length - 1].id);
 
   const size = (image) => {
-    console.log(image.id === slideIndex);
-    console.log("image.id: " + image.id);
-    console.log("slideIndex: " + slideIndex);
+    // console.log(image.id === slideIndex);
+    // console.log("image.id: " + image.id);
+    // console.log("slideIndex: " + slideIndex);
     if (bigSize) {
       return {
         width: "738px",
@@ -55,7 +54,7 @@ const Slider = ({ bigSize = false, images }) => {
 
   return (
     <div className={styles.slider}>
-      {images ? (
+      {images.length !== 0 ? (
         images.map((image) => (
           <img
             key={image.id}
@@ -66,7 +65,7 @@ const Slider = ({ bigSize = false, images }) => {
           />
         ))
       ) : (
-        <></>
+        <div style={size()}></div>
       )}
       <button className={styles.arrow_left} onClick={prevSlide}>
         <img src={arrow} alt="предыдущая" className={styles.arrow_img} />

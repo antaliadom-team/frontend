@@ -10,7 +10,7 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
     setModal(true);
   };
 
-  console.log(objectInfo.images);
+  //   console.log(objectInfo.images);
 
   return (
     <div className={styles.wrapper}>

@@ -1,22 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./slider.module.css";
-// import images from "./images";
 import arrow from "../../images/arrow.svg";
 
 const Slider = ({ bigSize = false, images }) => {
-  //   const [slideIndex, setSlideIndex] = useState(1);
-
   const [slideIndex, setSlideIndex] = useState(0);
-  useEffect(() => {
-    images.length === 0 ? setSlideIndex(images.length) : setSlideIndex(images[images.length - 1].id);
-  }, []);
-
-  //   const [slideIndex, setSlideIndex] = useState(images[images.length - 1].id);
 
   const size = (image) => {
-    // console.log(image.id === slideIndex);
-    // console.log("image.id: " + image.id);
-    // console.log("slideIndex: " + slideIndex);
+    console.log("image.id: " + images.indexOf(image));
+    console.log("slideIndex: " + slideIndex);
     if (bigSize) {
       return {
         width: "738px",
@@ -59,7 +50,7 @@ const Slider = ({ bigSize = false, images }) => {
           <img
             key={image.id}
             style={size(image)}
-            className={image.id === slideIndex ? styles.activeImage : styles.fadeImage}
+            className={images.indexOf(image) === slideIndex ? styles.activeImage : styles.fadeImage}
             src={image.image}
             alt="фото квартиры"
           />

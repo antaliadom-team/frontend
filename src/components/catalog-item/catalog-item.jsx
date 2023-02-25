@@ -1,22 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./catalog-item.module.css";
 import { ButtonWithLike } from "../ui/buttons";
-import { ModalContext } from "../../services/app-context";
+import { LocationsContext, ModalContext } from "../../services/app-context";
 import Slider from "../slider/slider";
+import { getLocations } from "../../services/api/locations";
 
 const CatalogItem = ({ withBtn = true, objectInfo }) => {
   const { setModal } = useContext(ModalContext);
+  const { locations } = useContext(LocationsContext);
+  const [locationsLocal, setLocationsLocal] = useState(locations);
   const modalOpen = () => {
     setModal(true);
   };
 
-  //   console.log(objectInfo.images);
+  useEffect(() => {
+    getLocations(setLocationsLocal);
+    console.log(locationsLocal);
+  }, []);
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.slider}>
-        <Slider images={objectInfo.images} />
-      </div>
+      <div className={styles.slider}>{objectInfo ? <Slider images={objectInfo.images} /> : <></>}</div>
       <div className={styles.price}>1000€/месяц</div>
       <div className={styles.description}>
         <p className={styles.text}>Аренда</p>

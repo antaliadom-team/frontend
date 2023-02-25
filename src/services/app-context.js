@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { getObjects } from "./api/objects";
 import { getUser } from "./api/user";
 
 export const ModalContext = createContext(null);
@@ -7,10 +6,12 @@ export const UserContext = createContext(localStorage.getItem("user"));
 export const AuthContext = createContext(null);
 export const ObjectsContext = createContext(null);
 export const RegisterContext = createContext(null);
+export const LocationsContext = createContext(null);
 export const CountObjectsOnMainPageContext = createContext(null);
 
 export const AppContext = ({ children }) => {
   const [objects, setObjects] = useState();
+  const [locations, setLocations] = useState([]);
   const [modal, setModal] = useState(false);
   const [isAuth, setAuth] = useState(false);
   const [register, setRegister] = useState();
@@ -20,6 +21,7 @@ export const AppContext = ({ children }) => {
   useEffect(() => {
     if (isAuth) {
       getUser(setUser);
+      console.log(locations);
     }
   }, [isAuth]);
 
@@ -29,7 +31,9 @@ export const AppContext = ({ children }) => {
         <CountObjectsOnMainPageContext.Provider value={{ countObjects, setCountObjects }}>
           <UserContext.Provider value={{ user, setUser }}>
             <AuthContext.Provider value={{ isAuth, setAuth }}>
-              <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
+              <LocationsContext.Provider value={{ locations, setLocations }}>
+                <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
+              </LocationsContext.Provider>
             </AuthContext.Provider>
           </UserContext.Provider>
         </CountObjectsOnMainPageContext.Provider>

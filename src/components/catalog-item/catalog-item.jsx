@@ -21,6 +21,7 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.slider}>{objectInfo ? <Slider images={objectInfo.images} /> : <></>}</div>
+      {/* это временно, пока на каталог не вывел контекст */}
       <div className={styles.price}>1000€/месяц</div>
       <div className={styles.description}>
         <p className={styles.text}>Аренда</p>
@@ -31,7 +32,6 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
       <div className={styles.description}>
         <p className={styles.text}>Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция</p>
       </div>
-
       {withBtn && (
         <div className={styles.button}>
           <ButtonWithLike onClick={modalOpen}>Оформить заявку</ButtonWithLike>

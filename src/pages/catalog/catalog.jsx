@@ -2,10 +2,13 @@ import styles from "./catalog.module.css";
 import Dropdown from "../../components/ui/buttons/dropdown/dropdown";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { useContext } from "react";
-import { ObjectsContext } from "../../services/app-context";
+import { ObjectsContext, PropertyTypesContext, LocationsContext } from "../../services/app-context";
 
 const Catalog = () => {
   const titles = document.getElementsByClassName(styles.filters_title);
+  const { objects } = useContext(ObjectsContext);
+  const { setLocations } = useContext(LocationsContext);
+  const { setPropertyTypes } = useContext(PropertyTypesContext);
 
   const toggleClass = (event) => {
     for (let title of titles) {
@@ -31,16 +34,13 @@ const Catalog = () => {
       </div>
 
       <h1 className={styles.ads_title}>Свежие объявления</h1>
-      <div className={styles.ads}>
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-      </div>
+      {objects && (
+        <div className={styles.ads}>
+          {objects.map((object) => (
+            <CatalogItem objectInfo={object} key={object.id} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

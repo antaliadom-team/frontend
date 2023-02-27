@@ -4,19 +4,17 @@ import { Button } from "../ui/buttons";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { CountObjectsOnMainPageContext, ObjectsContext } from "../../services/app-context";
-import { getObjects } from "../../services/api/objects";
+import { LocationsContext, PropertyTypesContext } from "../../services/app-context";
 
 const Ads = () => {
   const { countObjects, setCountObjects } = useContext(CountObjectsOnMainPageContext);
   const { objects } = useContext(ObjectsContext);
-  //   const [objects, setObjects] = useState(objectsFromContext);
-
-  useEffect(() => {
-    console.log(objects);
-  }, [objects]);
+  const { propertyTypes } = useContext(PropertyTypesContext);
+  const { locations } = useContext(LocationsContext);
 
   function addObjects() {
-    setCountObjects(countObjects + 4);
+    console.log(locations);
+    setCountObjects(countObjects + 3);
   }
 
   return (

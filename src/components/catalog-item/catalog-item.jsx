@@ -1,7 +1,7 @@
-import { useContext } from "react";
 import styles from "./catalog-item.module.css";
-import { ButtonWithLike } from "../ui/buttons";
 import Slider from "../slider/slider";
+import { useContext } from "react";
+import { ButtonWithLike } from "../ui/buttons";
 import { LocationsContext, ModalContext, PropertyTypesContext } from "../../services/app-context";
 
 const CatalogItem = ({ withBtn = true, objectInfo }) => {
@@ -15,7 +15,7 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
 
   return (
     <>
-      {objectInfo && (
+      {objectInfo && propertyTypes && locations && (
         <div className={styles.wrapper}>
           <div className={styles.slider}>{<Slider images={objectInfo.images} />}</div>
           <div className={styles.price}>{`${objectInfo.price}${objectInfo.currency}/${objectInfo.period}`}</div>
@@ -28,7 +28,7 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
           </div>
           <div className={styles.hr} />
           <div className={styles.description}>
-            {locations[objectInfo.location].name && (
+            {locations[objectInfo.location + 1].name && (
               <p className={styles.text}>{`${objectInfo.title} ${locations[objectInfo.location].name}`}</p>
             )}
           </div>

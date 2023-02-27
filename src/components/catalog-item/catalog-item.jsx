@@ -15,22 +15,24 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
 
   useEffect(() => {
     getLocations(setLocationsLocal);
-    console.log(locationsLocal);
+    console.log(objectInfo);
   }, []);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.slider}>{objectInfo ? <Slider images={objectInfo.images} /> : <></>}</div>
       {/* это временно, пока на каталог не вывел контекст */}
-      <div className={styles.price}>1000€/месяц</div>
+      <div className={styles.price}>{`${objectInfo.price}${objectInfo.currency}/${objectInfo.period}`}</div>
       <div className={styles.description}>
         <p className={styles.text}>Аренда</p>
         <div className={styles.dot} />
-        <p className={styles.text}>Квартира, 2 комнаты</p>
+        <p className={styles.text}>{`Квартира, ${objectInfo.rooms} ${
+          objectInfo.rooms === 1 ? "комната" : objectInfo.rooms > 4 ? "комнат" : "комнаты"
+        }`}</p>
       </div>
       <div className={styles.hr} />
       <div className={styles.description}>
-        <p className={styles.text}>Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция</p>
+        <p className={styles.text}>{`${objectInfo.title} ${locationsLocal[objectInfo.location].name}, Турция`}</p>
       </div>
       {withBtn && (
         <div className={styles.button}>

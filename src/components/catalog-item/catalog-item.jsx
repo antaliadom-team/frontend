@@ -28,8 +28,8 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
           </div>
           <div className={styles.hr} />
           <div className={styles.description}>
-            {locations[objectInfo.location + 1].name && (
-              <p className={styles.text}>{`${objectInfo.title} ${locations[objectInfo.location].name}`}</p>
+            {locations[objectInfo.location - 1].name && (
+              <p className={styles.text}>{`${objectInfo.title} ${locations[objectInfo.location - 1].name}`}</p>
             )}
           </div>
           {withBtn && (

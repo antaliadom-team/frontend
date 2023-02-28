@@ -22,7 +22,7 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
           <div className={styles.description}>
             <p className={styles.text}>Аренда</p>
             <div className={styles.dot} />
-            <p className={styles.text}>{`${propertyTypes[objectInfo.property_type].name}, ${objectInfo.rooms} ${
+            <p className={styles.text}>{`${propertyTypes[objectInfo.property_type - 1].name}, ${objectInfo.rooms} ${
               objectInfo.rooms === 1 ? "комната" : objectInfo.rooms > 4 ? "комнат" : "комнаты"
             }`}</p>
           </div>

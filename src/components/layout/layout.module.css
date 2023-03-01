@@ -5,7 +5,9 @@
 
 .container {
     display: flex;
+    width: 100%;
     min-height: 678px;
+    justify-content: space-between;
 }
 
 .image_and_block {
@@ -32,4 +34,5 @@
 
 .form {
     margin-left: 128px;
+    width: 100%;
 }

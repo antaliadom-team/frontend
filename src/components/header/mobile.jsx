@@ -3,14 +3,27 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo_mobile.svg";
 import { Button } from "../ui/buttons";
 import { useContext, useState } from "react";
-import { AuthContext, UserContext } from "../../services/app-context";
+import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
+import userIcon from "../../images/user.svg";
+import userEdit from "../../images/edit.svg";
+import userExit from "../../images/exit.svg";
 
 const Mobile = () => {
   const { isAuth } = useContext(AuthContext);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
-  const list = [{ link: "/", text: "Главная" }, { link: "/#about", text: "О нас" }, { link: "/catalog", text: "Каталог" }, { link: "/#send", text: "Оформить заявку" }];
+  const [userMenu, setUserMenu] = useState(false);
+  const { modal, setModal } = useContext(ModalContext);
+  const modalOpen = () => {
+    setModal({ ...modal, exit: true });
+  };
+  const list = [
+    { link: "/", text: "Главная" },
+    { link: "/#about", text: "О нас" },
+    { link: "/catalog", text: "Каталог" },
+    { link: "/#send", text: "Оформить заявку" },
+  ];
 
   return (
     <div className={styles.container}>
@@ -38,9 +51,24 @@ const Mobile = () => {
             Вход
           </Button>
         )) || (
-          <Link to={"/profile"} className={styles.username}>
-            {`${user?.first_name} ${user?.last_name[0]}.`}
-          </Link>
+          <div className={styles.user} onClick={() => setUserMenu(!userMenu)}>
+            <img src={userIcon} alt="иконка профиля" />
+            {userMenu && (
+              <div className={styles.user_menu}>
+                <h3 className={styles.user_menu_title}>{user?.first_name}</h3>
+                <p className={styles.user_menu_subtitle}>{user?.email}</p>
+                <div className={styles.hr} />
+                <div className={styles.user_menu_edit} onClick={() => navigate("/edit-profile")}>
+                  <img src={userEdit} alt="иконка редактирования профиля" />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.user_menu_edit} onClick={modalOpen}>
+                  <img src={userExit} alt="иконка редактирования профиля" />
+                  <span>Выйти</span>
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </header>
     </div>

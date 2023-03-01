@@ -3,7 +3,7 @@ import styles from "./slider.module.css";
 import images from "./images";
 import arrow from "../../images/arrow.svg";
 
-const Slider = ({ big = false, tablet = false, mobile = false }) => {
+const Slider = ({ big = false, little_big = false, tablet = false, mobile = false }) => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [size, setSize] = useState({ width: "305px", height: "261px" });
 
@@ -11,6 +11,10 @@ const Slider = ({ big = false, tablet = false, mobile = false }) => {
     switch (true) {
       case big: {
         setSize({ width: "738px", height: "632px" });
+        break;
+      }
+      case little_big: {
+        setSize({ width: "505px", height: "432px" });
         break;
       }
       case tablet: {
@@ -31,7 +35,7 @@ const Slider = ({ big = false, tablet = false, mobile = false }) => {
         setSize({ width: "305px", height: "261px" });
       }
     }
-  }, [big, tablet, mobile]);
+  }, [big, little_big, tablet, mobile]);
 
   const setSlide = (imgIndex) => {
     if (imgIndex > images.length) {

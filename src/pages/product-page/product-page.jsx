@@ -1,10 +1,15 @@
 import styles from "./product-page.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AmenityItem from "../../components/amenity-item/amenity-item";
-import { ButtonWithLike } from "../../components/ui/buttons";
+import { Button } from "../../components/ui/buttons";
 import Slider from "../../components/slider/slider";
+import { useContext } from "react";
+import { ScreenWidthContext } from "../../services/app-context";
 
 const ProductPage = () => {
+  const { screenWidth } = useContext(ScreenWidthContext);
+  const navigate = useNavigate();
+
   const breadcrumb1 = "Аренда";
   const breadcrumb2 = "Квартиры";
   const breadcrumb3 = "2-х комнатные";
@@ -12,29 +17,20 @@ const ProductPage = () => {
   const description = (
     <>
       <p>
-        2-комн. апартаменты, 90 м² ЦЕНА ДЕЙСТВИТЕЛЬНА ПРИ БРОНИРОВАНИИ В НОЯБРЕ.
-        ПОДЗЕМНАЯ ПАРКОВКА И УБОРКА ВКЛЮЧЕНЫ!
+        2-комн. апартаменты, 90 м² ЦЕНА ДЕЙСТВИТЕЛЬНА ПРИ БРОНИРОВАНИИ В НОЯБРЕ. ПОДЗЕМНАЯ ПАРКОВКА И УБОРКА ВКЛЮЧЕНЫ!
       </p>
+      <p>Вашему вниманию предлагаются сервисные апартаменты в аренду у Кремля.</p>
       <p>
-        Вашему вниманию предлагаются сервисные апартаменты в аренду у Кремля.
+        Изысканная полностью меблированная резиденция с одной спальней и гостиной, площадью 90 кв.м. Планировка
+        резиденции предусматривает объединённую гостиную и обеденную зону с полноразмерной кухней.{" "}
       </p>
+      <p>Кухня оборудована немецкой встроенной техникой Kppersbusch и укомплектована полным набором посуды. </p>
       <p>
-        Изысканная полностью меблированная резиденция с одной спальней и
-        гостиной, площадью 90 кв.м. Планировка резиденции предусматривает
-        объединённую гостиную и обеденную зону с полноразмерной кухней.{" "}
-      </p>
-      <p>
-        Кухня оборудована немецкой встроенной техникой Kppersbusch и
-        укомплектована полным набором посуды.{" "}
-      </p>
-      <p>
-        Спальня с большой двуспальной кроватью (king size) и удобной рабочей
-        зоной. Две гардеробные комнаты, два санузла и подсобное помещение со
-        стиральной и сушильной машинами Miele.
+        Спальня с большой двуспальной кроватью (king size) и удобной рабочей зоной. Две гардеробные комнаты, два санузла
+        и подсобное помещение со стиральной и сушильной машинами Miele.
       </p>
       <ul>
-        В стоимость проживания в комплексе Резиденции Москва включены следующие
-        услуги:
+        В стоимость проживания в комплексе Резиденции Москва включены следующие услуги:
         <li>1 машиноместо на подземной парковке;</li>
         <li>консьерж-сервис;</li>
         <li>влажная уборка с заменой постельного белья дважды в неделю;</li>
@@ -44,30 +40,47 @@ const ProductPage = () => {
     </>
   );
 
+  const renderSummary = () => {
+    return (
+      <div>
+        <div className={styles.stats_container}>
+          <p className={styles.stats_number_left}>
+            1000€/месяц
+            <span className={styles.stats_sub}>Аренда &#8226; Квартира, 2 комнаты</span>
+          </p>
+          <p className={styles.stats_number}>
+            90м&#178;<span className={styles.stats_desc}>площадь</span>
+          </p>
+          <p className={styles.stats_number}>
+            7 из 10<span className={styles.stats_desc}>этаж</span>
+          </p>
+          <p className={styles.stats_number}>
+            2010 год<span className={styles.stats_desc}>построен</span>
+          </p>
+        </div>
+          <Button type="primary" width={screenWidth !== "desktop" && "100%"} onClick={() => navigate("/order")}>Оформить заявку</Button>
+      </div>
+    );
+  };
+
   return (
     <section className={styles.section}>
       <nav aria-label="breadcrumb">
         <ol className={styles.breadcrumbs}>
           <li>
-            <NavLink
-              className={styles.breadcrumbs_link}
-              to="/sample-product-page">
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
               {breadcrumb1}
               <span>&nbsp; / &nbsp;</span>
             </NavLink>
           </li>
           <li>
-            <NavLink
-              className={styles.breadcrumbs_link}
-              to="/sample-product-page">
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
               {breadcrumb2}
               <span>&nbsp; / &nbsp;</span>
             </NavLink>
           </li>
           <li>
-            <NavLink
-              className={styles.breadcrumbs_link}
-              to="/sample-product-page">
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
               {breadcrumb3}
             </NavLink>
           </li>
@@ -76,8 +89,9 @@ const ProductPage = () => {
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.description_container}>
         <div className={styles.slider}>
-          <Slider bigSize={true}/>
+          <Slider big={screenWidth === "desktop"} little_big={screenWidth === "tablet"} />
         </div>
+        {screenWidth === "tablet" && renderSummary()}
         <div className={styles.amenities}>
           <h3 className={styles.amenities_title}>Удобства</h3>
           <ul className={styles.amenities_list}>
@@ -99,29 +113,11 @@ const ProductPage = () => {
             <AmenityItem title="Парковка" isAvailable={false} />
           </ul>
         </div>
-        <div className={styles.stats_container}>
-          <p className={styles.stats_number_left}>
-            1000€/месяц
-            <span className={styles.stats_sub}>
-              Аренда &#8226; Квартира, 2 комнаты
-            </span>
-          </p>
-          <p className={styles.stats_number}>
-            90м&#178;<span className={styles.stats_desc}>площадь</span>
-          </p>
-          <p className={styles.stats_number}>
-            7 из 10<span className={styles.stats_desc}>этаж</span>
-          </p>
-          <p className={styles.stats_number}>
-            2010 год<span className={styles.stats_desc}>построен</span>
-          </p>
-        </div>
-        <ButtonWithLike type="primary">Оформить заявку</ButtonWithLike>
+        {screenWidth === "desktop" && renderSummary()}
       </div>
       <hr className={styles.hr} />
       <h2 className={styles.description_title}>Описание</h2>
       <div className={styles.description_text}>{description}</div>
-      <ButtonWithLike type="primary">Оформить заявку</ButtonWithLike>
     </section>
   );
 };

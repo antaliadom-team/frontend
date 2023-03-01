@@ -125,6 +125,62 @@
     color: var(--text-color);
 }
 
+.user {
+    position: relative;
+    z-index: 1;
+}
+
+.user_menu {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    padding: 28px 0 28px 28px;
+    display: flex;
+    width: 232px;
+    height: 200px;
+    flex-direction: column;
+    list-style: none;
+    background-color: #ffffff;
+    border: 2px solid var(--text-color);
+}
+
+.user_menu_title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--text-color);
+}
+
+.user_menu_subtitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    color: #8d8d8d;
+}
+
+.hr {
+    margin-top: 16px;
+    width: 158px;
+    border: 1px solid #8d8d8d;
+}
+
+.user_menu_edit {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+    gap: 12px;
+}
+
 @media screen and (max-width: 1280px) {
     .header {
         height: 28px;

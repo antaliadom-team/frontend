@@ -11,7 +11,6 @@ const Logout = () => {
   const { setUser } = useContext(UserContext);
 
   const logout = () => {
-    console.log(1)
     logoutUser(setAuth, setUser)
   }
 

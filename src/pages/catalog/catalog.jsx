@@ -1,32 +1,79 @@
 import styles from "./catalog.module.css";
 import Dropdown from "../../components/ui/buttons/dropdown/dropdown";
 import CatalogItem from "../../components/catalog-item/catalog-item";
-
+import { useContext, useState } from "react";
+import { ScreenWidthContext } from "../../services/app-context";
+import filter from "../../images/filter.svg";
+import { Button, Tag } from "../../components/ui/buttons";
 
 const Catalog = () => {
-  const titles = document.getElementsByClassName(styles.filters_title);
+  const { screenWidth } = useContext(ScreenWidthContext);
+  const [modal, setModal] = useState(false);
 
-  const toggleClass = (event) => {
-    for (let title of titles) {
-      if (title.classList.contains(styles.active))
-        title.classList.remove(styles.active);
-      event.target.classList.add(styles.active);
+  const toggleClass = (e) => {
+    const target = e.target;
+    if (!target.classList.contains(styles.category_title)) return;
+    const options = document.querySelectorAll("#category");
+    Array.from(options).map((element) => element.classList.remove(styles.active));
+    e.target.classList.add(styles.active);
+  };
+
+  const renderFilter = () => {
+    if (screenWidth === "desktop") {
+      return (
+        <div className={styles.dropdowns}>
+          <Dropdown
+            placeholder={"Локация"}
+            width={"210px"}
+            options={["Анталия", "Северный Кипр", "Стамбул", "Другое"]}
+          />
+          <Dropdown
+            placeholder={"Тип недвижимости"}
+            width={"300px"}
+            options={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]}
+          />
+          <Dropdown placeholder={"Количество комнат"} width={"300px"} options={["1", "2", "3", "4+"]} />
+        </div>
+      );
+    } else {
+      return (
+        <div className={styles.wrapper}>
+          <div className={styles.filters} onClick={() => setModal(true)}>
+            <img src={filter} alt="фильтр" />
+            <span className={styles.filters_text}>Фильтры</span>
+          </div>
+          {modal && (
+            <div className={styles.filters_modal}>
+              <div className={styles.cancel} onClick={() => setModal(false)}>
+                Отменить
+                <span className={styles.cross} />
+              </div>
+              <Tag selectors={["Анталия", "Северный кипр", "Стамбул", "другое"]} text={"Локация"} />
+              <Tag selectors={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]} text={"Тип недвижимости"} />
+              <Tag selectors={["1", "2", "3", "4+"]} text={"Количество комнат"} />
+              <Tag selectors={["Новостройка", "Вторичное"]} text={"Статус"} />
+              <Button type={"primary"} width={"100%"}>Показать результаты</Button>
+            </div>
+          )}
+        </div>
+      );
     }
   };
 
   return (
     <section className={styles.container}>
-      <div className={styles.filters} onClick={toggleClass}>
-        <div className={`${styles.filters_title} ${styles.active}`}>Аренда</div>
-        <div className={styles.filters_title}>Покупка</div>
-      </div>
-      <div className={styles.dropdowns}>
-        <Dropdown placeholder={"Локация"} width={"210px"} options={["Анталия", "Северный Кипр", "Стамбул", "Другое"]} />
-        <Dropdown placeholder={"Тип недвижимости"} width={"300px"} options={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]} />
-        <Dropdown placeholder={"Количество комнат"} width={"300px"} options={["1", "2", "3", "4+"]} />
+      <div className={styles.category} onClick={toggleClass}>
+        <div className={`${styles.category_title} ${styles.active}`} id={"category"}>
+          Аренда
+        </div>
+        <div className={styles.category_title} id={"category"}>
+          Покупка
+        </div>
       </div>
 
-        <h1 className={styles.ads_title}>Свежие объявления</h1>
+      {renderFilter()}
+
+      <h1 className={styles.ads_title}>Свежие объявления</h1>
       <div className={styles.ads}>
         <CatalogItem />
         <CatalogItem />

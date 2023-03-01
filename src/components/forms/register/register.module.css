@@ -49,3 +49,22 @@
     font-weight: 400;
     color: var(--text-color);
 }
+
+@media screen and (max-width: 1280px) {
+    .form {
+        margin-top: 100px;
+        margin-bottom: 120px;
+        width: var(--container);
+        border: none;
+    }
+
+    .container {
+        margin: 0;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 24px;
+    }
+}

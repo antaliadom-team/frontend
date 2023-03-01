@@ -22,7 +22,6 @@ const Modal = ({ children, onClose }) => {
     <>
       <Overlay onClose={onClose} />
       <div className={styles.modal}>
-        <div className={styles.cross} onClick={onClose} />
         {children}
       </div>
     </>,

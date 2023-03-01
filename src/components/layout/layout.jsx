@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./layout.module.css";
 import { Outlet } from "react-router-dom";
 import signupImage from "../../images/reg-auth.png";
+import { ScreenWidthContext } from "../../services/app-context";
 
 const Layout = () => {
+  const {screenWidth} = useContext(ScreenWidthContext);
+
+  if (screenWidth !== "desktop") {
+    return (<Outlet />)
+  }
+
   return (
     <section className={styles.layout}>
       <div className={styles.container}>

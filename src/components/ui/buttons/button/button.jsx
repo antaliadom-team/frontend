@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./button.module.css";
 
-const Button = ({ type, inactive = false, children, ...rest }) => {
+const Button = ({ type, inactive = false, children, width, padding, ...rest }) => {
   const [buttonType, setButtonType] = useState(styles.primary);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const Button = ({ type, inactive = false, children, ...rest }) => {
     <button
       className={`${styles.button} ${buttonType}`}
       disabled={inactive}
+      style={{ width: `${width}`, padding: `${padding}` }}
       {...rest}
     >
       {children}

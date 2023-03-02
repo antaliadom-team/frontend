@@ -31,13 +31,12 @@
 }
 
 .aboutTeam__underline {
-    margin-left: 28px;
     width: 169px;
     border-bottom: 2px solid var(--border-color);
 }
 
-.aboutTeam__number {
-    margin: 13px auto 2px 128px;
+.aboutTeam__pos {
+    margin: 13px 0 128px;
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;

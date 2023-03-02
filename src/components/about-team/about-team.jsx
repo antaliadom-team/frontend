@@ -15,9 +15,9 @@ const AboutTeam = () => {
               src={photo_1}
               alt="фото команды"
             />
-            <p className={styles.aboutTeam__name}>Михаил</p>
+            <p className={styles.aboutTeam__name}>Садык</p>
             <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__pos}>Агент по недвижимости</p>
           </li>
           <li>
             <img
@@ -25,9 +25,9 @@ const AboutTeam = () => {
               src={photo_2}
               alt="фото команды"
             />
-            <p className={styles.aboutTeam__name}>Михаил</p>
+            <p className={styles.aboutTeam__name}>Ксения</p>
             <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__pos}>Агент по недвижимости</p>
           </li>
           <li>
             <img
@@ -35,9 +35,9 @@ const AboutTeam = () => {
               src={photo_3}
               alt="фото команды"
             />
-            <p className={styles.aboutTeam__name}>Михаил</p>
+            <p className={styles.aboutTeam__name}>Сержан</p>
             <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__pos}>Агент по недвижимости</p>
           </li>
           <li>
             <img
@@ -45,9 +45,9 @@ const AboutTeam = () => {
               src={photo_4}
               alt="фото команды"
             />
-            <p className={styles.aboutTeam__name}>Михаил</p>
+            <p className={styles.aboutTeam__name}>Барбара</p>
             <div className={styles.aboutTeam__underline} />
-            <p className={styles.aboutTeam__number}>+90 (534) 123 45 67</p>
+            <p className={styles.aboutTeam__pos}>Агент по недвижимости</p>
           </li>
         </ul>
       </section>

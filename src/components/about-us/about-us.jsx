@@ -1,10 +1,19 @@
 import styles from "./about-us.module.css";
+import Mobile from "./mobile";
 import aboutImageRight from "../../images/about-us-right.png";
 import aboutImageLeft from "../../images/about-us-left.png";
 import { Button } from "../ui/buttons";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ScreenWidthContext } from "../../services/app-context";
 
 const AboutUs = () => {
+  const {screenWidth} = useContext(ScreenWidthContext)
+
+  if (screenWidth !== "desktop") {
+    return (<Mobile />)
+  }
+
   return (
     <section id="about" className={styles.container}>
       <div className={styles.aboutUs__columns}>

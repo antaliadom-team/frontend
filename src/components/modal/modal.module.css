@@ -3,9 +3,6 @@
     z-index: 1;
     top: 50%;
     left: 50%;
-    overflow-y: scroll;
-    width: 700px;
-    max-height: calc(100vh - 200px);
     background: #ffffff;
     border: 2px solid #0d1b44;
     transform: translate(-50%, -50%);

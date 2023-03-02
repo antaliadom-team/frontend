@@ -1,11 +1,12 @@
 .login {
     margin-top: 156px;
+    width: 100%;
     border: 2px solid var(--text-color);
 }
 
 .container {
-    margin: 40px;
-    width: 536px;
+    padding: 40px;
+    width: 100%;
 }
 
 .title {
@@ -40,4 +41,18 @@
     line-height: 17px;
     font-weight: 400;
     color: var(--text-color);
+}
+
+@media screen and (max-width: 1280px) {
+    .login {
+        margin-top: 90px;
+        width: var(--container);
+        border: none;
+    }
+
+    .container {
+        margin: 0;
+        width: calc(var(--container) / 2);
+
+    }
 }

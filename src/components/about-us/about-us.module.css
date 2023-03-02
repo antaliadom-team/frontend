@@ -76,3 +76,73 @@
 .link {
     text-decoration: none;
 }
+
+@media screen and (max-width: 1280px) {
+    .aboutUs__title {
+        font-size: 28px;
+        line-height: 34px;
+        color: var(--text-color);
+    }
+
+    .article {
+        position: relative;
+        margin-bottom: 44px;
+    }
+
+    .article::before {
+        position: absolute;
+        top: -24px;
+        left: 151px;
+        width: 376px;
+        height: 2px;
+        content: "";
+        background-color: var(--border-color);
+    }
+
+    .article::after {
+        position: absolute;
+        top: -24px;
+        left: 526px;
+        width: 2px;
+        height: 333px;
+        content: "";
+        background-color: var(--border-color);
+    }
+
+    .aboutUs__paragraph span {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .aboutUs__image {
+        width: var(--container);
+    }
+
+    .article_bottom {
+        position: relative;
+        margin-top: 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+
+    .article_bottom::before {
+        position: absolute;
+        right: calc(489px + 24px);
+        width: 2px;
+        height: 100%;
+        content: "";
+        background-color: var(--border-color);
+    }
+
+    .aboutUs__paragraph:nth-last-child(1) {
+        margin-bottom: 0;
+    }
+
+    .aboutUs__button {
+        margin-top: 36px;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+}

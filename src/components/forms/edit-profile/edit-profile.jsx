@@ -1,12 +1,18 @@
 import styles from "./edit-profile.module.css";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
 import { PhoneInput, TextInput } from "../../ui/inputs";
 import { Button } from "../../ui/buttons";
+import { ModalContext } from "../../../services/app-context";
 
 const EditProfile = () => {
+  const { modal, setModal } = useContext(ModalContext);
+  const submitForm = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={submitForm}>
       <div className={styles.container}>
         <h2 className={styles.title}>Редактировать профиль</h2>
         <Link className={styles.link} to="/edit-password">
@@ -27,7 +33,7 @@ const EditProfile = () => {
           </li>
         </ul>
         <div className={styles.buttons}>
-          <Button type="primary">Сохранить</Button>
+          <Button type="primary" onClick={() => setModal({ ...modal, passwordChanged: true })}>Сохранить</Button>
           <Button type="ghost">Отменить</Button>
         </div>
       </div>

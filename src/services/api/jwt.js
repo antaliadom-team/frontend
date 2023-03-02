@@ -8,7 +8,6 @@ export const createToken = async (form, setAuth) => {
     password: form.password,
   };
 
-
   try {
     const response = await axios.post(API_CREATE_TOKEN, config);
     setCookie("accessToken", response.data.access, undefined);

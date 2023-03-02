@@ -1,0 +1,42 @@
+.tag {
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selector {
+    display: flex;
+    width: 222px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+    background-color: #ffffff;
+    border: 2px solid var(--text-color);
+}
+
+.text {
+    margin-bottom: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.active {
+    color: #ffffff;
+    background-color: var(--text-color);
+}

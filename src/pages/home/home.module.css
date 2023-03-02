@@ -1,4 +1,4 @@
 .home {
     margin-top: 36px;
-    width: 1280px;
+    width: var(--container);
 }

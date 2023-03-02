@@ -1,27 +1,34 @@
 import styles from "./app.module.css";
-import { Routes, Route } from "react-router-dom";
-import { Catalog, Home, ProductPage, Profile } from "../../pages";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { Catalog, Home, ProductPage, Profile, Order } from "../../pages";
+import { Register, Logout, EditProfile, EditPassword, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { ModalContext } from "../../services/app-context";
+import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
 import React, { useContext } from "react";
 import Modal from "../modal/modal";
-import Object from "../forms/object/object";
 import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
-import Login from "../forms/login/login";
-import Logout from "../forms/logout/logout";
-import Register from "../forms/register/register";
-import EditProfile from "../forms/edit-profile/edit-profile";
-import EditPassword from "../forms/edit-password/edit-password";
+import { Button } from "../ui/buttons";
+import { logoutUser } from "../../services/api/user";
+import CatalogItem from "../catalog-item/catalog-item";
 
 const App = () => {
   const { modal, setModal } = useContext(ModalContext);
+  const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
+  const { setUser } = useContext(UserContext);
   const modalClose = () => {
-    setModal(false);
+    setModal({ object: false, exit: false, passwordChanged: false });
   };
 
-  if (modal) {
+  const logout = () => {
+    modalClose();
+    logoutUser(setAuth, setUser);
+    navigate("/");
+  };
+
+  if (modal.object || modal.exit) {
     const x = window.scrollX;
     const y = window.scrollY;
     window.onscroll = () => {
@@ -38,6 +45,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
+          <Route path="/order" element={<Order />} />
           <Route path="/sample-product-page" element={<ProductPage />} />
           <Route element={<Layout />}>
             <Route path="/login" element={<Login />} />
@@ -55,9 +63,62 @@ const App = () => {
             }
           />
         </Routes>
-        {modal && (
+        {modal.object && (
           <Modal onClose={modalClose}>
-            <Object />
+            <div className={styles.object}>
+              <h2>Ваша заявка отправлена!</h2>
+              <div>
+                <CatalogItem withBtn={false} />
+              </div>
+              <div>
+                <Button type={"primary"} width={"100%"} onClick={() => {
+                  modalClose();
+                  navigate("/");
+                }}>
+                  На главную
+                </Button>
+              </div>
+            </div>
+
+          </Modal>
+        )}
+        {modal.exit && (
+          <Modal onClose={modalClose}>
+            <div className={styles.exit}>
+              <h2>Вы уверены, что хотите выйти из личного кабинета?</h2>
+              <div>
+                <Button type={"primary"} onClick={logout}>
+                  Да, выйти
+                </Button>
+              </div>
+              <div>
+                <Button
+                  type={"ghost"}
+                  onClick={() => {
+                    modalClose();
+                    navigate("/profile");
+                  }}>
+                  Нет, вернуться в личный кабинет
+                </Button>
+              </div>
+            </div>
+          </Modal>
+        )}
+        {modal.passwordChanged && (
+          <Modal onClose={modalClose}>
+            <div className={styles.password}>
+              <h2>Изменения сохранены</h2>
+              <div>
+                <Button
+                  type={"primary"}
+                  onClick={() => {
+                    modalClose();
+                    navigate("/profile");
+                  }}>
+                  Понятно
+                </Button>
+              </div>
+            </div>
           </Modal>
         )}
       </div>

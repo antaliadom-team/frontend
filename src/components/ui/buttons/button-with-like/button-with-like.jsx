@@ -6,13 +6,13 @@ import { Button } from "../index";
 const ButtonWithLike = ({ inactive = false, children, onClick }) => {
 
   return (
-    <div className={styles.block} data-disabled={inactive} onClick={onClick}>
-      <Button inactive={inactive}>
+    <div className={styles.block} data-disabled={inactive} >
+      <Button inactive={inactive} width={"calc(100% - 52px)"} onClick={onClick}>
         {children}
-        <div className={styles.like} >
-          <Like isAvailable={inactive}/>
-        </div>
       </Button>
+      <div className={styles.like} >
+        <Like isAvailable={inactive}/>
+      </div>
     </div>
   );
 };

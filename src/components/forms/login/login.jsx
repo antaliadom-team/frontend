@@ -3,13 +3,14 @@ import { Button } from "../../ui/buttons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../../ui/inputs";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../services/app-context";
+import { AuthContext, ScreenWidthContext } from "../../../services/app-context";
 import { useForm } from "../../../hooks/use-form";
 import { createToken } from "../../../services/api/jwt";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {screenWidth} = useContext(ScreenWidthContext);
   const { isAuth, setAuth } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
   const [error, setError]  = useState({email: "", password: ""});
@@ -61,13 +62,13 @@ const Login = () => {
             <TextInput text={"Пароль"} name={"password"} onChange={handleChange} value={values.password} errorProps={error.password} />
           </li>
           <li>
-            <Button type="primary" inactive={disabled}>
+            <Button type="primary" inactive={disabled} width={screenWidth !== "desktop" && "100%"}>
               Вход
             </Button>
           </li>
           <li>
             <p className={styles.text}>
-              <Link className={styles.link} to="/forgot-password">
+              <Link className={styles.link} to="/edit-password">
                 Забыли пароль?
               </Link>
             </p>

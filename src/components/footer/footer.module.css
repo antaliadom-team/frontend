@@ -1,10 +1,3 @@
-:root {
-    --screen-width: 1280px;
-    --footer-height: 241px;
-    --text-size: 18px;
-    --animation-time: 0.3s;
-}
-
 .container {
     display: flex;
     justify-content: center;
@@ -12,9 +5,9 @@
 
 .footer {
     display: flex;
-    min-width: var(--screen-width);
-    max-width: var(--screen-width);
-    height: var(--footer-height);
+    min-width: var(--container);
+    max-width: var(--container);
+    height: 241px;
     flex-direction: column;
 }
 
@@ -54,4 +47,11 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
+}
+
+@media screen and (max-width: 1280px) {
+    .social {
+        flex-direction: column;
+        align-items: end;
+    }
 }

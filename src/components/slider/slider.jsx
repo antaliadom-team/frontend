@@ -1,24 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./slider.module.css";
 import images from "./images";
 import arrow from "../../images/arrow.svg";
 
-const Slider = ({ bigSize = false }) => {
+const Slider = ({ big = false, little_big = false, tablet = false, mobile = false }) => {
   const [slideIndex, setSlideIndex] = useState(1);
+  const [size, setSize] = useState({ width: "305px", height: "261px" });
 
-  const size = () => {
-    if (bigSize) {
-      return {
-        width: "738px",
-        height: "632px",
-      };
-    } else {
-      return {
-        width: "305px",
-        height: "261px",
-      };
+  useEffect(() => {
+    switch (true) {
+      case big: {
+        setSize({ width: "738px", height: "632px" });
+        break;
+      }
+      case little_big: {
+        setSize({ width: "505px", height: "432px" });
+        break;
+      }
+      case tablet: {
+        setSize({
+          width: "328px",
+          height: "261px",
+        });
+        break;
+      }
+      case mobile: {
+        setSize({
+          width: "288px",
+          height: "180px",
+        });
+        break;
+      }
+      default: {
+        setSize({ width: "305px", height: "261px" });
+      }
     }
-  };
+  }, [big, little_big, tablet, mobile]);
 
   const setSlide = (imgIndex) => {
     if (imgIndex > images.length) {
@@ -47,10 +64,8 @@ const Slider = ({ bigSize = false }) => {
       {images.map((image) => (
         <img
           key={image.id}
-          style={size()}
-          className={
-            image.id === slideIndex ? styles.activeImage : styles.fadeImage
-          }
+          style={size}
+          className={image.id === slideIndex ? styles.activeImage : styles.fadeImage}
           src={image.src}
           alt="фото квартиры"
         />

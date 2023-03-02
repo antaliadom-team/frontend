@@ -11,7 +11,11 @@ export const ScreenWidthContext = createContext(null);
 export const AppContext = ({ children }) => {
   const [screenWidth, setScreenWidth] = useState("desktop");
   const [objects, setObjects] = useState();
-  const [modal, setModal] = useState({object: false, exit: false});
+  const [modal, setModal] = useState({
+    object: false,
+    exit: false,
+    passwordChanged: false,
+  });
   const [isAuth, setAuth] = useState(false);
   const [register, setRegister] = useState();
   const [user, setUser] = useState();

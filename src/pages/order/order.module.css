@@ -4,11 +4,17 @@
     display: flex;
     width: var(--container);
     flex-direction: column;
-    align-items: start;
+    align-items: center;
+}
+
+.back {
+    display: flex;
+    width: 100%;
+    justify-content: start;
 }
 
 .title {
-    margin-top: 24px;
+    margin-top: 40px;
     font-family: "Montserrat", sans-serif;
     font-size: 28px;
     line-height: 34px;
@@ -19,7 +25,6 @@
 
 .subtitle {
     margin-top: 8px;
-    width: 220px;
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 27px;
@@ -30,21 +35,27 @@
 
 .content {
     margin-top: 36px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+
 }
 
 .form {
     display: flex;
-    width: 328px;
+    width: 460px;
     flex-direction: column;
+}
+
+.item {
+    margin-bottom: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .checkbox {
     margin-top: 45px;
     margin-bottom: 24px;
     display: flex;
+    width: 460px;
     align-items: center;
     font-family: "Inter", sans-serif;
     font-size: 14px;
@@ -63,5 +74,5 @@
 
 .button {
     margin-top: 40px;
-    width: 100%;
+    width: 460px;
 }

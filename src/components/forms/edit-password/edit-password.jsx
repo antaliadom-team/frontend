@@ -24,7 +24,7 @@ const EditPassword = () => {
             </li>
           </ul>
           <div className={styles.buttons}>
-            <Button type="primary" onClick={() => {
+            <Button type="primary" width={"100%"} onClick={() => {
               setCorrect(false);
               setChanged(true);
             }}>

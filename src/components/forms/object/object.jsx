@@ -40,40 +40,40 @@ const Object = () => {
             Вы оформляете заявку на следующий объект
           </p>
           <CatalogItem withBtn={false} />
-          <form className={mainForm.mainForm__form} onSubmit={sendForm}>
-            <ul className={mainForm.mainForm__list}>
-              <li className={mainForm.mainForm__item}>
+          <form className={mainForm.form} onSubmit={sendForm}>
+            <ul className={mainForm.list}>
+              <li className={mainForm.item}>
                 <TextInput text={"Имя*"} placeholder={"Иван"} />
               </li>
-              <li className={mainForm.mainForm__item}>
+              <li className={mainForm.item}>
                 <TextInput text={"Фамилия*"} placeholder={"Иванов"} />
               </li>
-              <li className={mainForm.mainForm__item}>
+              <li className={mainForm.item}>
                 <PhoneInput
                   text={"Номер телефона*"}
                   placeholder={"+7 999 123 45 67"}
                 />
               </li>
-              <li className={mainForm.mainForm__item}>
+              <li className={mainForm.item}>
                 <TextInput text={"Email*"} placeholder={"mymail@mail.ru"} />
               </li>
-              <li className={mainForm.mainForm__item}>
+              <li className={mainForm.item}>
                 <TextareaInput />
               </li>
             </ul>
-            <div className={mainForm.mainForm__checkbox}>
+            <div className={mainForm.checkbox}>
               <Checkbox>
                 Я согласен с&nbsp;
-                <a href="/policy" className={mainForm.mainForm__link}>
+                <a href="/policy" className={mainForm.link}>
                   Политикой конфиденциальности
                 </a>
                 &nbsp;и&nbsp;
-                <a href="/policy" className={mainForm.mainForm__link}>
+                <a href="/policy" className={mainForm.link}>
                   Условиями использования сервиса
                 </a>
               </Checkbox>
             </div>
-            <div className={mainForm.mainForm__button}>
+            <div className={mainForm.button}>
               <Button type="primary">Отправить заявку</Button>
             </div>
           </form>

@@ -55,8 +55,10 @@ const Mobile = () => {
             <img src={userIcon} alt="иконка профиля" />
             {userMenu && (
               <div className={styles.user_menu}>
-                <h3 className={styles.user_menu_title}>{user?.first_name}</h3>
-                <p className={styles.user_menu_subtitle}>{user?.email}</p>
+                <div onClick={() => navigate("/profile")}>
+                  <h3 className={styles.user_menu_title}>{user?.first_name}</h3>
+                  <p className={styles.user_menu_subtitle}>{user?.email}</p>
+                </div>
                 <div className={styles.hr} />
                 <div className={styles.user_menu_edit} onClick={() => navigate("/edit-profile")}>
                   <img src={userEdit} alt="иконка редактирования профиля" />

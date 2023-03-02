@@ -3,15 +3,11 @@ import styles from "./button-with-like.module.css";
 import { Like } from "../../icons";
 import { Button } from "../index";
 
-const ButtonWithLike = ({ inactive = false, width = null, children, onClick }) => {
-
-  const calcWidth = () => {
-    return `calc(${width} - 52px)`
-  }
+const ButtonWithLike = ({ inactive = false, children, onClick }) => {
 
   return (
     <div className={styles.block} data-disabled={inactive} >
-      <Button inactive={inactive} width={calcWidth()} onClick={onClick}>
+      <Button inactive={inactive} width={"calc(100% - 52px)"} onClick={onClick}>
         {children}
       </Button>
       <div className={styles.like} >

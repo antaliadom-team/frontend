@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styles from "./slider.module.css";
-import images from "./images";
 import arrow from "../../images/arrow.svg";
+import noImage from "../../images/no-photo.png"
 
-const Slider = ({ bigSize = false }) => {
-  const [slideIndex, setSlideIndex] = useState(1);
+const Slider = ({ bigSize = false, images }) => {
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const size = () => {
     if (bigSize) {
@@ -21,10 +21,10 @@ const Slider = ({ bigSize = false }) => {
   };
 
   const setSlide = (imgIndex) => {
-    if (imgIndex > images.length) {
-      setSlideIndex(1);
-    } else if (imgIndex < 1) {
-      setSlideIndex(images.length);
+    if (imgIndex > images.length - 1) {
+      setSlideIndex(0);
+    } else if (imgIndex < 0) {
+      setSlideIndex(images.length - 1);
     } else {
       setSlideIndex(imgIndex);
     }
@@ -44,17 +44,24 @@ const Slider = ({ bigSize = false }) => {
 
   return (
     <div className={styles.slider}>
-      {images.map((image) => (
+      {images.length !== 0 ? (
+        images.map((image) => (
+          <img
+            key={image.id}
+            style={size()}
+            className={images.indexOf(image) === slideIndex ? styles.activeImage : styles.fadeImage}
+            src={image.image}
+            alt="фото квартиры"
+          />
+        ))
+      ) : (
         <img
-          key={image.id}
           style={size()}
-          className={
-            image.id === slideIndex ? styles.activeImage : styles.fadeImage
-          }
-          src={image.src}
-          alt="фото квартиры"
+          src={noImage}
+          className={styles.activeImage}
+          alt="нет фото"
         />
-      ))}
+      )}
       <button className={styles.arrow_left} onClick={prevSlide}>
         <img src={arrow} alt="предыдущая" className={styles.arrow_img} />
       </button>
@@ -66,11 +73,11 @@ const Slider = ({ bigSize = false }) => {
           <div
             key={image.id}
             className={
-              slideIndex === image.id
+              slideIndex === images.indexOf(image)
                 ? `${styles.pagination_item} ${styles.pagination_item_active}`
                 : styles.pagination_item
             }
-            onClick={() => currentSlide(image.id)}
+            onClick={() => currentSlide(images.indexOf(image))}
           />
         ))}
       </div>

@@ -1,4 +1,4 @@
-import image1 from "../../images/sliderImages/catalog-img.png";
+import image1 from "http://antalyadom.telfia.com/media/real_estate/photo_4_2023-02-02_19-28-40.jpg";
 import image2 from "../../images/sliderImages/about-us-right.png";
 import image3 from "../../images/sliderImages/about-us-left.png";
 import image4 from "../../images/sliderImages/pic_main.png";

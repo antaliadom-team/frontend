@@ -60,11 +60,15 @@
     color: #0d1b44;
 }
 
-.description {
+.description_top {
     display: flex;
     width: 280px;
     align-items: center;
+}
 
+.description_bottom {
+    min-height: 50px;
+    max-height: 50px;
 }
 
 .text {

@@ -1,15 +1,18 @@
 import styles from "./catalog.module.css";
 import Dropdown from "../../components/ui/buttons/dropdown/dropdown";
 import CatalogItem from "../../components/catalog-item/catalog-item";
-
+import { useContext } from "react";
+import { ObjectsContext, PropertyTypesContext, LocationsContext } from "../../services/app-context";
 
 const Catalog = () => {
   const titles = document.getElementsByClassName(styles.filters_title);
+  const { objects } = useContext(ObjectsContext);
+  const { setLocations } = useContext(LocationsContext);
+  const { setPropertyTypes } = useContext(PropertyTypesContext);
 
   const toggleClass = (event) => {
     for (let title of titles) {
-      if (title.classList.contains(styles.active))
-        title.classList.remove(styles.active);
+      if (title.classList.contains(styles.active)) title.classList.remove(styles.active);
       event.target.classList.add(styles.active);
     }
   };
@@ -22,21 +25,22 @@ const Catalog = () => {
       </div>
       <div className={styles.dropdowns}>
         <Dropdown placeholder={"Локация"} width={"210px"} options={["Анталия", "Северный Кипр", "Стамбул", "Другое"]} />
-        <Dropdown placeholder={"Тип недвижимости"} width={"300px"} options={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]} />
+        <Dropdown
+          placeholder={"Тип недвижимости"}
+          width={"300px"}
+          options={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]}
+        />
         <Dropdown placeholder={"Количество комнат"} width={"300px"} options={["1", "2", "3", "4+"]} />
       </div>
 
-        <h1 className={styles.ads_title}>Свежие объявления</h1>
-      <div className={styles.ads}>
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-        <CatalogItem />
-      </div>
+      <h1 className={styles.ads_title}>Свежие объявления</h1>
+      {objects && (
+        <div className={styles.ads}>
+          {objects.map((object) => (
+            <CatalogItem objectInfo={object} key={object.id} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

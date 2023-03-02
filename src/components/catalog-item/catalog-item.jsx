@@ -19,7 +19,7 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
         <div className={styles.wrapper}>
           <div className={styles.slider}>{<Slider images={objectInfo.images} />}</div>
           <div className={styles.price}>{`${objectInfo.price}${objectInfo.currency}/${objectInfo.period}`}</div>
-          <div className={styles.description}>
+          <div className={styles.description_top}>
             <p className={styles.text}>Аренда</p>
             <div className={styles.dot} />
             <p className={styles.text}>{`${propertyTypes[objectInfo.property_type - 1].name}, ${objectInfo.rooms} ${
@@ -27,7 +27,7 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
             }`}</p>
           </div>
           <div className={styles.hr} />
-          <div className={styles.description}>
+          <div className={styles.description_bottom}>
             {locations[objectInfo.location - 1].name && (
               <p className={styles.text}>{`${objectInfo.title} ${locations[objectInfo.location - 1].name}`}</p>
             )}

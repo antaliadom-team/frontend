@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styles from "./slider.module.css";
 import arrow from "../../images/arrow.svg";
+import noImage from "../../images/no-photo.png"
 
 const Slider = ({ bigSize = false, images }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const size = (image) => {
+  const size = () => {
     if (bigSize) {
       return {
         width: "738px",
@@ -47,14 +48,19 @@ const Slider = ({ bigSize = false, images }) => {
         images.map((image) => (
           <img
             key={image.id}
-            style={size(image)}
+            style={size()}
             className={images.indexOf(image) === slideIndex ? styles.activeImage : styles.fadeImage}
             src={image.image}
             alt="фото квартиры"
           />
         ))
       ) : (
-        <div style={size()}></div>
+        <img
+          style={size()}
+          src={noImage}
+          className={styles.activeImage}
+          alt="нет фото"
+        />
       )}
       <button className={styles.arrow_left} onClick={prevSlide}>
         <img src={arrow} alt="предыдущая" className={styles.arrow_img} />

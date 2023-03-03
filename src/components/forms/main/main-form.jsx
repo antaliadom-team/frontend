@@ -15,24 +15,28 @@ const MainForm = () => {
             <Dropdown
               text={"Аренда/Покупка"}
               options={["Аренда", "Покупка"]}
+              required={true}
             />
           </li>
           <li className={styles.item}>
             <Dropdown
               text={"Локация"}
               options={["Анталия", "Северный Кипр", "Стамбул", "другое"]}
+              required={false}
             />
           </li>
           <li className={styles.item}>
             <Dropdown
               text={"Тип недвижимости"}
               options={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]}
+              required={false}
             />
           </li>
           <li className={styles.item}>
             <Dropdown
               text={"Количество комнат"}
               options={["1", "2", "3", "4+"]}
+              required={false}
             />
           </li>
         </>

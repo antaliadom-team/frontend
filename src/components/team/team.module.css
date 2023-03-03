@@ -1,9 +1,9 @@
-.aboutTeam {
+.team {
     font-family: "Montserrat", sans-serif;
     color: var(--text-color);
 }
 
-.aboutTeam__title {
+.title {
     margin-top: 120px;
     font-size: 32px;
     line-height: 39px;
@@ -11,31 +11,31 @@
     text-align: center;
 }
 
-.aboutTeam__list {
+.list {
     margin-top: 36px;
     display: flex;
     gap: 20px;
     list-style-type: none;
 }
 
-.aboutTeam__photo {
+.photo {
     width: 305px;
     height: 355px;
 }
 
-.aboutTeam__name {
+.name {
     margin: 5px 0 8px;
     font-size: 24px;
     line-height: 29px;
     font-weight: 600;
 }
 
-.aboutTeam__underline {
+.underline {
     width: 169px;
     border-bottom: 2px solid var(--border-color);
 }
 
-.aboutTeam__pos {
+.pos {
     margin: 13px 0 128px;
     font-size: 18px;
     line-height: 25px;
@@ -43,7 +43,7 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .aboutTeam__list {
+    .list {
         margin-top: 36px;
         display: flex;
         overflow: scroll;
@@ -51,19 +51,19 @@
         gap: 20px;
     }
 
-    .aboutTeam__photo {
+    .photo {
         width: 240px;
         height: 280px;
     }
 
-    .aboutTeam__underline {
+    .underline {
         margin-bottom: 4px;
         margin-left: 0;
         width: 169px;
         border-bottom: 2px solid var(--border-color);
     }
 
-    .aboutTeam__number {
+    .pos {
         margin: 0;
         font-family: "Open Sans", sans-serif;
         font-size: 18px;
@@ -71,5 +71,34 @@
         font-weight: 400;
         font-style: normal;
     }
+}
 
+@media screen and (max-width: 768px) {
+    .title {
+        margin-top: 80px;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: start;
+    }
+
+    .photo {
+        width: 188px;
+        height: 219px;
+    }
+
+    .name {
+        font-family: "Open Sans", sans-serif;
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .pos {
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+        font-style: normal;
+    }
 }

@@ -10,7 +10,7 @@
 .back {
     display: flex;
     width: 100%;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 .title {

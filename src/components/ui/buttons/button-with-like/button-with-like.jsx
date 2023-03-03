@@ -7,7 +7,7 @@ const ButtonWithLike = ({ inactive = false, children, onClick }) => {
 
   return (
     <div className={styles.block} data-disabled={inactive} >
-      <Button inactive={inactive} width={"calc(100% - 52px)"} onClick={onClick}>
+      <Button inactive={inactive} width={"calc(100% - 52px)"} padding={"12px 0"} onClick={onClick}>
         {children}
       </Button>
       <div className={styles.like} >

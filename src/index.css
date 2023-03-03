@@ -25,9 +25,10 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     :root {
-        --container: 320px;
+        /* 32 - отступы по 16 */
+        --container: calc(320px - 32px);
     }
 }
 

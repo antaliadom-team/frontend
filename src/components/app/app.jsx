@@ -9,6 +9,7 @@ import {
   PropertyTypesContext,
   ObjectsContext,
   CategoriesContext,
+  FacilitiesContext,
 } from "../../services/app-context";
 import React, { useContext, useEffect } from "react";
 import Modal from "../modal/modal";
@@ -24,6 +25,7 @@ import { getLocations } from "../../services/api/locations";
 import { getPropertyTypes } from "../../services/api/propertyTypes";
 import { getObjects } from "../../services/api/objects";
 import { getCategories } from "../../services/api/categories";
+import { getFacilities } from "../../services/api/facilities";
 
 const App = () => {
   const { modal, setModal } = useContext(ModalContext);
@@ -31,6 +33,7 @@ const App = () => {
   const { setPropertyTypes } = useContext(PropertyTypesContext);
   const { setObjects } = useContext(ObjectsContext);
   const { setCategories } = useContext(CategoriesContext);
+  const { setFacilities } = useContext(FacilitiesContext);
 
   const modalClose = () => {
     setModal(false);
@@ -42,6 +45,8 @@ const App = () => {
     getPropertyTypes(setPropertyTypes);
     getObjects(setObjects);
     getCategories(setCategories);
+    getCategories(setCategories);
+    getFacilities(setFacilities);
   }, []);
 
   if (modal) {

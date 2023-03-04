@@ -34,9 +34,6 @@ const Ads = () => {
           )}
         </>
       )}
-
-      {/* <Link to={"/catalog"} className={styles.btn_wrapper}> */}
-      {/* </Link> */}
     </section>
   );
 };

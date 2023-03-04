@@ -9,6 +9,7 @@ export const PropertyTypesContext = createContext(null);
 export const RegisterContext = createContext(null);
 export const LocationsContext = createContext(null);
 export const CategoriesContext = createContext(null);
+export const FacilitiesContext = createContext(null);
 export const CountObjectsOnMainPageContext = createContext(null);
 
 export const AppContext = ({ children }) => {
@@ -21,6 +22,7 @@ export const AppContext = ({ children }) => {
   const [countObjects, setCountObjects] = useState(4);
   const [propertyTypes, setPropertyTypes] = useState();
   const [categories, setCategories] = useState();
+  const [facilities, setFacilities] = useState();
 
   useEffect(() => {
     if (isAuth) {
@@ -31,19 +33,21 @@ export const AppContext = ({ children }) => {
   return (
     <RegisterContext.Provider value={{ register, setRegister }}>
       <ObjectsContext.Provider value={{ objects, setObjects }}>
-        <CategoriesContext.Provider value={{ categories, setCategories }}>
-          <PropertyTypesContext.Provider value={{ propertyTypes, setPropertyTypes }}>
-            <CountObjectsOnMainPageContext.Provider value={{ countObjects, setCountObjects }}>
-              <UserContext.Provider value={{ user, setUser }}>
-                <AuthContext.Provider value={{ isAuth, setAuth }}>
-                  <LocationsContext.Provider value={{ locations, setLocations }}>
-                    <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
-                  </LocationsContext.Provider>
-                </AuthContext.Provider>
-              </UserContext.Provider>
-            </CountObjectsOnMainPageContext.Provider>
-          </PropertyTypesContext.Provider>
-        </CategoriesContext.Provider>
+        <FacilitiesContext.Provider value={{ facilities, setFacilities }}>
+          <CategoriesContext.Provider value={{ categories, setCategories }}>
+            <PropertyTypesContext.Provider value={{ propertyTypes, setPropertyTypes }}>
+              <CountObjectsOnMainPageContext.Provider value={{ countObjects, setCountObjects }}>
+                <UserContext.Provider value={{ user, setUser }}>
+                  <AuthContext.Provider value={{ isAuth, setAuth }}>
+                    <LocationsContext.Provider value={{ locations, setLocations }}>
+                      <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
+                    </LocationsContext.Provider>
+                  </AuthContext.Provider>
+                </UserContext.Provider>
+              </CountObjectsOnMainPageContext.Provider>
+            </PropertyTypesContext.Provider>
+          </CategoriesContext.Provider>
+        </FacilitiesContext.Provider>
       </ObjectsContext.Provider>
     </RegisterContext.Provider>
   );

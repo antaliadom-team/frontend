@@ -1,5 +1,7 @@
 .slider {
     position: relative;
+    border: none;
+    cursor: pointer;
 }
 
 .activeImage {

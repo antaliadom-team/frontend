@@ -1,9 +1,10 @@
 import { useState } from "react";
 import styles from "./slider.module.css";
 import arrow from "../../images/arrow.svg";
-import noImage from "../../images/no-photo.png"
+import noImage from "../../images/no-photo.png";
+import { Link } from "react-router-dom";
 
-const Slider = ({ bigSize = false, images }) => {
+const Slider = ({ bigSize = false, images, objectInfo }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const size = () => {
@@ -43,45 +44,42 @@ const Slider = ({ bigSize = false, images }) => {
   };
 
   return (
-    <div className={styles.slider}>
-      {images.length !== 0 ? (
-        images.map((image) => (
-          <img
-            key={image.id}
-            style={size()}
-            className={images.indexOf(image) === slideIndex ? styles.activeImage : styles.fadeImage}
-            src={image.image}
-            alt="фото квартиры"
-          />
-        ))
-      ) : (
-        <img
-          style={size()}
-          src={noImage}
-          className={styles.activeImage}
-          alt="нет фото"
-        />
-      )}
-      <button className={styles.arrow_left} onClick={prevSlide}>
-        <img src={arrow} alt="предыдущая" className={styles.arrow_img} />
-      </button>
-      <button className={styles.arrow_right} onClick={nextSlide}>
-        <img src={arrow} alt="следующая" className={styles.arrow_img} />
-      </button>
-      <div className={styles.pagination}>
-        {images.map((image) => (
-          <div
-            key={image.id}
-            className={
-              slideIndex === images.indexOf(image)
-                ? `${styles.pagination_item} ${styles.pagination_item_active}`
-                : styles.pagination_item
-            }
-            onClick={() => currentSlide(images.indexOf(image))}
-          />
-        ))}
+    <Link to={`/sample-product-page/${objectInfo.id}`}>
+      <div className={styles.slider}>
+        {images.length !== 0 ? (
+          images.map((image) => (
+            <img
+              key={image.id}
+              style={size()}
+              className={images.indexOf(image) === slideIndex ? styles.activeImage : styles.fadeImage}
+              src={image.image}
+              alt="фото квартиры"
+            />
+          ))
+        ) : (
+          <img style={size()} src={noImage} className={styles.activeImage} alt="нет фото" />
+        )}
+        <button className={styles.arrow_left} onClick={prevSlide}>
+          <img src={arrow} alt="предыдущая" className={styles.arrow_img} />
+        </button>
+        <button className={styles.arrow_right} onClick={nextSlide}>
+          <img src={arrow} alt="следующая" className={styles.arrow_img} />
+        </button>
+        <div className={styles.pagination}>
+          {images.map((image) => (
+            <div
+              key={image.id}
+              className={
+                slideIndex === images.indexOf(image)
+                  ? `${styles.pagination_item} ${styles.pagination_item_active}`
+                  : styles.pagination_item
+              }
+              onClick={() => currentSlide(images.indexOf(image))}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

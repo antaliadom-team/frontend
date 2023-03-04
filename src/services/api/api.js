@@ -1,6 +1,7 @@
 const API = "http://antalyadom.telfia.com/api/";
 
 export const API_OBJECTS = `${API}objects/`;
+export const API_CATEGORIES = `${API}objects/categories`;
 export const API_LOCATIONS = `${API}objects/locations/`;
 export const API_PROPERTY_TYPES = `${API}objects/property_types/`;
 export const API_REGISTER = `${API}users/`;

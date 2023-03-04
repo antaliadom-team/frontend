@@ -1,40 +1,38 @@
 import styles from "./product-page.module.css";
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import AmenityItem from "../../components/amenity-item/amenity-item";
 import { ButtonWithLike } from "../../components/ui/buttons";
 import Slider from "../../components/slider/slider";
+import { LocationsContext, PropertyTypesContext, ObjectsContext, CategoriesContext } from "../../services/app-context";
 
 const ProductPage = () => {
-  const breadcrumb1 = "Аренда";
-  const breadcrumb2 = "Квартиры";
-  const breadcrumb3 = "2-х комнатные";
-  const title = "Gündoğdu, Göksu Cd., 07060 Kepez/Antalya, Турция";
+  const { objects } = useContext(ObjectsContext);
+  const { id } = useParams();
+  const object = objects.find((object) => object.id === Number(id));
+  console.log(object);
+
+  const { propertyTypes } = useContext(PropertyTypesContext);
+  const { locations } = useContext(LocationsContext);
+  const { categories } = useContext(CategoriesContext);
+
   const description = (
     <>
       <p>
-        2-комн. апартаменты, 90 м² ЦЕНА ДЕЙСТВИТЕЛЬНА ПРИ БРОНИРОВАНИИ В НОЯБРЕ.
-        ПОДЗЕМНАЯ ПАРКОВКА И УБОРКА ВКЛЮЧЕНЫ!
+        2-комн. апартаменты, 90 м² ЦЕНА ДЕЙСТВИТЕЛЬНА ПРИ БРОНИРОВАНИИ В НОЯБРЕ. ПОДЗЕМНАЯ ПАРКОВКА И УБОРКА ВКЛЮЧЕНЫ!
       </p>
+      <p>Вашему вниманию предлагаются сервисные апартаменты в аренду у Кремля.</p>
       <p>
-        Вашему вниманию предлагаются сервисные апартаменты в аренду у Кремля.
+        Изысканная полностью меблированная резиденция с одной спальней и гостиной, площадью 90 кв.м. Планировка
+        резиденции предусматривает объединённую гостиную и обеденную зону с полноразмерной кухней.{" "}
       </p>
+      <p>Кухня оборудована немецкой встроенной техникой Kppersbusch и укомплектована полным набором посуды. </p>
       <p>
-        Изысканная полностью меблированная резиденция с одной спальней и
-        гостиной, площадью 90 кв.м. Планировка резиденции предусматривает
-        объединённую гостиную и обеденную зону с полноразмерной кухней.{" "}
-      </p>
-      <p>
-        Кухня оборудована немецкой встроенной техникой Kppersbusch и
-        укомплектована полным набором посуды.{" "}
-      </p>
-      <p>
-        Спальня с большой двуспальной кроватью (king size) и удобной рабочей
-        зоной. Две гардеробные комнаты, два санузла и подсобное помещение со
-        стиральной и сушильной машинами Miele.
+        Спальня с большой двуспальной кроватью (king size) и удобной рабочей зоной. Две гардеробные комнаты, два санузла
+        и подсобное помещение со стиральной и сушильной машинами Miele.
       </p>
       <ul>
-        В стоимость проживания в комплексе Резиденции Москва включены следующие
-        услуги:
+        В стоимость проживания в комплексе Резиденции Москва включены следующие услуги:
         <li>1 машиноместо на подземной парковке;</li>
         <li>консьерж-сервис;</li>
         <li>влажная уборка с заменой постельного белья дважды в неделю;</li>
@@ -49,34 +47,28 @@ const ProductPage = () => {
       <nav aria-label="breadcrumb">
         <ol className={styles.breadcrumbs}>
           <li>
-            <NavLink
-              className={styles.breadcrumbs_link}
-              to="/sample-product-page">
-              {breadcrumb1}
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
+              {categories[object.category - 1].name}
               <span>&nbsp; / &nbsp;</span>
             </NavLink>
           </li>
           <li>
-            <NavLink
-              className={styles.breadcrumbs_link}
-              to="/sample-product-page">
-              {breadcrumb2}
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
+              {propertyTypes[object.property_type - 1].name}
               <span>&nbsp; / &nbsp;</span>
             </NavLink>
           </li>
           <li>
-            <NavLink
-              className={styles.breadcrumbs_link}
-              to="/sample-product-page">
-              {breadcrumb3}
+            <NavLink className={styles.breadcrumbs_link} to="/sample-product-page">
+              {`${object.rooms}${object.rooms === 1 ? " -" : "-х"} комнатная`}
             </NavLink>
           </li>
         </ol>
       </nav>
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.title}>{`${object.title} ${locations[object.location - 1].name}`}</h1>
       <div className={styles.description_container}>
         <div className={styles.slider}>
-          <Slider bigSize={true}/>
+          <Slider bigSize={true} images={object.images} objectInfo={object} />
         </div>
         <div className={styles.amenities}>
           <h3 className={styles.amenities_title}>Удобства</h3>
@@ -101,26 +93,32 @@ const ProductPage = () => {
         </div>
         <div className={styles.stats_container}>
           <p className={styles.stats_number_left}>
-            1000€/месяц
+            {`${object.price}${object.currency}/${object.period}`}
             <span className={styles.stats_sub}>
-              Аренда &#8226; Квартира, 2 комнаты
+              {`${categories[object.category - 1].name} `}
+              &#8226;
+              {` ${propertyTypes[object.property_type - 1].name}, ${object.rooms} ${
+                object.rooms === 1 ? "комната" : object.rooms > 4 ? "комнат" : "комнаты"
+              }`}
             </span>
           </p>
           <p className={styles.stats_number}>
-            90м&#178;<span className={styles.stats_desc}>площадь</span>
+            {`${object.area}м`}
+            &#178;<span className={styles.stats_desc}>площадь</span>
           </p>
           <p className={styles.stats_number}>
-            7 из 10<span className={styles.stats_desc}>этаж</span>
+            {object.floor} из {object.total_floors}
+            <span className={styles.stats_desc}>этаж</span>
           </p>
           <p className={styles.stats_number}>
-            2010 год<span className={styles.stats_desc}>построен</span>
+            {object.construction_year} год<span className={styles.stats_desc}>построен</span>
           </p>
         </div>
         <ButtonWithLike type="primary">Оформить заявку</ButtonWithLike>
       </div>
       <hr className={styles.hr} />
       <h2 className={styles.description_title}>Описание</h2>
-      <div className={styles.description_text}>{description}</div>
+      <div className={styles.description_text}>{object.description}</div>
       <ButtonWithLike type="primary">Оформить заявку</ButtonWithLike>
     </section>
   );

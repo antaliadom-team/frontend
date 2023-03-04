@@ -2,12 +2,13 @@ import styles from "./catalog-item.module.css";
 import Slider from "../slider/slider";
 import { useContext } from "react";
 import { ButtonWithLike } from "../ui/buttons";
-import { LocationsContext, ModalContext, PropertyTypesContext } from "../../services/app-context";
+import { LocationsContext, ModalContext, PropertyTypesContext, CategoriesContext } from "../../services/app-context";
 
 const CatalogItem = ({ withBtn = true, objectInfo }) => {
   const { setModal } = useContext(ModalContext);
   const { propertyTypes } = useContext(PropertyTypesContext);
   const { locations } = useContext(LocationsContext);
+  const { categories } = useContext(CategoriesContext);
 
   const modalOpen = () => {
     setModal(true);
@@ -15,12 +16,12 @@ const CatalogItem = ({ withBtn = true, objectInfo }) => {
 
   return (
     <>
-      {objectInfo && propertyTypes && locations && (
+      {objectInfo && propertyTypes && locations && categories && (
         <div className={styles.wrapper}>
-          <div className={styles.slider}>{<Slider images={objectInfo.images} />}</div>
+          <div className={styles.slider}>{<Slider images={objectInfo.images} objectInfo={objectInfo} />}</div>
           <div className={styles.price}>{`${objectInfo.price}${objectInfo.currency}/${objectInfo.period}`}</div>
           <div className={styles.description_top}>
-            <p className={styles.text}>Аренда</p>
+            <p className={styles.text}>{categories[objectInfo.category - 1].name}</p>
             <div className={styles.dot} />
             <p className={styles.text}>{`${propertyTypes[objectInfo.property_type - 1].name}, ${objectInfo.rooms} ${
               objectInfo.rooms === 1 ? "комната" : objectInfo.rooms > 4 ? "комнат" : "комнаты"

@@ -13,13 +13,14 @@
 }
 
 .wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
 .btn_wrapper {
-    text-decoration: none;
     margin-top: 62px;
     display: flex;
     justify-content: center;
+    text-decoration: none;
 }

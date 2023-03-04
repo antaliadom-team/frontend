@@ -4,43 +4,24 @@ import { NavLink, useParams } from "react-router-dom";
 import AmenityItem from "../../components/amenity-item/amenity-item";
 import { ButtonWithLike } from "../../components/ui/buttons";
 import Slider from "../../components/slider/slider";
-import { LocationsContext, PropertyTypesContext, ObjectsContext, CategoriesContext } from "../../services/app-context";
+import {
+  LocationsContext,
+  PropertyTypesContext,
+  ObjectsContext,
+  CategoriesContext,
+  FacilitiesContext,
+} from "../../services/app-context";
 
 const ProductPage = () => {
   const { objects } = useContext(ObjectsContext);
+  const { facilities } = useContext(FacilitiesContext);
   const { id } = useParams();
   const object = objects.find((object) => object.id === Number(id));
-  console.log(object);
+  console.log(facilities);
 
   const { propertyTypes } = useContext(PropertyTypesContext);
   const { locations } = useContext(LocationsContext);
   const { categories } = useContext(CategoriesContext);
-
-  const description = (
-    <>
-      <p>
-        2-комн. апартаменты, 90 м² ЦЕНА ДЕЙСТВИТЕЛЬНА ПРИ БРОНИРОВАНИИ В НОЯБРЕ. ПОДЗЕМНАЯ ПАРКОВКА И УБОРКА ВКЛЮЧЕНЫ!
-      </p>
-      <p>Вашему вниманию предлагаются сервисные апартаменты в аренду у Кремля.</p>
-      <p>
-        Изысканная полностью меблированная резиденция с одной спальней и гостиной, площадью 90 кв.м. Планировка
-        резиденции предусматривает объединённую гостиную и обеденную зону с полноразмерной кухней.{" "}
-      </p>
-      <p>Кухня оборудована немецкой встроенной техникой Kppersbusch и укомплектована полным набором посуды. </p>
-      <p>
-        Спальня с большой двуспальной кроватью (king size) и удобной рабочей зоной. Две гардеробные комнаты, два санузла
-        и подсобное помещение со стиральной и сушильной машинами Miele.
-      </p>
-      <ul>
-        В стоимость проживания в комплексе Резиденции Москва включены следующие услуги:
-        <li>1 машиноместо на подземной парковке;</li>
-        <li>консьерж-сервис;</li>
-        <li>влажная уборка с заменой постельного белья дважды в неделю;</li>
-        <li>вынос мусора и обновление бумажных изделий ежедневно;</li>
-        <li>служба безопасности 24/7.</li>
-      </ul>
-    </>
-  );
 
   return (
     <section className={styles.section}>
@@ -73,7 +54,16 @@ const ProductPage = () => {
         <div className={styles.amenities}>
           <h3 className={styles.amenities_title}>Удобства</h3>
           <ul className={styles.amenities_list}>
-            <AmenityItem title="Интернет" isAvailable={true} />
+            {facilities.map((facility) => (
+              <img
+                key={facility.id}
+                // className={images.indexOf(image) === slideIndex ? styles.activeImage : styles.fadeImage}
+                src={facility.icon}
+                alt="иконка удобства"
+              />
+            ))}
+
+            {/* <AmenityItem title="Интернет" isAvailable={true} />
             <AmenityItem title="Кондиционер" isAvailable={true} />
             <AmenityItem title="Стиральная машина" isAvailable={true} />
             <AmenityItem title="Парковка" isAvailable={true} />
@@ -88,7 +78,7 @@ const ProductPage = () => {
             <AmenityItem title="Интернет" isAvailable={false} />
             <AmenityItem title="Кондиционер" isAvailable={false} />
             <AmenityItem title="Стиральная машина" isAvailable={false} />
-            <AmenityItem title="Парковка" isAvailable={false} />
+            <AmenityItem title="Парковка" isAvailable={false} /> */}
           </ul>
         </div>
         <div className={styles.stats_container}>

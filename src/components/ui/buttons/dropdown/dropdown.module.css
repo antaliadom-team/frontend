@@ -1,11 +1,30 @@
 .dropdown {
     position: relative;
-    margin-bottom: 36px;
+    margin-top: 8px;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    width: 100%;
     font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
     font-style: normal;
+    text-align: start;
+    color: var(--input-color-disabled);
+    background-color: #ffffff;
+    outline: 2px solid var(--input-color);
+    cursor: pointer;
+    appearance: none;
 }
 
-.text {
+.dropdown.active,
+.dropdown:hover {
+    background-color: #e9f3f5;
+}
+
+.label {
+    display: block;
+    height: 120px;
     font-size: 18px;
     line-height: 27px;
     font-weight: 400;
@@ -13,9 +32,8 @@
 
 .button {
     position: relative;
-    margin-top: 8px;
-    margin-bottom: 4px;
     padding: 6px 12px;
+    box-sizing: border-box;
     width: 100%;
     font-size: 18px;
     line-height: 27px;
@@ -23,8 +41,8 @@
     text-align: start;
     color: var(--input-color);
     background-color: #ffffff;
-    border: 2px solid var(--input-color);
-    outline: none;
+    outline: 2px solid var(--input-color);
+    cursor: pointer;
     appearance: none;
 }
 
@@ -33,9 +51,9 @@
     float: right;
     width: 30px;
     height: 30px;
+    pointer-events: none;
     transition: transform 0.3s;
     transform: rotate(0);
-
 }
 
 .arrow::after {
@@ -66,49 +84,98 @@
 
 .menu {
     position: absolute;
-    z-index: 1;
-    top: calc(100% + 4px);
+    z-index: 10;
+    top: calc(100% + 8px);
     left: 0;
+    padding: 0;
+    box-sizing: border-box;
     width: 100%;
     opacity: 0;
     pointer-events: none;
+    color: var(--input-color);
     background-color: #ffffff;
-    border: 2px solid var(--input-color);
+    outline: 2px solid var(--input-color);
     transition: opacity 0.3s, transform 0.3s;
     transform: translateY(-30px);
 }
 
-.dropdown > .button.active + .menu {
+.dropdown.active > .menu {
     overflow: hidden;
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
 }
 
-.dropdown > .button.active > .arrow {
+.dropdown.active > .arrow {
     transform: rotate(180deg);
 }
 
 .option {
     position: relative;
-    padding: 6px 38px;
-    cursor: pointer;
-    user-select: none;
+    padding: 8px 0 8px 38px;
+    list-style: none;
 }
 
 .option:hover {
     background-color: #e9f3f5;
 }
 
-.box {
+.option::before {
     position: absolute;
     top: 30%;
     left: 16px;
     width: 16px;
     height: 16px;
+    content: "";
+    background-color: none;
     border: 1px solid #0d1b44;
 }
 
-.activeBox {
+.option.checked::before {
     background-color: #0d1b44;
+}
+
+.error {
+    padding-top: 8px;
+    display: block;
+    opacity: 1;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    font-style: normal;
+    transition: color 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+.hide {
+    composes: error;
+    min-width: 1px;
+    min-height: 18px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translate(0, 10px);
+}
+
+.warning {
+    composes: dropdown;
+    color: #f0000f;
+    outline: 2px solid #ff4850;
+    transition: box-shadow 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.warning:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 170, 170, 0.5);
+}
+
+.warning + .error {
+    color: #f0000f;
+}
+
+.input:disabled {
+    color: var(--input-color-disabled);
+    border-color: var(--input-color-disabled);
+}
+
+.input:disabled + .error {
+    color: var(--input-color-disabled);
 }

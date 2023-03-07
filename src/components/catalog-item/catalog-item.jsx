@@ -5,12 +5,12 @@ import { ModalContext, ScreenWidthContext } from "../../services/app-context";
 import Slider from "../slider/slider";
 import { useNavigate } from "react-router-dom";
 
-const CatalogItem = ({ withBtn = true }) => {
+const CatalogItem = ({ withBtn = true, withDesc = true }) => {
   const navigate = useNavigate();
-  const {screenWidth} = useContext(ScreenWidthContext)
+  const { screenWidth } = useContext(ScreenWidthContext);
   const { modal, setModal } = useContext(ModalContext);
   const modalOpen = () => {
-    setModal({...modal, object: true });
+    setModal({ ...modal, object: true });
   };
 
   return (
@@ -26,16 +26,18 @@ const CatalogItem = ({ withBtn = true }) => {
           <p className={styles.text}>Квартира, 2 комнаты</p>
         </div>
         <div className={styles.hr} />
-        <div className={styles.description}>
-          <p className={styles.text}>
-            Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция
-          </p>
-        </div>
+        {withDesc && (
+          <div className={styles.description}>
+            <p className={styles.text}>Gündoğdu, Göksu Cd., 07060 Kepez/ Antalya, Турция</p>
+          </div>
+        )}
       </div>
 
       {withBtn && (
         <div className={styles.button}>
-          <ButtonWithLike onClick={screenWidth === "desktop" ? modalOpen : () => navigate("/order")}>Оформить заявку</ButtonWithLike>
+          <ButtonWithLike onClick={screenWidth === "desktop" ? modalOpen : () => navigate("/order")}>
+            Оформить заявку
+          </ButtonWithLike>
         </div>
       )}
     </div>

@@ -47,3 +47,16 @@
     text-align: center;
     color: var(--text-color);
 }
+
+@media screen and (max-width: 768px) {
+    .exit {
+        padding: 36px 28px;
+        width: var(--container);
+    }
+
+    .exit > h2 {
+        width: 100%;
+        font-size: 16px;
+        line-height: 22px;
+    }
+}

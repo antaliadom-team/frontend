@@ -4,7 +4,7 @@ import { Catalog, Home, ProductPage, Profile, Order } from "../../pages";
 import { Register, Logout, EditProfile, EditPassword, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
+import { AuthContext, ModalContext, ScreenWidthContext, UserContext } from "../../services/app-context";
 import React, { useContext } from "react";
 import Modal from "../modal/modal";
 import ProtectedRoute from "../protected-route/protected-route";
@@ -18,6 +18,7 @@ const App = () => {
   const navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
   const { setUser } = useContext(UserContext);
+  const { screenWidth} = useContext(ScreenWidthContext);
   const modalClose = () => {
     setModal({ object: false, exit: false, passwordChanged: false });
   };
@@ -88,7 +89,7 @@ const App = () => {
               <h2>Вы уверены, что хотите выйти из личного кабинета?</h2>
               <div>
                 <Button type={"primary"} onClick={logout}>
-                  Да, выйти
+                  {screenWidth !== "mobile" ? "Да, выйти" : "Да"}
                 </Button>
               </div>
               <div>
@@ -98,7 +99,7 @@ const App = () => {
                     modalClose();
                     navigate("/profile");
                   }}>
-                  Нет, вернуться в личный кабинет
+                  {screenWidth !== "mobile" ? "Нет, вернуться в личный кабинет" : "Отменить"}
                 </Button>
               </div>
             </div>

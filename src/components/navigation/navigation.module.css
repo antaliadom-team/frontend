@@ -46,3 +46,16 @@
         gap: 16px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .nav {
+        top: 150px;
+        justify-content: flex-start;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 16px 38px;
+    }
+}

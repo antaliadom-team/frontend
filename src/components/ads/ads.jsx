@@ -1,12 +1,14 @@
 import styles from "./ads.module.css";
 import CatalogItem from "../catalog-item/catalog-item";
 import { Button } from "../ui/buttons";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Ads = () => {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.ads}>
-      <h2 className={styles.ads__title}>Свежие объявления</h2>
+      <h2 className={styles.title}>Свежие объявления</h2>
       <div className={styles.wrapper}>
         <CatalogItem />
         <CatalogItem />
@@ -14,9 +16,9 @@ const Ads = () => {
         <CatalogItem />
       </div>
 
-      <Link to={"/catalog"} className={styles.btn_wrapper}>
-        <Button type={"primary"}>Смотреть все</Button>
-      </Link>
+      <div className={styles.button}>
+        <Button type={"primary"} width={"100%"} onClick={() => navigate("/catalog")}>Смотреть все</Button>
+      </div>
     </section>
   );
 };

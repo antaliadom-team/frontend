@@ -1,6 +1,6 @@
 import styles from "./tag.module.css";
 
-const Tag = ({ selectors, onceSelect = false , text}) => {
+const Tag = ({ selectors, onceSelect = false, text}) => {
   const handleTag = (e) => {
     const target = e.target;
     if (!target.classList.contains(styles.selector)) return;

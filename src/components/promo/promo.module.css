@@ -3,7 +3,7 @@
     width: var(--container);
 }
 
-.promo__frontBlock {
+.front {
     position: absolute;
     top: 131px;
     left: 0;
@@ -20,18 +20,18 @@
     backdrop-filter: blur(25px);
 }
 
-.promo__mainImage {
+.image {
     display: flex;
     justify-content: flex-end;
 }
 
-.promo__title {
+.title {
     margin: 52px auto 36px;
     font-size: 44px;
     line-height: 54px;
 }
 
-.promo__subtitle {
+.subtitle {
     margin-bottom: 36px;
     width: 403px;
     font-size: 24px;
@@ -43,28 +43,82 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .promo__mainImage {
+    .image {
         height: 333px;
     }
 
-    .promo__frontBlock {
+    .front {
         top: 30px;
         width: 416px;
         height: 273px;
     }
 
-    .promo__title {
+    .title {
         margin: 28px auto 20px;
         font-size: 32px;
         line-height: 39px;
         font-weight: 600;
     }
 
-    .promo__subtitle {
+    .subtitle {
         width: 328px;
         font-size: 20px;
         line-height: 24px;
         font-weight: 600;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .image {
+        position: relative;
+        z-index: 1;
+        width: 288px;
+        height: 191px;
+        justify-content: center;
+    }
+
+    .image::after {
+        position: absolute;
+        z-index: -1;
+        right: -8px;
+        bottom: -16px;
+        width: 217px;
+        height: 120px;
+        content: "";
+        border: 2px solid var(--border-color);
+    }
+
+    .front {
+        position: static;
+        width: 288px;
+        height: 222px;
+        background-color: #ffffff;
+    }
+
+    .title {
+        margin-top: 40px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 600;
+        font-style: normal;
+        text-align: center;
+        color: var(--text-color);
+    }
+
+    .subtitle {
+        width: 250px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        color: var(--text-color);
+    }
+
+    .link {
+        width: 100%;
     }
 }

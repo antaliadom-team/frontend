@@ -6,18 +6,17 @@ import { Link } from "react-router-dom";
 const Promo = () => {
   return (
       <section className={styles.promo}>
-        <div className={styles.promo__mainImage}>
+        <div className={styles.image}>
           <img src={promoImage} alt="фото квартиры" />
         </div>
-        <div className={styles.promo__frontBlock}>
-          <h1 className={styles.promo__title}>Анталия Дом</h1>
-          <p className={styles.promo__subtitle}>
+        <div className={styles.front}>
+          <h1 className={styles.title}>Анталия Дом</h1>
+          <p className={styles.subtitle}>
             Поможем найти квартиру на море с легкостью
           </p>
           <Link to={"/catalog"} className={styles.link} >
-            <Button type="primary">Смотреть каталог</Button>
+            <Button type="primary" width={"100%"}>Смотреть каталог</Button>
           </Link>
-
         </div>
       </section>
   );

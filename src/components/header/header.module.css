@@ -7,8 +7,7 @@
 .header {
     position: relative;
     display: flex;
-    min-width: var(--container);
-    max-width: var(--container);
+    width: var(--container);
     height: 60px;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +20,6 @@
 }
 
 .active {
-    font-size: var(--text-size);
     text-decoration: none;
     text-shadow: 0.5px 0 var(--text-color), -0.5px 0 var(--text-color);
     color: var(--text-color);
@@ -102,8 +100,8 @@
 
 .menu_list {
     position: absolute;
-    top: 19px;
-    left: 28px;
+    top: 22px;
+    left: 22px;
     padding: 33px 0 33px 33px;
     display: flex;
     width: 231px;
@@ -127,13 +125,13 @@
 
 .user {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .user_menu {
     position: absolute;
     top: 35px;
-    right: 35px;
+    right: 28px;
     padding: 28px 0 28px 28px;
     display: flex;
     width: 232px;
@@ -188,7 +186,7 @@
 
     .logo {
         position: absolute;
-        min-width: var(--container);
+        width: var(--container);
         justify-content: center;
     }
 }

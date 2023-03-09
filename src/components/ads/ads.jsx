@@ -3,15 +3,11 @@ import CatalogItem from "../catalog-item/catalog-item";
 import { Button } from "../ui/buttons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CountObjectsOnMainPageContext, ObjectsContext } from "../../services/app-context";
+import { ObjectsContext } from "../../services/app-context";
 
 const Ads = () => {
-  const { countObjects, setCountObjects } = useContext(CountObjectsOnMainPageContext);
+  const countObjects = 4;
   const { objects } = useContext(ObjectsContext);
-
-  function addObjects() {
-    setCountObjects(countObjects + 4);
-  }
 
   return (
     <section className={styles.ads}>
@@ -25,9 +21,9 @@ const Ads = () => {
           </div>
           {objects.length > countObjects ? (
             <div className={styles.btn_wrapper}>
-              <Button type={"primary"} onClick={addObjects}>
-                Смотреть все
-              </Button>
+              <Link to="/catalog">
+                <Button type={"primary"}>Смотреть все</Button>
+              </Link>
             </div>
           ) : (
             <></>

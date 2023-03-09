@@ -10,7 +10,6 @@ export const RegisterContext = createContext(null);
 export const LocationsContext = createContext(null);
 export const CategoriesContext = createContext(null);
 export const FacilitiesContext = createContext(null);
-export const CountObjectsOnMainPageContext = createContext(null);
 
 export const AppContext = ({ children }) => {
   const [objects, setObjects] = useState();
@@ -36,15 +35,13 @@ export const AppContext = ({ children }) => {
         <FacilitiesContext.Provider value={{ facilities, setFacilities }}>
           <CategoriesContext.Provider value={{ categories, setCategories }}>
             <PropertyTypesContext.Provider value={{ propertyTypes, setPropertyTypes }}>
-              <CountObjectsOnMainPageContext.Provider value={{ countObjects, setCountObjects }}>
-                <UserContext.Provider value={{ user, setUser }}>
-                  <AuthContext.Provider value={{ isAuth, setAuth }}>
-                    <LocationsContext.Provider value={{ locations, setLocations }}>
-                      <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
-                    </LocationsContext.Provider>
-                  </AuthContext.Provider>
-                </UserContext.Provider>
-              </CountObjectsOnMainPageContext.Provider>
+              <UserContext.Provider value={{ user, setUser }}>
+                <AuthContext.Provider value={{ isAuth, setAuth }}>
+                  <LocationsContext.Provider value={{ locations, setLocations }}>
+                    <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
+                  </LocationsContext.Provider>
+                </AuthContext.Provider>
+              </UserContext.Provider>
             </PropertyTypesContext.Provider>
           </CategoriesContext.Provider>
         </FacilitiesContext.Provider>

@@ -18,6 +18,8 @@ const ProductPage = () => {
   const { id } = useParams();
   const object = objects.find((object) => object.id === Number(id));
   console.log(facilities);
+  console.log(object.facilities);
+  object.facilities.map((facility) => console.log(facility.name));
 
   const { propertyTypes } = useContext(PropertyTypesContext);
   const { locations } = useContext(LocationsContext);
@@ -55,29 +57,8 @@ const ProductPage = () => {
           <h3 className={styles.amenities_title}>Удобства</h3>
           <ul className={styles.amenities_list}>
             {facilities.map((facility) => (
-              <img
-                key={facility.id}
-                // className={images.indexOf(image) === slideIndex ? styles.activeImage : styles.fadeImage}
-                src={facility.icon}
-                alt="иконка удобства"
-              />
+              <AmenityItem title={facility.name} key={facility.id} isAvailable={false} />
             ))}
-            {/* <AmenityItem title="Интернет" isAvailable={true} />
-            <AmenityItem title="Кондиционер" isAvailable={true} />
-            <AmenityItem title="Стиральная машина" isAvailable={true} />
-            <AmenityItem title="Парковка" isAvailable={true} />
-            <AmenityItem title="Интернет" isAvailable={false} />
-            <AmenityItem title="Кондиционер" isAvailable={false} />
-            <AmenityItem title="Стиральная машина" isAvailable={false} />
-            <AmenityItem title="Парковка" isAvailable={false} />
-            <AmenityItem title="Интернет" isAvailable={true} />
-            <AmenityItem title="Кондиционер" isAvailable={true} />
-            <AmenityItem title="Стиральная машина" isAvailable={true} />
-            <AmenityItem title="Парковка" isAvailable={true} />
-            <AmenityItem title="Интернет" isAvailable={false} />
-            <AmenityItem title="Кондиционер" isAvailable={false} />
-            <AmenityItem title="Стиральная машина" isAvailable={false} />
-            <AmenityItem title="Парковка" isAvailable={false} /> */}
           </ul>
         </div>
         <div className={styles.stats_container}>

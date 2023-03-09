@@ -1,5 +1,18 @@
 import styles from "./amenity-item.module.css";
-import { Parking, Wifi, Ac, Wash } from "../ui/icons";
+import {
+  Wifi,
+  Parking,
+  Ac,
+  Wash,
+  Pool,
+  Sauna,
+  Balcony,
+  Dishwasher,
+  Security,
+  Gym,
+  GasMeter,
+  Furniture,
+} from "../ui/icons";
 
 const AmenityItem = ({ title, isAvailable }) => {
   const getClassName = (isAvailable) => (isAvailable ? styles.amenities_item : styles.amenities_item_disabled);
@@ -40,7 +53,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Газовое отопление": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <GasMeter isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -48,7 +61,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Тренажерный зал": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <Gym isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -56,7 +69,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Бассейн": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <Pool isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -64,7 +77,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Сауна": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <Sauna isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -72,7 +85,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Мебель": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <Furniture isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -80,7 +93,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Охраняемая территория": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <Security isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -88,7 +101,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Балкон": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <Balcony isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -96,7 +109,7 @@ const AmenityItem = ({ title, isAvailable }) => {
     case "Посудомоечная машина": {
       return (
         <li className={getClassName(isAvailable)}>
-          <Parking isAvailable={isAvailable} />
+          <Dishwasher isAvailable={isAvailable} />
           {title}
         </li>
       );
@@ -106,7 +119,5 @@ const AmenityItem = ({ title, isAvailable }) => {
     }
   }
 };
-
-console.log("паркинг - где на макете?, бассейн - где на макете?");
 
 export default AmenityItem;

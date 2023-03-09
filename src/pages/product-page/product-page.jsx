@@ -62,7 +62,6 @@ const ProductPage = () => {
                 alt="иконка удобства"
               />
             ))}
-
             {/* <AmenityItem title="Интернет" isAvailable={true} />
             <AmenityItem title="Кондиционер" isAvailable={true} />
             <AmenityItem title="Стиральная машина" isAvailable={true} />

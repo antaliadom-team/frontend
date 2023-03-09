@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Wifi = ({ isAvailable }) => {
+const Pool = ({ isAvailable }) => {
   const [color, setColor] = useState("#0D1B44");
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const Wifi = ({ isAvailable }) => {
   );
 };
 
-export default Wifi;
+export default Pool;

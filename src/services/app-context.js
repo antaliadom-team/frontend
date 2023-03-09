@@ -42,9 +42,8 @@ export const AppContext = ({ children }) => {
   }
 
   useEffect(() => {
-      window.addEventListener("resize", setWidth)
-      window.addEventListener("load", setWidth)
-    }, [])
+    setWidth();
+  }, [])
 
   return (
     <ScreenWidthContext.Provider value={{ screenWidth }}>

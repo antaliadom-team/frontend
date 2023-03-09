@@ -17,10 +17,8 @@ const ProductPage = () => {
   const { facilities } = useContext(FacilitiesContext);
   const { id } = useParams();
   const object = objects.find((object) => object.id === Number(id));
-  console.log(facilities);
-  console.log(object.facilities);
-  object.facilities.map((facility) => console.log(facility.name));
-
+  const objectFacilities = [];
+  object.facilities.map((facility) => objectFacilities.push(facility.name));
   const { propertyTypes } = useContext(PropertyTypesContext);
   const { locations } = useContext(LocationsContext);
   const { categories } = useContext(CategoriesContext);
@@ -57,7 +55,11 @@ const ProductPage = () => {
           <h3 className={styles.amenities_title}>Удобства</h3>
           <ul className={styles.amenities_list}>
             {facilities.map((facility) => (
-              <AmenityItem title={facility.name} key={facility.id} isAvailable={false} />
+              <AmenityItem
+                title={facility.name}
+                key={facility.id}
+                isAvailable={objectFacilities.includes(facility.name)}
+              />
             ))}
           </ul>
         </div>

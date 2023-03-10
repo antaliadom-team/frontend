@@ -2,47 +2,26 @@ import styles from "./login.module.css";
 import { Button } from "../../ui/buttons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../../ui/inputs";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext, ScreenWidthContext } from "../../../services/app-context";
-import { useForm } from "../../../hooks/use-form";
+import { useForm, Controller } from "react-hook-form";
 import { createToken } from "../../../services/api/jwt";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const {screenWidth} = useContext(ScreenWidthContext);
+  const { screenWidth } = useContext(ScreenWidthContext);
   const { isAuth, setAuth } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
-  const [error, setError]  = useState({email: "", password: ""});
-  const { values, handleChange } = useForm({ email: "", password: ""});
-  const [disabled, setDisabled] = useState(true);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-
-  const handleForm = (e) => {
-    e.preventDefault();
-    const { email, password } = e.target.elements;
-
-    if (password.value === "") {
-      setError({ ...error, password: "Введите пароль" });
-      password.focus();
-      return;
-    }
-
-    if (email.value === "") {
-      setError({ ...error, email: "Введите email"});
-      email.focus();
-      return;
-    }
-
-    createToken({email: email.value, password: password.value}, setAuth)
+  const onSubmit = (data) => {
+    console.log(data);
   };
-
-  const handleButton = (e) => {
-    e.target.value !== ""
-      ? setDisabled(false)
-      : setDisabled(true)
-    }
-
 
   useEffect(() => {
     if (isAuth) {
@@ -51,18 +30,47 @@ const Login = () => {
   }, [isAuth]);
 
   return (
-    <form className={styles.login} onSubmit={handleForm} onChange={handleButton}>
+    <form className={styles.login} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.container}>
         <h2 className={styles.title}>Вход</h2>
         <ul className={styles.list}>
           <li>
-            <TextInput text={"Email"} name={"email"} onChange={handleChange} value={values.email} errorProps={error.email} />
+            <Controller
+              control={control}
+              name="email"
+              rules={{ required: "Это поле обязательно" }}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="text"
+                  label={"Email"}
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.email?.message}
+                />
+              )
+            }
+            />
           </li>
           <li>
-            <TextInput text={"Пароль"} name={"password"} onChange={handleChange} value={values.password} errorProps={error.password} />
+            <Controller
+              control={control}
+              name="password"
+              rules={{ required: "Это поле обязательно" }}
+              render={({ field }) => (
+                <TextInput
+                  type="password"
+                  label={"Пароль"}
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={!!errors.password}
+                  errorText={errors.password?.message}
+                />
+              )}
+            />
           </li>
           <li>
-            <Button type="primary" inactive={disabled} width={screenWidth !== "desktop" && "100%"}>
+            <Button type="primary" width={screenWidth !== "desktop" && "100%"}>
               Вход
             </Button>
           </li>

@@ -12,17 +12,20 @@ import Layout from "../layout/layout";
 import { Button } from "../ui/buttons";
 import { logoutUser } from "../../services/api/user";
 import CatalogItem from "../catalog-item/catalog-item";
+import { useScrollToLocation } from "../../hooks/use-scroll";
 
 const App = () => {
   const { modal, setModal } = useContext(ModalContext);
   const navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
   const { setUser } = useContext(UserContext);
+
   const { screenWidth} = useContext(ScreenWidthContext);
+
   const modalClose = () => {
     setModal({ object: false, exit: false, passwordChanged: false });
   };
-
+  
   const logout = () => {
     modalClose();
     logoutUser(setAuth, setUser);
@@ -38,6 +41,8 @@ const App = () => {
   } else {
     window.onscroll = () => {};
   }
+
+  useScrollToLocation();
 
   return (
     <div className={styles.app}>

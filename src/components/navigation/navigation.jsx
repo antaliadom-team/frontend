@@ -1,26 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./navigation.module.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
-  const location = useLocation();
   const toggleClass = (isActive) => (isActive ? styles.active : styles.link);
-  const [aboutTarget, setAboutTarget] = useState(null);
-  const [formTarget, setFormTarget] = useState(null);
-
-  useEffect(() => {
-    setAboutTarget(document.getElementById("about"));
-    setFormTarget(document.getElementById("send"));
-  }, [location]);
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    if (event.target.href === "http://localhost:3000/#about") {
-      aboutTarget.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else if (event.target.href === "http://localhost:3000/#send") {
-      formTarget.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
 
   return (
     <nav className={styles.nav}>
@@ -33,7 +16,6 @@ const Navigation = () => {
         <li className={styles.item}>
           <NavLink
             to="/#about"
-            onClick={handleClick}
             className={styles.link}>
             О нас
           </NavLink>
@@ -48,7 +30,6 @@ const Navigation = () => {
         <li className={styles.item}>
           <NavLink
             to="/#send"
-            onClick={handleClick}
             className={styles.link}>
             Отправить заявку
           </NavLink>

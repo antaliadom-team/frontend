@@ -4,7 +4,7 @@ import CatalogItem from "../../components/catalog-item/catalog-item";
 import { useContext, useState } from "react";
 import { ScreenWidthContext } from "../../services/app-context";
 import filter from "../../images/filter.svg";
-import { Button, Tag } from "../../components/ui/buttons";
+import { Button, FilterTag, Tag } from "../../components/ui/buttons";
 
 const Catalog = () => {
   const { screenWidth } = useContext(ScreenWidthContext);
@@ -25,7 +25,7 @@ const Catalog = () => {
           <Dropdown
             placeholder={"Локация"}
             width={"210px"}
-            options={["Анталия", "Северный Кипр", "Стамбул", "Другое"]}
+            options={["Анталия", "Сев. Кипр", "Стамбул", "Другое"]}
           />
           <Dropdown
             placeholder={"Тип недвижимости"}
@@ -48,11 +48,20 @@ const Catalog = () => {
                 Отменить
                 <span className={styles.cross} />
               </div>
-              <Tag selectors={["Анталия", "Северный кипр", "Стамбул", "другое"]} text={"Локация"} />
-              <Tag selectors={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]} text={"Тип недвижимости"} />
-              <Tag selectors={["1", "2", "3", "4+"]} text={"Количество комнат"} />
-              <Tag selectors={["Новостройка", "Вторичное"]} text={"Статус"} />
-              <Button type={"primary"} width={"100%"}>Показать результаты</Button>
+              {screenWidth === "tablet" && (<>
+                <Tag selectors={["Анталия", "Стамбул", "Сев. кипр", "другое"]} text={"Локация"} />
+                <Tag selectors={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]} text={"Тип недвижимости"} />
+                <Tag selectors={["1", "2", "3", "4+"]} text={"Количество комнат"} />
+                <Tag selectors={["Новостройка", "Вторичное"]} text={"Статус"} />
+                <Button type={"primary"} width={"100%"} padding={"12px 0"}>Показать результаты</Button>
+              </>)}
+              {screenWidth === "mobile" && (<>
+                <FilterTag selectors={["Анталия", "Стамбул", "Сев. кипр", "другое"]} text={"Локация"} />
+                <FilterTag selectors={["Вилла", "Дом", "Участок", "Апартаменты", "Комната"]} text={"Тип недвижимости"} />
+                <FilterTag selectors={["1", "2", "3", "4+"]} width={"59px"} text={"Количество комнат"} />
+                <FilterTag selectors={["Новостройка", "Вторичное"]} text={"Статус"} />
+                <Button type={"primary"} width={"100%"} padding={"12px 0"}>Показать результаты</Button>
+              </>)}
             </div>
           )}
         </div>
@@ -62,6 +71,7 @@ const Catalog = () => {
 
   return (
     <section className={styles.container}>
+      {screenWidth === "mobile" &&  (<h1 className={styles.ads_title}>Свежие объявления</h1>)}
       <div className={styles.category} onClick={toggleClass}>
         <div className={`${styles.category_title} ${styles.active}`} id={"category"}>
           Аренда
@@ -73,7 +83,7 @@ const Catalog = () => {
 
       {renderFilter()}
 
-      <h1 className={styles.ads_title}>Свежие объявления</h1>
+      {screenWidth !== "mobile" &&  (<h1 className={styles.ads_title}>Свежие объявления</h1>)}
       <div className={styles.ads}>
         <CatalogItem />
         <CatalogItem />

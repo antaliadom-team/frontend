@@ -106,3 +106,14 @@
     }
 
 }
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        max-width: 288px;
+    }
+
+    .slider {
+        width: 288px;
+        height: 180px;
+    }
+}

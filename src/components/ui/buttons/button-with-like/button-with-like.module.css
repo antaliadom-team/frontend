@@ -16,8 +16,11 @@
     z-index: 1;
     top: 0;
     right: 0;
+    display: flex;
     width: 52px;
-    max-height: 53px;
+    height: 53px;
+    justify-content: center;
+    align-items: center;
     background-color: #ffffff;
     border: 2px solid var(--button-color-default);
     transition: border-color 0.3s ease;

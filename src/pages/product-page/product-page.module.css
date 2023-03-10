@@ -42,7 +42,6 @@
     grid-column-gap: 0;
     grid-row-gap: 64px;
     width: 100%;
-    max-width: 1250px;
 }
 
 .slider {
@@ -60,6 +59,10 @@
     height: 371px;
     content: "";
     border: 1px solid #dd9b5c;
+}
+
+.button {
+    width: 346px;
 }
 
 .amenities {
@@ -91,9 +94,11 @@
 
 .amenities_title {
     padding-bottom: 40px;
+    font-family: "Open Sans", sans-serif;
     font-size: 24px;
     line-height: 29px;
     font-weight: 800;
+    font-style: normal;
     text-align: center;
 }
 
@@ -139,7 +144,7 @@
 }
 
 .description_title {
-    padding: 80px 0 36px 0;
+    padding: 80px 0 36px;
     font-size: 24px;
     line-height: 29px;
     font-weight: 800;
@@ -174,6 +179,16 @@
     content: "-";
 }
 
+.fixed_btn {
+    display: none;
+}
+
+.intersecting {
+    position: fixed;
+    bottom: 0;
+    width: 288px;
+}
+
 @media screen and (max-width: 1280px) {
     .slider::before {
         bottom: -44px;
@@ -185,5 +200,95 @@
     .description_container {
         display: flex;
         flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 36px 0;
+    }
+
+    .title {
+        font-family: "Open Sans", sans-serif;
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .slider::before {
+        display: none;
+    }
+
+    .description_container {
+        grid-row-gap: 0;
+        padding-bottom: 0;
+    }
+
+    .stats_container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        font-family: "Open Sans", sans-serif;
+        text-align: center;
+        gap: 23px;
+    }
+
+    .stats_number {
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: 600;
+    }
+
+    .stats_desc {
+        padding-top: 8px;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+    }
+
+    .hr {
+        width: 144px;
+    }
+
+    .description_title {
+        padding: 36px 0 24px;
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: 600;
+    }
+
+    .description_text {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+    }
+
+    .amenities {
+        margin-bottom: 30px;
+        padding: 0;
+        border: none;
+    }
+
+    .amenities_title {
+        padding-bottom: 28px;
+        font-size: 18px;
+        line-height: 25px;
+        text-align: start;
+    }
+
+    .amenities_list {
+        font-size: 14px;
+        line-height: 19px;
+        font-weight: 400;
+        gap: 20px 15px;
+    }
+
+    .fixed_btn {
+        display: block;
     }
 }

@@ -12,11 +12,9 @@
 }
 
 .logo {
-    margin: 0;
-    display: flex;
-    width: 100%;
-    font-family: "Inter", sans-serif;
-    font-size: 50px;
+    margin-left: -5px;
+    width: 190px;
+    height: 17px;
 }
 
 .logo_link {
@@ -32,12 +30,14 @@
 }
 
 .description {
+    margin-top: 17px;
     width: 200px;
     height: 100px;
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 25px;
     text-align: start;
+    color: var(--text-color);
 }
 
 .social {
@@ -53,5 +53,24 @@
     .social {
         flex-direction: column;
         align-items: end;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .description {
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 300;
+    }
+
+    .logo {
+        margin-left: -5px;
+        width: 158px;
+        height: 14px;
+    }
+
+    .footer {
+        height: 300px;
     }
 }

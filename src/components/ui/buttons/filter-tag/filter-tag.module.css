@@ -8,13 +8,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .selector {
+    padding: 4px 8px;
     display: flex;
-    width: 222px;
-    height: 48px;
     justify-content: center;
     align-items: center;
     font-family: "Open Sans", sans-serif;
@@ -39,11 +38,4 @@
 .active {
     color: #ffffff;
     background-color: var(--text-color);
-}
-
-@media screen and (max-width: 768px) {
-    .selector {
-        width: 138px;
-        height: 40px;
-    }
 }

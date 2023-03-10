@@ -31,8 +31,12 @@
 
 .ads_title {
     margin-bottom: 36px;
-    color: #0d1b44;
-    composes: category_title;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--text-color);
 }
 
 .ads {
@@ -117,4 +121,39 @@
     border: 1.83px solid #0d1b44;
     border-radius: 2px;
     transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin-top: 52px;
+    }
+
+    .ads_title {
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .category {
+        margin-top: 24px;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .filters {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .category_title {
+        font-family: "Open Sans", sans-serif;
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .filters_modal {
+        top: -200px;
+        padding: 64px 12px 12px 12px;
+        width: 288px;
+        align-items: flex-start;
+    }
 }

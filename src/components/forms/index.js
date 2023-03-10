@@ -1,5 +1,5 @@
-import Main from "./main/main";
+import MainForm from "./main/main-form";
 import Object from "./object/object";
 import Login from "./login/login";
 
-export {Main, Object, Login}
+export { MainForm, Object, Login };

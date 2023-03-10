@@ -4,13 +4,12 @@ import { Like } from "../../icons";
 import { Button } from "../index";
 
 const ButtonWithLike = ({ inactive = false, children, onClick }) => {
-
   return (
-    <div className={styles.block} data-disabled={inactive} onClick={onClick}>
-      <Button inactive={inactive} width={"calc(100% - 52px)"} padding={"12px 0"}>
+    <div className={styles.block} data-disabled={inactive}>
+      <Button inactive={inactive} width={"calc(100% - 52px)"} padding={"12px 0"} onClick={onClick}>
         {children}
-        <div className={styles.like} >
-          <Like isAvailable={inactive}/>
+        <div className={styles.like}>
+          <Like isAvailable={inactive} />
         </div>
       </Button>
     </div>

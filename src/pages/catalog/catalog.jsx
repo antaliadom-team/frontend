@@ -2,26 +2,42 @@ import styles from "./catalog.module.css";
 import Dropdown from "../../components/ui/buttons/dropdown/dropdown";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { useContext } from "react";
-import { ObjectsContext, PropertyTypesContext, LocationsContext } from "../../services/app-context";
+import { ObjectsContext } from "../../services/app-context";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Catalog = () => {
-  const titles = document.getElementsByClassName(styles.filters_title);
   const { objects } = useContext(ObjectsContext);
-  const { setLocations } = useContext(LocationsContext);
-  const { setPropertyTypes } = useContext(PropertyTypesContext);
+  const [rent, setRent] = useState(true);
+  const [filterObjects, setFilterObjects] = useState(objects.filter((objects) => objects.category === 1));
 
-  const toggleClass = (event) => {
-    for (let title of titles) {
-      if (title.classList.contains(styles.active)) title.classList.remove(styles.active);
-      event.target.classList.add(styles.active);
-    }
-  };
+  useEffect(() => {
+    rent
+      ? setFilterObjects(objects.filter((objects) => objects.category === 1))
+      : setFilterObjects(objects.filter((objects) => objects.category === 2));
+  }, [rent]);
+
+  function handleSetRent() {
+    setRent(true);
+  }
+
+  function handleSetBye() {
+    setRent(false);
+  }
 
   return (
     <section className={styles.container}>
-      <div className={styles.filters} onClick={toggleClass}>
-        <div className={`${styles.filters_title} ${styles.active}`}>Аренда</div>
-        <div className={styles.filters_title}>Покупка</div>
+      <div className={styles.filters}>
+        <div
+          className={rent ? `${styles.filters_title} ${styles.active}` : styles.filters_title}
+          onClick={handleSetRent}>
+          Аренда
+        </div>
+        <div
+          className={!rent ? `${styles.filters_title} ${styles.active}` : styles.filters_title}
+          onClick={handleSetBye}>
+          Покупка
+        </div>
       </div>
       <div className={styles.dropdowns}>
         <Dropdown placeholder={"Локация"} width={"210px"} options={["Анталия", "Северный Кипр", "Стамбул", "Другое"]} />
@@ -36,7 +52,7 @@ const Catalog = () => {
       <h1 className={styles.ads_title}>Свежие объявления</h1>
       {objects && (
         <div className={styles.ads}>
-          {objects.map((object) => (
+          {filterObjects.map((object) => (
             <CatalogItem objectInfo={object} key={object.id} />
           ))}
         </div>

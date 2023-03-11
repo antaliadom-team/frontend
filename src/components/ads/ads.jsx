@@ -15,7 +15,7 @@ const Ads = () => {
       {objects && (
         <>
           <div className={styles.wrapper}>
-            {objects.slice(0, countObjects).map((object) => (
+            {objects.results.slice(0, countObjects).map((object) => (
               <CatalogItem objectInfo={object} key={object.id} />
             ))}
           </div>

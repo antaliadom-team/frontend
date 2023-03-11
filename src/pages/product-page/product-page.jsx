@@ -16,7 +16,7 @@ const ProductPage = () => {
   const { objects } = useContext(ObjectsContext);
   const { facilities } = useContext(FacilitiesContext);
   const { id } = useParams();
-  const object = objects.find((object) => object.id === Number(id));
+  const object = objects.results.find((object) => object.id === Number(id));
   const objectFacilities = [];
   object.facilities.map((facility) => objectFacilities.push(facility.name));
   const { propertyTypes } = useContext(PropertyTypesContext);

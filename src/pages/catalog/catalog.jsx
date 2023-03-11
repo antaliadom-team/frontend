@@ -2,32 +2,39 @@ import styles from "./catalog.module.css";
 import Dropdown from "../../components/ui/buttons/dropdown/dropdown";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { useContext } from "react";
-import { ObjectsContext } from "../../services/app-context";
+import { ObjectsContext, ObjectsNextContext } from "../../services/app-context";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getObjects } from "../../services/api/objects";
+import { getObjectsNext } from "../../services/api/objects";
 
 const Catalog = () => {
-  const { objects, setObjects } = useContext(ObjectsContext);
+  const { objects } = useContext(ObjectsContext);
+  const { objectsNext, setObjectsNext } = useContext(ObjectsNextContext);
   const [rent, setRent] = useState(true);
-  const [filterObjects, setFilterObjects] = useState(objects.filter((objects) => objects.category === 1));
+  const [filterObjects, setFilterObjects] = useState(objects.results.filter((objects) => objects.category === 1));
   const [currentPage, setCurrentPage] = useState(1);
   const [fetching, setFetching] = useState(true);
 
   const scrollHandler = (e) => {
-    console.log("scrollHeight", e.target.documentElement.scrollHeight);
-    console.log("scrollTop", e.target.documentElement.scrollTop);
-    console.log("innerHeight", window.innerHeight);
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+      setFetching(true);
+    }
   };
 
   useEffect(() => {
-    getObjects(setObjects);
+    if (fetching && currentPage < objects.count) {
+      getObjectsNext(setObjectsNext, currentPage, fetching, setFetching);
+      setCurrentPage(currentPage + 1);
+      //   setFetching(false);
+      //   objects.push(objectsNext);
+      console.log(objectsNext);
+    }
   }, [fetching]);
 
   useEffect(() => {
     rent
-      ? setFilterObjects(objects.filter((objects) => objects.category === 1))
-      : setFilterObjects(objects.filter((objects) => objects.category === 2));
+      ? setFilterObjects(objects.results.filter((objects) => objects.category === 1))
+      : setFilterObjects(objects.results.filter((objects) => objects.category === 2));
   }, [rent]);
 
   useEffect(() => {

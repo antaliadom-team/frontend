@@ -5,17 +5,37 @@ import { useContext } from "react";
 import { ObjectsContext } from "../../services/app-context";
 import { useState } from "react";
 import { useEffect } from "react";
+import { getObjects } from "../../services/api/objects";
 
 const Catalog = () => {
-  const { objects } = useContext(ObjectsContext);
+  const { objects, setObjects } = useContext(ObjectsContext);
   const [rent, setRent] = useState(true);
   const [filterObjects, setFilterObjects] = useState(objects.filter((objects) => objects.category === 1));
+  const [currentPage, setCurrentPage] = useState(1);
+  const [fetching, setFetching] = useState(true);
+
+  const scrollHandler = (e) => {
+    console.log("scrollHeight", e.target.documentElement.scrollHeight);
+    console.log("scrollTop", e.target.documentElement.scrollTop);
+    console.log("innerHeight", window.innerHeight);
+  };
+
+  useEffect(() => {
+    getObjects(setObjects);
+  }, [fetching]);
 
   useEffect(() => {
     rent
       ? setFilterObjects(objects.filter((objects) => objects.category === 1))
       : setFilterObjects(objects.filter((objects) => objects.category === 2));
   }, [rent]);
+
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler);
+    return function () {
+      document.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
 
   function handleSetRent() {
     setRent(true);

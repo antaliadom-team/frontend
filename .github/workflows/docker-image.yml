@@ -2,14 +2,20 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "dev" ]
+    branches:
+      - dev
+      - main
   pull_request:
-    branches: [ "dev" ]
+    types: [closed]
+    branches:
+      - dev
+      - main
 
 jobs:
   build_and_push_to_dockerhub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-20.04
+    if: github.event.pull_request.merged == true
     steps:
     - name: Check out the repo
       uses: actions/checkout@v3
@@ -31,6 +37,7 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     needs: build_and_push_to_dockerhub
+    if: github.event.pull_request.merged == true
     steps:
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master

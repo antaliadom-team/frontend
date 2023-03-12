@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import styles from "./policy-text.module.css";
 
 const policyText = [

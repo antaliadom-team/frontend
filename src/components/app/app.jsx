@@ -43,7 +43,7 @@ const App = () => {
     getLocations(setLocations);
     getLocations(setLocations);
     getPropertyTypes(setPropertyTypes);
-    getObjects(setObjects);
+    getObjects(setObjects, 1);
     getCategories(setCategories);
     getCategories(setCategories);
     getFacilities(setFacilities);

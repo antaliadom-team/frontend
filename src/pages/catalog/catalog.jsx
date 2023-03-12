@@ -2,18 +2,20 @@ import styles from "./catalog.module.css";
 import Dropdown from "../../components/ui/buttons/dropdown/dropdown";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { useContext } from "react";
-import { ObjectsContext, ObjectsNextContext } from "../../services/app-context";
+import { ObjectsContext } from "../../services/app-context";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getObjectsNext } from "../../services/api/objects";
+import axios from "axios";
+import { API_OBJECTS } from "../../services/api/api";
+import { getObjects } from "../../services/api/objects";
 
 const Catalog = () => {
-  const { objects } = useContext(ObjectsContext);
-  const { objectsNext, setObjectsNext } = useContext(ObjectsNextContext);
-  const [rent, setRent] = useState(true);
-  const [filterObjects, setFilterObjects] = useState(objects.results.filter((objects) => objects.category === 1));
-  const [currentPage, setCurrentPage] = useState(1);
-  const [fetching, setFetching] = useState(true);
+  const { objects, setObjects } = useContext(ObjectsContext);
+  const [rent, setRent] = useState(1);
+  const [filterObjects, setFilterObjects] = useState([]);
+  const [currentPage, setCurrentPage] = useState(2);
+  const [fetching, setFetching] = useState(false);
+  const [allObjects, setAllObjects] = useState([]);
 
   const scrollHandler = (e) => {
     if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
@@ -22,20 +24,19 @@ const Catalog = () => {
   };
 
   useEffect(() => {
-    if (fetching && currentPage < objects.count) {
-      getObjectsNext(setObjectsNext, currentPage, fetching, setFetching);
+    if (fetching && currentPage < Math.floor(objects.count / 8) + 1) {
+      getObjects(setObjects, currentPage).finally(() => setFetching(false));
       setCurrentPage(currentPage + 1);
-      //   setFetching(false);
-      //   objects.push(objectsNext);
-      console.log(objectsNext);
     }
   }, [fetching]);
 
   useEffect(() => {
-    rent
-      ? setFilterObjects(objects.results.filter((objects) => objects.category === 1))
-      : setFilterObjects(objects.results.filter((objects) => objects.category === 2));
-  }, [rent]);
+    setAllObjects([...allObjects, ...objects.results]);
+  }, [objects]);
+
+  useEffect(() => {
+    setFilterObjects(allObjects.filter((objects) => objects.category === rent));
+  }, [rent, allObjects]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
@@ -45,23 +46,23 @@ const Catalog = () => {
   }, []);
 
   function handleSetRent() {
-    setRent(true);
+    setRent(1);
   }
 
   function handleSetBye() {
-    setRent(false);
+    setRent(2);
   }
 
   return (
     <section className={styles.container}>
       <div className={styles.filters}>
         <div
-          className={rent ? `${styles.filters_title} ${styles.active}` : styles.filters_title}
+          className={rent === 1 ? `${styles.filters_title} ${styles.active}` : styles.filters_title}
           onClick={handleSetRent}>
           Аренда
         </div>
         <div
-          className={!rent ? `${styles.filters_title} ${styles.active}` : styles.filters_title}
+          className={rent === 2 ? `${styles.filters_title} ${styles.active}` : styles.filters_title}
           onClick={handleSetBye}>
           Покупка
         </div>

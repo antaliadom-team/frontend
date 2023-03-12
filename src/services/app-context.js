@@ -8,7 +8,6 @@ export const ModalContext = createContext(null);
 export const UserContext = createContext(localStorage.getItem("user"));
 export const AuthContext = createContext(null);
 export const ObjectsContext = createContext(null);
-export const ObjectsNextContext = createContext(null);
 export const PropertyTypesContext = createContext(null);
 export const RegisterContext = createContext(null);
 export const ScreenWidthContext = createContext(null);
@@ -17,7 +16,6 @@ export const AppContext = ({ children }) => {
   const [locations, setLocations] = useState([]);
   const [screenWidth, setScreenWidth] = useState("desktop");
   const [objects, setObjects] = useState();
-  const [objectsNext, setObjectsNext] = useState();
   const [modal, setModal] = useState({
     object: false,
     exit: false,
@@ -59,21 +57,19 @@ export const AppContext = ({ children }) => {
     <ScreenWidthContext.Provider value={{ screenWidth }}>
       <RegisterContext.Provider value={{ register, setRegister }}>
         <ObjectsContext.Provider value={{ objects, setObjects }}>
-          <ObjectsNextContext.Provider value={{ objectsNext, setObjectsNext }}>
-            <FacilitiesContext.Provider value={{ facilities, setFacilities }}>
-              <CategoriesContext.Provider value={{ categories, setCategories }}>
-                <PropertyTypesContext.Provider value={{ propertyTypes, setPropertyTypes }}>
-                  <UserContext.Provider value={{ user, setUser }}>
-                    <AuthContext.Provider value={{ isAuth, setAuth }}>
-                      <LocationsContext.Provider value={{ locations, setLocations }}>
-                        <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
-                      </LocationsContext.Provider>
-                    </AuthContext.Provider>
-                  </UserContext.Provider>
-                </PropertyTypesContext.Provider>
-              </CategoriesContext.Provider>
-            </FacilitiesContext.Provider>
-          </ObjectsNextContext.Provider>
+          <FacilitiesContext.Provider value={{ facilities, setFacilities }}>
+            <CategoriesContext.Provider value={{ categories, setCategories }}>
+              <PropertyTypesContext.Provider value={{ propertyTypes, setPropertyTypes }}>
+                <UserContext.Provider value={{ user, setUser }}>
+                  <AuthContext.Provider value={{ isAuth, setAuth }}>
+                    <LocationsContext.Provider value={{ locations, setLocations }}>
+                      <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
+                    </LocationsContext.Provider>
+                  </AuthContext.Provider>
+                </UserContext.Provider>
+              </PropertyTypesContext.Provider>
+            </CategoriesContext.Provider>
+          </FacilitiesContext.Provider>
         </ObjectsContext.Provider>
       </RegisterContext.Provider>
     </ScreenWidthContext.Provider>

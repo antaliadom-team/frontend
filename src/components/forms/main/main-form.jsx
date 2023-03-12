@@ -3,6 +3,8 @@ import { Button, Tag } from "../../ui/buttons";
 import { Checkbox, Dropdown, TextareaInput, TextInput, PhoneInput } from "../../ui/inputs";
 import { useContext } from "react";
 import { ScreenWidthContext } from "../../../services/app-context";
+import {Link} from "react-router-dom";
+import Policy from "../../policy/policy";
 
 const MainForm = () => {
   const {screenWidth} = useContext(ScreenWidthContext);
@@ -94,14 +96,8 @@ const MainForm = () => {
           </ul>
           <div className={styles.checkbox}>
             <Checkbox>
-              Я согласен с&nbsp;
-              <a href="/policy" className={styles.link}>
-                Политикой конфиденциальности
-              </a>
-              &nbsp;и&nbsp;
-              <a href="/policy" className={styles.link}>
-                Условиями использования сервиса
-              </a>
+              <Policy/>
+
             </Checkbox>
           </div>
           <div className={styles.button}>

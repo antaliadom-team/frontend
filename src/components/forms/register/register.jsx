@@ -6,6 +6,7 @@ import { useForm } from "../../../hooks/use-form";
 import { registration } from "../../../services/api/registration";
 import { AuthContext } from "../../../services/app-context";
 import { useContext } from "react";
+import Policy from "../../policy/policy";
 
 const Register = () => {
   const { setAuth } = useContext(AuthContext);
@@ -86,14 +87,8 @@ const Register = () => {
         </ul>
         <div className={styles.checkbox}>
           <Checkbox>
-            Я согласен с&nbsp;
-            <a href="/policy" className={styles.link}>
-              Политикой конфиденциальности
-            </a>
-            &nbsp;и&nbsp;
-            <a href="/policy" className={styles.link}>
-              Условиями использования сервиса
-            </a>
+            <Policy/>
+
           </Checkbox>
         </div>
         <div className={styles.buttons}>

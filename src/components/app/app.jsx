@@ -13,6 +13,7 @@ import { Button } from "../ui/buttons";
 import { logoutUser } from "../../services/api/user";
 import CatalogItem from "../catalog-item/catalog-item";
 import { useScrollToLocation } from "../../hooks/use-scroll";
+import PolicyText from "../policy-text/policy-text";
 
 const App = () => {
   const { modal, setModal } = useContext(ModalContext);
@@ -20,12 +21,12 @@ const App = () => {
   const { setAuth } = useContext(AuthContext);
   const { setUser } = useContext(UserContext);
 
-  const { screenWidth} = useContext(ScreenWidthContext);
+  const { screenWidth } = useContext(ScreenWidthContext);
 
   const modalClose = () => {
-    setModal({ object: false, exit: false, passwordChanged: false });
+    setModal({ object: false, exit: false, passwordChanged: false, policy: false });
   };
-  
+
   const logout = () => {
     modalClose();
     logoutUser(setAuth, setUser);
@@ -77,15 +78,17 @@ const App = () => {
                 <CatalogItem withBtn={false} />
               </div>
               <div>
-                <Button type={"primary"} width={"100%"} onClick={() => {
-                  modalClose();
-                  navigate("/");
-                }}>
+                <Button
+                  type={"primary"}
+                  width={"100%"}
+                  onClick={() => {
+                    modalClose();
+                    navigate("/");
+                  }}>
                   На главную
                 </Button>
               </div>
             </div>
-
           </Modal>
         )}
         {modal.exit && (
@@ -122,6 +125,22 @@ const App = () => {
                     navigate("/profile");
                   }}>
                   Понятно
+                </Button>
+              </div>
+            </div>
+          </Modal>
+        )}
+        {modal.policy && (
+          <Modal onClose={modalClose}>
+            <div className={styles.password}>
+              <PolicyText />
+              <div>
+                <Button
+                  type={"primary"}
+                  onClick={() => {
+                    modalClose();
+                  }}>
+                  Принять условия
                 </Button>
               </div>
             </div>

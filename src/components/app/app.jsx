@@ -140,9 +140,15 @@ const App = () => {
         )}
         {modal.policy && (
           <Modal onClose={modalClose}>
+<<<<<<< HEAD
             <div>
               <PolicyText />
               <div className={styles.policyBtn}>
+=======
+            <div className={styles.password}>
+              <PolicyText />
+              <div>
+>>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
                 <Button
                   type={"primary"}
                   onClick={() => {

@@ -1,6 +1,6 @@
 .policy {
-    overflow-y: scroll;
-    height: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
 }
 
 .policyTitle {
@@ -37,4 +37,18 @@ li {
     line-height: 27px;
     font-weight: 400;
     color: #0d1b44;
+}
+
+@media screen and (max-width: 768px) {
+    .policyTitle {
+        font-size: 19px;
+    }
+
+    .policyText {
+        font-size: 14px;
+    }
+
+    li {
+        font-size: 14px;
+    }
 }

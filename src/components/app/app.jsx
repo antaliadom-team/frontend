@@ -43,6 +43,14 @@ const App = () => {
     window.onscroll = () => {};
   }
 
+  React.useEffect(() => {
+    if (modal.policy) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modal.policy]);
+
   useScrollToLocation();
 
   return (
@@ -132,9 +140,9 @@ const App = () => {
         )}
         {modal.policy && (
           <Modal onClose={modalClose}>
-            <div className={styles.password}>
+            <div>
               <PolicyText />
-              <div>
+              <div className={styles.policyBtn}>
                 <Button
                   type={"primary"}
                   onClick={() => {

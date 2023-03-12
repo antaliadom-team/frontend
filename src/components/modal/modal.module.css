@@ -25,16 +25,11 @@
     z-index: 1;
     top: 50%;
     left: 50%;
-<<<<<<< HEAD
     padding: 110px 80px;
     overflow-x: hidden;
     overflow-y: scroll;
     width: 1000px;
     height: 620px;
-=======
-    overflow-y: scroll;
-    height: 100%;
->>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
     background: #ffffff;
     border: 2px solid #0d1b44;
     transform: translate(-50%, -50%);
@@ -47,11 +42,7 @@
     left: 50%;
     padding: 30px 90px;
     overflow-y: scroll;
-<<<<<<< HEAD
     width: var(--container);
-=======
-    width: 900px;
->>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
     height: 600px;
     background: #ffffff;
     border: 2px solid #0d1b44;
@@ -61,10 +52,7 @@
 @media screen and (max-width: 768px) {
     .modalPolicy {
         padding: 36px 28px;
-<<<<<<< HEAD
         width: var(--container);
-=======
->>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
     }
 }
 
@@ -103,14 +91,7 @@
 }
 
 .modalPolicy::-webkit-scrollbar {
-<<<<<<< HEAD
     width: 8px; /* ширина scrollbar */
-=======
-    padding-right: 15px;
-
-    width: 8px; /* ширина scrollbar */
-    height: 135px;
->>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
 }
 
 .modalPolicy::-webkit-scrollbar-track {
@@ -123,10 +104,6 @@
 
 .modalPolicyTablet::-webkit-scrollbar {
     width: 8px; /* ширина scrollbar */
-<<<<<<< HEAD
-=======
-    height: 135px;
->>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
 }
 
 .modalPolicyTablet::-webkit-scrollbar-track {
@@ -134,9 +111,5 @@
 }
 
 .modalPolicyTablet::-webkit-scrollbar-thumb {
-<<<<<<< HEAD
-=======
-    padding-right: 20px;
->>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
     background-color: #dd9b5c; /* цвет плашки */
 }

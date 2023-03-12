@@ -93,21 +93,12 @@ const PolicyText = () => {
         персональной информации; в случае несогласия с этими условиями Пользователь должен воздержаться от использования
         сервисов.
       </span>
-<<<<<<< HEAD
       {policyText.map((item, i) => (
         <div key={i} className={styles.policyBlock}>
           <h1 className={styles.policyBlockTitle}>{item.title}</h1>
           <ul>
             {item.text.map((text, i) => (
               <li key={i}>{text}</li>
-=======
-      {policyText.map((item) => (
-        <div className={styles.policyBlock}>
-          <h1 className={styles.policyBlockTitle}>{item.title}</h1>
-          <ul>
-            {item.text.map((text) => (
-              <li>{text}</li>
->>>>>>> 83547a92596ee00d85c4680064bbf2bcba6653b5
             ))}
           </ul>
         </div>

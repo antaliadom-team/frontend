@@ -1,7 +1,7 @@
 import styles from "./text.module.css";
 import { useState } from "react";
 
-const TextInput =  (props) => {
+const TextInput = (props) => {
   const [value, setValue] = useState(props.value || "")
 
   return (

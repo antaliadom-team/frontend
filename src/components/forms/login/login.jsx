@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext, ScreenWidthContext } from "../../../services/app-context";
 import { useForm, Controller } from "react-hook-form";
 import { createToken } from "../../../services/api/jwt";
+import { emailValidation, passwordValidation } from "../../../services/validation";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,11 +17,14 @@ const Login = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    setError,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "all"
+  });
 
   const onSubmit = (data) => {
-    console.log(data);
+    createToken(data, setAuth, setError)
   };
 
   useEffect(() => {
@@ -38,11 +42,11 @@ const Login = () => {
             <Controller
               control={control}
               name="email"
-              rules={{ required: "Это поле обязательно" }}
+              rules={emailValidation}
               render={({ field, fieldState }) => (
                 <TextInput
                   type="text"
-                  label={"Email"}
+                  label="Email"
                   onChange={(e) => field.onChange(e)}
                   value={field.value}
                   error={fieldState.error}
@@ -56,21 +60,21 @@ const Login = () => {
             <Controller
               control={control}
               name="password"
-              rules={{ required: "Это поле обязательно" }}
-              render={({ field }) => (
+              rules={passwordValidation}
+              render={({ field, fieldState }) => (
                 <TextInput
                   type="password"
-                  label={"Пароль"}
+                  label="Пароль"
                   onChange={(e) => field.onChange(e)}
                   value={field.value}
-                  error={!!errors.password}
+                  error={fieldState.error}
                   errorText={errors.password?.message}
                 />
               )}
             />
           </li>
           <li>
-            <Button type="primary" width={screenWidth !== "desktop" && "100%"}>
+            <Button type="primary" inactive={!isValid} width={screenWidth !== "desktop" && "100%"}>
               Вход
             </Button>
           </li>

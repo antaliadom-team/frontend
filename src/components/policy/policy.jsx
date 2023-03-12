@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import styles from "./policy.module.css";
 import { ModalContext } from "../../services/app-context";
 

@@ -41,3 +41,18 @@ body {
 code {
     font-family: "source-code-pro", "Menlo", "Monaco", "Consolas", "Courier New", monospace;
 }
+
+body::-webkit-scrollbar {
+    padding-right: 15px;
+
+    width: 8px; /* ширина scrollbar */
+    height: 135px;
+}
+
+body::-webkit-scrollbar-track {
+    background: inherit; /* цвет дорожки */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #dd9b5c; /* цвет плашки */
+}

@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_CREATE_TOKEN, API_REFRESH_TOKEN, API_VERIFY_TOKEN } from "./api";
 import { setCookie } from "./cookie";
 
-export const createToken = async (form, setAuth) => {
+export const createToken = async (form, setAuth, setError) => {
   const config = {
     email: form.email,
     password: form.password,
@@ -12,9 +12,16 @@ export const createToken = async (form, setAuth) => {
     const response = await axios.post(API_CREATE_TOKEN, config);
     setCookie("accessToken", response.data.access, undefined);
     localStorage.setItem("refreshToken", response.data.refresh);
-    setAuth(true);
+    setAuth(true)
   } catch (error) {
-    setAuth(false);
+    setError("email", {
+      type: "server",
+      message: "Неверный email или пароль"
+    })
+    setError("password", {
+      type: "server",
+      message: "Неверный email или пароль"
+    })
   }
 };
 

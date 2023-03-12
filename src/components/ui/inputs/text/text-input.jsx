@@ -1,62 +1,24 @@
-import { useRef, useState, useEffect } from "react";
 import styles from "./text.module.css";
+import { useState } from "react";
 
-const TextInput =  ({ text, placeholder, disabled = false, value, errorProps, ...rest }) => {
-  const inputRef = useRef(null);
-  const [error, setError] = useState(false);
-  const [errorText, setErrorText] = useState("");
-  const [warning, setWarning] = useState("");
-
-  useEffect(() => {
-      setError(errorProps);
-      setErrorText(errorProps)
-    }, [value, errorProps])
-
-  useEffect(() => {
-    const reg = /[/!$()*+.<>?^{|}_0-9]/;
-    const match = inputRef?.current.value.match(reg);
-    const length = inputRef?.current.value.length
-
-    if (match) {
-      inputRef.current.focus()
-      setError(true)
-      setErrorText("Только буквы");
-    }
-
-    else if (length > 0 && length < 2) {
-      inputRef.current.focus()
-      setError(true)
-      setErrorText( "Минимум 2 буквы");
-    }
-
-    else if (length > 30) {
-      inputRef.current.focus()
-      setError(true)
-      setErrorText("Максимум 30 букв");
-    }
-
-    else {
-      setError(false)
-      setErrorText("");
-      setWarning("");
-    }
-  }, [value])
+const TextInput = (props) => {
+  const [value, setValue] = useState(props.value || "")
 
   return (
     <div className={styles.wrapper}>
       <label className={styles.field}>
-        <span className={styles.text}>{text}</span>
+        <span className={styles.text}>{props.label}</span>
         <input
-          className={!warning ? styles.input : styles.warning}
-          type="text"
-          ref={inputRef}
+          name={props.name}
+          onChange={(e) => {
+            setValue(e.target.value)
+            props.onChange && props.onChange(e)
+          }}
           value={value}
-          onBlur={()=> error && setWarning(styles.warning)}
-          placeholder={disabled ? null : placeholder}
-          disabled={disabled}
-          {...rest}
+          className={props.error ? styles.warning : styles.input}
+          type={props.type}
         />
-        <span className={error ? styles.error : styles.hide}>{errorText}</span>
+        <span className={props.error ? styles.error : styles.hide}>{props.errorText}</span>
       </label>
     </div>
   );

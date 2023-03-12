@@ -8,6 +8,50 @@
     transform: translate(-50%, -50%);
 }
 
+.closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 20px;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.modalPolicy {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    overflow-y: scroll;
+    height: 100%;
+    background: #ffffff;
+    border: 2px solid #0d1b44;
+    transform: translate(-50%, -50%);
+}
+
+.modalPolicyTablet {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    padding: 30px 90px;
+    overflow-y: scroll;
+    width: 900px;
+    height: 600px;
+    background: #ffffff;
+    border: 2px solid #0d1b44;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 768px) {
+    .modalPolicy {
+        padding: 36px 28px;
+    }
+}
+
 .cross {
     position: absolute;
     top: 30px;
@@ -40,4 +84,33 @@
     border: 2px solid #0d1b44;
     border-radius: 2px;
     transform: rotate(-45deg);
+}
+
+.modalPolicy::-webkit-scrollbar {
+    padding-right: 15px;
+
+    width: 8px; /* ширина scrollbar */
+    height: 135px;
+}
+
+.modalPolicy::-webkit-scrollbar-track {
+    background: inherit; /* цвет дорожки */
+}
+
+.modalPolicy::-webkit-scrollbar-thumb {
+    background-color: #dd9b5c; /* цвет плашки */
+}
+
+.modalPolicyTablet::-webkit-scrollbar {
+    width: 8px; /* ширина scrollbar */
+    height: 135px;
+}
+
+.modalPolicyTablet::-webkit-scrollbar-track {
+    background: inherit; /* цвет дорожки */
+}
+
+.modalPolicyTablet::-webkit-scrollbar-thumb {
+    padding-right: 20px;
+    background-color: #dd9b5c; /* цвет плашки */
 }

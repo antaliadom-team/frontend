@@ -30,7 +30,11 @@ const Modal = ({ children, onClose }) => {
       <Overlay onClose={onClose} />
       <div
         className={
-          screenWidth === "tablet" ? (modal.policy ? styles.modalPolicyTablet : styles.modalPolicy) : styles.modalPolicy
+          screenWidth === "tablet" && modal.policy
+            ? styles.modalPolicyTablet
+            : modal.policy
+            ? styles.modalPolicy
+            : styles.modal
         }>
         {modal.policy ? (
           <button onClick={modalClose} className={styles.closeIcon}>

@@ -8,7 +8,7 @@
 .button {
     position: relative;
     z-index: 1;
-    padding: 12px 60px;
+    padding: 9px 60px;
     font-family: "Open Sans", sans-serif;
     font-size: var(--text-size);
     line-height: 25px;

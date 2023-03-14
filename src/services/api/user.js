@@ -38,3 +38,18 @@ export const logoutUser = async (setAuth) => {
   deleteCookie("accessToken");
   setAuth(false);
 };
+
+export const updateProfile = async (updateUser) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${getCookie("accessToken")}`,
+    },
+  };
+  
+  try {
+    const response = await axios.patch(API_GET_USER, config);
+    updateUser(response.data)
+  } catch (error) {
+    console.error(error);
+  }
+}

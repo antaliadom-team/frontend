@@ -2,57 +2,15 @@
     max-width: 305px;
 }
 
-.wrapper:hover .slider {
+.wrapper:hover .image {
     opacity: 0.8;
 }
 
-.slider {
-    position: relative;
+.image {
     width: 305px;
     transition: opacity 0.3s ease;
+    object-fit: cover;
     cursor: pointer;
-}
-
-.arrow_left {
-    position: absolute;
-    top: 45%;
-    left: 4%;
-    display: block;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-.arrow_right {
-    right: 4%;
-    left: initial;
-    transform: scaleX(-1);
-    composes: arrow_left;
-}
-
-.arrow_img {
-    width: 14px;
-    height: 27px;
-}
-
-.pagination {
-    position: absolute;
-    bottom: 15px;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 4px;
-}
-
-.pagination_item {
-    width: 7px;
-    height: 7px;
-    background-color: #e9e9e9;
-    border-radius: 50%;
-}
-
-.pagination_active {
-    background-color: #db812a;
 }
 
 .price {

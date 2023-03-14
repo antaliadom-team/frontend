@@ -2,15 +2,6 @@
     position: relative;
 }
 
-/* .sliderModal {
-    position: absolute;
-    padding: 30px 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-} */
-
 .activeImage {
     display: block;
     object-fit: cover;

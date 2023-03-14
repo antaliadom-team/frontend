@@ -2,9 +2,15 @@
     max-width: 305px;
 }
 
+.wrapper:hover .slider {
+    opacity: 0.8;
+}
+
 .slider {
     position: relative;
     width: 305px;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
 }
 
 .arrow_left {

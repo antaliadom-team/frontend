@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./slider.module.css";
 import images from "./images";
 import arrow from "../../images/arrow.svg";
+import { ModalContext } from "../../services/app-context";
 
 const Slider = ({ big = false, little_big = false, tablet = false, mobile = false }) => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [size, setSize] = useState({ width: "305px", height: "261px" });
+  const { modal, setModal } = useContext(ModalContext);
 
   useEffect(() => {
     switch (true) {
@@ -59,38 +61,45 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
     setSlide(imgIndex);
   };
 
+  const openModal = () => {
+    setModal({ ...modal, slider: true });
+  };
+
   return (
-    <div className={styles.slider}>
-      {images.map((image) => (
-        <img
-          key={image.id}
-          style={size}
-          className={image.id === slideIndex ? styles.activeImage : styles.fadeImage}
-          src={image.src}
-          alt="фото квартиры"
-        />
-      ))}
-      <button className={styles.arrow_left} onClick={prevSlide}>
-        <img src={arrow} alt="предыдущая" className={styles.arrow_img} />
-      </button>
-      <button className={styles.arrow_right} onClick={nextSlide}>
-        <img src={arrow} alt="следующая" className={styles.arrow_img} />
-      </button>
-      <div className={styles.pagination}>
+    <>
+      <div className={modal.slider ? styles.sliderModal : styles.slider} onClick={openModal}>
         {images.map((image) => (
-          <div
+          <img
             key={image.id}
-            className={
-              slideIndex === image.id
-                ? `${styles.pagination_item} ${styles.pagination_item_active}`
-                : styles.pagination_item
-            }
-            onClick={() => currentSlide(image.id)}
+            style={size}
+            className={image.id === slideIndex ? styles.activeImage : styles.fadeImage}
+            src={image.src}
+            alt="фото квартиры"
           />
         ))}
+        <button className={styles.arrow_left} onClick={prevSlide}>
+          <img src={arrow} alt="предыдущая" className={styles.arrow_img} />
+        </button>
+        <button className={styles.arrow_right} onClick={nextSlide}>
+          <img src={arrow} alt="следующая" className={styles.arrow_img} />
+        </button>
+        <div className={styles.pagination}>
+          {images.map((image) => (
+            <div
+              key={image.id}
+              className={
+                slideIndex === image.id
+                  ? `${styles.pagination_item} ${styles.pagination_item_active}`
+                  : styles.pagination_item
+              }
+              onClick={() => currentSlide(image.id)}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default Slider;
+

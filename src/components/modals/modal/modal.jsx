@@ -13,9 +13,15 @@ const Modal = ({ children, isOpen, onClose }) => {
     return () => document.removeEventListener("keydown", closeByEscape);
   }, [isOpen, onClose]);
 
+  const handleOverlay = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   if (isOpen) {
     return ReactDOM.createPortal(
-      <div onClick={onClose} className={styles.overlay}>
+      <div onClick={handleOverlay} className={styles.overlay}>
         <div className={styles.modal}>{children}</div>
       </div>,
       document.getElementById("modal")

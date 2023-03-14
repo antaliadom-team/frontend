@@ -62,7 +62,7 @@ const Login = () => {
             <TextInput text={"Пароль"} name={"password"} onChange={handleChange} value={values.password} errorProps={error.password} />
           </li>
           <li>
-            <Button type="primary" inactive={disabled} width={screenWidth !== "desktop" && "100%"}>
+            <Button type="primary" isSubmit={true} inactive={disabled} width={screenWidth !== "desktop" && "100%"}>
               Вход
             </Button>
           </li>

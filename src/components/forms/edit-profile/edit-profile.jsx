@@ -1,6 +1,6 @@
 import styles from "./edit-profile.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { PhoneInput, TextInput } from "../../ui/inputs";
 import { updateUser } from "../../../services/api/user";
 import { Button } from "../../ui/buttons";
@@ -15,43 +15,26 @@ const EditProfile = ({setUser}) => {
     last_name: user.last_name,
     phone: user.phone,
   })
+  console.log(formData.first_name)
 
   const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
-    const { first_name, last_name, phone } = e.target.elements;
-    console.log('334')
+    //const { first_name, last_name, phone } = e.target.elements;
+    console.log('you submitted the form!')
 
     // сейчас не видит value, надо передавать его сюда в компонент
     updateUser({
-      first_name: first_name.value,
-      last_name: last_name.value,
-      phone: phone.value,
+      first_name: "Gtnz",
+      last_name: "Хахахах",
+      phone: "+79112349809",
     }, setUser);
   };
 
   const handleChange = (e) => {
     console.log(e)
   };
-
-    // const [ firstName, setFirstName ] = useState('');
-  // const [ lastName, setLastName ] = useState('');
-  // const [ userEmail, setUserEmail ] = useState('');
-  // const [ currentPhone, setCurrentPhone ] = useState('');
-  // const { values, handleChange } = useForm({ 
-  //   first_name: first_name,
-  //   last_name: last_name,
-  //   email: email,
-  //   phone: phone,  
-  // });
-
-    // useEffect(() => {
-  //   setFirstName(user.first_name);
-  //   setLastName(user.last_name);
-  //   setUserEmail(user.email);
-  //   setCurrentPhone(`(${user.phone.substring(2,5)}) ${user.phone.substring(5)}`);
-  // }, [user]);
   
   return (
     <form className={styles.form} onSubmit={submitForm}>
@@ -62,13 +45,13 @@ const EditProfile = ({setUser}) => {
         </Link>
         <ul className={styles.list}>
           <li>
-            <TextInput name={"first_name"} text="Ваше имя*" handleChange={handleChange} placeholder={formData.first_name} />
+            <TextInput name={"first_name"} label="Ваше имя*" handleChange={handleChange} placeholder={formData.first_name} />
           </li>
           <li>
-            <TextInput name={"last_name"} text="Ваша фамилия*" handleChange={handleChange} placeholder={formData.last_name} />
+            <TextInput name={"last_name"} label="Ваша фамилия*" handleChange={handleChange} placeholder={formData.last_name} />
           </li>
           <li>
-            <TextInput name={"email"} text="Ваш e-mail*" disabled={true} value={formData.email} />
+            <TextInput name={"email"} label="Ваш e-mail*" disabled={true} readOnly={true} value={user.email} />
           </li>
           <li>
             <PhoneInput name={"phone"} text="Номер телефона*" handleChange={handleChange} currentPhone={formData.phone} />

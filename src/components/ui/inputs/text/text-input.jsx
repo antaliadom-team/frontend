@@ -17,6 +17,8 @@ const TextInput = (props) => {
           value={value}
           className={props.error ? styles.warning : styles.input}
           type={props.type}
+          placeholder={props?.placeholder}
+          disabled={props.disabled ? true : false }
         />
         <span className={props.error ? styles.error : styles.hide}>{props.errorText}</span>
       </label>

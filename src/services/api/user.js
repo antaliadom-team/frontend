@@ -45,7 +45,6 @@ export const updateUser = async ({ first_name, last_name, phone }, setUser) => {
       Authorization: `Bearer ${getCookie("accessToken")}`,
     }
   };
-
   try {
     console.log('try in user.js')
     const response = await axios.patch(API_GET_USER, { first_name, last_name, phone }, config);

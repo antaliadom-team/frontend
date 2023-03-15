@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import MaskedInput from "react-text-mask";
 import styles from "./phone.module.css";
 
-const PhoneInput = ({ text, disabled = false, userPhone = null }) => {
+const PhoneInput = ({ text, disabled = false, currentPhone = null }) => {
   const inputRef = useRef(null);
   const [error, setError] = useState(false);
   const [warning, setWarning] = useState("");
   const [dropdown, setDropdown] = useState(false);
   const [selected, setSelected] = useState("+7");
   const options = ["+7", "+90"];
-  const placeholder = userPhone ? userPhone : "(999) 123-4567";
+  const placeholder = currentPhone ? currentPhone.substring(2) : "(999) 123-4567";
 
   const validate = () => {
     const value = inputRef.current.inputElement.value.match(/\d+/g).join("");

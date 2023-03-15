@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import styles from "./text.module.css";
 
-const TextInput =  ({ text, placeholder, disabled = false, value, errorProps, ...rest }) => {
+const TextInput =  ({ text, placeholder, disabled = false, value, errorProps, handleChange, ...rest }) => {
   const inputRef = useRef(null);
   const [error, setError] = useState(false);
   const [errorText, setErrorText] = useState("");
@@ -54,6 +54,7 @@ const TextInput =  ({ text, placeholder, disabled = false, value, errorProps, ..
           onBlur={()=> error && setWarning(styles.warning)}
           placeholder={disabled ? null : placeholder}
           disabled={disabled}
+          onChange={handleChange}
           {...rest}
         />
         <span className={error ? styles.error : styles.hide}>{errorText}</span>

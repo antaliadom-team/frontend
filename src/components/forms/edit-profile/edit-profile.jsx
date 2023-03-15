@@ -2,7 +2,6 @@ import styles from "./edit-profile.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import { PhoneInput, TextInput } from "../../ui/inputs";
-import { useForm } from "../../../hooks/use-form";
 import { updateUser } from "../../../services/api/user";
 import { Button } from "../../ui/buttons";
 import { ModalContext, UserContext } from "../../../services/app-context";
@@ -14,28 +13,26 @@ const EditProfile = ({setUser}) => {
   const [ formData, setFormData ] = useState({
     first_name: user.first_name,
     last_name: user.last_name,
-    email: user.email,
-    phone: phoneMasked,
+    phone: user.phone,
   })
 
   const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
-    const { first_name, last_name, email, phone } = e.target.elements;
+    const { first_name, last_name, phone } = e.target.elements;
     console.log('334')
 
     // сейчас не видит value, надо передавать его сюда в компонент
     updateUser({
       first_name: first_name.value,
       last_name: last_name.value,
-      email: email.value,
       phone: phone.value,
     }, setUser);
   };
 
   const handleChange = (e) => {
-
+    console.log(e)
   };
 
     // const [ firstName, setFirstName ] = useState('');
@@ -65,13 +62,13 @@ const EditProfile = ({setUser}) => {
         </Link>
         <ul className={styles.list}>
           <li>
-            <TextInput name={"first_name"} text="Ваше имя*" handleChange={handleChange} placeholder={formData.firstName} />
+            <TextInput name={"first_name"} text="Ваше имя*" handleChange={handleChange} placeholder={formData.first_name} />
           </li>
           <li>
-            <TextInput name={"last_name"} text="Ваша фамилия*" handleChange={handleChange} placeholder={formData.lastName} />
+            <TextInput name={"last_name"} text="Ваша фамилия*" handleChange={handleChange} placeholder={formData.last_name} />
           </li>
           <li>
-            <TextInput name={"email"} text="Ваш e-mail*" handleChange={handleChange} placeholder={formData.userEmail} />
+            <TextInput name={"email"} text="Ваш e-mail*" disabled={true} value={formData.email} />
           </li>
           <li>
             <PhoneInput name={"phone"} text="Номер телефона*" handleChange={handleChange} currentPhone={formData.phone} />

@@ -39,14 +39,14 @@ export const logoutUser = async (setAuth) => {
   setAuth(false);
 };
 
-export const updateUser = async ({ first_name, last_name, phone }, setUser) => {
+export const updateUser = async (newData, setUser) => {
   const config = {
     headers: {
       Authorization: `Bearer ${getCookie("accessToken")}`,
     }
   };
   try {
-    const response = await axios.patch(API_GET_USER, { first_name, last_name, phone }, config);
+    const response = await axios.patch(API_GET_USER, newData, config);
     setUser(response.data);
   } catch (error) {
     console.error(error);

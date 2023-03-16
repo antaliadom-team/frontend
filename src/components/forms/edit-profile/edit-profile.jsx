@@ -8,7 +8,6 @@ import { Button } from "../../ui/buttons";
 import { ModalContext, UserContext } from "../../../services/app-context";
 // import {
 //   nameValidation,
-//   phoneValidation,
 //   surnameValidation,
 // } from "../../../services/validation";
 
@@ -21,15 +20,22 @@ const EditProfile = ({setUser}) => {
     handleSubmit,
   } = useForm({
     mode: "all",
+    defaultValues: {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      phone: user.phone,
+    }
   });
 
-  // !! не сохраняет номер телефона
-  const onSubmit = ({ first_name = user.first_name, last_name = user.last_name, phone = user.phone }) => {
-    updateUser({
-      first_name: first_name,
-      last_name: last_name,
-      phone: phone,
-    }, setUser);
+  const onSubmit = (formData) => {
+    setModal({ ...modal, passwordChanged: true });
+    const data = {};
+    for (const key in formData) {
+      if (formData[key] !== user[key]) {
+        data[key] = formData[key];
+      }
+    }
+    updateUser(data, setUser);
   };
   
   return (
@@ -44,7 +50,6 @@ const EditProfile = ({setUser}) => {
             <Controller
                 control={control}
                 name="first_name"
-                defaultValue={user.first_name}
                 //rules={nameValidation}
                 render={({ field, fieldState }) => (
                   <TextInput 
@@ -63,7 +68,6 @@ const EditProfile = ({setUser}) => {
             <Controller
               control={control}
               name="last_name"
-              defaultValue={user.last_name}
               //rules={surnameValidation}
               render={({ field, fieldState }) => (
                 <TextInput 
@@ -91,12 +95,13 @@ const EditProfile = ({setUser}) => {
             <Controller
               control={control}
               name="phone"
-              defaultValue={user.phone}
               render={({ field, fieldState }) => (
                 <PhoneInput 
                   name={"phone"} 
                   text="Номер телефона*"
                   currentPhone={user.phone}
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
                 />
               )}
             />
@@ -106,7 +111,6 @@ const EditProfile = ({setUser}) => {
           <Button 
             isSubmit={true} 
             type="primary"
-            onClick={() => setModal({ ...modal, passwordChanged: true })}
             >
             Сохранить
           </Button>

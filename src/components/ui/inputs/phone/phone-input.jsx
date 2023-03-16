@@ -13,6 +13,7 @@ const PhoneInput = ({ text, fieldValue, onChange, disabled = false, currentPhone
   const [newNumMasked, setNewNumMasked ] = useState('');
 
   const validate = () => {
+    if (!inputRef.current.inputElement.value) return;
     const value = inputRef.current.inputElement.value.match(/\d+/g).join("");
     setNewNumMasked(value);
     if (value.length < 10) {

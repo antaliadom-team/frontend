@@ -46,7 +46,6 @@ export const updateUser = async ({ first_name, last_name, phone }, setUser) => {
     }
   };
   try {
-    console.log('try in user.js')
     const response = await axios.patch(API_GET_USER, { first_name, last_name, phone }, config);
     setUser(response.data);
   } catch (error) {

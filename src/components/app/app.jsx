@@ -4,15 +4,16 @@ import { Catalog, Home, ProductPage, Profile, Order } from "../../pages";
 import { Register, Logout, EditProfile, EditPassword, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { AuthContext, ModalContext, ScreenWidthContext, UserContext } from "../../services/app-context";
+import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
 import React, { useContext } from "react";
-import Modal from "../modal/modal";
 import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
-import { Button } from "../ui/buttons";
 import { logoutUser } from "../../services/api/user";
-import CatalogItem from "../catalog-item/catalog-item";
 import { useScrollToLocation } from "../../hooks/use-scroll";
+import SliderModal from "../modals/slider-modal/sliderModal";
+import SuccessModal from "../modals/success-modal/successModal";
+import ExitModal from "../modals/exit-modal/exitModal";
+import PasswordModal from "../modals/password-modal/passwordModal";
 
 const App = () => {
   const { modal, setModal } = useContext(ModalContext);
@@ -20,12 +21,10 @@ const App = () => {
   const { setAuth } = useContext(AuthContext);
   const { setUser } = useContext(UserContext);
 
-  const { screenWidth} = useContext(ScreenWidthContext);
-
   const modalClose = () => {
-    setModal({ object: false, exit: false, passwordChanged: false });
+    setModal({ object: false, exit: false, passwordChanged: false, slider: false });
   };
-  
+
   const logout = () => {
     modalClose();
     logoutUser(setAuth, setUser);
@@ -69,64 +68,10 @@ const App = () => {
             }
           />
         </Routes>
-        {modal.object && (
-          <Modal onClose={modalClose}>
-            <div className={styles.object}>
-              <h2>Ваша заявка отправлена!</h2>
-              <div>
-                <CatalogItem withBtn={false} />
-              </div>
-              <div>
-                <Button type={"primary"} width={"100%"} onClick={() => {
-                  modalClose();
-                  navigate("/");
-                }}>
-                  На главную
-                </Button>
-              </div>
-            </div>
-
-          </Modal>
-        )}
-        {modal.exit && (
-          <Modal onClose={modalClose}>
-            <div className={styles.exit}>
-              <h2>Вы уверены, что хотите выйти из личного кабинета?</h2>
-              <div>
-                <Button type={"primary"} onClick={logout}>
-                  {screenWidth !== "mobile" ? "Да, выйти" : "Да"}
-                </Button>
-              </div>
-              <div>
-                <Button
-                  type={"ghost"}
-                  onClick={() => {
-                    modalClose();
-                    navigate("/profile");
-                  }}>
-                  {screenWidth !== "mobile" ? "Нет, вернуться в личный кабинет" : "Отменить"}
-                </Button>
-              </div>
-            </div>
-          </Modal>
-        )}
-        {modal.passwordChanged && (
-          <Modal onClose={modalClose}>
-            <div className={styles.password}>
-              <h2>Изменения сохранены</h2>
-              <div>
-                <Button
-                  type={"primary"}
-                  onClick={() => {
-                    modalClose();
-                    navigate("/profile");
-                  }}>
-                  Понятно
-                </Button>
-              </div>
-            </div>
-          </Modal>
-        )}
+        <SuccessModal isOpen={modal.object} onClose={modalClose} />
+        <ExitModal isOpen={modal.exit} onClose={modalClose} logout={logout} />
+        <PasswordModal isOpen={modal.passwordChanged} onClose={modalClose} />
+        <SliderModal isOpen={modal.slider} onClose={modalClose} />
       </div>
       <Footer />
     </div>
@@ -134,3 +79,4 @@ const App = () => {
 };
 
 export default App;
+

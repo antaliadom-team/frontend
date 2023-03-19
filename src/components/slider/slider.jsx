@@ -1,14 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./slider.module.css";
 import images from "./images";
 import arrow from "../../images/arrow.svg";
+import { ModalContext } from "../../services/app-context";
 
-const Slider = ({ big = false, little_big = false, tablet = false, mobile = false }) => {
+const Slider = ({ big = false, little_big = false, tablet = false, mobile = false, fullScreen = false }) => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [size, setSize] = useState({ width: "305px", height: "261px" });
+  const { modal, setModal } = useContext(ModalContext);
 
   useEffect(() => {
     switch (true) {
+      case fullScreen: {
+        setSize({ width: "100%", height: "75vh" });
+        break;
+      }
       case big: {
         setSize({ width: "738px", height: "632px" });
         break;
@@ -35,7 +41,7 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
         setSize({ width: "305px", height: "261px" });
       }
     }
-  }, [big, little_big, tablet, mobile]);
+  }, [big, little_big, tablet, mobile, fullScreen]);
 
   const setSlide = (imgIndex) => {
     if (imgIndex > images.length) {
@@ -59,10 +65,15 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
     setSlide(imgIndex);
   };
 
+  const openModal = () => {
+    setModal({ ...modal, slider: true });
+  };
+
   return (
     <div className={styles.slider}>
       {images.map((image) => (
         <img
+          onClick={openModal}
           key={image.id}
           style={size}
           className={image.id === slideIndex ? styles.activeImage : styles.fadeImage}
@@ -94,3 +105,4 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
 };
 
 export default Slider;
+

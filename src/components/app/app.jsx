@@ -4,24 +4,19 @@ import { Catalog, Home, ProductPage, Profile, Order } from "../../pages";
 import { Register, Logout, EditProfile, EditPassword, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { AuthContext, ModalContext, ScreenWidthContext, UserContext } from "../../services/app-context";
+import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
 import React, { useContext } from "react";
 import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
-import SliderModal from "../modals/slider-modal/sliderModal";
-import SuccessModal from "../modals/success-modal/successModal";
-import ExitModal from "../modals/exit-modal/exitModal";
-import PasswordModal from "../modals/password-modal/passwordModal";
+import { SliderModal, PasswordModal, ExitModal, SuccessModal, Policy } from "../modals"
 
 const App = () => {
   const { modal, setModal } = useContext(ModalContext);
   const navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
   const { setUser } = useContext(UserContext);
-
-  const { screenWidth } = useContext(ScreenWidthContext);
 
   const modalClose = () => {
     setModal({ object: false, exit: false, passwordChanged: false, policy: false, slider: false });
@@ -42,14 +37,6 @@ const App = () => {
   } else {
     window.onscroll = () => {};
   }
-
-  React.useEffect(() => {
-    if (modal.policy) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [modal.policy]);
 
   useScrollToLocation();
 
@@ -82,6 +69,7 @@ const App = () => {
         <ExitModal isOpen={modal.exit} onClose={modalClose} logout={logout} />
         <PasswordModal isOpen={modal.passwordChanged} onClose={modalClose} />
         <SliderModal isOpen={modal.slider} onClose={modalClose} />
+        <Policy isOpen={modal.policy} onClose={modalClose} />
       </div>
       <Footer />
     </div>

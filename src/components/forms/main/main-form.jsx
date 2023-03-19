@@ -1,9 +1,8 @@
 import styles from "./main.module.css";
 import { Button, Tag } from "../../ui/buttons";
-import { Checkbox, Dropdown, TextareaInput, TextInput, PhoneInput } from "../../ui/inputs";
+import { Checkbox, Dropdown, TextareaInput, TextInput } from "../../ui/inputs";
 import { useContext } from "react";
 import { ScreenWidthContext } from "../../../services/app-context";
-import {Link} from "react-router-dom";
 import Policy from "../../policy/policy";
 import { Controller, useForm } from "react-hook-form";
 import { submitMainForm } from "../../../services/api/submit";
@@ -269,11 +268,10 @@ const MainForm = () => {
               name="agreement"
               rules={{ required: true }}
               render={({ field }) => (
-                <Checkbox value={field.value} onChange={(e) => field.onChange(e)}>
-                  <Policy/>
-                </Checkbox>
+                <Checkbox value={field.value} onChange={(e) => field.onChange(e)} />
               )}
             />
+            <Policy/>
           </div>
           <div className={styles.button}>
             <Button type="primary" inactive={!isValid}>

@@ -57,7 +57,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="/edit-profile" element={<EditProfile setUser={setUser} />} />
             <Route path="/edit-password" element={<EditPassword />} />
           </Route>
           <Route

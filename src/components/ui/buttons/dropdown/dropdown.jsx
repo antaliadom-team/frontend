@@ -1,64 +1,33 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styles from './dropdown.module.css';
+import styles from "./dropdown.module.css";
+import Select from "react-dropdown-select";
 
-const Dropdown = ({ text, options, required }) => {
-
-  const dropdownRef = useRef();
-  const [error, setError] = useState(false);
-  const [warning, setWarning] = useState('');
-  const [placeholder, setPlaceholder] = useState('');
-  const [isOpened, setIsOpened] = useState(false);
-
-  const handleDropdown = (e) => {
-    if (e.target === e.currentTarget) {
-      dropdownRef.current.classList.toggle(styles.active);
-      setIsOpened(!isOpened);
-    }
+const Dropdown = (props) => {
+  const customStyle = {
+    color: "#0d1b44",
+    padding: "6px 12px",
+    outline: "none",
+    fontFamily: "Open Sans",
+    borderRadius: 0,
+    fontSize: 18,
+    border: "2px solid #0d1b44",
   };
 
-  const handleSelectOption = (e) => {
-    e.target.classList.toggle(styles.checked);
-    setPlaceholder(e.target.textContent);
-  };
+  return (
+    <div className={styles.dropdown}>
+      <span className={styles.label}>{props.label}</span>
+      <Select
+        style={customStyle}
+        multi={props.multi}
+        name={"select"}
+        options={props.options}
+        labelField="name"
+        valueField="id"
+        onChange={props.onChange}
+        placeholder={""}
+      />
+    </div>
 
-  useEffect(() => {
-    const closeOnOverlay = (e) => {
-      if (!e.target.classList.contains(styles.active) && !e.target.classList.contains(styles.option)) {
-        dropdownRef.current.classList.remove(styles.active);
-        setIsOpened(false);
-      }
-    }
-    window.addEventListener('click', closeOnOverlay);
-    return () => {
-      window.removeEventListener('click', closeOnOverlay);
-    }
-  }, []);
-
-  return(
-    <label className={styles.label}>{text}
-      <div
-        className={!warning ? styles.dropdown : styles.warning}
-        onClick={handleDropdown}
-        ref={dropdownRef}
-        onBlur={()=> error && setWarning(styles.warning)}
-      >
-        <div className={styles.arrow} />
-        {placeholder ? placeholder : text}
-        <ul className={styles.menu}>
-          {options.map((option, index) => (
-            <li className={styles.option} 
-              key={index} 
-              onClick={handleSelectOption}
-            >{option}</li>
-          ))}
-        </ul>
-      </div>
-      { required 
-        ? (<span className={error ? styles.error : styles.hide}>Ошибка</span>) 
-        : (<span className={styles.hide}></span>)
-      }
-    </label>
-  )
+  );
 };
 
 export default Dropdown;

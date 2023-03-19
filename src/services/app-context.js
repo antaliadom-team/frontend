@@ -16,35 +16,36 @@ export const AppContext = ({ children }) => {
     exit: false,
     passwordChanged: false,
     policy: false,
+    slider: false,
   });
   const [isAuth, setAuth] = useState(false);
   const [register, setRegister] = useState();
   const [user, setUser] = useState();
 
   useEffect(() => {
-    if(isAuth) {
+    if (isAuth) {
       getUser(setUser);
     }
-  }, [isAuth])
+  }, [isAuth]);
 
   const setWidth = () => {
-    const screen = window.outerWidth
+    const screen = window.outerWidth;
     if (screen > 1280) {
-      setScreenWidth("desktop")
+      setScreenWidth("desktop");
     }
 
     if (screen <= 1280 && screen >= 768) {
-      setScreenWidth("tablet")
+      setScreenWidth("tablet");
     }
 
     if (screen < 768) {
-      setScreenWidth("mobile")
+      setScreenWidth("mobile");
     }
-  }
+  };
 
   useEffect(() => {
     setWidth();
-  }, [])
+  }, []);
 
   return (
     <ScreenWidthContext.Provider value={{ screenWidth }}>
@@ -52,9 +53,7 @@ export const AppContext = ({ children }) => {
         <ObjectsContext.Provider value={{ objects, setObjects }}>
           <UserContext.Provider value={{ user, setUser }}>
             <AuthContext.Provider value={{ isAuth, setAuth }}>
-              <ModalContext.Provider value={{ modal, setModal }}>
-                {children}
-              </ModalContext.Provider>
+              <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
             </AuthContext.Provider>
           </UserContext.Provider>
         </ObjectsContext.Provider>

@@ -1,0 +1,17 @@
+.object {
+    padding: 80px 120px 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.object > h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+    color: var(--text-color);
+}

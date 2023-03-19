@@ -2,94 +2,156 @@ import styles from "./register.module.css";
 import { Checkbox, TextInput } from "../../ui/inputs";
 import { Button } from "../../ui/buttons";
 import { Link } from "react-router-dom";
-import { useForm } from "../../../hooks/use-form";
 import { registration } from "../../../services/api/registration";
 import { AuthContext } from "../../../services/app-context";
 import { useContext } from "react";
 import Policy from "../../policy/policy";
+import { useForm, Controller } from "react-hook-form";
+import {
+  confirmPassValidation,
+  emailValidation,
+  nameValidation,
+  passwordValidation,
+  phoneValidation,
+  surnameValidation,
+} from "../../../services/validation";
 
 const Register = () => {
   const { setAuth } = useContext(AuthContext);
 
-  const { values, handleChange } = useForm({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone: "",
-    password: "",
-    re_password: "",
-    agreement: false,
+  const {
+    control,
+    handleSubmit,
+    setError,
+    watch,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "all",
   });
-  const handleForm = (e) => {
-    e.preventDefault();
-    const { first_name, last_name, email, phone, password, re_password } = e.target.elements;
 
-    registration(
-      {
-        first_name: first_name.value,
-        last_name: last_name.value,
-        email: email.value,
-        phone: phone.value,
-        password: password.value,
-        re_password: re_password.value,
-        agreement: true,
-      },
-      setAuth
-    );
+  const onSubmit = (data) => {
+    registration(data, setAuth, setError);
   };
 
   return (
-    <form className={styles.form} onSubmit={handleForm}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.container}>
         <h2 className={styles.title}>Регистрация</h2>
         <ul className={styles.list}>
           <li>
-            <TextInput
-              text="Ваше имя*"
-              name={"first_name"}
-              onChange={handleChange}
-              value={values.first_name}
-              placeholder="Иван"
+            <Controller
+              control={control}
+              name="first_name"
+              rules={nameValidation}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="text"
+                  label="Ваше имя*"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.first_name?.message}
+                />
+              )}
             />
           </li>
           <li>
-            <TextInput
-              text="Ваша фамилия*"
-              name={"last_name"}
-              onChange={handleChange}
-              value={values.last_name}
-              placeholder="Иванов"
+            <Controller
+              control={control}
+              name="last_name"
+              rules={surnameValidation}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="text"
+                  label="Ваша фамилия*"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.last_name?.message}
+                />
+              )}
             />
           </li>
           <li>
-            <TextInput
-              text="Ваш e-mail*"
-              name={"email"}
-              onChange={handleChange}
-              value={values.email}
-              placeholder="ivanov@mail.ru"
+            <Controller
+              control={control}
+              name="email"
+              rules={emailValidation}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="text"
+                  label="Ваш email*"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.email?.message}
+                />
+              )}
             />
           </li>
           <li>
-            <TextInput text="Номер телефона*" name={"phone"} onChange={handleChange} value={values.phone} />
+            <Controller
+              control={control}
+              name="phone"
+              rules={phoneValidation}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="text"
+                  label="Ваш номер телефона*"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.phone?.message}
+                />
+              )}
+            />
           </li>
           <li>
-            <TextInput text="Пароль*" name={"password"} onChange={handleChange} value={values.password} />
+            <Controller
+              control={control}
+              name="password"
+              rules={passwordValidation}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="password"
+                  label="Пароль*"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.password?.message}
+                />
+              )}
+            />
           </li>
           <li>
-            <TextInput
-              text="Подтвердите пароль*"
-              name={"re_password"}
-              onChange={handleChange}
-              value={values.re_password}
+            <Controller
+              control={control}
+              name="re_password"
+              rules={confirmPassValidation(watch, "password")}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="password"
+                  label="Подтвердите пароль*"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.re_password?.message}
+                />
+              )}
             />
           </li>
         </ul>
         <div className={styles.checkbox}>
-          <Checkbox>
-            <Policy/>
-
-          </Checkbox>
+          <Controller
+            control={control}
+            name="agreement"
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Checkbox value={field.value} onChange={e => field.onChange(e)}>
+                <Policy/>
+              </Checkbox>
+            )}
+          />
         </div>
         <div className={styles.buttons}>
           <Button type="primary">Зарегистрироваться</Button>

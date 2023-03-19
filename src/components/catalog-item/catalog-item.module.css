@@ -28,7 +28,6 @@
     display: flex;
     width: 280px;
     align-items: center;
-
 }
 
 .text {
@@ -68,7 +67,6 @@
         width: 328px;
         height: 261px;
     }
-
 }
 
 @media screen and (max-width: 768px) {

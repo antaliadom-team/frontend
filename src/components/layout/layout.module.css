@@ -17,8 +17,8 @@
 .block {
     position: absolute;
     z-index: 0;
-    top: 405px;
-    right: 44px;
+    right: -40px;
+    bottom: -40px;
     width: 566px;
     height: 371px;
     border: 2px solid var(--border-color);

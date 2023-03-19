@@ -11,7 +11,6 @@ const Checkbox = (props) => {
           onChange={props.onChange}
         />
         <span className={styles.custom_checkbox} />
-        <span className={styles.text}>{props.children}</span>
       </label>
   );
 };

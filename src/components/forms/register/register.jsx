@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { registration } from "../../../services/api/registration";
 import { AuthContext } from "../../../services/app-context";
 import { useContext } from "react";
+import Policy from "../../policy/policy";
 import { useForm, Controller } from "react-hook-form";
 import {
   confirmPassValidation,
@@ -147,20 +148,13 @@ const Register = () => {
             rules={{ required: true }}
             render={({ field }) => (
               <Checkbox value={field.value} onChange={e => field.onChange(e)}>
-                Я согласен с&nbsp;
-                <a href="/policy" className={styles.link}>
-                  Политикой конфиденциальности
-                </a>
-                &nbsp;и&nbsp;
-                <a href="/policy" className={styles.link}>
-                  Условиями использования сервиса
-                </a>
+                <Policy/>
               </Checkbox>
             )}
           />
         </div>
         <div className={styles.buttons}>
-          <Button type="primary" inactive={!isValid}>Зарегистрироваться</Button>
+          <Button type="primary">Зарегистрироваться</Button>
         </div>
         <p className={styles.text}>
           Уже есть аккаунт?&nbsp;

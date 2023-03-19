@@ -79,7 +79,7 @@ const Login = () => {
                     </li>
                     <li>
                         <p className={styles.text}>
-                            <Link className={styles.linkForgotten} to="/edit-password">
+                            <Link className={styles.link} to="/edit-password">
                                 Забыли пароль?
                             </Link>
                         </p>
@@ -96,6 +96,70 @@ const Login = () => {
             </div>
         </form>
     );
+  return (
+    <form className={styles.login} onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Вход</h2>
+        <ul className={styles.list}>
+          <li>
+            <Controller
+              control={control}
+              name="email"
+              rules={emailValidation}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="text"
+                  label="Email"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.email?.message}
+                />
+              )
+            }
+            />
+          </li>
+          <li>
+            <Controller
+              control={control}
+              name="password"
+              rules={passwordValidation}
+              render={({ field, fieldState }) => (
+                <TextInput
+                  type="password"
+                  label="Пароль"
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  error={fieldState.error}
+                  errorText={errors.password?.message}
+                />
+              )}
+            />
+          </li>
+          <li>
+            <Button type="primary" isSubmit={true} inactive={!isValid} width={screenWidth !== "desktop" && "100%"}>
+              Вход
+            </Button>
+          </li>
+          <li>
+            <p className={styles.text}>
+              <Link className={styles.link} to="/edit-password">
+                Забыли пароль?
+              </Link>
+            </p>
+          </li>
+          <li>
+            <p className={styles.text}>
+              Нет аккаунта?&nbsp;
+              <Link className={styles.link} to="/register">
+                Зарегистрироваться
+              </Link>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </form>
+  );
 };
 
 export default Login;

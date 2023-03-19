@@ -3,6 +3,7 @@ import { Button, Tag } from "../../ui/buttons";
 import { Checkbox, Dropdown, TextareaInput, TextInput } from "../../ui/inputs";
 import { useContext } from "react";
 import { ScreenWidthContext } from "../../../services/app-context";
+import Policy from "../../policy/policy";
 import { Controller, useForm } from "react-hook-form";
 import { submitMainForm } from "../../../services/api/submit";
 import {
@@ -267,18 +268,10 @@ const MainForm = () => {
               name="agreement"
               rules={{ required: true }}
               render={({ field }) => (
-                <Checkbox value={field.value} onChange={(e) => field.onChange(e)}>
-                  Я согласен с&nbsp;
-                  <a href="/policy" className={styles.link}>
-                    Политикой конфиденциальности
-                  </a>
-                  &nbsp;и&nbsp;
-                  <a href="/policy" className={styles.link}>
-                    Условиями использования сервиса
-                  </a>
-                </Checkbox>
+                <Checkbox value={field.value} onChange={(e) => field.onChange(e)} />
               )}
             />
+            <Policy/>
           </div>
           <div className={styles.button}>
             <Button type="primary" inactive={!isValid}>

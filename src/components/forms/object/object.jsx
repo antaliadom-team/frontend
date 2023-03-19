@@ -5,7 +5,8 @@ import CatalogItem from "../../catalog-item/catalog-item";
 import { Checkbox, TextareaInput, TextInput, PhoneInput } from "../../ui/inputs";
 import { Button } from "../../ui/buttons";
 import { ModalContext } from "../../../services/app-context";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import Policy from "../../policy/policy";
 
 const Object = () => {
   const [sendSuccess, setSendSuccess] = useState(false);
@@ -63,14 +64,8 @@ const Object = () => {
             </ul>
             <div className={mainForm.checkbox}>
               <Checkbox>
-                Я согласен с&nbsp;
-                <a href="/policy" className={mainForm.link}>
-                  Политикой конфиденциальности
-                </a>
-                &nbsp;и&nbsp;
-                <a href="/policy" className={mainForm.link}>
-                  Условиями использования сервиса
-                </a>
+                <Policy/>
+
               </Checkbox>
             </div>
             <div className={mainForm.button}>

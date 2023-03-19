@@ -3,9 +3,10 @@ import { Button } from "../../components/ui/buttons";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { Checkbox, PhoneInput, TextareaInput, TextInput } from "../../components/ui/inputs";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { ModalContext, ScreenWidthContext } from "../../services/app-context";
 import OrderSent from "./order-sent";
+import Policy from "../../components/policy/policy";
 
 const Order = () => {
   const navigate = useNavigate();
@@ -49,14 +50,7 @@ const Order = () => {
 
               <div className={styles.checkbox}>
                 <Checkbox>
-                  Я согласен с&nbsp;
-                  <a href="/policy" className={styles.link}>
-                    Политикой конфиденциальности
-                  </a>
-                  &nbsp;и&nbsp;
-                  <a href="/policy" className={styles.link}>
-                    Условиями использования сервиса
-                  </a>
+                  <Policy/>
                 </Checkbox>
               </div>
               <div className={styles.button}>

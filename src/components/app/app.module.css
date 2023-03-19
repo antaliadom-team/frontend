@@ -48,6 +48,11 @@
     color: var(--text-color);
 }
 
+.policyBtn {
+    padding-top: 40px;
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .exit {
         padding: 36px 28px;

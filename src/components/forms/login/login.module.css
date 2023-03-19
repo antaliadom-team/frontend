@@ -60,7 +60,9 @@
 @media screen and (max-width: 1280px) {
     .login {
         margin-top: 90px;
+        display: flex;
         width: var(--container);
+        justify-content: center;
         border: none;
     }
 

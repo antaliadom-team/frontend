@@ -1,0 +1,24 @@
+.wrapper {
+    margin: 0 auto;
+    padding: 80px 120px;
+    overflow: auto;
+    width: 1100px;
+    height: 95vh;
+}
+
+.policyBtn {
+    padding-top: 40px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1280px) {
+    .wrapper {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 300px;
+    }
+}

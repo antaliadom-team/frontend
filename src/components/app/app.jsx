@@ -10,10 +10,7 @@ import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
-import SliderModal from "../modals/slider-modal/sliderModal";
-import SuccessModal from "../modals/success-modal/successModal";
-import ExitModal from "../modals/exit-modal/exitModal";
-import PasswordModal from "../modals/password-modal/passwordModal";
+import { SliderModal, PasswordModal, ExitModal, SuccessModal, Policy } from "../modals"
 
 const App = () => {
   const { modal, setModal } = useContext(ModalContext);
@@ -22,9 +19,9 @@ const App = () => {
   const { setUser } = useContext(UserContext);
 
   const modalClose = () => {
-    setModal({ object: false, exit: false, passwordChanged: false, slider: false });
+    setModal({ object: false, exit: false, passwordChanged: false, policy: false, slider: false });
   };
-
+  
   const logout = () => {
     modalClose();
     logoutUser(setAuth, setUser);
@@ -72,6 +69,7 @@ const App = () => {
         <ExitModal isOpen={modal.exit} onClose={modalClose} logout={logout} />
         <PasswordModal isOpen={modal.passwordChanged} onClose={modalClose} />
         <SliderModal isOpen={modal.slider} onClose={modalClose} />
+        <Policy isOpen={modal.policy} onClose={modalClose} />
       </div>
       <Footer />
     </div>
@@ -79,4 +77,3 @@ const App = () => {
 };
 
 export default App;
-

@@ -1,0 +1,54 @@
+﻿.policy {
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+}
+
+.policyTitle {
+    padding-bottom: 20px;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    text-align: center;
+    color: #0d1b44;
+}
+
+.policyBlock {
+    padding: 10px 0;
+}
+
+.policyText {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: #0d1b44;
+}
+
+.policyBlockTitle {
+    padding: 20px 0;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    color: #0d1b44;
+}
+
+li {
+    list-style: none;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: #0d1b44;
+}
+
+@media screen and (max-width: 768px) {
+    .policyTitle {
+        font-size: 19px;
+    }
+
+    .policyText {
+        font-size: 14px;
+    }
+
+    li {
+        font-size: 14px;
+    }
+}

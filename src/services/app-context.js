@@ -15,6 +15,7 @@ export const AppContext = ({ children }) => {
     object: false,
     exit: false,
     passwordChanged: false,
+    policy: false,
     slider: false,
   });
   const [isAuth, setAuth] = useState(false);
@@ -60,4 +61,3 @@ export const AppContext = ({ children }) => {
     </ScreenWidthContext.Provider>
   );
 };
-

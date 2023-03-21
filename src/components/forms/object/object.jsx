@@ -9,6 +9,7 @@ import {Link, useNavigate} from "react-router-dom";
 import Policy from "../../policy/policy";
 
 const Object = () => {
+  //Написать запрос на отправку заявки этой формы, валидация по желанию
   const [sendSuccess, setSendSuccess] = useState(false);
   const { setModal } = useContext(ModalContext);
   const navigate = useNavigate();

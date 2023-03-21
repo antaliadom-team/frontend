@@ -4,6 +4,7 @@ import { Button } from "../ui/buttons";
 import { useNavigate } from "react-router-dom";
 
 const Ads = () => {
+  // фикс компонента для свежих объявлений на главной странице
   const navigate = useNavigate();
 
   return (

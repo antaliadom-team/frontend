@@ -5,6 +5,7 @@ import { Button } from "../../ui/buttons";
 import { useNavigate } from "react-router-dom";
 
 const EditPassword = () => {
+  //api для сброса пароля, логика + валидация по желанию
   const navigate = useNavigate();
   const [correct, setCorrect] = useState(false);
   const [changed, setChanged] = useState(false);

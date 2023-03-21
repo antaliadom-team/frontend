@@ -8,3 +8,7 @@ export const API_CREATE_TOKEN = `${API}auth/jwt/create/`;
 export const API_REFRESH_TOKEN = `${API}auth/jwt/refresh/`;
 export const API_VERIFY_TOKEN = `${API}auth/jwt/verify/`;
 export const API_SUBMIT = `${API}objects/order/`;
+export const API_LOCATIONS = `${API}objects/locations/`;
+export const API_CATEGORIES = `${API}objects/categories/`;
+export const API_PROPERTY_TYPES = `${API}objects/property_types/`;
+export const API_FACILITIES = `${API}objects/facilities/`;

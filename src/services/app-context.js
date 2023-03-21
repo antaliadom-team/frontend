@@ -25,12 +25,6 @@ export const AppContext = ({ children }) => {
   const [user, setUser] = useState();
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    if (isAuth) {
-      getUser(setUser);
-    }
-  }, [isAuth]);
-
   const setWidth = () => {
     const screen = window.outerWidth;
     if (screen > 1280) {
@@ -47,6 +41,7 @@ export const AppContext = ({ children }) => {
   };
 
   useEffect(() => {
+    getUser(setUser, setAuth);
     setWidth();
     getObjects(setObjects);
     getData(setData);

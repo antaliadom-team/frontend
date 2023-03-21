@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { getUser } from "./api/user";
+import { getData, getObjects } from "./api/objects";
 
 export const ModalContext = createContext(null);
 export const UserContext = createContext(null);
@@ -7,6 +8,7 @@ export const AuthContext = createContext(null);
 export const ObjectsContext = createContext(null);
 export const RegisterContext = createContext(null);
 export const ScreenWidthContext = createContext(null);
+export const DataContext = createContext(null);
 
 export const AppContext = ({ children }) => {
   const [screenWidth, setScreenWidth] = useState("desktop");
@@ -21,6 +23,7 @@ export const AppContext = ({ children }) => {
   const [isAuth, setAuth] = useState(false);
   const [register, setRegister] = useState();
   const [user, setUser] = useState();
+  const [data, setData] = useState({});
 
   useEffect(() => {
     if (isAuth) {
@@ -45,19 +48,23 @@ export const AppContext = ({ children }) => {
 
   useEffect(() => {
     setWidth();
+    getObjects(setObjects);
+    getData(setData);
   }, []);
 
   return (
-    <ScreenWidthContext.Provider value={{ screenWidth }}>
-      <RegisterContext.Provider value={{ register, setRegister }}>
-        <ObjectsContext.Provider value={{ objects, setObjects }}>
-          <UserContext.Provider value={{ user, setUser }}>
-            <AuthContext.Provider value={{ isAuth, setAuth }}>
-              <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
-            </AuthContext.Provider>
-          </UserContext.Provider>
-        </ObjectsContext.Provider>
-      </RegisterContext.Provider>
-    </ScreenWidthContext.Provider>
+    <DataContext.Provider value={{ data }}>
+      <ScreenWidthContext.Provider value={{ screenWidth }}>
+        <RegisterContext.Provider value={{ register, setRegister }}>
+          <ObjectsContext.Provider value={{ objects, setObjects }}>
+            <UserContext.Provider value={{ user, setUser }}>
+              <AuthContext.Provider value={{ isAuth, setAuth }}>
+                <ModalContext.Provider value={{ modal, setModal }}>{children}</ModalContext.Provider>
+              </AuthContext.Provider>
+            </UserContext.Provider>
+          </ObjectsContext.Provider>
+        </RegisterContext.Provider>
+      </ScreenWidthContext.Provider>
+    </DataContext.Provider>
   );
 };

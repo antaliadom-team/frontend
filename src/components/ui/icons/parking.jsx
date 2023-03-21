@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const Parking = ({isAvailable}) => {
+const Parking = ({ isAvailable }) => {
     const [color, setColor] = useState("#0D1B44");
 
     useEffect(() => {
-        if(!isAvailable) {
+        if (!isAvailable) {
             setColor("#CBCBCB");
         }
-    }, [isAvailable])
+    }, [isAvailable]);
 
     return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 9.16667H8.33333V5.83333H11C11.442 5.83333 11.866 6.00893 12.1785 6.32149C12.4911 6.63405 12.6667 7.05797 12.6667 7.5C12.6667 7.94203 12.4911 8.36595 12.1785 8.67851C11.866 8.99107 11.442 9.16667 11 9.16667ZM10.8333 2.5H5V17.5H8.33333V12.5H10.8333C12.1594 12.5 13.4312 11.9732 14.3689 11.0355C15.3065 10.0979 15.8333 8.82608 15.8333 7.5C15.8333 4.73333 13.5917 2.5 10.8333 2.5Z" fill={color}/>
-        </svg>
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8 4H17.3333C19.4551 4 21.4899 4.84285 22.9902 6.34315C24.4905 7.84344 25.3333 9.87827 25.3333 12C25.3333 14.1217 24.4905 16.1566 22.9902 17.6569C21.4899 19.1571 19.4551 20 17.3333 20H10.6667V28H8V4ZM10.6667 6.66667V17.3333H17.3333C18.7478 17.3333 20.1044 16.7714 21.1046 15.7712C22.1048 14.771 22.6667 13.4145 22.6667 12C22.6667 10.5855 22.1048 9.22896 21.1046 8.22876C20.1044 7.22857 18.7478 6.66667 17.3333 6.66667H10.6667Z"
+            fill={color}
+          />
+      </svg>
     );
 };
 

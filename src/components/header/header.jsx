@@ -10,6 +10,7 @@ import userEdit from "../../images/edit.svg";
 import userExit from "../../images/exit.svg";
 
 const Header = () => {
+  //Фикс модалки для мобильного меню, мобильное меню находится в этом компоненте
   const { screenWidth } = useContext(ScreenWidthContext);
   const { isAuth } = useContext(AuthContext);
   const { user } = useContext(UserContext);

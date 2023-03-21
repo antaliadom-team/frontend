@@ -12,6 +12,7 @@ import { ModalContext, UserContext } from "../../../services/app-context";
 // } from "../../../services/validation";
 
 const EditProfile = ({setUser}) => {
+// Необходимо написать валидацию для данного компонента
   const navigate = useNavigate();
   const { modal, setModal } = useContext(ModalContext);
   const { user } = useContext(UserContext);

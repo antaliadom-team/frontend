@@ -19,17 +19,12 @@ export const AppContext = ({ children }) => {
     passwordChanged: false,
     policy: false,
     slider: false,
+    submit: false,
   });
   const [isAuth, setAuth] = useState(false);
   const [register, setRegister] = useState();
   const [user, setUser] = useState();
   const [data, setData] = useState({});
-
-  useEffect(() => {
-    if (isAuth) {
-      getUser(setUser);
-    }
-  }, [isAuth]);
 
   const setWidth = () => {
     const screen = window.outerWidth;
@@ -47,6 +42,7 @@ export const AppContext = ({ children }) => {
   };
 
   useEffect(() => {
+    getUser(setUser, setAuth);
     setWidth();
     getObjects(setObjects);
     getData(setData);

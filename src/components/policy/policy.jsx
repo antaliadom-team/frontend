@@ -6,7 +6,6 @@ const Policy = () => {
   const { modal, setModal } = useContext(ModalContext);
   const modalOpen = () => {
     setModal({ ...modal, policy: true });
-    console.log(1)
   };
   return (
     <div>

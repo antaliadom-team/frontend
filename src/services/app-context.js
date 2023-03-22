@@ -11,7 +11,7 @@ export const ScreenWidthContext = createContext(null);
 export const DataContext = createContext(null);
 
 export const AppContext = ({ children }) => {
-  const [screenWidth, setScreenWidth] = useState("desktop");
+  const [screenWidth, setScreenWidth] = useState();
   const [objects, setObjects] = useState();
   const [modal, setModal] = useState({
     object: false,
@@ -27,7 +27,7 @@ export const AppContext = ({ children }) => {
   const [data, setData] = useState({});
 
   const setWidth = () => {
-    const screen = window.outerWidth;
+    const screen = window.innerWidth;
     if (screen > 1280) {
       setScreenWidth("desktop");
     }
@@ -47,6 +47,8 @@ export const AppContext = ({ children }) => {
     getObjects(setObjects);
     getData(setData);
   }, []);
+
+  window.addEventListener("resize", setWidth)
 
   return (
     <DataContext.Provider value={{ data }}>

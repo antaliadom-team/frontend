@@ -99,6 +99,7 @@ export const textareaValidation = {
 }
 
 export const serverValidation = (errors, setError) => {
+  // добавить проверку на пароль
   if (errors.first_name) {
     setError("first_name", {
       type: "server",

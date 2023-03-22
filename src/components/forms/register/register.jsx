@@ -17,6 +17,7 @@ import {
 } from "../../../services/validation";
 
 const Register = () => {
+  // Необходимо доработать этот компонент чтобы работал
   const { setAuth } = useContext(AuthContext);
 
   const {

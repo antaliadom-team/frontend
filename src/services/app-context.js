@@ -11,7 +11,7 @@ export const ScreenWidthContext = createContext(null);
 export const DataContext = createContext(null);
 
 export const AppContext = ({ children }) => {
-  const [screenWidth, setScreenWidth] = useState("desktop");
+  const [screenWidth, setScreenWidth] = useState();
   const [objects, setObjects] = useState();
   const [modal, setModal] = useState({
     object: false,
@@ -19,20 +19,15 @@ export const AppContext = ({ children }) => {
     passwordChanged: false,
     policy: false,
     slider: false,
+    submit: false,
   });
   const [isAuth, setAuth] = useState(false);
   const [register, setRegister] = useState();
   const [user, setUser] = useState();
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    if (isAuth) {
-      getUser(setUser);
-    }
-  }, [isAuth]);
-
   const setWidth = () => {
-    const screen = window.outerWidth;
+    const screen = window.innerWidth;
     if (screen > 1280) {
       setScreenWidth("desktop");
     }
@@ -47,10 +42,13 @@ export const AppContext = ({ children }) => {
   };
 
   useEffect(() => {
+    getUser(setUser, setAuth);
     setWidth();
     getObjects(setObjects);
     getData(setData);
   }, []);
+
+  window.addEventListener("resize", setWidth)
 
   return (
     <DataContext.Provider value={{ data }}>

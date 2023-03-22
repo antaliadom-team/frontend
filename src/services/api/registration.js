@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_REGISTER } from "./api";
 import { serverValidation } from "../validation";
 
-export const registration = async (form, setAuth, setError) => {
+export const registration = async (form, setAuth, setError, setSuccess) => {
     const testUser = {
         email: "vasya_pupkin@mail.com",
         first_name: "Vasya",
@@ -25,7 +25,7 @@ export const registration = async (form, setAuth, setError) => {
 
     try {
         await axios.post(API_REGISTER, config);
-        setAuth(true);
+        setSuccess(true);
     } catch (error) {
         const errors = error.response.data;
         serverValidation(errors, setError);

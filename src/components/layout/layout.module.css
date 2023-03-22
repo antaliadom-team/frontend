@@ -1,24 +1,24 @@
 .layout {
-    margin: 100px auto;
+    margin: 180px auto;
     width: var(--container);
 }
 
 .container {
     display: flex;
     width: 100%;
-    min-height: 678px;
     justify-content: space-between;
 }
 
 .image_and_block {
     position: relative;
+    height: 718px;
 }
 
 .block {
     position: absolute;
     z-index: 0;
-    right: -40px;
-    bottom: -40px;
+    right: -44px;
+    bottom: -44px;
     width: 566px;
     height: 371px;
     border: 2px solid var(--border-color);
@@ -34,5 +34,8 @@
 
 .form {
     margin-left: 128px;
+    display: flex;
     width: 100%;
+    min-height: 718px;
+    align-items: center;
 }

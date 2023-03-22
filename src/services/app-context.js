@@ -19,6 +19,7 @@ export const AppContext = ({ children }) => {
     passwordChanged: false,
     policy: false,
     slider: false,
+    submit: false,
   });
   const [isAuth, setAuth] = useState(false);
   const [register, setRegister] = useState();

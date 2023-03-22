@@ -2,47 +2,51 @@ import styles from "./tag.module.css";
 import { useEffect, useState } from "react";
 
 const Tag = (props) => {
-  const [state, setState] = useState([]);
+    const [state, setState] = useState([]);
 
-  const handleTag = (e) => {
-    const target = e.target;
-    if (!target.classList.contains(styles.selector)) return;
-    if (props.onceSelect) {
-      const options = document.querySelectorAll("#rent");
-      Array.from(options).map((element) => element.classList.remove(styles.active));
-      setState([])
-      target.classList.add(styles.active);
-      setState(prevState => [...prevState, target.textContent])
-    } else {
-      e.target.classList.toggle(styles.active);
-      if (state.includes(target.textContent)) {
-        const newState = state.filter(f => target.textContent !== f);
-        setState(newState);
-      } else {
-        setState(prevState => [...prevState, target.textContent]);
-      }
-    }
-  };
+    const handleTag = (e) => {
+        const target = e.target;
+        const value = { id: target.dataset.id, name: target.textContent };
+        if (!target.classList.contains(styles.selector)) return;
+        if (props.onceSelect) {
+            const options = document.querySelectorAll("#rent");
+            Array.from(options).map((element) => element.classList.remove(styles.active));
+            setState([]);
+            target.classList.add(styles.active);
+            setState((prevState) => [...prevState, value]);
+        } else {
+            e.target.classList.toggle(styles.active);
+            setState((prevState) => [...prevState, value]);
+            state.forEach((item) => {
+                if (item.id === value.id) {
+                    setState(state.filter((item) => item.id !== value.id));
+                }
+            });
+        }
+    };
 
-  useEffect(() => {
-    props.onChange(state)
-  }, [state])
+    useEffect(() => {
+        props.onChange(state);
+    }, [state]);
 
-  return (
-    <div className={styles.tag}>
-      {!props.onceSelect && (<div className={styles.text}>{props.text}</div>)}
-      <div className={styles.wrapper} onClick={handleTag}>
-        {props.selectors.map((element, index) => {
-          return (
-            <div className={styles.selector} key={index} id={props.onceSelect ? "rent" : null}>
-              {element}
+    return (
+        <div className={styles.tag}>
+            {!props.onceSelect && <div className={styles.text}>{props.text}</div>}
+            <div className={styles.wrapper} onClick={handleTag}>
+                {props.selectors?.map((element, index) => {
+                    return (
+                        <div
+                            className={styles.selector}
+                            data-id={element.id}
+                            key={index}
+                            id={props.onceSelect ? "rent" : null}>
+                            {element.name}
+                        </div>
+                    );
+                })}
             </div>
-          );
-        })}
-      </div>
-    </div>
-
-  );
+        </div>
+    );
 };
 
 export default Tag;

@@ -3,6 +3,7 @@ import styles from "./policy.module.css";
 import { ModalContext } from "../../services/app-context";
 
 const Policy = () => {
+  //Поправить этот компонент
   const { modal, setModal } = useContext(ModalContext);
   const modalOpen = () => {
     setModal({ ...modal, policy: true });

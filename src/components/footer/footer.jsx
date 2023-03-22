@@ -6,6 +6,7 @@ import logo from "../../images/logo.svg";
 import Navigation from "../navigation/navigation";
 
 const Footer = () => {
+  //Добавить политику
   return (
     <div className={styles.container}>
       <footer className={styles.footer}>

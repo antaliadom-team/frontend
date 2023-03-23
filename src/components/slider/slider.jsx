@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./slider.module.css";
 import arrow from "../../images/arrow.svg";
 import { ModalContext } from "../../services/app-context";
+import noPhoto from "../../images/no-photo.png";
 
 const Slider = ({ big = false, little_big = false, tablet = false, mobile = false, fullScreen = false, item }) => {
     const [slideIndex, setSlideIndex] = useState(0);
@@ -70,20 +71,26 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
         setModal({ ...modal, slider: true, item: item });
     };
 
+    console.log(item)
+
     return (
         <div className={styles.slider}>
-            {item?.images?.map((image, index) => {
-                return (
-                    <img
-                        onClick={openModal}
-                        key={image.id}
-                        style={size}
-                        className={index === slideIndex ? styles.activeImage : styles.fadeImage}
-                        src={image.image}
-                        alt="фото квартиры"
-                    />
-                );
-            })}
+            {item?.images.length === 0 ? (
+                <img style={size} className={styles.activeImage} src={noPhoto} alt="фото отсутствует" />
+            ) : (
+                item?.images?.map((image, index) => {
+                    return (
+                        <img
+                            onClick={openModal}
+                            key={image.id}
+                            style={size}
+                            className={index === slideIndex ? styles.activeImage : styles.fadeImage}
+                            src={image.image}
+                            alt="фото квартиры"
+                        />
+                    );
+                })
+            )}
             <button className={styles.arrow_left} onClick={prevSlide}>
                 <img src={arrow} alt="предыдущая" className={styles.arrow_img} />
             </button>

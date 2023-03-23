@@ -1,7 +1,7 @@
 import styles from "./app.module.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Catalog, Home, Object, Profile, Order } from "../../pages";
-import { Register, Logout, EditProfile, EditPassword, Login } from "../forms";
+import { Register, Logout, EditProfile, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
@@ -11,6 +11,8 @@ import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
 import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit } from "../modals";
+import PasswordForm from "../forms/password";
+import Change from "../forms/password/change";
 
 const App = () => {
     const { modal, setModal } = useContext(ModalContext);
@@ -54,7 +56,8 @@ const App = () => {
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/edit-profile" element={<EditProfile setUser={setUser} />} />
-                        <Route path="/edit-password" element={<EditPassword />} />
+                        <Route path="/edit-password" element={<PasswordForm />} />
+                        <Route path="/password-reset/MTA3/:token" element={<Change />} />
                     </Route>
                     <Route
                         path="/profile"

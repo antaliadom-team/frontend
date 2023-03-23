@@ -1,6 +1,15 @@
 import axios from "axios";
 import { API_CATEGORIES, API_FACILITIES, API_LOCATIONS, API_OBJECTS, API_PROPERTY_TYPES } from "./api";
 
+export const getObject = async (id, setItem) => {
+    try {
+        const response = await axios.get(`${API_OBJECTS}${id}`);
+        setItem(response.data);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const getObjects = async (setObjects) => {
     try {
         const response = await axios.get(API_OBJECTS);
@@ -17,7 +26,7 @@ export const getObjectsPage = async (setObjects, currentPage) => {
     } catch (error) {
         console.error(error);
     }
-}
+};
 
 export const getData = async (setData) => {
     try {
@@ -32,7 +41,6 @@ export const getData = async (setData) => {
             types: types.data,
             facilities: facilities.data,
         });
-
     } catch (error) {
         console.error(error);
     }

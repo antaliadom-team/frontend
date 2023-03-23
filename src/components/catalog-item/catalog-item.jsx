@@ -2,21 +2,16 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./catalog-item.module.css";
 import { ButtonWithLike } from "../ui/buttons";
-import { DataContext, ModalContext, ScreenWidthContext } from "../../services/app-context";
+import { DataContext } from "../../services/app-context";
 import noPhoto from "../../images/no-photo.png";
 
 const CatalogItem = ({ withBtn = true, withDesc = true, item }) => {
     const navigate = useNavigate();
     const { data } = useContext(DataContext);
-    const { screenWidth } = useContext(ScreenWidthContext);
-    const { modal, setModal } = useContext(ModalContext);
-    const modalOpen = () => {
-        setModal({ ...modal, object: true });
-    };
 
     return (
         <div className={styles.wrapper}>
-            <div onClick={() => navigate(`/sample-product-page/${item.id}`)}>
+            <div onClick={() => navigate(`/object/${item.id}`)}>
                 <img
                     src={item?.images[0]?.image !== undefined ? item.images[0]?.image : noPhoto}
                     alt="фото квартиры"
@@ -45,7 +40,7 @@ const CatalogItem = ({ withBtn = true, withDesc = true, item }) => {
 
             {withBtn && (
                 <div className={styles.button}>
-                    <ButtonWithLike onClick={screenWidth === "desktop" ? modalOpen : () => navigate("/order")}>
+                    <ButtonWithLike onClick={() => navigate(`/order/${item.id}`)}>
                         Оформить заявку
                     </ButtonWithLike>
                 </div>

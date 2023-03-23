@@ -11,6 +11,7 @@ const Profile = () => {
     console.log(user);
 
     return (
+      //дополнить функционал данного компонента
         <section className={styles.section}>
             <h2 className={styles.header}>Здравствуйте, {user?.first_name} </h2>
             <div className={styles.btn_box}>

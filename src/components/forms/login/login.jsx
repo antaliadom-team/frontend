@@ -3,7 +3,7 @@ import { Button } from "../../ui/buttons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../../ui/inputs";
 import { useContext, useEffect } from "react";
-import { AuthContext, ScreenWidthContext } from "../../../services/app-context";
+import { AuthContext, ScreenWidthContext, UserContext } from "../../../services/app-context";
 import { useForm, Controller } from "react-hook-form";
 import { createToken } from "../../../services/api/jwt";
 import { emailValidation, passwordValidation } from "../../../services/validation";
@@ -13,6 +13,7 @@ const Login = () => {
   const location = useLocation();
   const { screenWidth } = useContext(ScreenWidthContext);
   const { isAuth, setAuth } = useContext(AuthContext);
+  const { setUser } = useContext(UserContext);
   const from = location.state?.from?.pathname || "/";
   const {
     control,
@@ -24,7 +25,7 @@ const Login = () => {
   });
 
   const onSubmit = (data) => {
-    createToken(data, setAuth, setError);
+    createToken(data, setError, setUser, setAuth);
   };
 
   useEffect(() => {

@@ -19,8 +19,30 @@ export const submitMainForm = async (form, setError, modal, setModal) => {
   try {
     await axios.post(API_SUBMIT, config);
     setModal({...modal, submit: true});
+    console.log(form)
   } catch (error) {
     const errors = error.response.data;
     serverValidation(errors, setError);
   }
 };
+
+export const submitObjectForm = async (form, setError, id, setSubmitSuccess ) => {
+  const config = {
+    first_name: form.first_name,
+    last_name: form.last_name,
+    phone: form.phone,
+    email: form.email,
+    comment: form.comment,
+    agreement: form.agreement,
+  }
+
+  // не работает, требует поля отсутствующие в документации
+  try {
+    await axios.post(`http://antalyadom.telfia.com/api/objects/${id}/order/`, config);
+    setSubmitSuccess(true);
+  } catch (error) {
+    const errors = error.response.data;
+    setSubmitSuccess(false);
+    serverValidation(errors, setError);
+  }
+}

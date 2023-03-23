@@ -10,7 +10,7 @@
     z-index: 1;
     padding: 9px 60px;
     font-family: "Open Sans", sans-serif;
-    font-size: var(--text-size);
+    font-size: 18px;
     line-height: 25px;
     font-weight: 700;
     border: 2px solid var(--button-color-default);

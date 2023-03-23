@@ -3,7 +3,7 @@ import { Button } from "../../components/ui/buttons";
 import { useNavigate } from "react-router-dom";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 
-const OrderSent = () => {
+const OrderSent = ({item}) => {
   const navigate = useNavigate();
 
   return (
@@ -15,7 +15,7 @@ const OrderSent = () => {
       </div>
       <h1 className={styles.title}>Ваша заявка отправлена!</h1>
       <div className={styles.tablet_slider}>
-        <CatalogItem withBtn={false}/>
+        <CatalogItem withBtn={false} item={item}/>
       </div>
 
       <div className={styles.button}>

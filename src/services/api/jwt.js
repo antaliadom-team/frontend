@@ -1,8 +1,9 @@
 import axios from "axios";
 import { API_CREATE_TOKEN, API_REFRESH_TOKEN, API_VERIFY_TOKEN } from "./api";
 import { setCookie } from "./cookie";
+import { getUser } from "./user";
 
-export const createToken = async (form, setAuth, setError) => {
+export const createToken = async (form, setError, setUser, setAuth) => {
   const config = {
     email: form.email,
     password: form.password,
@@ -12,7 +13,7 @@ export const createToken = async (form, setAuth, setError) => {
     const response = await axios.post(API_CREATE_TOKEN, config);
     setCookie("accessToken", response.data.access, undefined);
     localStorage.setItem("refreshToken", response.data.refresh);
-    setAuth(true)
+    getUser(setUser, setAuth);
   } catch (error) {
     setError("email", {
       type: "server",

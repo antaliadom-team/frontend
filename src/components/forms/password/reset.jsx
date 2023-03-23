@@ -16,7 +16,6 @@ const Reset = ({ setCorrect }) => {
     });
 
     const onSubmit = (data) => {
-        console.log(data);
         resetPassword(data, setError);
     };
 

@@ -22,8 +22,7 @@ export const resetPassword = async (form, setError) => {
     };
     console.log(config.email);
     try {
-        const response = await axios.post(API_RESET_PASSWORD, config);
-        console.log(response);
+        await axios.post(API_RESET_PASSWORD, config);
     } catch (error) {
         const errors = error.response.data;
         console.log(error);
@@ -31,14 +30,15 @@ export const resetPassword = async (form, setError) => {
     }
 };
 
-export const confirmPassword = async (form, setAuth, setError, setSuccess) => {
+export const confirmPassword = async (form, setError) => {
     const config = {
         email: form.email,
+        // email: form.email,
     };
 
     try {
-        await axios.post(API_CONFIRM_PASSWORD, config);
-        setSuccess(true);
+        const ressponse = await axios.post(API_CONFIRM_PASSWORD, config);
+        console.log(ressponse);
     } catch (error) {
         const errors = error.response.data;
         serverValidation(errors, setError);

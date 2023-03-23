@@ -3,6 +3,7 @@ import { Button } from "../../ui/buttons";
 import { TextInput } from "../../ui/inputs";
 import { useForm, Controller } from "react-hook-form";
 import { passwordValidation } from "../../../services/validation";
+import { confirmPassword } from "../../../services/api/password";
 
 const Change = ({ setCorrect }) => {
     const {
@@ -17,6 +18,7 @@ const Change = ({ setCorrect }) => {
     const onSubmit = (data) => {
         // setCorrect(true);
         console.log(data);
+        // confirmPassword(data, setError);
     };
     return (
         <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
@@ -33,6 +35,23 @@ const Change = ({ setCorrect }) => {
                                 <TextInput
                                     type="password"
                                     label="Пароль"
+                                    onChange={(e) => field.onChange(e)}
+                                    value={field.value}
+                                    error={fieldState.error}
+                                    errorText={errors.password?.message}
+                                />
+                            )}
+                        />
+                    </li>
+                    <li>
+                        <Controller
+                            control={control}
+                            name="password"
+                            rules={passwordValidation}
+                            render={({ field, fieldState }) => (
+                                <TextInput
+                                    type="password"
+                                    label="Подтвердите пароль"
                                     onChange={(e) => field.onChange(e)}
                                     value={field.value}
                                     error={fieldState.error}

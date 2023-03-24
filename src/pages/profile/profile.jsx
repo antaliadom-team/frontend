@@ -1,17 +1,25 @@
 import styles from "./profile.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CatalogItem from "../../components/catalog-item/catalog-item";
-import { UserContext } from "../../services/app-context";
+import { FavouritesContext, UserContext } from "../../services/app-context";
 import { Button } from "../../components/ui/buttons";
+import { getFavourites } from "../../services/api/user";
 
 const Profile = () => {
     const { user } = useContext(UserContext);
+    const { favourites, setFavourites } = useContext(FavouritesContext);
     const navigate = useNavigate();
-    console.log(user);
+
+    useEffect(() => {
+        getFavourites(setFavourites);
+    }, []);
+
+    useEffect(() => {
+        console.log(favourites);
+    }, [favourites]);
 
     return (
-      //дополнить функционал данного компонента
         <section className={styles.section}>
             <h2 className={styles.header}>Здравствуйте, {user?.first_name} </h2>
             <div className={styles.btn_box}>
@@ -24,11 +32,10 @@ const Profile = () => {
             </div>
             <h3 className={styles.header}>Избранное</h3>
             <div className={styles.grid}>
-                <CatalogItem />
-                <CatalogItem />
-                <CatalogItem />
-                <CatalogItem />
-                <CatalogItem />
+              {favourites && favourites?.map((item) => (
+              <CatalogItem key={item.id} item={item} />
+              ))}
+              {favourites?.length === 0 && (<h2 className={styles.header}>Здесь пока пусто</h2>)}
             </div>
         </section>
     );

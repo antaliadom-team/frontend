@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./catalog-item.module.css";
-import { ButtonWithLike } from "../ui/buttons";
+import { Button, ButtonWithLike } from "../ui/buttons";
 import { DataContext } from "../../services/app-context";
 import noPhoto from "../../images/no-photo.png";
 
@@ -40,7 +40,11 @@ const CatalogItem = ({ withBtn = true, withDesc = true, item }) => {
 
             {withBtn && (
                 <div className={styles.button}>
-                    <ButtonWithLike onClick={() => navigate(`/order/${item.id}`)}>
+                    <div className={styles.notice}>
+                        <p>Для добавления в избранное нужно зарегистрироваться</p>
+                        <Button type={"primary"}>Понятно</Button>
+                    </div>
+                    <ButtonWithLike onClick={() => navigate(`/order/${item.id}`)} setFavourite={() => console.log(1)}>
                         Оформить заявку
                     </ButtonWithLike>
                 </div>

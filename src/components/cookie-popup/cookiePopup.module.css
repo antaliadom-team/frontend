@@ -7,6 +7,7 @@
     gap: 20px;
     width: 100%;
     max-width: var(--container);
+    align-items: center;
     background-color: #ffffff;
     border: 2px solid #0d1b44;
 }
@@ -31,4 +32,23 @@
 
 .cookie__closeBtn:hover {
     opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+    .cookiePopup {
+        padding: 20px 12px 12px 12px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .cookiePopup__text {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .cookie__closeBtn {
+        width: 16px;
+        height: 16px;
+        background-size: contain;
+    }
 }

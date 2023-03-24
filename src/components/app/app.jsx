@@ -72,9 +72,9 @@ const App = () => {
                 <SliderModal isOpen={modal.slider} onClose={modalClose} />
                 <Policy isOpen={modal.policy} onClose={modalClose} />
                 <Submit isOpen={modal.submit} onClose={modalClose} />
-                <CookiePopup />
             </div>
             <Footer />
+            <CookiePopup />
         </div>
     );
 };

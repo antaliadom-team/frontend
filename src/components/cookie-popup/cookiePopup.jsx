@@ -1,13 +1,16 @@
+import { useContext, useState } from "react";
+import { AuthContext } from "../../services/app-context";
 import styles from "./cookiePopup.module.css";
 import { Button } from "../ui/buttons";
-import { useState } from "react";
 
 const CookiePopup = () => {
     const [isOpen, setIsOpen] = useState(true);
+    const { isAuth } = useContext(AuthContext);
     const closePopup = () => {
         setIsOpen(false);
     };
 
+    if (isAuth) return;
     if (isOpen) {
         return (
             <div className={styles.cookiePopup}>

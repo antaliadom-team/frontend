@@ -132,4 +132,11 @@ export const serverValidation = (errors, setError) => {
             message: errors.password.non_field_errors[0],
         });
     }
+
+    if (errors.new_password) {
+        setError("new_password", {
+            type: "server",
+            message: errors.new_password[0],
+        });
+    }
 };

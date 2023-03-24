@@ -5,7 +5,7 @@ import { Register, Logout, EditProfile, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
@@ -19,6 +19,7 @@ const App = () => {
     const navigate = useNavigate();
     const { setAuth } = useContext(AuthContext);
     const { setUser } = useContext(UserContext);
+    const [successPassword, setSuccessPassword] = useState(false);
 
     const modalClose = () => {
         setModal({ object: false, exit: false, passwordChanged: false, policy: false, slider: false, submit: false });
@@ -57,7 +58,12 @@ const App = () => {
                         <Route path="/register" element={<Register />} />
                         <Route path="/edit-profile" element={<EditProfile setUser={setUser} />} />
                         <Route path="/edit-password" element={<PasswordForm />} />
-                        <Route path="/password-reset/MTA3/:token" element={<Change />} />
+                        <Route
+                            path="/password-reset/:uid/:token"
+                            element={
+                                <Change successPassword={successPassword} setSuccessPassword={setSuccessPassword} />
+                            }
+                        />
                     </Route>
                     <Route
                         path="/profile"

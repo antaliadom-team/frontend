@@ -1,21 +1,16 @@
 import { useState } from "react";
 import Reset from "./reset";
 import Change from "./change";
-import Confirm from "./confirm";
+import Success from "./success";
 
 const PasswordForm = () => {
-    const [correct, setCorrect] = useState(false);
-    const [changed, setChanged] = useState(false);
+    const [successEmail, setSuccessEmail] = useState(false);
 
-    if (correct) {
-        return <Change setCorrect={setCorrect} />;
+    if (successEmail) {
+        return <Success setSuccessEmail={setSuccessEmail}>Пожалуйста, подтвердите регистрацию</Success>;
     }
 
-    if (changed) {
-        return <Confirm setCorrect={setChanged} />;
-    }
-
-    return <Reset />;
+    return <Reset successEmail={successEmail} setSuccessEmail={setSuccessEmail} />;
 };
 
 export default PasswordForm;

@@ -1,25 +1,36 @@
 import styles from "./edit-password.module.css";
+import { useEffect } from "react";
 import { Button } from "../../ui/buttons";
 import { TextInput } from "../../ui/inputs";
 import { useForm, Controller } from "react-hook-form";
-import { passwordValidation } from "../../../services/validation";
+import { confirmPassValidation, passwordValidation } from "../../../services/validation";
+import { useParams } from "react-router-dom";
 import { confirmPassword } from "../../../services/api/password";
+import Success from "./success";
 
-const Change = ({ setCorrect }) => {
+const Change = ({ successPassword, setSuccessPassword }) => {
     const {
         control,
         handleSubmit,
         setError,
+        watch,
         formState: { errors, isValid },
     } = useForm({
         mode: "all",
     });
 
+    const { uid, token } = useParams();
+
     const onSubmit = (data) => {
-        // setCorrect(true);
-        console.log(data);
-        // confirmPassword(data, setError);
+        // confirmPassword({ ...data, uid, token }, setError, setSuccessPassword);
     };
+
+    useEffect(() => {
+        if (successPassword) {
+            return <Success setSuccessPassword={setSuccessPassword}>Пароль изменен</Success>;
+        }
+    }, [successPassword]);
+
     return (
         <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.container}>
@@ -29,7 +40,7 @@ const Change = ({ setCorrect }) => {
                     <li>
                         <Controller
                             control={control}
-                            name="password"
+                            name="new_password"
                             rules={passwordValidation}
                             render={({ field, fieldState }) => (
                                 <TextInput
@@ -38,7 +49,7 @@ const Change = ({ setCorrect }) => {
                                     onChange={(e) => field.onChange(e)}
                                     value={field.value}
                                     error={fieldState.error}
-                                    errorText={errors.password?.message}
+                                    errorText={errors.new_password?.message}
                                 />
                             )}
                         />
@@ -46,8 +57,8 @@ const Change = ({ setCorrect }) => {
                     <li>
                         <Controller
                             control={control}
-                            name="password"
-                            rules={passwordValidation}
+                            name="re_new_password"
+                            rules={confirmPassValidation(watch, "new_password")}
                             render={({ field, fieldState }) => (
                                 <TextInput
                                     type="password"
@@ -55,14 +66,14 @@ const Change = ({ setCorrect }) => {
                                     onChange={(e) => field.onChange(e)}
                                     value={field.value}
                                     error={fieldState.error}
-                                    errorText={errors.password?.message}
+                                    errorText={errors.re_new_password?.message}
                                 />
                             )}
                         />
                     </li>
                 </ul>
                 <div className={styles.buttons}>
-                    <Button type="primary" isSubmit="true">
+                    <Button type="primary" isSubmit="true" inactive={!isValid}>
                         Сбросить пароль
                     </Button>
                 </div>

@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { emailValidation } from "../../../services/validation";
 import { resetPassword } from "../../../services/api/password";
 
-const Reset = ({ setCorrect }) => {
+const Reset = ({ setSuccessEmail }) => {
     const {
         control,
         handleSubmit,
@@ -16,7 +16,7 @@ const Reset = ({ setCorrect }) => {
     });
 
     const onSubmit = (data) => {
-        resetPassword(data, setError);
+        resetPassword(data, setError, setSuccessEmail);
     };
 
     return (
@@ -45,7 +45,7 @@ const Reset = ({ setCorrect }) => {
                     />
                 </div>
                 <div className={styles.buttons}>
-                    <Button type="primary" isSubmit="true">
+                    <Button type="primary" isSubmit="true" inactive={!isValid}>
                         Сбросить пароль
                     </Button>
                 </div>

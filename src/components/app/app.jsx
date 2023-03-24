@@ -11,6 +11,7 @@ import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
 import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit } from "../modals";
+import CookiePopup from "../cookie-popup/cookiePopup";
 
 const App = () => {
     const { modal, setModal } = useContext(ModalContext);
@@ -73,8 +74,10 @@ const App = () => {
                 <Submit isOpen={modal.submit} onClose={modalClose} />
             </div>
             <Footer />
+            <CookiePopup />
         </div>
     );
 };
 
 export default App;
+

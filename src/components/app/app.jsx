@@ -12,6 +12,8 @@ import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
 import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit } from "../modals";
 import Favourite from "../modals/favourite/favourite";
+import CookiePopup from "../cookie-popup/cookiePopup";
+
 
 const App = () => {
     const navigate = useNavigate();
@@ -80,8 +82,10 @@ const App = () => {
                 <Favourite isOpen={modal.favourite} onClose={modalClose} />
             </div>
             <Footer />
+            <CookiePopup />
         </div>
     );
 };
 
 export default App;
+

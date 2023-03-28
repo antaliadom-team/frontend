@@ -1,0 +1,30 @@
+.favourite {
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.favourite > p {
+    width: 435px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .favourite {
+        padding: 36px 28px;
+        width: var(--container);
+    }
+
+    .favourite > p {
+        width: 100%;
+        font-size: 16px;
+        line-height: 22px;
+    }
+}

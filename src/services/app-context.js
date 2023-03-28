@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { getUser } from "./api/user";
-import { getData, getObjects } from "./api/objects";
+import { getData } from "./api/objects";
 
 export const ModalContext = createContext(null);
 export const UserContext = createContext(null);
@@ -23,6 +23,7 @@ export const AppContext = ({ children }) => {
         policy: false,
         slider: false,
         submit: false,
+        favourite: false,
     });
     const [isAuth, setAuth] = useState(false);
     const [register, setRegister] = useState();
@@ -48,7 +49,6 @@ export const AppContext = ({ children }) => {
     useEffect(() => {
         getUser(setUser, setAuth);
         setWidth();
-        getObjects(setObjects);
         getData(setData);
     }, []);
 

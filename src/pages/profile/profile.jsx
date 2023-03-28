@@ -2,22 +2,19 @@ import styles from "./profile.module.css";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CatalogItem from "../../components/catalog-item/catalog-item";
-import { FavouritesContext, UserContext } from "../../services/app-context";
+import { FavouritesContext, ObjectsContext, UserContext } from "../../services/app-context";
 import { Button } from "../../components/ui/buttons";
 import { getFavourites } from "../../services/api/user";
 
 const Profile = () => {
     const { user } = useContext(UserContext);
     const { favourites, setFavourites } = useContext(FavouritesContext);
+    const { objects } = useContext(ObjectsContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         getFavourites(setFavourites);
-    }, []);
-
-    useEffect(() => {
-        console.log(favourites);
-    }, [favourites]);
+    }, [objects]);
 
     return (
         <section className={styles.section}>

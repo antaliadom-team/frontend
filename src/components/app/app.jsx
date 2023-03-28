@@ -11,6 +11,7 @@ import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
 import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit } from "../modals";
+import Favourite from "../modals/favourite/favourite";
 
 const App = () => {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const App = () => {
     const { setUser } = useContext(UserContext);
 
     const modalClose = () => {
-        setModal({ object: false, exit: false, passwordChanged: false, policy: false, slider: false, submit: false });
+        setModal({ object: false, exit: false, passwordChanged: false, policy: false, slider: false, submit: false, favourite: false });
     };
 
     const logout = () => {
@@ -29,7 +30,7 @@ const App = () => {
         navigate("/");
     };
 
-    if (modal.object || modal.exit || modal.passwordChanged || modal.policy || modal.slider || modal.submit) {
+    if (modal.object || modal.exit || modal.passwordChanged || modal.policy || modal.slider || modal.submit || modal.favourite) {
         const x = window.scrollX;
         const y = window.scrollY;
         window.onscroll = () => {
@@ -76,6 +77,7 @@ const App = () => {
                 <SliderModal isOpen={modal.slider} onClose={modalClose} />
                 <Policy isOpen={modal.policy} onClose={modalClose} />
                 <Submit isOpen={modal.submit} onClose={modalClose} />
+                <Favourite isOpen={modal.favourite} onClose={modalClose} />
             </div>
             <Footer />
         </div>

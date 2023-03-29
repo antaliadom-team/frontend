@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { getUser } from "./api/user";
-import { getData, getObjects } from "./api/objects";
+import { getData } from "./api/objects";
 
 export const ModalContext = createContext(null);
 export const UserContext = createContext(null);
@@ -10,6 +10,7 @@ export const ItemContext = createContext(null);
 export const RegisterContext = createContext(null);
 export const ScreenWidthContext = createContext(null);
 export const DataContext = createContext(null);
+export const FavouritesContext = createContext(null);
 
 export const AppContext = ({ children }) => {
     const [screenWidth, setScreenWidth] = useState();
@@ -22,11 +23,13 @@ export const AppContext = ({ children }) => {
         policy: false,
         slider: false,
         submit: false,
+        favourite: false,
     });
     const [isAuth, setAuth] = useState(false);
     const [register, setRegister] = useState();
     const [user, setUser] = useState();
     const [data, setData] = useState({});
+    const [favourites, setFavourites] = useState();
 
     const setWidth = () => {
         const screen = window.innerWidth;
@@ -46,29 +49,30 @@ export const AppContext = ({ children }) => {
     useEffect(() => {
         getUser(setUser, setAuth);
         setWidth();
-        getObjects(setObjects);
         getData(setData);
     }, []);
 
     window.addEventListener("resize", setWidth);
 
     return (
-        <ItemContext.Provider value={{ item, setItem }}>
-            <DataContext.Provider value={{ data }}>
-                <ScreenWidthContext.Provider value={{ screenWidth }}>
-                    <RegisterContext.Provider value={{ register, setRegister }}>
-                        <ObjectsContext.Provider value={{ objects, setObjects }}>
-                            <UserContext.Provider value={{ user, setUser }}>
-                                <AuthContext.Provider value={{ isAuth, setAuth }}>
-                                    <ModalContext.Provider value={{ modal, setModal }}>
-                                        {children}
-                                    </ModalContext.Provider>
-                                </AuthContext.Provider>
-                            </UserContext.Provider>
-                        </ObjectsContext.Provider>
-                    </RegisterContext.Provider>
-                </ScreenWidthContext.Provider>
-            </DataContext.Provider>
-        </ItemContext.Provider>
+        <FavouritesContext.Provider value={{ favourites, setFavourites }}>
+            <ItemContext.Provider value={{ item, setItem }}>
+                <DataContext.Provider value={{ data }}>
+                    <ScreenWidthContext.Provider value={{ screenWidth }}>
+                        <RegisterContext.Provider value={{ register, setRegister }}>
+                            <ObjectsContext.Provider value={{ objects, setObjects }}>
+                                <UserContext.Provider value={{ user, setUser }}>
+                                    <AuthContext.Provider value={{ isAuth, setAuth }}>
+                                        <ModalContext.Provider value={{ modal, setModal }}>
+                                            {children}
+                                        </ModalContext.Provider>
+                                    </AuthContext.Provider>
+                                </UserContext.Provider>
+                            </ObjectsContext.Provider>
+                        </RegisterContext.Provider>
+                    </ScreenWidthContext.Provider>
+                </DataContext.Provider>
+            </ItemContext.Provider>
+        </FavouritesContext.Provider>
     );
 };

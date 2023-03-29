@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_CATEGORIES, API_FACILITIES, API_LOCATIONS, API_OBJECTS, API_PROPERTY_TYPES } from "./api";
+import { getCookie } from "./cookie";
 
 export const getObject = async (id, setItem) => {
     try {
@@ -13,6 +14,42 @@ export const getObject = async (id, setItem) => {
 export const getObjects = async (setObjects) => {
     try {
         const response = await axios.get(API_OBJECTS);
+        setObjects(response.data);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const getCatalogObjects = async (setObjects, category, isAuth) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${getCookie("accessToken")}`,
+        },
+    };
+    try {
+        if (isAuth) {
+            const response = await axios.get(`${API_OBJECTS}?category=${category}`, config);
+            setObjects(response.data);
+
+        } else {
+            const response = await axios.get(`${API_OBJECTS}?category=${category}`);
+            setObjects(response.data);
+
+        }
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const getObjectsWithToken = async (setObjects) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${getCookie("accessToken")}`,
+        },
+    };
+
+    try {
+        const response = await axios.get(API_OBJECTS, config);
         setObjects(response.data);
     } catch (error) {
         console.error(error);

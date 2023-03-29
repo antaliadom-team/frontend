@@ -1,21 +1,18 @@
 import styles from "./app.module.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Catalog, Home, Object, Profile, Order } from "../../pages";
 import { Register, Logout, EditProfile, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
-import { useContext, useState, useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
-import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit } from "../modals";
-import PasswordForm from "../forms/password";
-import Change from "../forms/password/change";
-import Favourite from "../modals/favourite/favourite";
+import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit, Favourite } from "../modals";
+import { ChangePassword, EditPassword, ForgotPassword } from "../../pages/password";
 import CookiePopup from "../cookie-popup/cookiePopup";
-
 
 const App = () => {
     const navigate = useNavigate();
@@ -23,10 +20,17 @@ const App = () => {
     const { modal, setModal } = useContext(ModalContext);
     const { setAuth } = useContext(AuthContext);
     const { setUser } = useContext(UserContext);
-    const [successPassword, setSuccessPassword] = useState(false);
 
     const modalClose = () => {
-        setModal({ object: false, exit: false, passwordChanged: false, policy: false, slider: false, submit: false, favourite: false });
+        setModal({
+            object: false,
+            exit: false,
+            passwordChanged: false,
+            policy: false,
+            slider: false,
+            submit: false,
+            favourite: false,
+        });
     };
 
     const logout = () => {
@@ -35,7 +39,15 @@ const App = () => {
         navigate("/");
     };
 
-    if (modal.object || modal.exit || modal.passwordChanged || modal.policy || modal.slider || modal.submit || modal.favourite) {
+    if (
+        modal.exit ||
+        modal.object ||
+        modal.policy ||
+        modal.slider ||
+        modal.submit ||
+        modal.favourite ||
+        modal.passwordChanged
+    ) {
         const x = window.scrollX;
         const y = window.scrollY;
         window.onscroll = () => {
@@ -65,13 +77,9 @@ const App = () => {
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/edit-profile" element={<EditProfile setUser={setUser} />} />
-                        <Route path="/edit-password" element={<PasswordForm />} />
-                        <Route
-                            path="/password-reset/:uid/:token"
-                            element={
-                                <Change successPassword={successPassword} setSuccessPassword={setSuccessPassword} />
-                            }
-                        />
+                        <Route path="/edit-password" element={<EditPassword />} />
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
+                        <Route path="/password-reset/:uid/:token" element={<ChangePassword />} />
                     </Route>
                     <Route
                         path="/profile"

@@ -1,8 +1,8 @@
-import { Button } from "../../ui/buttons";
-import styles from "./edit-password.module.css";
+import { Button } from "../../components/ui/buttons";
+import styles from "./password.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Confirm = () => {
+const Success = () => {
     const navigate = useNavigate();
     return (
         <div className={styles.wrapper}>
@@ -18,4 +18,4 @@ const Confirm = () => {
     );
 };
 
-export default Confirm;
+export default Success;

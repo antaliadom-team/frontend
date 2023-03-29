@@ -1,11 +1,15 @@
-import styles from "./edit-password.module.css";
-import { Button } from "../../ui/buttons";
-import { TextInput } from "../../ui/inputs";
-import { useForm, Controller } from "react-hook-form";
+import styles from "../password.module.css";
+import { Controller, useForm } from "react-hook-form";
 import { emailValidation } from "../../../services/validation";
+import { TextInput } from "../../../components/ui/inputs";
+import { Button } from "../../../components/ui/buttons";
 import { resetPassword } from "../../../services/api/password";
+import { useState } from "react";
+import ConfirmEmail from "./confirm-email";
 
-const Reset = ({ setSuccessEmail }) => {
+const ForgotPassword = () => {
+    const [confirm, setConfirm] = useState(false);
+
     const {
         control,
         handleSubmit,
@@ -16,8 +20,13 @@ const Reset = ({ setSuccessEmail }) => {
     });
 
     const onSubmit = (data) => {
-        resetPassword(data, setError, setSuccessEmail);
+        resetPassword(data, setError);
+        setConfirm(true);
     };
+
+    if (confirm) {
+        return <ConfirmEmail />;
+    }
 
     return (
         <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
@@ -54,4 +63,4 @@ const Reset = ({ setSuccessEmail }) => {
     );
 };
 
-export default Reset;
+export default ForgotPassword;

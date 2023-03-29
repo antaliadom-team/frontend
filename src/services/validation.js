@@ -133,6 +133,13 @@ export const serverValidation = (errors, setError) => {
         });
     }
 
+    if (errors.current_password) {
+        setError("current_password", {
+            type: "server",
+            message: errors.current_password[0],
+        });
+    }
+
     if (errors.new_password) {
         setError("new_password", {
             type: "server",

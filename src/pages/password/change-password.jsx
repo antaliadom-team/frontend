@@ -1,14 +1,16 @@
-import styles from "./edit-password.module.css";
-import { useEffect } from "react";
-import { Button } from "../../ui/buttons";
-import { TextInput } from "../../ui/inputs";
+import styles from "./password.module.css";
+import { Button } from "../../components/ui/buttons";
+import { TextInput } from "../../components/ui/inputs";
 import { useForm, Controller } from "react-hook-form";
-import { confirmPassValidation, passwordValidation } from "../../../services/validation";
+import { confirmPassValidation, passwordValidation } from "../../services/validation";
 import { useParams } from "react-router-dom";
-import { confirmPassword } from "../../../services/api/password";
+import { confirmPassword } from "../../services/api/password";
+import { useState } from "react";
 import Success from "./success";
 
-const Change = ({ successPassword, setSuccessPassword }) => {
+
+const ChangePassword = () => {
+    const [success, setSuccess] = useState(false);
     const {
         control,
         handleSubmit,
@@ -22,20 +24,19 @@ const Change = ({ successPassword, setSuccessPassword }) => {
     const { uid, token } = useParams();
 
     const onSubmit = (data) => {
-        // confirmPassword({ ...data, uid, token }, setError, setSuccessPassword);
+        confirmPassword({ ...data, uid, token }, setError, setSuccess);
     };
 
-    useEffect(() => {
-        if (successPassword) {
-            return <Success setSuccessPassword={setSuccessPassword}>Пароль изменен</Success>;
-        }
-    }, [successPassword]);
+    if (success) {
+        return <Success />
+    }
+
 
     return (
         <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.container}>
                 <h2 className={styles.title}>Изменить пароль</h2>
-                <p className={styles.text}>Введите новый пароль</p>
+                <p className={styles.text}>Пароль сброшен! Введите, пожалуйста, новый пароль.</p>
                 <ul className={styles.list}>
                     <li>
                         <Controller
@@ -82,4 +83,4 @@ const Change = ({ successPassword, setSuccessPassword }) => {
     );
 };
 
-export default Change;
+export default ChangePassword;

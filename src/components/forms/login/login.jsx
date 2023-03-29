@@ -81,7 +81,7 @@ const Login = () => {
           </li>
           <li>
             <p className={styles.text}>
-              <Link className={styles.link} to="/edit-password">
+              <Link className={styles.link} to="/forgot-password">
                 Забыли пароль?
               </Link>
             </p>

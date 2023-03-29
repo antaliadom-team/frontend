@@ -12,3 +12,6 @@ export const API_LOCATIONS = `${API}objects/locations/`;
 export const API_CATEGORIES = `${API}objects/categories/`;
 export const API_PROPERTY_TYPES = `${API}objects/property_types/`;
 export const API_FACILITIES = `${API}objects/facilities/`;
+export const API_CHANGE_PASSWORD = `${API}users/set_password/`;
+export const API_RESET_PASSWORD = `${API}users/reset_password/`;
+export const API_CONFIRM_PASSWORD = `${API}users/reset_password_confirm/`;

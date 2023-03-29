@@ -9,6 +9,7 @@ export const registration = async (form, setAuth, setError, setSuccess) => {
         last_name: "Pupkin",
         password: "C9@cBbG1",
         re_password: "C9@cBbG1",
+        // re_password: "C9@cBbG2",
         phone: "+71234567890",
         agreement: true,
     };

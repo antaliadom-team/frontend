@@ -1,7 +1,7 @@
 import styles from "./app.module.css";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Catalog, Home, Object, Profile, Order } from "../../pages";
-import { Register, Logout, EditProfile, EditPassword, Login } from "../forms";
+import { Register, Logout, EditProfile, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
@@ -10,10 +10,9 @@ import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
 import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
-import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit } from "../modals";
-import Favourite from "../modals/favourite/favourite";
+import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit, Favourite } from "../modals";
+import { ChangePassword, EditPassword, ForgotPassword } from "../../pages/password";
 import CookiePopup from "../cookie-popup/cookiePopup";
-
 
 const App = () => {
     const navigate = useNavigate();
@@ -23,7 +22,15 @@ const App = () => {
     const { setUser } = useContext(UserContext);
 
     const modalClose = () => {
-        setModal({ object: false, exit: false, passwordChanged: false, policy: false, slider: false, submit: false, favourite: false });
+        setModal({
+            object: false,
+            exit: false,
+            passwordChanged: false,
+            policy: false,
+            slider: false,
+            submit: false,
+            favourite: false,
+        });
     };
 
     const logout = () => {
@@ -32,7 +39,15 @@ const App = () => {
         navigate("/");
     };
 
-    if (modal.object || modal.exit || modal.passwordChanged || modal.policy || modal.slider || modal.submit || modal.favourite) {
+    if (
+        modal.exit ||
+        modal.object ||
+        modal.policy ||
+        modal.slider ||
+        modal.submit ||
+        modal.favourite ||
+        modal.passwordChanged
+    ) {
         const x = window.scrollX;
         const y = window.scrollY;
         window.onscroll = () => {
@@ -63,6 +78,8 @@ const App = () => {
                         <Route path="/register" element={<Register />} />
                         <Route path="/edit-profile" element={<EditProfile setUser={setUser} />} />
                         <Route path="/edit-password" element={<EditPassword />} />
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
+                        <Route path="/password-reset/:uid/:token" element={<ChangePassword />} />
                     </Route>
                     <Route
                         path="/profile"
@@ -88,4 +105,3 @@ const App = () => {
 };
 
 export default App;
-

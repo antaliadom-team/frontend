@@ -1,6 +1,6 @@
 import styles from "./object.module.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import AmenityItem from "../../components/amenity-item/amenity-item";
+import AmenityItem from "./amenity-item/amenity-item";
 import { ButtonWithLike } from "../../components/ui/buttons";
 import Slider from "../../components/slider/slider";
 import { useContext, useEffect } from "react";

@@ -1,8 +1,8 @@
 import styles from "./team.module.css";
-import photo_1 from "../../images/photo_1.png";
-import photo_2 from "../../images/photo_2.png";
-import photo_3 from "../../images/photo_3.png";
-import photo_4 from "../../images/photo_4.png";
+import photo_1 from "../../../images/photo_1.png";
+import photo_2 from "../../../images/photo_2.png";
+import photo_3 from "../../../images/photo_3.png";
+import photo_4 from "../../../images/photo_4.png";
 
 const Team = () => {
   const team = [

@@ -3,15 +3,17 @@ import { Button } from "../../components/ui/buttons";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ItemContext, ModalContext, ScreenWidthContext } from "../../services/app-context";
+import { ItemContext, ScreenWidthContext } from "../../services/app-context";
 import { getObject } from "../../services/api/objects";
 import Form from "./form";
 import OrderSent from "./order-sent";
+import { useDispatch } from "react-redux";
+import { openObject } from "../../store/reducers/modal-slice";
 
 const Order = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
-    const { modal, setModal } = useContext(ModalContext);
     const { item, setItem } = useContext(ItemContext);
     const { screenWidth } = useContext(ScreenWidthContext);
     const [orderSent, setOrderSent] = useState(false);
@@ -22,14 +24,14 @@ const Order = () => {
 
     useEffect(() => {
         if (orderSent && screenWidth === "desktop") {
-            setModal({ ...modal, object: true });
+            dispatch(openObject());
         }
     }, [orderSent]);
 
     return (
         <section className={styles.container}>
             {orderSent && screenWidth !== "desktop" ? (
-                <OrderSent item={item}/>
+                <OrderSent item={item} />
             ) : (
                 <>
                     <div className={styles.back}>

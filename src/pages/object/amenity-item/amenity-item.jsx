@@ -12,7 +12,7 @@ import {
     Gym,
     GasMeter,
     Furniture,
-} from "../ui/icons";
+} from "../../../components/ui/icons";
 
 const AmenityItem = ({ title, isAvailable }) => {
     const getClassName = (isAvailable) => (isAvailable ? styles.amenities_item : styles.amenities_item_disabled);

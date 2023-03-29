@@ -4,12 +4,15 @@ import logo from "../../images/logo.svg";
 import Navigation from "../navigation/navigation";
 import { Button } from "../ui/buttons";
 import { useContext, useEffect, useRef, useState } from "react";
-import { AuthContext, ModalContext, ScreenWidthContext, UserContext } from "../../services/app-context";
+import { AuthContext, ScreenWidthContext, UserContext } from "../../services/app-context";
 import userIcon from "../../images/user.svg";
 import userEdit from "../../images/edit.svg";
 import userExit from "../../images/exit.svg";
+import {openLogout} from "../../store/reducers/modal-slice";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
+    const dispatch = useDispatch();
     const mobileMenuRef = useRef();
     const mobileUserMenuRef = useRef();
     const { screenWidth } = useContext(ScreenWidthContext);
@@ -18,9 +21,8 @@ const Header = () => {
     const navigate = useNavigate();
     const [menu, setMenu] = useState(false);
     const [userMenu, setUserMenu] = useState(false);
-    const { modal, setModal } = useContext(ModalContext);
     const modalOpen = () => {
-        setModal({ ...modal, exit: true });
+        dispatch(openLogout());
     };
     const list = [
         { link: "/", text: "Главная" },

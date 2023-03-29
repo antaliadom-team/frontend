@@ -1,6 +1,6 @@
 import styles from "./promo.module.css";
-import promoImage from "../../images/pic_main.png";
-import { Button } from "../ui/buttons";
+import promoImage from "../../../images/pic_main.png";
+import { Button } from "../../../components/ui/buttons";
 import { Link } from "react-router-dom";
 
 const Promo = () => {

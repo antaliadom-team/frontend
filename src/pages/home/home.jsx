@@ -1,9 +1,9 @@
-import Ads from "../../components/ads/ads";
-import Promo from "../../components/promo/promo";
-import Advantages from "../../components/advantages/advantages";
+import Ads from "./ads/ads";
+import Promo from "./promo/promo";
+import Advantages from "./advantages/advantages";
 import styles from "./home.module.css";
-import About from "../../components/about/about";
-import Team from "../../components/team/team";
+import About from "./about/about";
+import Team from "./team/team";
 import { MainForm } from "../../components/forms";
 
 const Home = () => {

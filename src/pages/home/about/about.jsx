@@ -1,11 +1,11 @@
 import styles from "./about.module.css";
 import Mobile from "./mobile";
-import aboutImageRight from "../../images/about-us-right.png";
-import aboutImageLeft from "../../images/about-us-left.png";
-import { Button } from "../ui/buttons";
+import aboutImageRight from "../../../images/about-us-right.png";
+import aboutImageLeft from "../../../images/about-us-left.png";
+import { Button } from "../../../components/ui/buttons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { ScreenWidthContext } from "../../services/app-context";
+import { ScreenWidthContext } from "../../../services/app-context";
 
 const About = () => {
   const {screenWidth} = useContext(ScreenWidthContext)

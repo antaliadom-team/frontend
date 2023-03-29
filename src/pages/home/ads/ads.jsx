@@ -1,9 +1,9 @@
 import styles from "./ads.module.css";
-import CatalogItem from "../catalog-item/catalog-item";
-import { Button } from "../ui/buttons";
+import CatalogItem from "../../../components/catalog-item/catalog-item";
+import { Button } from "../../../components/ui/buttons";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { ObjectsContext } from "../../services/app-context";
+import { ObjectsContext } from "../../../services/app-context";
 
 const Ads = () => {
   const navigate = useNavigate();

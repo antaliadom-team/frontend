@@ -4,7 +4,7 @@ import styles from "./cookiePopup.module.css";
 import { Button } from "../ui/buttons";
 
 const CookiePopup = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const { isAuth } = useContext(AuthContext);
     const closePopup = () => {
         setIsOpen(false);

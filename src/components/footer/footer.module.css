@@ -49,10 +49,40 @@
     gap: 24px;
 }
 
+.policy {
+    margin-top: 34px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.policy > p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
+    color: #dd9b5c;
+}
+
+.policy > p:hover {
+    text-shadow: 0.25px 0 #dd9b5c, -0.25px 0 #dd9b5c;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1280px) {
     .social {
         flex-direction: column;
         align-items: end;
+    }
+
+    .policy {
+        justify-content: flex-start;
+    }
+
+    .policy > p {
+        font-size: 14px;
+        line-height: 20px;
     }
 }
 
@@ -72,5 +102,10 @@
 
     .footer {
         height: 300px;
+    }
+
+    .policy {
+        margin-top: 180px;
+        padding-bottom: 30px;
     }
 }

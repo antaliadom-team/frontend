@@ -21,14 +21,12 @@
 }
 
 .link {
-    font-size: var(--text-size);
     text-decoration: none;
 
     color: var(--text-color);
 }
 
 .active {
-    font-size: var(--text-size);
     text-decoration: none;
     text-shadow: 0.5px 0 var(--text-color), -0.5px 0 var(--text-color);
     color: var(--text-color);

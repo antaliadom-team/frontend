@@ -2,10 +2,11 @@ import styles from "./catalog.module.css";
 import filter from "../../images/filter.svg";
 import { Button, FilterTag, Tag } from "../../components/ui/buttons";
 import { useContext, useState } from "react";
-import { DataContext, ScreenWidthContext } from "../../services/app-context";
+import { DataContext } from "../../services/app-context";
+import { useSelector } from "react-redux";
 
 const MobileFilters = () => {
-  const { screenWidth } = useContext(ScreenWidthContext);
+  const screen = useSelector(store => store.screen);
   const [modal, setModal] = useState(false);
   const { data } = useContext(DataContext);
 
@@ -21,14 +22,14 @@ const MobileFilters = () => {
             Отменить
             <span className={styles.cross} />
           </div>
-          {screenWidth === "tablet" && (<>
+          {screen.tablet && (<>
             <Tag selectors={data?.locations} text={"Локация"} />
             <Tag selectors={data?.types} text={"Тип недвижимости"} />
             <Tag selectors={["1", "2", "3", "4+"]} text={"Количество комнат"} />
             <Tag selectors={["Новостройка", "Вторичное"]} text={"Статус"} />
             <Button type={"primary"} width={"100%"} padding={"12px 0"}>Показать результаты</Button>
           </>)}
-          {screenWidth === "mobile" && (<>
+          {screen.mobile && (<>
             <FilterTag selectors={data?.locations} text={"Локация"} />
             <FilterTag selectors={data?.types} text={"Тип недвижимости"} />
             <FilterTag selectors={["1", "2", "3", "4+"]} width={"59px"} text={"Количество комнат"} />

@@ -12,12 +12,15 @@ import { useScrollToLocation } from "../../hooks/use-scroll";
 import Modals from "../modals";
 import { ChangePassword, EditPassword, ForgotPassword } from "../../pages/password";
 import CookiePopup from "../cookie-popup/cookiePopup";
+import useScreen from "../../hooks/use-screen";
+import Developers from "../../pages/developers/developers";
 
 const App = () => {
     const { pathname } = useLocation();
     const { setUser } = useContext(UserContext);
 
     useScrollToLocation();
+    useScreen();
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
@@ -30,6 +33,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/catalog" element={<Catalog />} />
+                    <Route path="/developers" element={<Developers />} />
                     <Route path="/order/:id" element={<Order />} />
                     <Route path="/object/:id" element={<Object />} />
                     <Route element={<Layout />}>

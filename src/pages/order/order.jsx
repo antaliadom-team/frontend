@@ -3,19 +3,19 @@ import { Button } from "../../components/ui/buttons";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ItemContext, ScreenWidthContext } from "../../services/app-context";
+import { ItemContext } from "../../services/app-context";
 import { getObject } from "../../services/api/objects";
 import Form from "./form";
 import OrderSent from "./order-sent";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openObject } from "../../store/reducers/modal-slice";
 
 const Order = () => {
+    const screen = useSelector(store => store.screen);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
     const { item, setItem } = useContext(ItemContext);
-    const { screenWidth } = useContext(ScreenWidthContext);
     const [orderSent, setOrderSent] = useState(false);
 
     useEffect(() => {
@@ -23,14 +23,14 @@ const Order = () => {
     }, [id, setItem]);
 
     useEffect(() => {
-        if (orderSent && screenWidth === "desktop") {
+        if (orderSent && screen.desktop) {
             dispatch(openObject());
         }
     }, [orderSent]);
 
     return (
         <section className={styles.container}>
-            {orderSent && screenWidth !== "desktop" ? (
+            {orderSent && !screen.desktop ? (
                 <OrderSent item={item} />
             ) : (
                 <>

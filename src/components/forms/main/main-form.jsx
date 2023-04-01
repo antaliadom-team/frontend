@@ -2,7 +2,7 @@ import styles from "./main.module.css";
 import { Button, Tag } from "../../ui/buttons";
 import { Checkbox, Dropdown, TextareaInput, TextInput } from "../../ui/inputs";
 import { useContext } from "react";
-import { DataContext, ScreenWidthContext } from "../../../services/app-context";
+import { DataContext } from "../../../services/app-context";
 import Policy from "../../policy/policy";
 import { Controller, useForm } from "react-hook-form";
 import { submitMainForm } from "../../../services/api/submit";
@@ -13,11 +13,11 @@ import {
     surnameValidation,
     textareaValidation,
 } from "../../../services/validation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const MainForm = () => {
+    const screen = useSelector(store => store.screen);
     const dispatch = useDispatch();
-    const { screenWidth } = useContext(ScreenWidthContext);
     const { data } = useContext(DataContext);
     const {
         control,
@@ -35,7 +35,7 @@ const MainForm = () => {
     };
 
     const renderSelectors = () => {
-        if (screenWidth === "desktop") {
+        if (screen.desktop) {
             return (
                 <>
                     <li className={styles.item}>

@@ -1,6 +1,6 @@
 import styles from "./about.module.css";
-import aboutImageRight from "../../images/about-us-right.png";
-import { Button } from "../ui/buttons";
+import aboutImageRight from "../../../images/about-us-right.png";
+import { Button } from "../../../components/ui/buttons";
 import { useNavigate } from "react-router-dom";
 
 const Mobile = () => {

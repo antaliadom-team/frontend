@@ -1,11 +1,11 @@
 import styles from "./catalog.module.css";
-import { useContext } from "react";
-import { ScreenWidthContext } from "../../services/app-context";
+
 import DesktopFilters from "./desktop-filters";
 import MobileFilters from "./mobile-filters";
+import { useSelector } from "react-redux";
 
 const Filters = ({rent, setRent}) => {
-  const { screenWidth } = useContext(ScreenWidthContext);
+  const screen = useSelector(store => store.screen);
 
   return (
     <>
@@ -21,7 +21,7 @@ const Filters = ({rent, setRent}) => {
           Покупка
         </div>
       </div>
-      {screenWidth === "desktop" ? <DesktopFilters /> : <MobileFilters />}
+      {screen.desktop ? <DesktopFilters /> : <MobileFilters />}
     </>
   )
 };

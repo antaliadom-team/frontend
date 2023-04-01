@@ -1,7 +1,7 @@
 import styles from "./advantages.module.css";
-import advantage1 from "../../images/advantage1.svg";
-import advantage2 from "../../images/briefcase1.svg";
-import advantage3 from "../../images/advantage3.svg";
+import advantage1 from "../../../images/advantage1.svg";
+import advantage2 from "../../../images/briefcase1.svg";
+import advantage3 from "../../../images/advantage3.svg";
 
 const Advantages = () => {
   return (

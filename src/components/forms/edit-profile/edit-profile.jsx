@@ -5,15 +5,14 @@ import { useForm, Controller } from "react-hook-form";
 import { PhoneInput, TextInput } from "../../ui/inputs";
 import { updateUser } from "../../../services/api/user";
 import { Button } from "../../ui/buttons";
-import { ModalContext, UserContext } from "../../../services/app-context";
-// import {
-//   nameValidation,
-//   surnameValidation,
-// } from "../../../services/validation";
+import { UserContext } from "../../../services/app-context";
+import {openPasswordChanged} from "../../../store/reducers/modal-slice";
+import { useDispatch } from "react-redux";
+
 
 const EditProfile = ({setUser}) => {
   const navigate = useNavigate();
-  const { modal, setModal } = useContext(ModalContext);
+  const dispatch = useDispatch();
   const { user } = useContext(UserContext);
   const {
     control,
@@ -28,7 +27,7 @@ const EditProfile = ({setUser}) => {
   });
 
   const onSubmit = (formData) => {
-    setModal({ ...modal, passwordChanged: true });
+    dispatch(openPasswordChanged());
     const data = {};
     for (const key in formData) {
       if (formData[key] !== user[key]) {

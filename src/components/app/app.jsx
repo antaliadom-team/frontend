@@ -1,63 +1,26 @@
 import styles from "./app.module.css";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Catalog, Home, Object, Profile, Order } from "../../pages";
 import { Register, Logout, EditProfile, Login } from "../forms";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { AuthContext, ModalContext, UserContext } from "../../services/app-context";
+import { UserContext } from "../../services/app-context";
 import { useContext, useLayoutEffect } from "react";
 import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
-import { logoutUser } from "../../services/api/user";
 import { useScrollToLocation } from "../../hooks/use-scroll";
-import { SliderModal, PasswordModal, ExitModal, ObjectModal, Policy, Submit, Favourite } from "../modals";
+import Modals from "../modals";
 import { ChangePassword, EditPassword, ForgotPassword } from "../../pages/password";
 import CookiePopup from "../cookie-popup/cookiePopup";
+import useScreen from "../../hooks/use-screen";
+import Developers from "../../pages/developers/developers";
 
 const App = () => {
-    const navigate = useNavigate();
     const { pathname } = useLocation();
-    const { modal, setModal } = useContext(ModalContext);
-    const { setAuth } = useContext(AuthContext);
     const { setUser } = useContext(UserContext);
 
-    const modalClose = () => {
-        setModal({
-            object: false,
-            exit: false,
-            passwordChanged: false,
-            policy: false,
-            slider: false,
-            submit: false,
-            favourite: false,
-        });
-    };
-
-    const logout = () => {
-        modalClose();
-        logoutUser(setAuth, setUser);
-        navigate("/");
-    };
-
-    if (
-        modal.exit ||
-        modal.object ||
-        modal.policy ||
-        modal.slider ||
-        modal.submit ||
-        modal.favourite ||
-        modal.passwordChanged
-    ) {
-        const x = window.scrollX;
-        const y = window.scrollY;
-        window.onscroll = () => {
-            window.scrollTo(x, y);
-        };
-    } else {
-        window.onscroll = () => {};
-    }
-
     useScrollToLocation();
+    useScreen();
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
@@ -70,6 +33,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/catalog" element={<Catalog />} />
+                    <Route path="/developers" element={<Developers />} />
                     <Route path="/order/:id" element={<Order />} />
                     <Route path="/object/:id" element={<Object />} />
                     <Route element={<Layout />}>
@@ -90,15 +54,9 @@ const App = () => {
                         }
                     />
                 </Routes>
-                <ObjectModal isOpen={modal.object} onClose={modalClose} />
-                <ExitModal isOpen={modal.exit} onClose={modalClose} logout={logout} />
-                <PasswordModal isOpen={modal.passwordChanged} onClose={modalClose} />
-                <SliderModal isOpen={modal.slider} onClose={modalClose} />
-                <Policy isOpen={modal.policy} onClose={modalClose} />
-                <Submit isOpen={modal.submit} onClose={modalClose} />
-                <Favourite isOpen={modal.favourite} onClose={modalClose} />
             </div>
             <Footer />
+            <Modals />
             <CookiePopup />
         </div>
     );

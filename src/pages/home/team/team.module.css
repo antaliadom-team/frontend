@@ -13,9 +13,14 @@
 
 .list {
     margin-top: 36px;
+    padding-bottom: 28px;
     display: flex;
-    gap: 20px;
     list-style-type: none;
+    gap: 20px;
+}
+
+.list::-webkit-scrollbar {
+    height: 8px;
 }
 
 .photo {

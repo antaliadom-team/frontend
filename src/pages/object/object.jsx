@@ -1,15 +1,16 @@
 import styles from "./object.module.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import AmenityItem from "../../components/amenity-item/amenity-item";
+import AmenityItem from "./amenity-item/amenity-item";
 import { ButtonWithLike } from "../../components/ui/buttons";
 import Slider from "../../components/slider/slider";
 import { useContext, useEffect } from "react";
-import { DataContext, ScreenWidthContext, ItemContext } from "../../services/app-context";
+import { DataContext, ItemContext } from "../../services/app-context";
 import CatalogItem from "../../components/catalog-item/catalog-item";
 import { getObject } from "../../services/api/objects";
+import { useSelector } from "react-redux";
 
 const Object = () => {
-    const { screenWidth } = useContext(ScreenWidthContext);
+    const screen = useSelector(store => store.screen);
     const navigate = useNavigate();
     const { id } = useParams();
     const { data } = useContext(DataContext);
@@ -34,11 +35,11 @@ const Object = () => {
 
 
     const renderSummary = () => {
-        if (screenWidth !== "mobile") {
+        if (!screen.mobile) {
             return (
                 <>
                     <div className={styles.slider}>
-                        <Slider big={screenWidth === "desktop"} little_big={screenWidth === "tablet"} item={item} />
+                        <Slider big={screen.desktop} little_big={screen.tablet} item={item} />
                     </div>
                     <div className={styles.stats_container}>
                         <p className={styles.stats_number_left}>
@@ -119,7 +120,7 @@ const Object = () => {
             </h1>
             <div className={styles.description_container}>
                 {renderSummary()}
-                {screenWidth !== "mobile" && (
+                {!screen.mobile && (
                     <div className={styles.amenities}>
                         <h3 className={styles.amenities_title}>Удобства</h3>
                         <ul className={styles.amenities_list}>
@@ -139,7 +140,7 @@ const Object = () => {
             <hr className={styles.hr} />
             <h2 className={styles.description_title}>Описание</h2>
             <div className={styles.description_text}>{item?.description}</div>
-            {screenWidth === "mobile" && (
+            {screen.mobile && (
                 <div className={styles.amenities}>
                     <h3 className={styles.amenities_title}>Удобства</h3>
                     <ul className={styles.amenities_list}>

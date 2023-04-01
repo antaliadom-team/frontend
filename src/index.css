@@ -33,6 +33,7 @@
 }
 
 body {
+    overflow-x: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -43,8 +44,6 @@ code {
 }
 
 *::-webkit-scrollbar {
-    padding-right: 15px;
-
     width: 8px; /* ширина scrollbar */
     height: 135px;
 }

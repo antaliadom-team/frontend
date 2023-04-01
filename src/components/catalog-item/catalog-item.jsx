@@ -2,25 +2,27 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./catalog-item.module.css";
 import { ButtonWithLike } from "../ui/buttons";
-import { AuthContext, DataContext, ModalContext, ObjectsContext } from "../../services/app-context";
+import { AuthContext, DataContext, ObjectsContext } from "../../services/app-context";
 import noPhoto from "../../images/no-photo.png";
 import { addFavourite } from "../../services/api/user";
+import {openFavourite} from "../../store/reducers/modal-slice";
+import { useDispatch } from "react-redux";
 
 const CatalogItem = ({ withBtn = true, withDesc = true, item }) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { data } = useContext(DataContext);
-    const { modal, setModal } = useContext(ModalContext);
     const { isAuth } = useContext(AuthContext);
     const { setObjects } = useContext(ObjectsContext);
 
     const toggleFavourite = () => {
         if (!isAuth) {
-            setModal({ ...modal, favourite: true });
+            dispatch(openFavourite());
             return;
         }
 
         if (item?.is_favorited) {
-            setModal({ ...modal, favourite: true, item: item });
+            dispatch(openFavourite(item));
         } else {
             addFavourite(item.id, setObjects, item.category, isAuth );
         }

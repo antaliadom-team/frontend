@@ -1,16 +1,16 @@
 import styles from "./about.module.css";
 import Mobile from "./mobile";
-import aboutImageRight from "../../images/about-us-right.png";
-import aboutImageLeft from "../../images/about-us-left.png";
-import { Button } from "../ui/buttons";
+import aboutImageRight from "../../../images/about-us-right.png";
+import aboutImageLeft from "../../../images/about-us-left.png";
+import { Button } from "../../../components/ui/buttons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ScreenWidthContext } from "../../services/app-context";
+import { useSelector } from "react-redux";
+
 
 const About = () => {
-  const {screenWidth} = useContext(ScreenWidthContext)
+  const screen = useSelector(store => store.screen);
 
-  if (screenWidth !== "desktop") {
+  if (!screen.desktop) {
     return (<Mobile />)
   }
 

@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./slider.module.css";
 import arrow from "../../images/arrow.svg";
-import { ModalContext } from "../../services/app-context";
 import noPhoto from "../../images/no-photo.png";
+import { useDispatch } from "react-redux";
+import { openSlider } from "../../store/reducers/modal-slice";
 
 const Slider = ({ big = false, little_big = false, tablet = false, mobile = false, fullScreen = false, item }) => {
+    const dispatch = useDispatch();
     const [slideIndex, setSlideIndex] = useState(0);
     const [size, setSize] = useState({ width: "305px", height: "261px" });
-    const { modal, setModal } = useContext(ModalContext);
 
     useEffect(() => {
         switch (true) {
@@ -68,10 +69,9 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
     };
 
     const openModal = () => {
-        setModal({ ...modal, slider: true, item: item });
+        dispatch(openSlider(item));
     };
 
-    console.log(item)
 
     return (
         <div className={styles.slider}>

@@ -3,18 +3,22 @@ import { Button } from "../../ui/buttons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../../ui/inputs";
 import { useContext, useEffect } from "react";
-import { AuthContext, ScreenWidthContext, UserContext } from "../../../services/app-context";
+import { AuthContext, UserContext } from "../../../services/app-context";
 import { useForm, Controller } from "react-hook-form";
 import { createToken } from "../../../services/api/jwt";
 import { emailValidation, passwordValidation } from "../../../services/validation";
+import { useSelector } from "react-redux";
+
+
 
 const Login = () => {
+  const screen = useSelector(store => store.screen);
   const navigate = useNavigate();
   const location = useLocation();
-  const { screenWidth } = useContext(ScreenWidthContext);
   const { isAuth, setAuth } = useContext(AuthContext);
   const { setUser } = useContext(UserContext);
   const from = location.state?.from?.pathname || "/";
+
   const {
     control,
     handleSubmit,
@@ -75,7 +79,7 @@ const Login = () => {
             />
           </li>
           <li>
-            <Button type="primary" isSubmit={true} inactive={!isValid} width={screenWidth !== "desktop" && "100%"}>
+            <Button type="primary" isSubmit={true} inactive={!isValid} width={screen.desktop && "100%"}>
               Вход
             </Button>
           </li>

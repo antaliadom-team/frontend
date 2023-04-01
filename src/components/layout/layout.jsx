@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
 import styles from "./layout.module.css";
 import { Outlet } from "react-router-dom";
 import signupImage from "../../images/reg-auth.png";
-import { ScreenWidthContext } from "../../services/app-context";
+import { useSelector } from "react-redux";
+
 
 const Layout = () => {
-  const {screenWidth} = useContext(ScreenWidthContext);
+  const screen = useSelector(store => store.screen);
 
-  if (screenWidth !== "desktop") {
+  if (!screen.desktop) {
     return (<Outlet />)
   }
 

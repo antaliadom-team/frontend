@@ -9,6 +9,11 @@
     gap: 15px;
 }
 
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
 .amenities_item_disabled {
     color: #cbcbcb;
     composes: amenities_item;

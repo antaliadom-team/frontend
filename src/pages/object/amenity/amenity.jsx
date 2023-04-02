@@ -1,6 +1,6 @@
-import styles from "./amenity-item.module.css";
+import styles from "./amenity.module.css";
 import {
-    Wifi,
+    Internet,
     Parking,
     Ac,
     Wash,
@@ -14,14 +14,16 @@ import {
     Furniture,
 } from "../../../components/ui/icons";
 
-const AmenityItem = ({ title, isAvailable }) => {
+const Amenity = ({ title, isAvailable }) => {
     const getClassName = (isAvailable) => (isAvailable ? styles.amenities_item : styles.amenities_item_disabled);
 
     switch (title) {
         case "Интернет": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Wifi isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Internet isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -29,7 +31,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Паркинг": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Parking isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Parking isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -37,7 +41,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Кондиционер": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Ac isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Ac isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -45,7 +51,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Стиральная машина": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Wash isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Wash isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -53,7 +61,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Газовое отопление": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <GasMeter isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <GasMeter isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -61,7 +71,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Тренажерный зал": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Gym isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Gym isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -69,7 +81,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Бассейн": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Pool isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Pool isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -77,7 +91,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Сауна": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Sauna isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Sauna isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -85,7 +101,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Мебель": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Furniture isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Furniture isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -93,7 +111,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Охраняемая территория": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Security isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Security isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -101,7 +121,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Балкон": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Balcony isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Balcony isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -109,7 +131,9 @@ const AmenityItem = ({ title, isAvailable }) => {
         case "Посудомоечная машина": {
             return (
                 <li className={getClassName(isAvailable)}>
-                    <Dishwasher isAvailable={isAvailable} />
+                    <div className={styles.icon}>
+                        <Dishwasher isAvailable={isAvailable} />
+                    </div>
                     {title}
                 </li>
             );
@@ -120,4 +144,4 @@ const AmenityItem = ({ title, isAvailable }) => {
     }
 };
 
-export default AmenityItem;
+export default Amenity;

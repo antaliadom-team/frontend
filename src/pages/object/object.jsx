@@ -1,6 +1,6 @@
 import styles from "./object.module.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import AmenityItem from "./amenity-item/amenity-item";
+import Amenity from "./amenity/amenity";
 import { ButtonWithLike } from "../../components/ui/buttons";
 import Slider from "../../components/slider/slider";
 import { useContext, useEffect } from "react";
@@ -73,7 +73,7 @@ const Object = () => {
         } else {
             return (
                 <>
-                    <CatalogItem withBtn={false} withDesc={false} />
+                    <CatalogItem withBtn={false} withDesc={false} item={item} />
                     <div className={styles.stats_container}>
                         <p className={styles.stats_number}>
                             {item?.area}м&#178;<span className={styles.stats_desc}>площадь</span>
@@ -127,7 +127,7 @@ const Object = () => {
                             {item?.facilities &&
                                 data?.facilities &&
                                 data?.facilities.map((facility) => {
-                                  return (<AmenityItem
+                                  return (<Amenity
                                     title={facility.name}
                                     key={facility.id}
                                     isAvailable={facilitiesNames.includes(facility.name)}
@@ -147,7 +147,7 @@ const Object = () => {
                       {item?.facilities &&
                         data?.facilities &&
                         data?.facilities.map((facility) => {
-                          return (<AmenityItem
+                          return (<Amenity
                             title={facility.name}
                             key={facility.id}
                             isAvailable={facilitiesNames.includes(facility.name)}

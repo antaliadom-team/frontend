@@ -15,6 +15,7 @@
     margin-top: 36px;
     padding-bottom: 28px;
     display: flex;
+    justify-content: space-between;
     list-style-type: none;
     gap: 20px;
 }
@@ -24,8 +25,8 @@
 }
 
 .photo {
-    width: 305px;
-    height: 355px;
+    width: 260px;
+    height: 260px;
 }
 
 .name {
@@ -78,6 +79,13 @@
     }
 }
 
+@media screen and (max-width: 1280px) {
+    .photo {
+        width: 200px;
+        height: 200px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .title {
         margin-top: 80px;
@@ -87,8 +95,8 @@
     }
 
     .photo {
-        width: 188px;
-        height: 219px;
+        width: 180px;
+        height: 180px;
     }
 
     .name {

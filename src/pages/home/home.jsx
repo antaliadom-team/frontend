@@ -1,10 +1,10 @@
+import styles from "./home.module.css";
 import Ads from "./ads/ads";
 import Promo from "./promo/promo";
 import Advantages from "./advantages/advantages";
-import styles from "./home.module.css";
 import About from "./about/about";
 import Team from "./team/team";
-import { MainForm } from "../../components/forms";
+import Form from "./form/form";
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
       <Team />
       <Advantages />
       <Ads />
-      <MainForm />
+      <Form />
     </div>
   );
 };

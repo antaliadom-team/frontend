@@ -3,23 +3,26 @@ import { API_SUBMIT } from "./api";
 import { serverValidation } from "../validation";
 import { openSubmit } from "../../store/reducers/modal-slice";
 
-export const submitMainForm = async (form, setError, dispatch) => {
+export const submitMainForm = async (form, setError, dispatch, setSuccess) => {
     const config = {
         first_name: form.first_name,
         last_name: form.last_name,
         phone: form.phone,
         email: form.email,
-        category: form.category.map((item) => item.id),
-        location: form.location.map((item) => item.id),
-        property_type: form.property_type.map((item) => item.id),
-        rooms: form.rooms.map((item) => item.name),
+        category: form.category[0].id,
+        location: form.location?.map((item) => item.id),
+        property_type: form.property_type?.map((item) => item.id),
+        rooms: form.rooms?.map((item) => item.name),
         comment: form.comment,
         agreement: form.agreement,
     };
 
+
+
     try {
         await axios.post(API_SUBMIT, config);
         dispatch(openSubmit());
+        setSuccess(true);
     } catch (error) {
         const errors = error.response.data;
         serverValidation(errors, setError);

@@ -8,12 +8,15 @@ const Submit = () => {
     const dispatch = useDispatch();
     const modal = useSelector((store) => store.modal);
 
+
     return (
         <Modal isOpen={modal.submit} onClose={() => dispatch(closeModal())}>
             <div className={styles.modal}>
                 <h2>Ваша заявка на подбор недвижимости отправлена!</h2>
                 <div className={styles.button}>
-                    <Button type={"primary"} width={"100%"} onClick={() => dispatch(closeModal())}>
+                    <Button type={"primary"} width={"100%"} onClick={() => {
+                        dispatch(closeModal());
+                    }}>
                         На главную
                     </Button>
                 </div>

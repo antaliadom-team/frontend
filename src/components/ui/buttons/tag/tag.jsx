@@ -29,6 +29,14 @@ const Tag = (props) => {
         props.onChange(state);
     }, [state]);
 
+    useEffect(() => {
+        if (props.success) {
+            const active = document.getElementsByClassName(styles.active);
+            Array.from(active).forEach(item => item.classList.remove(styles.active));
+            setState([]);
+        }
+    }, [props.success]);
+
     return (
         <div className={styles.tag}>
             {!props.onceSelect && <div className={styles.text}>{props.text}</div>}

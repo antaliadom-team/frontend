@@ -1,7 +1,7 @@
 import styles from "./policy.module.css";
 import Modal from "../modal/modal";
 import PolicyText from "../../policy-text/policy-text";
-import close from "../../../images/close-icon.svg";
+import close from "../../../images/modal_close.svg";
 import { Button } from "../../ui/buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../../store/reducers/modal-slice";

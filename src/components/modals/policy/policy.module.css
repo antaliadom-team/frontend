@@ -1,9 +1,20 @@
 .wrapper {
+    position: relative;
     margin: 0 auto;
     padding: 80px 120px;
     overflow: auto;
     width: 1100px;
     height: 95vh;
+}
+
+.closeButton {
+    position: absolute;
+    top: 28px;
+    right: 44px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .policyBtn {

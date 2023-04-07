@@ -44,4 +44,10 @@
         top: 8px;
         right: 10px;
     }
+
+    .policyBtn {
+        /* padding-top: 40px; */
+        font-size: 18px;
+    }
+    
 }

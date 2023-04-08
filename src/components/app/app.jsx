@@ -19,6 +19,7 @@ const App = () => {
     const { pathname } = useLocation();
     const { setUser } = useContext(UserContext);
 
+
     useScrollToLocation();
     useScreen();
 

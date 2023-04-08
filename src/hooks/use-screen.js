@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setScreenWidth } from "../store/reducers/screen-slice";
+import { setScreenWidth } from "../store/screen-slice";
 import { useEffect } from "react";
 
 const useScreen = () => {

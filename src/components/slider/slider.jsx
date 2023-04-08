@@ -3,7 +3,7 @@ import styles from "./slider.module.css";
 import arrow from "../../images/arrow.svg";
 import noPhoto from "../../images/no-photo.png";
 import { useDispatch } from "react-redux";
-import { openSlider } from "../../store/reducers/modal-slice";
+import { openSlider } from "../../store/modal-slice";
 
 const Slider = ({ big = false, little_big = false, tablet = false, mobile = false, fullScreen = false, item }) => {
     const dispatch = useDispatch();

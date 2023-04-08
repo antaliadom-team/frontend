@@ -5,7 +5,7 @@ import { Button } from "../../ui/buttons";
 import Modal from "../modal/modal";
 import styles from "./exit-modal.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 import { logoutUser } from "../../../services/api/user";
 
 const ExitModal = () => {

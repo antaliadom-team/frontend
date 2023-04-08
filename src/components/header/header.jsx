@@ -8,7 +8,7 @@ import { AuthContext, UserContext } from "../../services/app-context";
 import userIcon from "../../images/user.svg";
 import userEdit from "../../images/edit.svg";
 import userExit from "../../images/exit.svg";
-import {openLogout} from "../../store/reducers/modal-slice";
+import {openLogout} from "../../store/modal-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {

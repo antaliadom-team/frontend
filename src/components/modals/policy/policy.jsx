@@ -3,7 +3,7 @@ import Modal from "../modal/modal";
 import PolicyText from "../../policy-text/policy-text";
 import { Button } from "../../ui/buttons";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 
 const Policy = () => {
     const modal = useSelector((store) => store.modal);

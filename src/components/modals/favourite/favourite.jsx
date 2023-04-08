@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext, ObjectsContext } from "../../../services/app-context";
 import { deleteFavourite } from "../../../services/api/user";
 import { getCatalogObjects } from "../../../services/api/objects";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Favourite = () => {

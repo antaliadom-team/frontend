@@ -6,7 +6,7 @@ import Modal from "../modal/modal";
 import styles from "./object-modal.module.css";
 import { ItemContext } from "../../../services/app-context";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 
 function ObjectModal() {
     const navigate = useNavigate();

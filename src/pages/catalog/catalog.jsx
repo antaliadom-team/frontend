@@ -1,28 +1,22 @@
 import styles from "./catalog.module.css";
-import CatalogItem from "../../components/catalog-item/catalog-item";
-import { useContext, useEffect, useState } from "react";
-import { ObjectsContext, AuthContext } from "../../services/app-context";
+import { useState } from "react";
 import Filters from "./filters";
-import { getCatalogObjects } from "../../services/api/objects";
 import { useSelector } from "react-redux";
+import Rent from "./rent";
+import Buy from "./buy";
 
 const Catalog = () => {
-    const screen = useSelector(store => store.screen);
-    const { isAuth } = useContext(AuthContext);
-    const { objects, setObjects } = useContext(ObjectsContext);
-    const [category, setCategory] = useState(1);
-
-    useEffect(() => {
-        getCatalogObjects(setObjects, category, isAuth);
-    }, [category, isAuth]);
+    const screen = useSelector((store) => store.screen);
+    const [category, setCategory] = useState("rent");
 
     return (
         <section className={styles.container}>
             {screen.mobile && <h1 className={styles.ads_title}>Свежие объявления</h1>}
-            <Filters rent={category} setRent={setCategory} />
+            <Filters category={category} setCategory={setCategory} />
             {!screen.mobile && <h1 className={styles.ads_title}>Свежие объявления</h1>}
             <div className={styles.ads}>
-                {objects?.results && objects.results.map((item) => <CatalogItem key={item.id} item={item} />)}
+              {category === "rent" && <Rent />}
+              {category === "buy" && <Buy />}
             </div>
         </section>
     );

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_SUBMIT } from "./api";
 import { serverValidation } from "../validation";
-import { openSubmit } from "../../store/reducers/modal-slice";
+import { openSubmit } from "../../store/modal-slice";
 
 export const submitMainForm = async (form, setError, dispatch, setSuccess) => {
     const config = {

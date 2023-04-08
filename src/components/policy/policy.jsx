@@ -1,6 +1,6 @@
 import styles from "./policy.module.css";
 import { useDispatch } from "react-redux";
-import { openPolicy } from "../../store/reducers/modal-slice";
+import { openPolicy } from "../../store/modal-slice";
 
 const Policy = () => {
     const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import { getObject } from "../../services/api/objects";
 import Form from "./form";
 import OrderSent from "./order-sent";
 import { useDispatch, useSelector } from "react-redux";
-import { openObject } from "../../store/reducers/modal-slice";
+import { openObject } from "../../store/modal-slice";
 
 const Order = () => {
     const screen = useSelector(store => store.screen);

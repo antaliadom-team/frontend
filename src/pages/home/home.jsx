@@ -7,6 +7,8 @@ import Team from "./team/team";
 import Form from "./form/form";
 
 const Home = () => {
+
+
   return (
     <div className={styles.home}>
       <Promo />

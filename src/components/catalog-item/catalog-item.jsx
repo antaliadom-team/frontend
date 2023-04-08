@@ -5,7 +5,7 @@ import { ButtonWithLike } from "../ui/buttons";
 import { AuthContext, DataContext, ObjectsContext } from "../../services/app-context";
 import noPhoto from "../../images/no-photo.png";
 import { addFavourite } from "../../services/api/user";
-import {openFavourite} from "../../store/reducers/modal-slice";
+import {openFavourite} from "../../store/modal-slice";
 import { useDispatch } from "react-redux";
 
 const CatalogItem = ({ withBtn = true, withDesc = true, item }) => {

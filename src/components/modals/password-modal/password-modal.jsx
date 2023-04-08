@@ -3,7 +3,7 @@ import { Button } from "../../ui/buttons";
 import Modal from "../modal/modal";
 import styles from "./password-modal.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 
 const PasswordModal = () => {
     const navigate = useNavigate();

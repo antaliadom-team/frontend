@@ -1,7 +1,7 @@
 import styles from "./submit.module.css";
 import Modal from "../modal/modal";
 import { Button } from "../../ui/buttons";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Submit = () => {

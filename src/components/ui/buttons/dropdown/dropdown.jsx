@@ -6,7 +6,9 @@ const Dropdown = (props) => {
     const [values, setValues] = useState([]);
 
     useEffect(() => {
+      if (props.onChange) {
         props.onChange(values)
+      }
     }, [values]);
 
     useEffect(() => {

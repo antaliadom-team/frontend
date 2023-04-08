@@ -6,7 +6,7 @@ import { PhoneInput, TextInput } from "../../ui/inputs";
 import { updateUser } from "../../../services/api/user";
 import { Button } from "../../ui/buttons";
 import { UserContext } from "../../../services/app-context";
-import {openPasswordChanged} from "../../../store/reducers/modal-slice";
+import {openPasswordChanged} from "../../../store/modal-slice";
 import { useDispatch } from "react-redux";
 
 

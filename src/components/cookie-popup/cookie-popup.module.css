@@ -1,4 +1,4 @@
-.cookiePopup {
+.popup {
     position: fixed;
     z-index: 10;
     bottom: 20px;
@@ -12,13 +12,13 @@
     border: 2px solid #0d1b44;
 }
 
-.cookiePopup__text {
+.text {
     font-size: 18px;
     line-height: calc(27 / 18);
     color: var(--text-color);
 }
 
-.cookie__closeBtn {
+.close {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -30,23 +30,23 @@
     cursor: pointer;
 }
 
-.cookie__closeBtn:hover {
+.close:hover {
     opacity: 0.5;
 }
 
 @media screen and (max-width: 768px) {
-    .cookiePopup {
+    .popup {
         padding: 20px 12px 12px 12px;
         flex-direction: column;
         gap: 8px;
     }
 
-    .cookiePopup__text {
+    .text {
         margin: 0;
         font-size: 16px;
     }
 
-    .cookie__closeBtn {
+    .close {
         width: 16px;
         height: 16px;
         background-size: contain;

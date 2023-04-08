@@ -11,7 +11,7 @@ import Layout from "../layout/layout";
 import { useScrollToLocation } from "../../hooks/use-scroll";
 import Modals from "../modals";
 import { ChangePassword, EditPassword, ForgotPassword } from "../../pages/password";
-import CookiePopup from "../cookie-popup/cookiePopup";
+import CookiePopup from "../cookie-popup/cookie-popup";
 import useScreen from "../../hooks/use-screen";
 import Developers from "../../pages/developers/developers";
 

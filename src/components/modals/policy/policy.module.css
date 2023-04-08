@@ -1,9 +1,20 @@
 .wrapper {
+    position: relative;
     margin: 0 auto;
     padding: 80px 120px;
     overflow: auto;
     width: 1100px;
     height: 95vh;
+}
+
+.closeButton {
+    position: absolute;
+    top: 24px;
+    right: 40px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .policyBtn {
@@ -13,12 +24,30 @@
 
 @media screen and (max-width: 1280px) {
     .wrapper {
-        width: 500px;
+        padding: 60px 35px 60px 40px;
+        width: 679px;
+    }
+
+    .closeButton {
+        top: 28px;
+        right: 39px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .wrapper {
-        width: 300px;
+        padding: 40px 5px 40px 10px;
+        width: 288px;
     }
+
+    .closeButton {
+        top: 8px;
+        right: 10px;
+    }
+
+    .policyBtn {
+        /* padding-top: 40px; */
+        font-size: 18px;
+    }
+    
 }

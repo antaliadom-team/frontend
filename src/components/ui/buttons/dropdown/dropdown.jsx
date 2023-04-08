@@ -6,14 +6,14 @@ const Dropdown = (props) => {
     const [values, setValues] = useState([]);
 
     useEffect(() => {
-        props.onChange(values)
+        props.onChange(values);
     }, [values]);
 
     useEffect(() => {
-      if (props.success) {
-        setValues([]);
-      }
-    }, [props.success])
+        if (props.success) {
+            setValues([]);
+        }
+    }, [props.success]);
 
     const customStyle = {
         color: "#0d1b44",

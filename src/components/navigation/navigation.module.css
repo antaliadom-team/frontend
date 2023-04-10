@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     list-style: none;
-    font-family: "Monserrat";
+    font-family: "Monserrat", sans-serif;
     gap: 44px;
 }
 

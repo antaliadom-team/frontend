@@ -22,13 +22,13 @@ const ForgotPassword = () => {
 
     const onSubmit = (data) => {
         resetPassword(data)
-          .unwrap()
-          .then(() => {
-              setConfirm(true);
-          })
-          .catch((errors) => {
-              serverValidation(errors, setError);
-          });
+            .unwrap()
+            .then(() => {
+                setConfirm(true);
+            })
+            .catch((errors) => {
+                serverValidation(errors, setError);
+            });
     };
 
     if (confirm) {
@@ -51,7 +51,7 @@ const ForgotPassword = () => {
                         render={({ field, fieldState }) => (
                             <TextInput
                                 type="text"
-                                label="Email"
+                                label="Ваш email"
                                 onChange={(e) => field.onChange(e)}
                                 value={field.value}
                                 error={fieldState.error}

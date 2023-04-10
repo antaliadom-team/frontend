@@ -1,27 +1,37 @@
 import styles from "./app.module.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Catalog, Home, Object, Profile, Order } from "../../pages";
-import { Register, Logout, EditProfile, Login } from "../forms";
+import {
+    Catalog,
+    Home,
+    Object,
+    Profile,
+    EditProfile,
+    Order,
+    Register,
+    Logout,
+    Login,
+    ChangePassword,
+    EditPassword,
+    ForgotPassword,
+    Developers,
+} from "../../pages";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { UserContext } from "../../services/app-context";
-import { useContext, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import ProtectedRoute from "../protected-route/protected-route";
 import Layout from "../layout/layout";
 import { useScrollToLocation } from "../../hooks/use-scroll";
 import Modals from "../modals";
-import { ChangePassword, EditPassword, ForgotPassword } from "../../pages/password";
-import CookiePopup from "../cookie-popup/cookie-popup";
+import Cookie from "../cookie/cookie";
 import useScreen from "../../hooks/use-screen";
-import Developers from "../../pages/developers/developers";
+import { useGetUserQuery } from "../../store/users-api";
 
 const App = () => {
     const { pathname } = useLocation();
-    const { setUser } = useContext(UserContext);
-
 
     useScrollToLocation();
     useScreen();
+    useGetUserQuery();
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
@@ -41,7 +51,7 @@ const App = () => {
                         <Route path="/login" element={<Login />} />
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/edit-profile" element={<EditProfile setUser={setUser} />} />
+                        <Route path="/edit-profile" element={<EditProfile />} />
                         <Route path="/edit-password" element={<EditPassword />} />
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                         <Route path="/password-reset/:uid/:token" element={<ChangePassword />} />
@@ -58,7 +68,7 @@ const App = () => {
             </div>
             <Footer />
             <Modals />
-            <CookiePopup />
+            <Cookie />
         </div>
     );
 };

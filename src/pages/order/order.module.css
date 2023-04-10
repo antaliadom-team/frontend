@@ -72,6 +72,10 @@
         text-align: start;
     }
 
+    .subtitle {
+        width: 100%;
+    }
+
     .tablet_slider {
         margin-top: 36px;
         width: 100%;

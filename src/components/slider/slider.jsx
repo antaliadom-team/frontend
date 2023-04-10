@@ -72,13 +72,12 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
         dispatch(openSlider(item));
     };
 
-
     return (
         <div className={styles.slider}>
             {item?.images.length === 0 ? (
                 <img style={size} className={styles.activeImage} src={noPhoto} alt="фото отсутствует" />
             ) : (
-                item?.images?.map((image, index) => {
+              item?.images?.map((image, index) => {
                     return (
                         <img
                             onClick={openModal}
@@ -103,8 +102,8 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
                         key={image.id}
                         className={
                             slideIndex === index
-                                ? `${styles.pagination_item} ${styles.pagination_item_active}`
-                                : styles.pagination_item
+                                ? `${styles.pagination_object} ${styles.pagination_object_active}`
+                                : styles.pagination_object
                         }
                         onClick={() => currentSlide(index)}
                     />

@@ -1,8 +1,8 @@
 import styles from "./ads.module.css";
-import CatalogItem from "../../../components/catalog-item/catalog-item";
+import Card from "../../../components/card/card";
 import { Button } from "../../../components/ui/buttons";
 import { useNavigate } from "react-router-dom";
-import { useGetAdsQuery } from "../../../store/api-slice";
+import { useGetAdsQuery } from "../../../store/objects-api";
 
 const Ads = () => {
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Ads = () => {
                 {objects?.results ? (
                     objects?.results?.map((item, index) => {
                         if (index > 3) return null;
-                        return <CatalogItem key={item.id} item={item} />;
+                        return <Card key={item.id} item={item} />;
                     })
                 ) : (
                     <h2 className={styles.title}>Здесь пока пусто</h2>

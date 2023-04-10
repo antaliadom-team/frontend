@@ -1,9 +1,9 @@
 import styles from "./catalog.module.css";
 import { useState } from "react";
-import Filters from "./filters";
+import Filters from "./filters/filters";
 import { useSelector } from "react-redux";
-import Rent from "./rent";
-import Buy from "./buy";
+import Rent from "./categories/rent";
+import Buy from "./categories/buy";
 
 const Catalog = () => {
     const screen = useSelector((store) => store.screen);

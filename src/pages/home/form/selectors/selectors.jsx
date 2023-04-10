@@ -3,13 +3,13 @@ import Mobile from "./mobile";
 import { useSelector } from "react-redux";
 
 
-const Selectors = ({control, data, success}) => {
+const Selectors = ({control, success}) => {
   const screen = useSelector(store => store.screen);
 
   return (
     <>
-      {screen.desktop && <Desktop control={control} data={data} success={success} />}
-      {!screen.desktop && <Mobile control={control} data={data} success={success} />}
+      {screen.desktop && <Desktop control={control} success={success} />}
+      {!screen.desktop && <Mobile control={control} success={success} />}
     </>
   );
 };

@@ -1,14 +1,15 @@
 import styles from "./password.module.css";
 import { Controller, useForm } from "react-hook-form";
-import { confirmPassValidation, passwordValidation } from "../../services/validation";
+import { confirmPassValidation, passwordValidation, serverValidation } from "../../helpers/validation";
 import { TextInput } from "../../components/ui/inputs";
 import { Button } from "../../components/ui/buttons";
-import { changePassword } from "../../services/api/password";
 import { useState } from "react";
 import Success from "./success";
+import { useChangePasswordMutation } from "../../store/users-api";
 
 const EditPassword = () => {
     const [success, setSuccess] = useState(false);
+    const [changePassword] = useChangePasswordMutation();
 
     const {
         control,
@@ -21,12 +22,19 @@ const EditPassword = () => {
     });
 
     const onSubmit = (data) => {
-        changePassword(data, setError, setSuccess);
+        changePassword(data)
+            .unwrap()
+            .then(() => {
+                setSuccess(true);
+            })
+            .catch((errors) => {
+                serverValidation(errors, setError);
+            });
     };
 
-  if (success) {
-    return <Success />
-  }
+    if (success) {
+        return <Success />;
+    }
 
     return (
         <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>

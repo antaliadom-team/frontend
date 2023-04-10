@@ -1,14 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import modalReducer from "./modal-slice";
 import screenReducer from "./screen-slice";
-import { apiSlice } from "./api-slice";
+import userReducer from "./user-slice";
+import { api } from "./api";
 
 export default configureStore({
     reducer: {
         modal: modalReducer,
         screen: screenReducer,
-        [apiSlice.reducerPath]: apiSlice.reducer
+        user: userReducer,
+        [api.reducerPath]: api.reducer,
     },
-    middleware: getDefaultMiddleware =>
-      getDefaultMiddleware().concat(apiSlice.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
 });

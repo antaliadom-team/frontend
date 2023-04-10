@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { api } from "./api";
 
 const initialState = {
     object: false,
@@ -8,6 +9,7 @@ const initialState = {
     slider: false,
     submit: false,
     favourite: false,
+    item: null,
 };
 
 const modalSlice = createSlice({
@@ -39,6 +41,12 @@ const modalSlice = createSlice({
             state.item = action.payload;
         },
     },
+    extraReducers: builder => {
+        builder
+          .addMatcher(api.endpoints.getObject.matchFulfilled, (state, action) => {
+              state.item = action.payload;
+          })
+    }
 });
 
 export const {

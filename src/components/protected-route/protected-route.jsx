@@ -1,19 +1,17 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../../services/app-context";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 
 const ProtectedRoute = ({ children }) => {
-  const location = useLocation();
-  const { isAuth } = useContext(AuthContext);
+    const location = useLocation();
+    const { isAuth } = useSelector(store => store.user)
 
-  if (!isAuth) {
-    return (
-      <Navigate to="/login" state={{ from: location }} replace />
-    );
-  }
 
-  return children;
+    if (!isAuth) {
+        return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    return children;
 };
 
 export default ProtectedRoute;

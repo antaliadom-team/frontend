@@ -11,7 +11,7 @@ const Modals = () => {
   const modal = useSelector(store => store.modal);
 
   if (
-    modal.exit ||
+    modal.logout ||
     modal.object ||
     modal.policy ||
     modal.slider ||

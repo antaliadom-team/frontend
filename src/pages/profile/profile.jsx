@@ -1,24 +1,18 @@
 import styles from "./profile.module.css";
-import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import CatalogItem from "../../components/catalog-item/catalog-item";
-import { FavouritesContext, ObjectsContext, UserContext } from "../../services/app-context";
+import Card from "../../components/card/card";
 import { Button } from "../../components/ui/buttons";
-import { getFavourites } from "../../services/api/user";
+import { useGetFavouritesQuery } from "../../store/objects-api";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
-    const { user } = useContext(UserContext);
-    const { favourites, setFavourites } = useContext(FavouritesContext);
-    const { objects } = useContext(ObjectsContext);
+    const { user } = useSelector((store) => store.user);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        getFavourites(setFavourites);
-    }, [objects]);
+    const { data: objects, isLoading, isError } = useGetFavouritesQuery();
 
     return (
         <section className={styles.section}>
-            <h2 className={styles.header}>Здравствуйте, {user?.first_name} </h2>
+            <h2 className={styles.header}>Здравствуйте, {user?.first_name}</h2>
             <div className={styles.btn_box}>
                 <Button type={"text"} onClick={() => navigate("/edit-profile")}>
                     Редактировать профиль
@@ -29,10 +23,10 @@ const Profile = () => {
             </div>
             <h3 className={styles.header}>Избранное</h3>
             <div className={styles.grid}>
-              {favourites && favourites?.map((item) => (
-              <CatalogItem key={item.id} item={item} />
-              ))}
-              {favourites?.length === 0 && (<h2 className={styles.header}>Здесь пока пусто</h2>)}
+                {isLoading && <h2 className={styles.header}>Идёт загрузка...</h2>}
+                {isError && <h2 className={styles.header}>Произошла ошибка при получении данных</h2>}
+                {objects?.results && objects?.results?.map((item) => <Card key={item.id} item={item} />)}
+                {!objects?.results?.length && <h2 className={styles.header}>Здесь пока пусто</h2>}
             </div>
         </section>
     );

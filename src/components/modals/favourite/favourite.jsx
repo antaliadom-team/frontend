@@ -1,22 +1,18 @@
 import styles from "./favourite.module.css";
 import Modal from "../modal/modal";
 import { Button } from "../../ui/buttons";
-import { useContext } from "react";
-import { AuthContext, ObjectsContext } from "../../../services/app-context";
-import { deleteFavourite } from "../../../services/api/user";
-import { getCatalogObjects } from "../../../services/api/objects";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 import { useDispatch, useSelector } from "react-redux";
+import { useDeleteFavouriteMutation } from "../../../store/objects-api";
 
 const Favourite = () => {
     const dispatch = useDispatch();
     const modal = useSelector((store) => store.modal);
-    const { isAuth } = useContext(AuthContext);
-    const { setObjects } = useContext(ObjectsContext);
+    const { isAuth } = useSelector(store => store.user);
+    const [deleteFavourite] = useDeleteFavouriteMutation();
 
     const makeDelete = () => {
         deleteFavourite(modal.item.id);
-        getCatalogObjects(setObjects, modal.item.category, isAuth);
         dispatch(closeModal());
     };
 

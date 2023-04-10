@@ -1,7 +1,7 @@
 import Slider from "../../slider/slider";
 import Modal from "../modal/modal";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../../store/reducers/modal-slice";
+import { closeModal } from "../../../store/modal-slice";
 
 const SliderModal = () => {
     const modal = useSelector((store) => store.modal);

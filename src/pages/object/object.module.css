@@ -179,11 +179,7 @@
     content: "-";
 }
 
-.fixed_btn {
-    display: none;
-}
-
-.intersecting {
+.intersect {
     position: fixed;
     bottom: 0;
     width: 288px;
@@ -286,9 +282,5 @@
         line-height: 19px;
         font-weight: 400;
         gap: 20px 15px;
-    }
-
-    .fixed_btn {
-        display: block;
     }
 }

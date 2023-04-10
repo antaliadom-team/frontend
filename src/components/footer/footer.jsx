@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Vkontakte, Telegram, Instagram } from "../ui/icons";
 import logo from "../../images/logo.svg";
 import Navigation from "../navigation/navigation";
-import { openPolicy } from "../../store/reducers/modal-slice";
+import { openPolicy } from "../../store/modal-slice";
 import { useDispatch } from "react-redux";
 
 const Footer = () => {

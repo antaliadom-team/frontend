@@ -1,18 +1,25 @@
 import styles from "./form.module.css";
 import { Button } from "../../../components/ui/buttons";
-import { useContext, useState } from "react";
-import { DataContext } from "../../../services/app-context";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { submitMainForm } from "../../../services/api/submit";
-import { emailValidation, nameValidation, phoneValidation, surnameValidation } from "../../../services/validation";
+import {
+    emailValidation,
+    nameValidation,
+    phoneValidation,
+    serverValidation,
+    surnameValidation,
+} from "../../../helpers/validation";
 import { useDispatch } from "react-redux";
 import Selectors from "./selectors/selectors";
 import { TextItem, TextareaItem, CheckboxItem } from "./item";
+import { useSendMainFormMutation } from "../../../store/objects-api";
+import { openSubmit } from "../../../store/modal-slice";
 
 const Form = () => {
     const [success, setSuccess] = useState(false);
     const dispatch = useDispatch();
-    const { data } = useContext(DataContext);
+    const [sendMainForm] = useSendMainFormMutation();
+
     const {
         control,
         handleSubmit,
@@ -23,7 +30,22 @@ const Form = () => {
     });
 
     const onSubmit = (data) => {
-        submitMainForm(data, setError, dispatch, setSuccess);
+        const body = {
+            ...data,
+            category: data.category[0].id,
+            location: data.location?.map((item) => item.id),
+            property_type: data.property_type?.map((item) => item.id),
+            rooms: data.rooms?.map((item) => item.name),
+        };
+        sendMainForm(body)
+            .unwrap()
+            .then(() => {
+                dispatch(openSubmit());
+                setSuccess(true);
+            })
+            .catch((e) => {
+                serverValidation(e.data, setError);
+            });
     };
 
     return (
@@ -71,8 +93,13 @@ const Form = () => {
                             errors={errors.email?.message}
                             success={success}
                         />
-                        <Selectors control={control} data={data} success={success} />
-                        <TextareaItem name="comment" control={control} errors={errors.comment?.message} success={success} />
+                        <Selectors control={control} success={success} />
+                        <TextareaItem
+                            name="comment"
+                            control={control}
+                            errors={errors.comment?.message}
+                            success={success}
+                        />
                     </ul>
                     <CheckboxItem name="agreement" control={control} success={success} />
                     <div className={styles.button}>

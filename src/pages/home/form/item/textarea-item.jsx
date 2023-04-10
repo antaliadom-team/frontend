@@ -1,6 +1,6 @@
 import styles from "../form.module.css";
 import { Controller } from "react-hook-form";
-import { textareaValidation } from "../../../../services/validation";
+import { textareaValidation } from "../../../../helpers/validation";
 import { TextareaInput } from "../../../../components/ui/inputs";
 
 const TextareaItem = ({ name, control, errors, success}) => {

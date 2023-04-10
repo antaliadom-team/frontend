@@ -1,26 +1,21 @@
 import styles from "./order.module.css";
 import { Button } from "../../components/ui/buttons";
-import CatalogItem from "../../components/catalog-item/catalog-item";
-import { useContext, useEffect, useState } from "react";
+import Card from "../../components/card/card";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ItemContext } from "../../services/app-context";
-import { getObject } from "../../services/api/objects";
 import Form from "./form";
 import OrderSent from "./order-sent";
 import { useDispatch, useSelector } from "react-redux";
-import { openObject } from "../../store/reducers/modal-slice";
+import { openObject } from "../../store/modal-slice";
+import { useGetObjectQuery } from "../../store/objects-api";
 
 const Order = () => {
-    const screen = useSelector(store => store.screen);
+    const screen = useSelector((store) => store.screen);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
-    const { item, setItem } = useContext(ItemContext);
     const [orderSent, setOrderSent] = useState(false);
-
-    useEffect(() => {
-        getObject(id, setItem);
-    }, [id, setItem]);
+    const { data: item } = useGetObjectQuery(id);
 
     useEffect(() => {
         if (orderSent && screen.desktop) {
@@ -43,10 +38,10 @@ const Order = () => {
                     <h3 className={styles.subtitle}>Вы оформляете заявку на следующий объект </h3>
                     <div className={styles.content}>
                         <div className={styles.item}>
-                            <CatalogItem withBtn={false} item={item} />
+                            <Card withBtn={false} item={item} />
                         </div>
                     </div>
-                    <Form setSuccess={setOrderSent} id={id} />
+                    <Form setOrderSent={setOrderSent} />
                 </>
             )}
         </section>

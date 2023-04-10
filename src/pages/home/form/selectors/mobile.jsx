@@ -1,7 +1,12 @@
 import { Controller } from "react-hook-form";
 import { Tag } from "../../../../components/ui/buttons";
+import { useGetCategoriesQuery, useGetLocationsQuery, useGetTypesQuery } from "../../../../store/objects-api";
 
-const Mobile = ({ control, data, success }) => {
+const Mobile = ({ control, success }) => {
+    const { data: categories } = useGetCategoriesQuery();
+    const { data: locations } = useGetLocationsQuery();
+    const { data: types } = useGetTypesQuery();
+
     return (
         <>
             <Controller
@@ -10,7 +15,7 @@ const Mobile = ({ control, data, success }) => {
                 rules={{ required: true }}
                 render={({ field }) => (
                     <Tag
-                        selectors={data?.categories}
+                        selectors={categories}
                         onceSelect={true}
                         onChange={(e) => field.onChange(e)}
                         text={"Аренда/Покупка*"}
@@ -22,12 +27,7 @@ const Mobile = ({ control, data, success }) => {
                 control={control}
                 name="location"
                 render={({ field }) => (
-                    <Tag
-                        selectors={data?.locations}
-                        text={"Локация"}
-                        onChange={(e) => field.onChange(e)}
-                        success={success}
-                    />
+                    <Tag selectors={locations} text={"Локация"} onChange={(e) => field.onChange(e)} success={success} />
                 )}
             />
             <Controller
@@ -35,7 +35,7 @@ const Mobile = ({ control, data, success }) => {
                 name="property_type"
                 render={({ field }) => (
                     <Tag
-                        selectors={data?.types}
+                        selectors={types}
                         text={"Тип недвижимости"}
                         onChange={(e) => field.onChange(e)}
                         success={success}

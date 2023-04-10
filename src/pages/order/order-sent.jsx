@@ -1,7 +1,7 @@
 import styles from "./order.module.css";
 import { Button } from "../../components/ui/buttons";
 import { useNavigate } from "react-router-dom";
-import CatalogItem from "../../components/catalog-item/catalog-item";
+import Card from "../../components/card/card";
 
 const OrderSent = ({item}) => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const OrderSent = ({item}) => {
       </div>
       <h1 className={styles.title}>Ваша заявка отправлена!</h1>
       <div className={styles.tablet_slider}>
-        <CatalogItem withBtn={false} item={item}/>
+        <Card withBtn={false} item={item}/>
       </div>
 
       <div className={styles.button}>

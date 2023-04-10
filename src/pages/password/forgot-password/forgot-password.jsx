@@ -1,14 +1,15 @@
 import styles from "../password.module.css";
 import { Controller, useForm } from "react-hook-form";
-import { emailValidation } from "../../../services/validation";
+import { emailValidation, serverValidation } from "../../../helpers/validation";
 import { TextInput } from "../../../components/ui/inputs";
 import { Button } from "../../../components/ui/buttons";
-import { resetPassword } from "../../../services/api/password";
 import { useState } from "react";
 import ConfirmEmail from "./confirm-email";
+import { useResetPasswordMutation } from "../../../store/users-api";
 
 const ForgotPassword = () => {
     const [confirm, setConfirm] = useState(false);
+    const [resetPassword] = useResetPasswordMutation();
 
     const {
         control,
@@ -20,8 +21,14 @@ const ForgotPassword = () => {
     });
 
     const onSubmit = (data) => {
-        resetPassword(data, setError);
-        setConfirm(true);
+        resetPassword(data)
+          .unwrap()
+          .then(() => {
+              setConfirm(true);
+          })
+          .catch((errors) => {
+              serverValidation(errors, setError);
+          });
     };
 
     if (confirm) {

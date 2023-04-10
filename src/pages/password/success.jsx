@@ -7,7 +7,7 @@ const Success = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
-                <h2 className={styles.title}>Ваш пароль бы изменён</h2>
+                <h2 className={styles.title}>Ваш пароль был изменён</h2>
                 <div className={styles.return}>
                     <Button type="primary" onClick={() => navigate("/profile")}>
                         В личный кабинет

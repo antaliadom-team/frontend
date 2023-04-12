@@ -104,7 +104,7 @@ const Form = () => {
                     <CheckboxItem name="agreement" control={control} success={success} />
                     <div className={styles.button}>
                         <Button type="primary" inactive={!isValid} isSubmit={true}>
-                            Отправить заявку
+                            Оформить заявку
                         </Button>
                     </div>
                 </form>

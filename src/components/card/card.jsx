@@ -9,7 +9,7 @@ import { useAddFavouriteMutation, useGetLocationsQuery, useGetTypesQuery } from 
 const Card = ({ withBtn = true, withDesc = true, item }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { isAuth } = useSelector(store => store.user);
+    const { isAuth } = useSelector((store) => store.user);
     const { data: locations } = useGetLocationsQuery();
     const { data: types } = useGetTypesQuery();
     const [addFavourite] = useAddFavouriteMutation();
@@ -29,11 +29,12 @@ const Card = ({ withBtn = true, withDesc = true, item }) => {
 
     return (
         <div className={styles.wrapper}>
-            <div onClick={() => navigate(`/object/${item.id}`)}>
+            <div>
                 <img
                     src={item?.images[0]?.image !== undefined ? item.images[0]?.image : noPhoto}
                     alt="фото квартиры"
                     className={styles.image}
+                    onClick={() => navigate(`/object/${item.id}`)}
                 />
                 <div className={styles.price}>{`${item?.price}${item?.currency}/${item?.period}`}</div>
                 <div className={styles.description_top}>

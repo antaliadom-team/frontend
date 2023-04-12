@@ -17,7 +17,7 @@ const Desktop = ({ control, success }) => {
                     rules={{ required: true }}
                     render={({ field }) => (
                         <Dropdown
-                            label={"Аренда/Покупка"}
+                            label={"Аренда/Покупка*"}
                             options={categories}
                             onChange={(e) => field.onChange(e)}
                             success={success}

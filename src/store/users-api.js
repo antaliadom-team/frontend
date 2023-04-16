@@ -1,17 +1,12 @@
 import { api } from "./api";
-import { setUser } from "./user-slice";
 
 export const usersApi = api.injectEndpoints({
     endpoints: (build) => ({
-        getUser: build.query({
-            query: () => "/users/me",
-            providesTags: ["users"],
-            async onQueryStarted(args, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-                    dispatch(setUser(data));
-                } catch (e) {}
-            },
+        getUser: build.mutation({
+            query: () => ({
+                url: "/users/me",
+                method: "GET"
+            }),
         }),
         logout: build.mutation({
             query: () => ({
@@ -61,7 +56,7 @@ export const usersApi = api.injectEndpoints({
 });
 
 export const {
-    useGetUserQuery,
+    useGetUserMutation,
     useLogoutMutation,
     useUpdateUserMutation,
     useRegisterUserMutation,

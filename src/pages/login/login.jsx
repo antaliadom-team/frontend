@@ -4,22 +4,20 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../../components/ui/inputs";
 import { useForm, Controller } from "react-hook-form";
 import { emailValidation, passwordValidation } from "../../helpers/validation";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useCreateTokenMutation } from "../../store/jwt-api";
 import { setCookie } from "../../helpers/cookie";
 import { useEffect } from "react";
-import { useGetUserQuery } from "../../store/users-api";
-import { setUser } from "../../store/user-slice";
+import { useGetUserMutation } from "../../store/users-api";
 
 const Login = () => {
     const screen = useSelector((store) => store.screen);
     const navigate = useNavigate();
     const location = useLocation();
-    const dispatch = useDispatch();
     const from = location.state?.from?.pathname || "/";
     const [createToken] = useCreateTokenMutation();
     const { isAuth } = useSelector((store) => store.user);
-    const { data: user } = useGetUserQuery();
+    const [getUser] = useGetUserMutation();
 
     const {
         control,
@@ -38,9 +36,9 @@ const Login = () => {
                 localStorage.setItem("refreshToken", res.refresh);
             })
             .then(() => {
-                dispatch(setUser(user));
+                getUser();
+                navigate("/profile");
             })
-            .then(() => navigate("/profile"))
             .catch(() => {
                 setError("email", {
                     type: "server",

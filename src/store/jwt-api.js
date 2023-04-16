@@ -1,4 +1,6 @@
 import { api } from "./api";
+import { getCookie } from "../helpers/cookie";
+
 
 export const jwtApi = api.injectEndpoints({
     endpoints: (build) => ({
@@ -19,11 +21,13 @@ export const jwtApi = api.injectEndpoints({
             invalidatesTags: ["users"],
         }),
         verifyToken: build.mutation({
-            query: () => ({
+            query: () => {
+                const token = getCookie("accessToken");
+                return {
                 url: "/auth/jwt/verify/",
                 method: "POST",
-                body: { refresh: localStorage.getItem("refreshToken") },
-            }),
+                body: { token: token },
+            }},
             invalidatesTags: ["users"],
         }),
     }),

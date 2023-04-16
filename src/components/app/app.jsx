@@ -24,14 +24,14 @@ import { useScrollToLocation } from "../../hooks/use-scroll";
 import Modals from "../modals";
 import Cookie from "../cookie/cookie";
 import useScreen from "../../hooks/use-screen";
-import { useGetUserQuery } from "../../store/users-api";
+import { useUser } from "../../hooks/use-user";
 
 const App = () => {
     const { pathname } = useLocation();
 
     useScrollToLocation();
     useScreen();
-    useGetUserQuery();
+    useUser();
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);

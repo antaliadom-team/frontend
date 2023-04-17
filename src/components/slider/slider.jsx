@@ -13,15 +13,24 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
     useEffect(() => {
         switch (true) {
             case fullScreen: {
-                setSize({ width: "100%", height: "75vh" });
+                setSize({
+                    width: "100%",
+                    height: "75vh",
+                });
                 break;
             }
             case big: {
-                setSize({ width: "738px", height: "632px" });
+                setSize({
+                    width: "738px",
+                    height: "632px",
+                });
                 break;
             }
             case little_big: {
-                setSize({ width: "505px", height: "432px" });
+                setSize({
+                    width: "505px",
+                    height: "432px",
+                });
                 break;
             }
             case tablet: {
@@ -77,7 +86,7 @@ const Slider = ({ big = false, little_big = false, tablet = false, mobile = fals
             {item?.images.length === 0 ? (
                 <img style={size} className={styles.activeImage} src={noPhoto} alt="фото отсутствует" />
             ) : (
-              item?.images?.map((image, index) => {
+                item?.images?.map((image, index) => {
                     return (
                         <img
                             onClick={openModal}

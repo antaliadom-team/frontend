@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../ui/buttons";
+import { PrimaryButton } from "../../ui/buttons";
 import Modal from "../modal/modal";
 import styles from "./password-modal.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,9 +19,9 @@ const PasswordModal = () => {
             <div className={styles.password}>
                 <h2>Изменения сохранены</h2>
                 <div>
-                    <Button type="primary" onClick={onCloseModal}>
+                    <PrimaryButton onClick={onCloseModal}>
                         Понятно
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </div>
         </Modal>

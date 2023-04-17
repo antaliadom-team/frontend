@@ -1,6 +1,6 @@
 import styles from "./submit.module.css";
 import Modal from "../modal/modal";
-import { Button } from "../../ui/buttons";
+import { PrimaryButton } from "../../ui/buttons";
 import { closeModal } from "../../../store/modal-slice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,11 +14,11 @@ const Submit = () => {
             <div className={styles.modal}>
                 <h2>Ваша заявка на подбор недвижимости отправлена!</h2>
                 <div className={styles.button}>
-                    <Button type={"primary"} width={"100%"} onClick={() => {
+                    <PrimaryButton width={"100%"} onClick={() => {
                         dispatch(closeModal());
                     }}>
                         На главную
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </div>
         </Modal>

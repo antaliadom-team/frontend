@@ -1,6 +1,6 @@
 import styles from "./ads.module.css";
 import Card from "../../../components/card/card";
-import { Button } from "../../../components/ui/buttons";
+import { PrimaryButton } from "../../../components/ui/buttons";
 import { useNavigate } from "react-router-dom";
 import { useGetAdsQuery } from "../../../store/objects-api";
 
@@ -25,9 +25,9 @@ const Ads = () => {
             </div>
 
             <div className={styles.button}>
-                <Button type={"primary"} width={"100%"} onClick={() => navigate("/catalog")}>
+                <PrimaryButton width={"100%"} onClick={() => navigate("/catalog")}>
                     Смотреть все
-                </Button>
+                </PrimaryButton>
             </div>
         </section>
     );

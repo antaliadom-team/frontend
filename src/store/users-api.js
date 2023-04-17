@@ -14,7 +14,6 @@ export const usersApi = api.injectEndpoints({
                 method: "POST",
                 body: { refresh: localStorage.getItem("refreshToken") },
             }),
-            invalidatesTags: ["users"],
         }),
         updateUser: build.mutation({
             query: (body) => ({
@@ -63,7 +62,4 @@ export const {
     useChangePasswordMutation,
     useResetPasswordMutation,
     useConfirmPasswordMutation,
-} = usersApi;
-export const {
-    endpoints: { getUser },
 } = usersApi;

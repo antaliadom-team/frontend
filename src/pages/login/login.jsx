@@ -1,23 +1,17 @@
 import styles from "./login.module.css";
-import { Button } from "../../components/ui/buttons";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { PrimaryButton } from "../../components/ui/buttons";
+import { Link } from "react-router-dom";
 import { TextInput } from "../../components/ui/inputs";
 import { useForm, Controller } from "react-hook-form";
 import { emailValidation, passwordValidation } from "../../helpers/validation";
 import { useSelector } from "react-redux";
 import { useCreateTokenMutation } from "../../store/jwt-api";
 import { setCookie } from "../../helpers/cookie";
-import { useEffect } from "react";
-import { useGetUserMutation } from "../../store/users-api";
+import { useRedirect } from "../../hooks/use-redirect";
 
 const Login = () => {
     const screen = useSelector((store) => store.screen);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
     const [createToken] = useCreateTokenMutation();
-    const { isAuth } = useSelector((store) => store.user);
-    const [getUser] = useGetUserMutation();
 
     const {
         control,
@@ -28,16 +22,17 @@ const Login = () => {
         mode: "all",
     });
 
+    useRedirect();
+
     const onSubmit = (data) => {
         createToken(data)
             .unwrap()
             .then((res) => {
-                setCookie("accessToken", res.access, undefined);
+                setCookie("accessToken", res.access, { expires: 1000 });
                 localStorage.setItem("refreshToken", res.refresh);
             })
             .then(() => {
-                getUser();
-                navigate("/profile");
+                window.location.reload();
             })
             .catch(() => {
                 setError("email", {
@@ -51,11 +46,7 @@ const Login = () => {
             });
     };
 
-    useEffect(() => {
-        if (isAuth) {
-            navigate(from, { replace: true });
-        }
-    }, [isAuth]);
+
 
     return (
         <form className={styles.login} onSubmit={handleSubmit(onSubmit)}>
@@ -97,9 +88,9 @@ const Login = () => {
                         />
                     </li>
                     <li>
-                        <Button type="primary" isSubmit={true} inactive={!isValid} width={screen.desktop && "100%"}>
+                        <PrimaryButton isSubmit={true} inactive={!isValid} width={screen.desktop && "100%"}>
                             Вход
-                        </Button>
+                        </PrimaryButton>
                     </li>
                     <li>
                         <p className={styles.text}>

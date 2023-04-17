@@ -12,10 +12,19 @@ const baseQuery = fetchBaseQuery({
     },
 });
 
-
 export const api = createApi({
     reducerPath: "api",
-    tagTypes: ["objects", "users"],
+    tagTypes: ["objects"],
     baseQuery: baseQuery,
-    endpoints: () => ({}),
+    endpoints: (build) => ({
+        getTeam: build.query({
+            query: () => ({
+                url: "/static_pages/team/"
+            })
+        })
+    }),
 });
+
+export const {
+    useGetTeamQuery
+} = api;

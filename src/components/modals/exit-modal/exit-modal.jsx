@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../ui/buttons";
+import { GhostButton, PrimaryButton } from "../../ui/buttons";
 import Modal from "../modal/modal";
 import styles from "./exit-modal.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,14 +41,14 @@ const ExitModal = () => {
             <div className={styles.exit}>
                 <h2>Вы уверены, что хотите выйти из личного кабинета?</h2>
                 <div>
-                    <Button type={"primary"} onClick={exit}>
+                    <PrimaryButton onClick={exit}>
                         {!screen.mobile ? "Да, выйти" : "Да"}
-                    </Button>
+                    </PrimaryButton>
                 </div>
                 <div>
-                    <Button type={"ghost"} onClick={onCloseModal}>
+                    <GhostButton onClick={onCloseModal}>
                         {!screen.mobile ? "Нет, вернуться в личный кабинет" : "Отменить"}
-                    </Button>
+                    </GhostButton>
                 </div>
             </div>
         </Modal>

@@ -2,7 +2,7 @@ import styles from "../password.module.css";
 import { Controller, useForm } from "react-hook-form";
 import { emailValidation, serverValidation } from "../../../helpers/validation";
 import { TextInput } from "../../../components/ui/inputs";
-import { Button } from "../../../components/ui/buttons";
+import { PrimaryButton } from "../../../components/ui/buttons";
 import { useState } from "react";
 import ConfirmEmail from "./confirm-email";
 import { useResetPasswordMutation } from "../../../store/users-api";
@@ -61,9 +61,9 @@ const ForgotPassword = () => {
                     />
                 </div>
                 <div className={styles.buttons}>
-                    <Button type="primary" isSubmit="true" inactive={!isValid}>
+                    <PrimaryButton isSubmit="true" inactive={!isValid}>
                         Сбросить пароль
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </div>
         </form>

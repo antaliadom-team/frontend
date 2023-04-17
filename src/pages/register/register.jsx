@@ -1,6 +1,6 @@
 import styles from "./register.module.css";
 import { Checkbox, TextInput } from "../../components/ui/inputs";
-import { Button } from "../../components/ui/buttons";
+import { PrimaryButton } from "../../components/ui/buttons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Policy from "../../components/policy/policy";
@@ -10,11 +10,13 @@ import {
     emailValidation,
     nameValidation,
     passwordValidation,
-    phoneValidation, serverValidation,
-    surnameValidation
+    phoneValidation,
+    serverValidation,
+    surnameValidation,
 } from "../../helpers/validation";
 import Success from "./success";
 import { useRegisterUserMutation } from "../../store/users-api";
+import { useRedirect } from "../../hooks/use-redirect";
 
 const Register = () => {
     const [success, setSuccess] = useState(false);
@@ -30,16 +32,17 @@ const Register = () => {
         mode: "all",
     });
 
+    useRedirect();
+
     const onSubmit = (data) => {
         registerUser(data)
-          .unwrap()
-          .then(() => {
-              setSuccess(true);
-
-          })
-          .catch((errors) => {
-              serverValidation(errors, setError);
-          });
+            .unwrap()
+            .then(() => {
+                setSuccess(true);
+            })
+            .catch((errors) => {
+                serverValidation(errors, setError);
+            });
     };
 
     return (
@@ -166,9 +169,9 @@ const Register = () => {
                             <Policy />
                         </div>
                         <div className={styles.buttons}>
-                            <Button type="primary" inactive={!isValid} isSubmit={true}>
+                            <PrimaryButton inactive={!isValid} isSubmit={true}>
                                 Зарегистрироваться
-                            </Button>
+                            </PrimaryButton>
                         </div>
                         <p className={styles.text}>
                             Уже есть аккаунт?&nbsp;

@@ -1,5 +1,5 @@
 import styles from "./order.module.css";
-import { Button } from "../../components/ui/buttons";
+import { TextButton } from "../../components/ui/buttons";
 import Card from "../../components/card/card";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -30,9 +30,7 @@ const Order = () => {
             ) : (
                 <>
                     <div className={styles.back}>
-                        <Button type={"text"} onClick={() => navigate("/catalog")}>
-                            Назад
-                        </Button>
+                        <TextButton onClick={() => navigate("/catalog")}>Назад</TextButton>
                     </div>
                     <h1 className={styles.title}>Оформить заявку</h1>
                     <h3 className={styles.subtitle}>Вы оформляете заявку на следующий объект </h3>

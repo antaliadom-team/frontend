@@ -30,13 +30,13 @@ const About = () => {
                         знание нюансов рынка.
                     </p>
                 </div>
-                <div className={styles.column}>
+                <div className={styles.imageColumn}>
                     <img className={styles.image} src={aboutImageRight} alt="фото квартиры" />
                     <div className={styles.border} />
                 </div>
             </div>
             <div className={styles.columns}>
-                <div className={styles.column}>
+                <div className={styles.imageColumn}>
                     <img className={styles.image} src={aboutImageLeft} alt="фото квартиры" />
                     <div className={`${styles.border} ${styles.border_bottom}`} />
                 </div>

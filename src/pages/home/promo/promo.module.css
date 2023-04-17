@@ -22,6 +22,7 @@
 
 .image {
     display: flex;
+    height: 705px;
     justify-content: flex-end;
 }
 

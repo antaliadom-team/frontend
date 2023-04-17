@@ -183,6 +183,7 @@
 
     .image {
         position: relative;
+        min-height: 182px;
     }
 
     .image::before {

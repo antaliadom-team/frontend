@@ -1,16 +1,18 @@
 import styles from "./logout.module.css";
-import { Button } from "../../components/ui/buttons";
+import { GhostButton, PrimaryButton } from "../../components/ui/buttons";
 import { useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../../store/users-api";
 import { deleteCookie } from "../../helpers/cookie";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logoutUser } from "../../store/user-slice";
+import { useState } from "react";
+import ProtectedRoute from "../../components/protected-route/protected-route";
 
 const Logout = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [logout] = useLogoutMutation();
-    const { isAuth } = useSelector((store) => store.user);
+    const [success, setSuccess] = useState(false);
 
     const exit = () => {
         logout()
@@ -24,20 +26,22 @@ const Logout = () => {
                 deleteCookie("accessToken");
                 localStorage.removeItem("refreshToken");
             });
+        setSuccess(true);
     };
 
-    if (isAuth) {
+    if (success) {
         return (
             <div className={styles.logout}>
                 <div className={styles.container}>
-                    <h2 className={styles.title}>Вы уверены, что хотите выйти из учетной записи?</h2>
+                    <h2 className={styles.title}>Вы вышли из личного кабинета!</h2>
                     <div className={styles.buttons}>
-                        <Button type="primary" onClick={exit}>
-                            Да, выйти
-                        </Button>
-                        <Button type="ghost" onClick={() => navigate("/profile")}>
-                            Нет, вернуться в личный кабинет
-                        </Button>
+                        <PrimaryButton
+                            onClick={() => {
+                                navigate("/");
+                                window.location.reload();
+                            }}>
+                            На главную
+                        </PrimaryButton>
                     </div>
                 </div>
             </div>
@@ -45,16 +49,17 @@ const Logout = () => {
     }
 
     return (
-        <div className={styles.logout}>
-            <div className={styles.container}>
-                <h2 className={styles.title}>Вы вышли из личного кабинета!</h2>
-                <div className={styles.buttons}>
-                    <Button type="primary" onClick={() => navigate("/")}>
-                        На главную
-                    </Button>
+        <ProtectedRoute>
+            <div className={styles.logout}>
+                <div className={styles.container}>
+                    <h2 className={styles.title}>Вы уверены, что хотите выйти из учетной записи?</h2>
+                    <div className={styles.buttons}>
+                        <PrimaryButton onClick={exit}>Да, выйти</PrimaryButton>
+                        <GhostButton onClick={() => navigate("/profile")}>Нет, вернуться в личный кабинет</GhostButton>
+                    </div>
                 </div>
             </div>
-        </div>
+        </ProtectedRoute>
     );
 };
 

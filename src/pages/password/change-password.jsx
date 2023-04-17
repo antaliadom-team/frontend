@@ -1,5 +1,5 @@
 import styles from "./password.module.css";
-import { Button } from "../../components/ui/buttons";
+import { PrimaryButton } from "../../components/ui/buttons";
 import { TextInput } from "../../components/ui/inputs";
 import { useForm, Controller } from "react-hook-form";
 import { confirmPassValidation, passwordValidation, serverValidation } from "../../helpers/validation";
@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Success from "./success";
 import { useConfirmPasswordMutation } from "../../store/users-api";
-
 
 const ChangePassword = () => {
     const [success, setSuccess] = useState(false);
@@ -27,19 +26,18 @@ const ChangePassword = () => {
 
     const onSubmit = (data) => {
         confirmPassword({ ...data, uid, token })
-          .unwrap()
-          .then(() => {
-              setSuccess(true);
-          })
-          .catch((errors) => {
-              serverValidation(errors, setError);
-          });
+            .unwrap()
+            .then(() => {
+                setSuccess(true);
+            })
+            .catch((errors) => {
+                serverValidation(errors, setError);
+            });
     };
 
     if (success) {
-        return <Success />
+        return <Success />;
     }
-
 
     return (
         <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
@@ -83,9 +81,9 @@ const ChangePassword = () => {
                     </li>
                 </ul>
                 <div className={styles.buttons}>
-                    <Button type="primary" isSubmit="true" inactive={!isValid}>
+                    <PrimaryButton isSubmit="true" inactive={!isValid}>
                         Сбросить пароль
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </div>
         </form>

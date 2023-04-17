@@ -1,9 +1,10 @@
 import styles from "./profile.module.css";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/card/card";
-import { Button } from "../../components/ui/buttons";
+import { TextButton } from "../../components/ui/buttons";
 import { useGetFavouritesQuery } from "../../store/objects-api";
 import { useSelector } from "react-redux";
+import ProtectedRoute from "../../components/protected-route/protected-route";
 
 const Profile = () => {
     const { user } = useSelector((store) => store.user);
@@ -11,15 +12,12 @@ const Profile = () => {
     const { data: objects, isLoading, isError } = useGetFavouritesQuery();
 
     return (
+        <ProtectedRoute>
         <section className={styles.section}>
             <h2 className={styles.header}>Здравствуйте, {user?.first_name}</h2>
             <div className={styles.btn_box}>
-                <Button type={"text"} onClick={() => navigate("/edit-profile")}>
-                    Редактировать профиль
-                </Button>
-                <Button type={"text"} onClick={() => navigate("/logout")}>
-                    Выйти из профиля
-                </Button>
+                <TextButton onClick={() => navigate("/edit-profile")}>Редактировать профиль</TextButton>
+                <TextButton onClick={() => navigate("/logout")}>Выйти из профиля</TextButton>
             </div>
             <h3 className={styles.header}>Избранное</h3>
             <div className={styles.grid}>
@@ -29,6 +27,7 @@ const Profile = () => {
                 {!objects?.results?.length && <h2 className={styles.header}>Здесь пока пусто</h2>}
             </div>
         </section>
+        </ProtectedRoute>
     );
 };
 

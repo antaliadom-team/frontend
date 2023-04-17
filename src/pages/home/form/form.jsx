@@ -1,5 +1,5 @@
 import styles from "./form.module.css";
-import { Button } from "../../../components/ui/buttons";
+import { PrimaryButton } from "../../../components/ui/buttons";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -103,9 +103,9 @@ const Form = () => {
                     </ul>
                     <CheckboxItem name="agreement" control={control} success={success} />
                     <div className={styles.button}>
-                        <Button type="primary" inactive={!isValid} isSubmit={true}>
+                        <PrimaryButton inactive={!isValid} isSubmit={true}>
                             Оформить заявку
-                        </Button>
+                        </PrimaryButton>
                     </div>
                 </form>
             </div>

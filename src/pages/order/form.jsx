@@ -1,5 +1,5 @@
 import { Checkbox, TextareaInput, TextInput } from "../../components/ui/inputs";
-import { Button } from "../../components/ui/buttons";
+import { PrimaryButton } from "../../components/ui/buttons";
 import Policy from "../../components/policy/policy";
 import styles from "./order.module.css";
 import { Controller, useForm } from "react-hook-form";
@@ -146,9 +146,9 @@ const Form = ({ setOrderSent }) => {
                 <Policy />
             </div>
             <div className={styles.button}>
-                <Button type="primary" inactive={!isValid} isSubmit={true} width={"100%"}>
+                <PrimaryButton inactive={!isValid} isSubmit={true} width={"100%"}>
                     Отправить заявку
-                </Button>
+                </PrimaryButton>
             </div>
         </form>
     );

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Card from "../../card/card";
-import { Button } from "../../ui/buttons";
+import { PrimaryButton } from "../../ui/buttons";
 import Modal from "../modal/modal";
 import styles from "./object-modal.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,9 +23,9 @@ function ObjectModal() {
                     <Card withBtn={false} item={modal.item} />
                 </div>
                 <div>
-                    <Button type={"primary"} width={"100%"} onClick={onCloseModal}>
+                    <PrimaryButton width={"100%"} onClick={onCloseModal}>
                         На главную
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </div>
         </Modal>

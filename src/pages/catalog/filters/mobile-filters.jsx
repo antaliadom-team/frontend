@@ -1,6 +1,6 @@
 import styles from "../catalog.module.css";
 import filter from "../../../images/filter.svg";
-import { Button, FilterTag, Tag } from "../../../components/ui/buttons";
+import { PrimaryButton, FilterTag, Tag } from "../../../components/ui/buttons";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetLocationsQuery, useGetTypesQuery } from "../../../store/objects-api";
@@ -29,9 +29,9 @@ const MobileFilters = ({ category }) => {
                             <Tag selectors={types} text={"Тип недвижимости"} />
                             <Tag selectors={["1", "2", "3", "4+"]} text={"Количество комнат"} />
                             <Tag selectors={["Новостройка", "Вторичное"]} text={"Статус"} />
-                            <Button type={"primary"} width={"100%"} padding={"12px 0"}>
+                            <PrimaryButton type={"primary"} width={"100%"} padding={"12px 0"}>
                                 Показать результаты
-                            </Button>
+                            </PrimaryButton>
                         </>
                     )}
                     {screen.mobile && (
@@ -42,9 +42,9 @@ const MobileFilters = ({ category }) => {
                             {category === "buy" && (
                                 <FilterTag selectors={["Новостройка", "Вторичное"]} text={"Статус"} />
                             )}
-                            <Button type={"primary"} width={"100%"} padding={"12px 0"}>
+                            <PrimaryButton type={"primary"} width={"100%"} padding={"12px 0"}>
                                 Показать результаты
-                            </Button>
+                            </PrimaryButton>
                         </>
                     )}
                 </div>

@@ -1,11 +1,9 @@
 import styles from "../catalog.module.css";
 import Card from "../../../components/card/card";
 import { useGetRentQuery } from "../../../store/objects-api";
-import { useSelector } from "react-redux";
 
 const Rent = () => {
-    const { isAuth } = useSelector(store => store.user);
-    const { data: objects, isLoading, isError } = useGetRentQuery(isAuth);
+    const { data: objects, isLoading, isError } = useGetRentQuery();
 
     return (
         <div className={styles.ads}>

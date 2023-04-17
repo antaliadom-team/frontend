@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { usersApi } from "./users-api";
 import { jwtApi } from "./jwt-api";
-import { setCookie } from "../helpers/cookie";
+import { deleteCookie, setCookie } from "../helpers/cookie";
 
 const initialState = {
     user: null,
     isAuth: false,
+    token: false,
 };
 
 export const userSlice = createSlice({
@@ -30,20 +31,26 @@ export const userSlice = createSlice({
             .addMatcher(usersApi.endpoints.getUser.matchRejected, (state) => {
                 state.isAuth = false;
             })
-            .addMatcher(jwtApi.endpoints.verifyToken.matchFulfilled, () => {
+            .addMatcher(jwtApi.endpoints.verifyToken.matchFulfilled, (state) => {
                 // console.log("matcher verifyToken fulfilled");
+                state.token = true;
             })
-            .addMatcher(jwtApi.endpoints.verifyToken.matchRejected, () => {
+            .addMatcher(jwtApi.endpoints.verifyToken.matchRejected, (state) => {
                 // console.log("matcher verifyToken rejected");
+                state.token = false;
             })
             .addMatcher(jwtApi.endpoints.refreshToken.matchFulfilled, (state, action) => {
                 // console.log("matcher refreshToken fulfilled");
-                setCookie("accessToken", action.payload.access, undefined);
+                setCookie("accessToken", action.payload.access, { expires: 1000 });
                 localStorage.setItem("refreshToken", action.payload.refresh);
+                state.token = true;
             })
             .addMatcher(jwtApi.endpoints.refreshToken.matchRejected, (state) => {
                 // console.log("matcher refreshToken rejected");
                 state.isAuth = false;
+                state.token = false;
+                deleteCookie("accessToken");
+                localStorage.removeItem("refreshToken");
             });
     },
 });

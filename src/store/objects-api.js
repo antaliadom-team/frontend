@@ -78,7 +78,3 @@ export const {
     useSendMainFormMutation,
     useSendObjectFormMutation,
 } = objectsApi;
-
-export const {
-    endpoints: { getObject },
-} = objectsApi;

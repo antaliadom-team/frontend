@@ -3,23 +3,37 @@ import { useGetUserMutation } from "../store/users-api";
 import { useEffect } from "react";
 
 export const useUser = () => {
+    const [getUser] = useGetUserMutation();
     const [verifyToken] = useVerifyTokenMutation();
     const [refreshToken] = useRefreshTokenMutation();
-    const [getUser] = useGetUserMutation();
+    const token = localStorage.getItem("refreshToken");
+
 
     useEffect(() => {
-        verifyToken()
-            .unwrap()
-            .then(() => {
-                getUser();
-            })
-            .catch(() => {
-                refreshToken()
-                    .unwrap()
-                    .then(() => {
-                        getUser();
-                    })
-                    .catch(() => {});
-            });
+        if (token) {
+            verifyToken()
+                .unwrap()
+                .then(() => {
+                    getUser();
+                })
+                .then(()=> {
+                    setInterval(() => {
+                        refreshToken();
+                    }, 15 * 60 * 1000);
+                })
+                .catch(() => {
+                    refreshToken()
+                        .unwrap()
+                        .then(() => {
+                            getUser();
+                        })
+                        .then(()=> {
+                            setInterval(() => {
+                                refreshToken();
+                            }, 15 * 60 * 1000);
+                        })
+                        .catch(() => {});
+                });
+        }
     }, []);
 };

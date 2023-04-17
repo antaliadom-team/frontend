@@ -15,8 +15,8 @@ const Catalog = () => {
             <Filters category={category} setCategory={setCategory} />
             {!screen.mobile && <h1 className={styles.ads_title}>Свежие объявления</h1>}
             <div className={styles.ads}>
-              {category === "rent" && <Rent />}
-              {category === "buy" && <Buy />}
+                {category === "rent" && <Rent />}
+                {category === "buy" && <Buy />}
             </div>
         </section>
     );

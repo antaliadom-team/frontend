@@ -2,7 +2,7 @@ import styles from "./policy.module.css";
 import Modal from "../modal/modal";
 import PolicyText from "../../policy-text/policy-text";
 import close from "../../../images/modal_close.svg";
-import { Button } from "../../ui/buttons";
+import { PrimaryButton } from "../../ui/buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../../store/modal-slice";
 
@@ -18,9 +18,9 @@ const Policy = () => {
                 </button>
                 <PolicyText />
                 <div className={styles.policyBtn}>
-                    <Button type={"primary"} onClick={() => dispatch(closeModal())}>
+                    <PrimaryButton onClick={() => dispatch(closeModal())}>
                         Принять условия
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </div>
         </Modal>

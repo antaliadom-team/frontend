@@ -9,8 +9,9 @@
     justify-content: space-between;
 }
 
-.column {
+.imageColumn {
     position: relative;
+    min-width: 630px;
 }
 
 .column_bottom {

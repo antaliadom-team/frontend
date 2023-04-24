@@ -1,0 +1,25 @@
+.item {
+    font-family: "Montserrat";
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    background-color: none;
+    cursor: pointer;
+}
+
+.item_active {
+    color: var(--border-color);
+}
+
+.container {
+    margin-top: 28px;
+    margin-right: 12px;
+    display: flex;
+    gap: 12px;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+}

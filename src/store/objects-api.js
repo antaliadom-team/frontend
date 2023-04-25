@@ -9,28 +9,33 @@ export const objectsApi = api.injectEndpoints({
             query: () => "/objects",
         }),
         getRent: build.query({
-            query: () => ("/objects/?category=1"),
+            query: () => "/objects/?category=1",
+            providesTags: ["objects"],
+        }),
+        //next
+        getNext: build.query({
+            query: (page) => `/objects/?category=1&page=${page}`,
             providesTags: ["objects"],
         }),
         getBuy: build.query({
-            query: () => ("/objects/?category=2"),
+            query: () => "/objects/?category=2",
             providesTags: ["objects"],
         }),
         getFavourites: build.query({
-            query: () => ("/objects/?is_favorited=1"),
+            query: () => "/objects/?is_favorited=1",
             providesTags: ["objects"],
         }),
         getCategories: build.query({
-            query: () => ("/objects/categories"),
+            query: () => "/objects/categories",
         }),
         getLocations: build.query({
-            query: () => ("/objects/locations"),
+            query: () => "/objects/locations",
         }),
         getTypes: build.query({
-            query: () => ("/objects/property_types"),
+            query: () => "/objects/property_types",
         }),
         getFacilities: build.query({
-            query: () => ("/objects/facilities"),
+            query: () => "/objects/facilities",
         }),
         addFavourite: build.mutation({
             query: (id) => ({
@@ -66,6 +71,7 @@ export const objectsApi = api.injectEndpoints({
 export const {
     useGetAdsQuery,
     useGetRentQuery,
+    useGetNextQuery,
     useGetBuyQuery,
     useGetFavouritesQuery,
     useGetCategoriesQuery,

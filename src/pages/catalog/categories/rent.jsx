@@ -1,13 +1,15 @@
 import styles from "../catalog.module.css";
 import Card from "../../../components/card/card";
-import { useGetRentQuery } from "../../../store/objects-api";
+import { useGetNextQuery, useGetRentQuery } from "../../../store/objects-api";
 import Pagination from "../pagination/pagination";
 import { useEffect, useState } from "react";
 
 const Rent = () => {
-    const { data: objects, isLoading, isError } = useGetRentQuery();
+    // const { data: objects, isLoading, isError } = useGetRentQuery();
 
     const [countPages, setCountPages] = useState([]);
+    const { data: objects, isLoading, isError } = useGetNextQuery(3);
+    console.log(objects);
 
     useEffect(() => {
         if (objects) {

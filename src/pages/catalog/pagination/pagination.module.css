@@ -11,15 +11,26 @@
     color: var(--border-color);
 }
 
+.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
 .container {
-    margin-top: 28px;
-    margin-right: 12px;
     display: flex;
     gap: 12px;
+    justify-self: flex-end;
 }
 
 .arrow {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1440px) {
+    .container {
+        margin-right: 55px;
+    }
 }

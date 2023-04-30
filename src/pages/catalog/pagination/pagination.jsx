@@ -18,21 +18,23 @@ const Pagination = ({ countPages }) => {
     };
 
     return (
-        <div className={styles.container}>
-            <button className={styles.arrow} onClick={prevPage} disabled={currentPage === 1}>
-                <img src={left} alt="кнопка назад" className={styles.arrow_inactive} />
-            </button>
-            {countPages.map((item) => (
-                <span
-                    key={item}
-                    className={currentPage === item ? `${styles.item} ${styles.item_active}` : styles.item}
-                    onClick={selectPage}>
-                    {item}
-                </span>
-            ))}
-            <button className={styles.arrow} onClick={nextPage} disabled={currentPage === countPages.length}>
-                <img src={right} alt="кнопка вперед" className={styles.arrow_inactive} />
-            </button>
+        <div className={styles.pagination}>
+            <div className={styles.container}>
+                <button className={styles.arrow} onClick={prevPage} disabled={currentPage === 1}>
+                    <img src={left} alt="кнопка назад" className={styles.arrow_inactive} />
+                </button>
+                {countPages.map((item) => (
+                    <span
+                        key={item}
+                        className={currentPage === item ? `${styles.item} ${styles.item_active}` : styles.item}
+                        onClick={selectPage}>
+                        {item}
+                    </span>
+                ))}
+                <button className={styles.arrow} onClick={nextPage} disabled={currentPage === countPages.length}>
+                    <img src={right} alt="кнопка вперед" className={styles.arrow_inactive} />
+                </button>
+            </div>
         </div>
     );
 };

@@ -20,12 +20,14 @@ const Rent = () => {
     }, [objects]);
 
     return (
-        <div className={styles.ads}>
-            {isLoading && <h2 className={styles.ads_title}>Идёт загрузка...</h2>}
-            {isError && <h2 className={styles.ads_title}>Произошла ошибка при получении данных</h2>}
-            {objects?.results && objects?.results?.map((item) => <Card key={item.id} item={item} />)}
+        <>
+            <div className={styles.ads}>
+                {isLoading && <h2 className={styles.ads_title}>Идёт загрузка...</h2>}
+                {isError && <h2 className={styles.ads_title}>Произошла ошибка при получении данных</h2>}
+                {objects?.results && objects?.results?.map((item) => <Card key={item.id} item={item} />)}
+            </div>
             {!isLoading && countPages && <Pagination countPages={countPages} />}
-        </div>
+        </>
     );
 };
 

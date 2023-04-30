@@ -1,15 +1,20 @@
 import styles from "../catalog.module.css";
 import Card from "../../../components/card/card";
-import { useGetNextQuery, useGetRentQuery } from "../../../store/objects-api";
+import { useGetNextRentQuery, useGetRentQuery } from "../../../store/objects-api";
 import Pagination from "../pagination/pagination";
 import { useEffect, useState } from "react";
 
 const Rent = () => {
     // const { data: objects, isLoading, isError } = useGetRentQuery();
 
+    const [page, setPage] = useState(1);
+
     const [countPages, setCountPages] = useState([]);
-    const { data: objects, isLoading, isError } = useGetNextQuery(3);
-    console.log(objects);
+    const { data: objects, isLoading, isError } = useGetNextRentQuery(page);
+
+    const selectPageProps = (pageSet) => {
+        setPage(pageSet);
+    };
 
     useEffect(() => {
         if (objects) {
@@ -26,7 +31,9 @@ const Rent = () => {
                 {isError && <h2 className={styles.ads_title}>Произошла ошибка при получении данных</h2>}
                 {objects?.results && objects?.results?.map((item) => <Card key={item.id} item={item} />)}
             </div>
-            {!isLoading && countPages && <Pagination countPages={countPages} />}
+            {!isLoading && countPages && (
+                <Pagination countPages={countPages} selectPageProps={selectPageProps} objects={objects} />
+            )}
         </>
     );
 };

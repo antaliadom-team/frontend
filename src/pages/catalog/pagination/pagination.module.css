@@ -29,6 +29,10 @@
     cursor: pointer;
 }
 
+.arrow_inactive {
+    stroke: #cacaca;
+}
+
 @media screen and (max-width: 1440px) {
     .container {
         margin-right: 55px;

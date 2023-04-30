@@ -12,9 +12,14 @@ export const objectsApi = api.injectEndpoints({
             query: () => "/objects/?category=1",
             providesTags: ["objects"],
         }),
-        //next
-        getNext: build.query({
+        //next rent
+        getNextRent: build.query({
             query: (page) => `/objects/?category=1&page=${page}`,
+            providesTags: ["objects"],
+        }),
+        // next buy
+        getNextBuy: build.query({
+            query: (page) => `/objects/?category=2&page=${page}`,
             providesTags: ["objects"],
         }),
         getBuy: build.query({
@@ -71,7 +76,8 @@ export const objectsApi = api.injectEndpoints({
 export const {
     useGetAdsQuery,
     useGetRentQuery,
-    useGetNextQuery,
+    useGetNextRentQuery,
+    useGetNextBuyQuery,
     useGetBuyQuery,
     useGetFavouritesQuery,
     useGetCategoriesQuery,

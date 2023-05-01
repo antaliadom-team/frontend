@@ -11,9 +11,6 @@ const Buy = () => {
     const { data: objectsBuy, isLoading, isError } = useGetNextBuyQuery(page);
     const [objects, setObjects] = useState([]);
 
-    console.log(objects);
-    console.log(objectsBuy);
-
     const selectPageProps = (pageSet) => {
         setPage(pageSet);
     };
@@ -23,7 +20,6 @@ const Buy = () => {
             const arr = Array.from({ length: Math.floor(objectsBuy.count / 8) + 1 }, (_, index) => index + 1);
             setCountPages(arr);
             setObjects(objectsBuy);
-            console.log(objects);
         }
     }, [objectsBuy]);
 

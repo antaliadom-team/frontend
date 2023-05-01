@@ -18,9 +18,6 @@ const Pagination = ({ countPages, selectPageProps, objects }) => {
         selectPageProps(currentPage - 1);
     };
 
-    // console.log(objects);
-    // console.log(objects.previous);
-
     return (
         <div className={styles.pagination}>
             <div className={styles.container}>

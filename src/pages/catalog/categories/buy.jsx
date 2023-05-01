@@ -8,19 +8,24 @@ const Buy = () => {
     const [page, setPage] = useState(1);
 
     const [countPages, setCountPages] = useState([]);
-    const { data: objects, isLoading, isError } = useGetNextBuyQuery(page);
+    const { data: objectsBuy, isLoading, isError } = useGetNextBuyQuery(page);
+    const [objects, setObjects] = useState([]);
+
+    console.log(objects);
+    console.log(objectsBuy);
 
     const selectPageProps = (pageSet) => {
         setPage(pageSet);
     };
 
     useEffect(() => {
-        if (objects) {
-            const arr = Array.from({ length: Math.floor(objects.count / 8) + 1 }, (_, index) => index + 1);
+        if (objectsBuy) {
+            const arr = Array.from({ length: Math.floor(objectsBuy.count / 8) + 1 }, (_, index) => index + 1);
             setCountPages(arr);
-            console.log(arr);
+            setObjects(objectsBuy);
+            console.log(objects);
         }
-    }, [objects]);
+    }, [objectsBuy]);
 
     return (
         <>
@@ -28,9 +33,8 @@ const Buy = () => {
                 {isLoading && <h2 className={styles.ads_title}>Идёт загрузка...</h2>}
                 {isError && <h2 className={styles.ads_title}>Произошла ошибка при получении данных</h2>}
                 {objects?.results && objects?.results?.map((item) => <Card key={item.id} item={item} />)}
-                {!isLoading && countPages && <Pagination countPages={countPages} />}
             </div>
-            {!isLoading && countPages && (
+            {!isLoading && countPages && objects && (
                 <Pagination countPages={countPages} selectPageProps={selectPageProps} objects={objects} />
             )}
         </>

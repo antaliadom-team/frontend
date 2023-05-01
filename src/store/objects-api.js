@@ -15,12 +15,12 @@ export const objectsApi = api.injectEndpoints({
         //next rent
         getNextRent: build.query({
             query: (page) => `/objects/?category=1&page=${page}`,
-            providesTags: ["objects"],
+            providesTags: ["objectsRent"],
         }),
         // next buy
         getNextBuy: build.query({
             query: (page) => `/objects/?category=2&page=${page}`,
-            providesTags: ["objects"],
+            providesTags: ["objectsBuy"],
         }),
         getBuy: build.query({
             query: () => "/objects/?category=2",

@@ -7,19 +7,20 @@ import { useEffect, useState } from "react";
 const Rent = () => {
     const [page, setPage] = useState(1);
     const [countPages, setCountPages] = useState([]);
-    const { data: objects, isLoading, isError } = useGetNextRentQuery(page);
+    const { data: objectsRent, isLoading, isError } = useGetNextRentQuery(page);
+    const [objects, setObjects] = useState([]);
 
     const selectPageProps = (pageSet) => {
         setPage(pageSet);
     };
 
     useEffect(() => {
-        if (objects) {
-            const arr = Array.from({ length: Math.floor(objects.count / 8) + 1 }, (_, index) => index + 1);
+        if (objectsRent) {
+            const arr = Array.from({ length: Math.floor(objectsRent.count / 8) + 1 }, (_, index) => index + 1);
             setCountPages(arr);
-            console.log(arr);
+            setObjects(objectsRent);
         }
-    }, [objects]);
+    }, [objectsRent]);
 
     return (
         <>

@@ -1,7 +1,5 @@
 import { useState } from "react";
 import styles from "./pagination.module.css";
-import left from "../../../images/pagination/left.svg";
-import right from "../../../images/pagination/right.svg";
 
 const Pagination = ({ countPages, selectPageProps, objects }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -20,8 +18,8 @@ const Pagination = ({ countPages, selectPageProps, objects }) => {
         selectPageProps(currentPage - 1);
     };
 
-    console.log(objects.next);
-    console.log(objects.previous);
+    // console.log(objects);
+    // console.log(objects.previous);
 
     return (
         <div className={styles.pagination}>
@@ -31,7 +29,7 @@ const Pagination = ({ countPages, selectPageProps, objects }) => {
                         <path
                             d="M14.375 2.375L5.625 10.8125L14.0625 19.25"
                             stroke={objects.previous ? "#0D1B44" : "#cacaca"}
-                            stroke-width="1.25"
+                            strokeWidth="1.25"
                         />
                     </svg>
                 </button>

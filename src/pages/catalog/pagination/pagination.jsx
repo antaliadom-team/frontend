@@ -43,7 +43,7 @@ const Pagination = ({ countPages, selectPageProps, objects }) => {
                         <path
                             d="M5.625 18.625L14.375 10.1875L5.9375 1.75"
                             stroke={objects.next ? "#0D1B44" : "#cacaca"}
-                            stroke-width="1.25"
+                            strokeWidth="1.25"
                         />
                     </svg>
                 </button>

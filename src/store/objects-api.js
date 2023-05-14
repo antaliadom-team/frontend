@@ -22,6 +22,27 @@ export const objectsApi = api.injectEndpoints({
             query: (page) => `/objects/?category=2&page=${page}`,
             providesTags: ["objects"],
         }),
+        //filters
+        getFilter: build.mutation({
+            query: (data) => {
+                if (data.location) {
+                    console.log(data.location);
+                }
+                if (data.property_type) {
+                    console.log(data.property_type);
+                }
+                if (data.rooms) {
+                    console.log(data.rooms);
+                }
+                return {
+                    url: `/objects/?category=${data.category === "rent" ? "1" : "2"}${
+                        data.property_type ? `&property_type=${data.property_type}` : ""
+                    }${data.location ? `&location=${data.location}` : ""}${data.rooms ? `&rooms=${data.rooms}` : ""}`,
+                    method: "GET",
+                };
+            },
+            providesTags: ["objects"],
+        }),
         getBuy: build.query({
             query: () => "/objects/?category=2",
             providesTags: ["objects"],
@@ -89,4 +110,5 @@ export const {
     useDeleteFavouriteMutation,
     useSendMainFormMutation,
     useSendObjectFormMutation,
+    useGetFilterMutation,
 } = objectsApi;

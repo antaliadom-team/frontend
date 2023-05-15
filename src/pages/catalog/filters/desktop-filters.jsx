@@ -3,6 +3,7 @@ import Dropdown from "../../../components/ui/buttons/dropdown/dropdown";
 import { useGetLocationsQuery, useGetTypesQuery, useGetFilterMutation } from "../../../store/objects-api";
 import { PrimaryButton } from "../../../components/ui/buttons";
 import { useForm, Controller } from "react-hook-form";
+import closeFilters from "../../../images/close_filters.svg";
 
 const DesktopFilters = ({ category }) => {
     const { data: locations } = useGetLocationsQuery();
@@ -101,8 +102,11 @@ const DesktopFilters = ({ category }) => {
                 )}
             </div>
             <div className={styles.form_buttons}>
-                <PrimaryButton type="submit">Показать результаты</PrimaryButton>
-                <button type="button" onClick={resetForm}>
+                <PrimaryButton type="submit" style={({ width: 320 }, { padding: 9 })}>
+                    Показать результаты
+                </PrimaryButton>
+                <button type="button" onClick={resetForm} className={styles.form__button}>
+                    <img src={closeFilters} alt="сбросить фильтры" />
                     Сбросить фильтр
                 </button>
             </div>

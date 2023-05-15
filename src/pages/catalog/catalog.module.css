@@ -131,7 +131,21 @@
 .form_buttons {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 32px;
+}
+
+.form__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat";
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

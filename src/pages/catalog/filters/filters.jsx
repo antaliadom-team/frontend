@@ -4,7 +4,7 @@ import DesktopFilters from "./desktop-filters";
 import MobileFilters from "./mobile-filters";
 import { useSelector } from "react-redux";
 
-const Filters = ({ category, setCategory }) => {
+const Filters = ({ category, setCategory, filteredObjects }) => {
     const screen = useSelector((store) => store.screen);
 
     return (
@@ -23,7 +23,11 @@ const Filters = ({ category, setCategory }) => {
                     Покупка
                 </div>
             </div>
-            {screen.desktop ? <DesktopFilters category={category} /> : <MobileFilters category={category} />}
+            {screen.desktop ? (
+                <DesktopFilters category={category} filteredObjects={filteredObjects} />
+            ) : (
+                <MobileFilters category={category} />
+            )}
         </>
     );
 };

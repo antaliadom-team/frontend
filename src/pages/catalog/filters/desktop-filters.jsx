@@ -5,7 +5,7 @@ import { PrimaryButton } from "../../../components/ui/buttons";
 import { useForm, Controller } from "react-hook-form";
 import closeFilters from "../../../images/close_filters.svg";
 
-const DesktopFilters = ({ category }) => {
+const DesktopFilters = ({ category, filteredObjects }) => {
     const { data: locations } = useGetLocationsQuery();
     const { data: types } = useGetTypesQuery();
     const [sendFilters] = useGetFilterMutation();
@@ -15,7 +15,7 @@ const DesktopFilters = ({ category }) => {
     });
 
     const resetForm = () => {
-        console.log("reset");
+        filteredObjects([]);
     };
 
     const onSubmit = (data) => {
@@ -26,11 +26,10 @@ const DesktopFilters = ({ category }) => {
             rooms: data.rooms?.map((item) => item.name),
             category,
         };
-        console.log(body);
         sendFilters(body)
             .unwrap()
-            .then((result) => {
-                console.log(result);
+            .then((res) => {
+                filteredObjects(res.results);
             })
             .catch((e) => {
                 console.log(e);

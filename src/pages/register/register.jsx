@@ -37,11 +37,13 @@ const Register = () => {
     const onSubmit = (data) => {
         registerUser(data)
             .unwrap()
-            .then(() => {
+            .then((res) => {
+                console.log(res)
                 setSuccess(true);
             })
             .catch((errors) => {
-                serverValidation(errors, setError);
+                console.log(errors)
+                serverValidation(errors.data, setError);
             });
     };
 

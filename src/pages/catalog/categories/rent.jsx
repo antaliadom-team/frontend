@@ -9,26 +9,26 @@ const Rent = ({ filteredObj }) => {
     const [countPages, setCountPages] = useState([]);
     const { data: objectsRent, isLoading, isError } = useGetNextRentQuery(page);
     const [objects, setObjects] = useState([]);
-    const [filtered, setFiltered] = useState(filteredObj);
 
     const selectPageProps = (pageSet) => {
         setPage(pageSet);
     };
 
     useEffect(() => {
-        if (objectsRent) {
-            const arr = Array.from({ length: Math.floor(objectsRent.count / 8) + 1 }, (_, index) => index + 1);
-            setCountPages(arr);
+        if (objectsRent && !filteredObj.length) {
             setObjects(objectsRent);
         }
-        if (filteredObj.length !== 0) {
-            console.log(filteredObj.length);
-            const arr = Array.from({ length: Math.floor(filteredObj.count / 8) + 1 }, (_, index) => index + 1);
-            setCountPages(arr);
-            setObjects(filteredObj);
-            console.log(arr);
+        if (filteredObj.length) {
+            setObjects({ results: filteredObj });
         }
     }, [objectsRent, filteredObj]);
+
+    useEffect(() => {
+        if (objects) {
+            const arr = Array.from({ length: Math.floor(objects.count / 8) + 1 }, (_, index) => index + 1);
+            setCountPages(arr);
+        }
+    }, [objects]);
 
     return (
         <>

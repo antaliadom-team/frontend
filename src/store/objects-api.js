@@ -22,15 +22,6 @@ export const objectsApi = api.injectEndpoints({
         }),
         getFilter: build.mutation({
             query: (data) => {
-                if (data.location) {
-                    console.log(data.location);
-                }
-                if (data.property_type) {
-                    console.log(data.property_type);
-                }
-                if (data.rooms) {
-                    console.log(data.rooms);
-                }
                 return {
                     url: `/objects/?category=${data.category === "rent" ? "1" : "2"}${
                         data.property_type ? `&property_type=${data.property_type}` : ""

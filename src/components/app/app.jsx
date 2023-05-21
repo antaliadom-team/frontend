@@ -55,6 +55,7 @@ const App = () => {
                         <Route path="/edit-password" element={<EditPassword />} />
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                         <Route path="/password-reset/:uid/:token" element={<ChangePassword />} />
+                        <Route path="/activate/:uid/:token" element={<Login />} />
                     </Route>
                 </Routes>
             </div>

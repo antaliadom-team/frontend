@@ -30,6 +30,13 @@ export const usersApi = api.injectEndpoints({
                 body,
             }),
         }),
+        activateUser: build.mutation({
+            query: (body) => ({
+                url: "/users/activation/",
+                method: "POST",
+                body,
+            }),
+        }),
         changePassword: build.mutation({
             query: (body) => ({
                 url: "/users/set_password/",
@@ -59,6 +66,7 @@ export const {
     useLogoutMutation,
     useUpdateUserMutation,
     useRegisterUserMutation,
+    useActivateUserMutation,
     useChangePasswordMutation,
     useResetPasswordMutation,
     useConfirmPasswordMutation,

@@ -1,6 +1,6 @@
 import styles from "./login.module.css";
 import { PrimaryButton } from "../../components/ui/buttons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { TextInput } from "../../components/ui/inputs";
 import { useForm, Controller } from "react-hook-form";
 import { emailValidation, passwordValidation } from "../../helpers/validation";
@@ -8,10 +8,14 @@ import { useSelector } from "react-redux";
 import { useCreateTokenMutation } from "../../store/jwt-api";
 import { setCookie } from "../../helpers/cookie";
 import { useRedirect } from "../../hooks/use-redirect";
+import { useEffect } from "react";
+import { useActivateUserMutation } from "../../store/users-api";
 
 const Login = () => {
     const screen = useSelector((store) => store.screen);
     const [createToken] = useCreateTokenMutation();
+    const [activateUser] = useActivateUserMutation();
+    const params = useParams();
 
     const {
         control,
@@ -46,6 +50,18 @@ const Login = () => {
             });
     };
 
+    useEffect(() => {
+        if (Object.keys(params).length !== 0) {
+            activateUser(params)
+                .unwrap()
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+        }
+    }, [])
 
 
     return (

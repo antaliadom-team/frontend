@@ -4,7 +4,7 @@ import { useGetNextBuyQuery } from "../../../store/objects-api";
 import Pagination from "../pagination/pagination";
 import { useEffect, useState } from "react";
 
-const Buy = () => {
+const Buy = ({ filteredObj }) => {
     const [page, setPage] = useState(1);
     const [countPages, setCountPages] = useState([]);
     const { data: objectsBuy, isLoading, isError } = useGetNextBuyQuery(page);
@@ -15,10 +15,13 @@ const Buy = () => {
     };
 
     useEffect(() => {
-        if (objectsBuy) {
+        if (objectsBuy && !filteredObj.length) {
             setObjects(objectsBuy);
         }
-    }, [objectsBuy]);
+        if (filteredObj.length) {
+            setObjects({ results: filteredObj });
+        }
+    }, [objectsBuy, filteredObj]);
 
     useEffect(() => {
         if (objects) {

@@ -38,7 +38,9 @@ const Card = ({ withBtn = true, withDesc = true, item }) => {
                         onClick={() => navigate(`/object/${item.id}`)}
                     />
                 </div>
-                <div className={styles.price}>{`${item?.price}${item?.currency}/${item?.period}`}</div>
+                <div className={styles.price}>{`${item?.price}${item?.currency}${
+                    item?.period ? "/" + item.period : ""
+                }`}</div>
                 <div className={styles.description_top}>
                     <p className={styles.text}>{item?.category === 1 ? "Аренда" : "Покупка"}</p>
                     <div className={styles.dot} />

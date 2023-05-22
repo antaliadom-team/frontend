@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useGetFacilitiesQuery, useGetObjectQuery, useGetTypesQuery } from "../../../store/objects-api";
 import { useNavigate, useParams } from "react-router-dom";
 import Amenity from "../amenity/amenity";
+import { useEffect, useState } from "react";
 
 const Desktop = () => {
     const { id } = useParams();
@@ -13,10 +14,13 @@ const Desktop = () => {
     const { data: object } = useGetObjectQuery(id);
     const { data: types } = useGetTypesQuery();
     const { data: facilities } = useGetFacilitiesQuery();
+    const [facilitiesNames, setFacilitiesNames] = useState();
 
-    const facilitiesNames = (() => {
-        if (object?.facilities) return object.facilities.map((object) => object.name);
-    })();
+    useEffect(() => {
+        if (object?.facilities) {
+            setFacilitiesNames(object.facilities.map((object) => object.name));
+        }
+    }, [object]);
 
     return (
         <>
@@ -54,13 +58,17 @@ const Desktop = () => {
                 <div className={styles.amenities}>
                     <h3 className={styles.amenities_title}>Удобства</h3>
                     <ul className={styles.amenities_list}>
-                        {facilities?.map((facility) => (
-                            <Amenity
-                                title={facility.name}
-                                key={facility.id}
-                                isAvailable={facilitiesNames?.includes(facility.name)}
-                            />
-                        ))}
+                        {facilities?.map((facility) => {
+                            if (facilitiesNames) {
+                                return (
+                                    <Amenity
+                                        title={facility.name}
+                                        key={facility.id}
+                                        isAvailable={facilitiesNames?.includes(facility.name)}
+                                    />
+                                );
+                            } else return null;
+                        })}
                     </ul>
                 </div>
             </div>

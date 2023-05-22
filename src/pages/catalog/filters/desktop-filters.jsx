@@ -4,19 +4,26 @@ import { useGetLocationsQuery, useGetTypesQuery, useGetFilterMutation } from "..
 import { PrimaryButton } from "../../../components/ui/buttons";
 import { useForm, Controller } from "react-hook-form";
 import closeFilters from "../../../images/close_filters.svg";
+import { useCallback, useEffect, useState } from "react";
 
 const DesktopFilters = ({ category, filteredObjects }) => {
     const { data: locations } = useGetLocationsQuery();
     const { data: types } = useGetTypesQuery();
     const [sendFilters] = useGetFilterMutation();
+    const [reset, setReset] = useState(false);
 
     const { control, handleSubmit } = useForm({
         mode: "onSubmit",
     });
 
-    const resetForm = () => {
+    const resetForm = useCallback(() => {
         filteredObjects([]);
-    };
+        setReset(true);
+    }, [reset, filteredObjects]);
+
+    useEffect(() => {
+        setReset(false);
+    }, [resetForm]);
 
     const onSubmit = (data) => {
         const body = {
@@ -49,6 +56,7 @@ const DesktopFilters = ({ category, filteredObjects }) => {
                                 multi={true}
                                 options={locations}
                                 onChange={(e) => field.onChange(e)}
+                                success={reset}
                             />
                         )}
                     />
@@ -64,6 +72,7 @@ const DesktopFilters = ({ category, filteredObjects }) => {
                                 options={types}
                                 onChange={(e) => field.onChange(e)}
                                 value={field.value}
+                                success={reset}
                             />
                         )}
                     />
@@ -84,6 +93,7 @@ const DesktopFilters = ({ category, filteredObjects }) => {
                                 ]}
                                 onChange={(e) => field.onChange(e)}
                                 value={field.value}
+                                success={reset}
                             />
                         )}
                     />
@@ -96,6 +106,7 @@ const DesktopFilters = ({ category, filteredObjects }) => {
                                 { id: 0, name: "Новостройка" },
                                 { id: 1, name: "Вторичка" },
                             ]}
+                            success={reset}
                         />
                     </div>
                 )}

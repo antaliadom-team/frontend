@@ -4,7 +4,7 @@ import { useGetNextRentQuery } from "../../../store/objects-api";
 import Pagination from "../pagination/pagination";
 import { useEffect, useState } from "react";
 
-const Rent = () => {
+const Rent = ({ filteredObj }) => {
     const [page, setPage] = useState(1);
     const [countPages, setCountPages] = useState([]);
     const { data: objectsRent, isLoading, isError } = useGetNextRentQuery(page);
@@ -15,12 +15,20 @@ const Rent = () => {
     };
 
     useEffect(() => {
-        if (objectsRent) {
-            const arr = Array.from({ length: Math.floor(objectsRent.count / 8) + 1 }, (_, index) => index + 1);
-            setCountPages(arr);
+        if (objectsRent && !filteredObj.length) {
             setObjects(objectsRent);
         }
-    }, [objectsRent]);
+        if (filteredObj.length) {
+            setObjects({ results: filteredObj });
+        }
+    }, [objectsRent, filteredObj]);
+
+    useEffect(() => {
+        if (objects) {
+            const arr = Array.from({ length: Math.floor(objects.count / 8) + 1 }, (_, index) => index + 1);
+            setCountPages(arr);
+        }
+    }, [objects]);
 
     return (
         <>

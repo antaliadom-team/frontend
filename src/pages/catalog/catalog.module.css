@@ -26,7 +26,7 @@
 .dropdowns {
     margin-bottom: 80px;
     display: flex;
-    gap: 36px;
+    flex-direction: column;
 }
 
 .ads_title {
@@ -121,6 +121,31 @@
     border: 1.83px solid #0d1b44;
     border-radius: 2px;
     transform: rotate(-45deg);
+}
+
+.form_inputs {
+    display: flex;
+    gap: 36px;
+}
+
+.form_buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.form__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat";
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

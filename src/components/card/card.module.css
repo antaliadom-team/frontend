@@ -103,11 +103,11 @@
 
 @media screen and (max-width: 768px) {
     .wrapper {
-        max-width: 288px;
+        max-width: 305px;
     }
 
     .slider {
-        width: 288px;
+        width: 305px;
         height: 180px;
     }
 }

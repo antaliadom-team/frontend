@@ -15,7 +15,7 @@ const Tag = (props) => {
             target.classList.add(styles.active);
             setState((prevState) => [...prevState, value]);
         } else {
-            e.target.classList.toggle(styles.active);
+            target.classList.toggle(styles.active);
             setState((prevState) => [...prevState, value]);
             state.forEach((item) => {
                 if (item.id === value.id) {

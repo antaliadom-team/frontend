@@ -26,7 +26,7 @@ const Filters = ({ category, setCategory, filteredObjects }) => {
             {screen.desktop ? (
                 <DesktopFilters category={category} filteredObjects={filteredObjects} />
             ) : (
-                <MobileFilters category={category} />
+                <MobileFilters category={category} filteredObjects={filteredObjects} />
             )}
         </>
     );

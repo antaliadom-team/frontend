@@ -112,7 +112,7 @@ const DesktopFilters = ({ category, filteredObjects }) => {
                 )}
             </div>
             <div className={styles.form_buttons}>
-                <PrimaryButton type="submit" style={({ width: 320 }, { padding: 9 })}>
+                <PrimaryButton isSubmit={true} style={({ width: 320 }, { padding: 9 })}>
                     Показать результаты
                 </PrimaryButton>
                 <button type="button" onClick={resetForm} className={styles.form__button}>

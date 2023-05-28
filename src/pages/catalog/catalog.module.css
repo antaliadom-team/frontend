@@ -135,10 +135,11 @@
 }
 
 .form__button {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-size: 18px;
     line-height: 27px;
     font-weight: 400;
@@ -176,9 +177,8 @@
     }
 
     .filters_modal {
-        top: -200px;
         padding: 64px 12px 12px 12px;
-        width: 288px;
+        width: 305px;
         align-items: flex-start;
     }
 }

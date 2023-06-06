@@ -33,7 +33,7 @@ const Card = ({ withBtn = true, withDesc = true, item }) => {
                 <div className={styles.image}>
                     <img
                         src={item?.images[0]?.image !== undefined ? item.images[0]?.image : noPhoto}
-                        alt="фото квартиры"
+                        alt="Фото квартиры"
                         className={styles.image}
                         onClick={() => navigate(`/object/${item.id}`)}
                     />

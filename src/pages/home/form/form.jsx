@@ -53,7 +53,7 @@ const Form = () => {
             <div className={styles.border} />
             <div className={styles.container}>
                 <h2 className={styles.title}>
-                    Оставить заявку <br />
+                    Оформить заявку <br />
                     на подбор недвижимости
                 </h2>
                 <p className={styles.subtitle}>

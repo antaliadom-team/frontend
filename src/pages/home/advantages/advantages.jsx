@@ -10,7 +10,7 @@ const Advantages = () => {
             <div className={styles.container}>
                 <div className={styles.item}>
                     <img className={styles.image} src={advantage1} alt="картинка преимущества команды" />
-                    <p className={styles.text}>Мы работаем быстро. Возможность показа объекта в день заявки</p>
+                    <p className={styles.text}>Мы работаем быстро. Возможность показа объекта в день заявки.</p>
                     <div className={styles.line1} />
                 </div>
                 <div className={styles.item}>

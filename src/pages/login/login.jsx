@@ -104,7 +104,7 @@ const Login = () => {
                         />
                     </li>
                     <li>
-                        <PrimaryButton isSubmit={true} inactive={!isValid} width={screen.desktop && "100%"}>
+                        <PrimaryButton isSubmit={true} inactive={!isValid} width={(screen.desktop && "166px") || "100%"}>
                             Вход
                         </PrimaryButton>
                     </li>

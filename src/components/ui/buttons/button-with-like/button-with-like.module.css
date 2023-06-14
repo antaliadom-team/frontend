@@ -24,10 +24,15 @@
     background-color: #ffffff;
     border: 2px solid var(--button-color-default);
     transition: border-color 0.3s ease;
+    cursor: pointer;
 }
 
 .block:hover .like {
     border-color: var(--button-color-hover);
+}
+
+.like:hover path {
+    fill: var(--button-color-hover);
 }
 
 .block:active .like {

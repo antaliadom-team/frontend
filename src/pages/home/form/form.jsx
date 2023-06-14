@@ -53,7 +53,7 @@ const Form = () => {
             <div className={styles.border} />
             <div className={styles.container}>
                 <h2 className={styles.title}>
-                    Оставить заявку <br />
+                    Оформить заявку <br />
                     на подбор недвижимости
                 </h2>
                 <p className={styles.subtitle}>
@@ -64,6 +64,7 @@ const Form = () => {
                         <TextItem
                             name="first_name"
                             label="Ваше имя*"
+                            placeholder="Иван"
                             control={control}
                             validation={nameValidation}
                             errors={errors.first_name?.message}
@@ -72,6 +73,7 @@ const Form = () => {
                         <TextItem
                             name="last_name"
                             label="Ваша фамилия*"
+                            placeholder="Иванов"
                             control={control}
                             validation={surnameValidation}
                             errors={errors.last_name?.message}
@@ -80,6 +82,7 @@ const Form = () => {
                         <TextItem
                             name="phone"
                             label="Ваш номер телефона*"
+                            placeholder="+7 123 456 7890"
                             control={control}
                             validation={phoneValidation}
                             errors={errors.phone?.message}
@@ -88,6 +91,7 @@ const Form = () => {
                         <TextItem
                             name="email"
                             label="Ваш email*"
+                            placeholder="ivan@mail.ru"
                             control={control}
                             validation={emailValidation}
                             errors={errors.email?.message}

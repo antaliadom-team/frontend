@@ -19,7 +19,7 @@ const Footer = () => {
                     </NavLink>
                 </div>
                 <div className={styles.row}>
-                    <p className={styles.description}>Сервис для аренды и&nbsp;покупки недвижимости в&nbsp;Анталье</p>
+                    <p className={styles.description}>Сервис для аренды и&nbsp;покупки недвижимости в&nbsp;Анталии</p>
                     <Navigation footer={true} />
                     <div className={styles.social}>
                         <a href="https://vk.com/club213917048" target="_blank" rel="noreferrer">

@@ -2,7 +2,7 @@ import styles from "../form.module.css";
 import { Controller } from "react-hook-form";
 import { TextInput } from "../../../../components/ui/inputs";
 
-const TextItem = ({ name, label, control, validation, errors, success }) => {
+const TextItem = ({ name, label, control, validation, errors, success, placeholder }) => {
     return (
         <li className={styles.item}>
             <Controller
@@ -18,6 +18,7 @@ const TextItem = ({ name, label, control, validation, errors, success }) => {
                         error={fieldState.error}
                         errorText={errors}
                         success={success}
+                        placeholder={placeholder || ''}
                     />
                 )}
             />

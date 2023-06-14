@@ -1,27 +1,24 @@
-import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useScrollToLocation = () => {
-  const scrolledRef = useRef(false);
   const { hash } = useLocation();
-  const hashRef = useRef(hash);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (hash) {
-      // We want to reset if the hash has changed
-      if (hashRef.current !== hash) {
-        hashRef.current = hash;
-        scrolledRef.current = false;
-      }
-      // only attempt to scroll if we haven't yet (this could have just reset above if hash changed)
-      if (!scrolledRef.current) {
-        const id = hash.replace('#', '');
-        const element = document.getElementById(id);
+    const scrollToElement = () => {
+      if (hash) {
+        const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-          scrolledRef.current = true;
+          const rect = element.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const targetScrollTop = rect.top + scrollTop + -140;
+          window.scrollTo({ top: targetScrollTop, behavior: 'smooth' });
+          navigate({ hash: '' });
         }
-      }
-    }
-  });
+      };
+    };
+
+    scrollToElement();
+  }, [hash, navigate]);
 };

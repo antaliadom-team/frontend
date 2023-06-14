@@ -37,7 +37,7 @@
     color: #ffffff;
     background-color: var(--button-color-inactive);
     border-color: var(--button-color-inactive);
-    cursor: default;
+    cursor: not-allowed;
 }
 
 .ghost {

@@ -25,6 +25,7 @@
     color: var(--text-color);
     background-color: #ffffff;
     border: 2px solid var(--text-color);
+    cursor: pointer;
 }
 
 .text {
@@ -39,6 +40,11 @@
 .active {
     color: #ffffff;
     background-color: var(--text-color);
+}
+
+.selector:hover:not(.active) {
+    color: var(--text-color);
+    background-color: #e9f3f5;
 }
 
 @media screen and (max-width: 768px) {

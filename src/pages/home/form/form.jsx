@@ -14,11 +14,13 @@ import Selectors from "./selectors/selectors";
 import { TextItem, TextareaItem, CheckboxItem } from "./item";
 import { useSendMainFormMutation } from "../../../store/objects-api";
 import { openSubmit } from "../../../store/modal-slice";
+import { useSelector } from "react-redux";
 
 const Form = () => {
     const [success, setSuccess] = useState(false);
     const dispatch = useDispatch();
     const [sendMainForm] = useSendMainFormMutation();
+    const { user } = useSelector((store) => store.user);
 
     const {
         control,
@@ -27,6 +29,12 @@ const Form = () => {
         formState: { errors, isValid },
     } = useForm({
         mode: "all",
+        defaultValues: {
+            first_name: user?.first_name,
+            last_name: user?.last_name,
+            phone: user?.phone,
+            email: user?.email
+        },
     });
 
     const onSubmit = (data) => {

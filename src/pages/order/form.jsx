@@ -14,11 +14,13 @@ import {
 import { useSendObjectFormMutation } from "../../store/objects-api";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Form = ({ setOrderSent }) => {
     const { id } = useParams();
     const [success, setSuccess] = useState(false);
     const [sendObjectForm] = useSendObjectFormMutation();
+    const { user } = useSelector((store) => store.user);
 
     const {
         control,
@@ -27,6 +29,12 @@ const Form = ({ setOrderSent }) => {
         formState: { errors, isValid },
     } = useForm({
         mode: "all",
+        defaultValues: {
+            first_name: user?.first_name,
+            last_name: user?.last_name,
+            phone: user?.phone,
+            email: user?.email
+        },
     });
 
     const onSubmit = (data) => {
@@ -54,11 +62,13 @@ const Form = ({ setOrderSent }) => {
                             <TextInput
                                 type="text"
                                 label="Ваше имя*"
+                                placeholder="Иван"
                                 onChange={(e) => field.onChange(e)}
                                 value={field.value}
                                 error={fieldState.error}
                                 errorText={errors.first_name?.message}
                                 success={success}
+
                             />
                         )}
                     />
@@ -72,6 +82,7 @@ const Form = ({ setOrderSent }) => {
                             <TextInput
                                 type="text"
                                 label="Ваша фамилия*"
+                                placeholder="Иванов"
                                 onChange={(e) => field.onChange(e)}
                                 value={field.value}
                                 error={fieldState.error}
@@ -90,6 +101,7 @@ const Form = ({ setOrderSent }) => {
                             <TextInput
                                 type="text"
                                 label="Ваш номер телефона*"
+                                placeholder="+7 123 456 7890"
                                 onChange={(e) => field.onChange(e)}
                                 value={field.value}
                                 error={fieldState.error}
@@ -108,6 +120,7 @@ const Form = ({ setOrderSent }) => {
                             <TextInput
                                 type="text"
                                 label="Ваш email*"
+                                placeholder="ivan@mail.ru"
                                 onChange={(e) => field.onChange(e)}
                                 value={field.value}
                                 error={fieldState.error}
@@ -147,7 +160,7 @@ const Form = ({ setOrderSent }) => {
             </div>
             <div className={styles.button}>
                 <PrimaryButton inactive={!isValid} isSubmit={true} width={"100%"}>
-                    Отправить заявку
+                    Оформить заявку
                 </PrimaryButton>
             </div>
         </form>

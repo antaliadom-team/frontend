@@ -24,7 +24,7 @@ const Navigation = ({ footer = false }) => {
                 </li>
                 <li className={styles.item}>
                     <NavLink to="/#send" className={styles.link}>
-                        Отправить заявку
+                        Оформить заявку
                     </NavLink>
                 </li>
                 {footer && (

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./checkbox.module.css";
+import { useSelector } from "react-redux";
 
 const Checkbox = (props) => {
-  const [value, setValue] = useState(false);
+  const { user } = useSelector((store) => store.user);
+  // чекбокс изначально нажат, когда юзер авторизован
+  const [value, setValue] = useState(user ? true : false);
 
   useEffect(() => {
     props.onChange(value)

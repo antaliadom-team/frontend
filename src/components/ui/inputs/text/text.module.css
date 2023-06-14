@@ -14,6 +14,7 @@
 }
 
 .field {
+    position: relative;
     font-family: "Open Sans", sans-serif;
     font-style: normal;
 }
@@ -86,4 +87,18 @@
 
 .input:disabled + .error {
     color: var(--input-color-disabled);
+}
+
+.toggleVisibilityLabel {
+    position: absolute;
+    display: inline-block;
+    top: 45px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.toggleVisibilityCheckbox {
+    display: none;
 }

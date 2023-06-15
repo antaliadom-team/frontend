@@ -5,7 +5,7 @@ export const usersApi = api.injectEndpoints({
         getUser: build.mutation({
             query: () => ({
                 url: "/users/me",
-                method: "GET"
+                method: "GET",
             }),
         }),
         logout: build.mutation({

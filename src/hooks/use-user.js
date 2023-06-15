@@ -8,7 +8,6 @@ export const useUser = () => {
     const [refreshToken] = useRefreshTokenMutation();
     const token = localStorage.getItem("refreshToken");
 
-
     useEffect(() => {
         if (token) {
             verifyToken()
@@ -16,23 +15,16 @@ export const useUser = () => {
                 .then(() => {
                     getUser();
                 })
-                .then(()=> {
-                    setInterval(() => {
-                        refreshToken();
-                    }, 15 * 60 * 1000);
-                })
-                .catch(() => {
+
+                .catch((e) => {
                     refreshToken()
                         .unwrap()
                         .then(() => {
                             getUser();
                         })
-                        .then(()=> {
-                            setInterval(() => {
-                                refreshToken();
-                            }, 15 * 60 * 1000);
-                        })
-                        .catch(() => {});
+                        .catch((e) => {
+                            console.log(e);
+                        });
                 });
         }
     }, []);

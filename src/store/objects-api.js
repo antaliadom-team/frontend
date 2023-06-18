@@ -36,7 +36,7 @@ export const objectsApi = api.injectEndpoints({
             providesTags: ["objects"],
         }),
         getFavourites: build.query({
-            query: () => "/objects/?is_favorited=1",
+            query: (page) => `/objects/?is_favorited=1&page=${page}`,
             providesTags: ["objects"],
         }),
         getCategories: build.query({

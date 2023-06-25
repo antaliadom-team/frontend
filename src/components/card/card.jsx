@@ -5,6 +5,9 @@ import noPhoto from "../../images/no-photo.png";
 import { openFavourite } from "../../store/modal-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useAddFavouriteMutation, useGetLocationsQuery, useGetTypesQuery } from "../../store/objects-api";
+import { useRefreshTokenMutation, useVerifyTokenMutation } from "../../store/jwt-api";
+import { useEffect } from "react";
+import { useGetUserMutation } from "../../store/users-api";
 
 const Card = ({ withBtn = true, withDesc = true, item }) => {
     const navigate = useNavigate();
@@ -12,7 +15,34 @@ const Card = ({ withBtn = true, withDesc = true, item }) => {
     const { isAuth } = useSelector((store) => store.user);
     const { data: locations } = useGetLocationsQuery();
     const { data: types } = useGetTypesQuery();
-    const [addFavourite] = useAddFavouriteMutation();
+    const [addFavourite, { isError }] = useAddFavouriteMutation();
+    const [verifyToken] = useVerifyTokenMutation();
+    const [refreshToken] = useRefreshTokenMutation();
+    const [getUser] = useGetUserMutation();
+
+    console.log("addFavourite: ", isError);
+
+    useEffect(() => {
+        if (isError) {
+            verifyToken()
+                .unwrap()
+                .then(() => {
+                    getUser();
+                })
+
+                .catch((e) => {
+                    console.log(e);
+                    refreshToken()
+                        .unwrap()
+                        .then(() => {
+                            getUser();
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
+                });
+        }
+    }, [isError]);
 
     const setFavourite = () => {
         if (!isAuth) {

@@ -17,7 +17,7 @@ export const jwtApi = api.injectEndpoints({
                 method: "POST",
                 body: { refresh: localStorage.getItem("refreshToken") },
             }),
-            invalidatesTags: ["users"],
+            invalidatesTags: ["users", "objects"],
         }),
         verifyToken: build.mutation({
             query: () => {

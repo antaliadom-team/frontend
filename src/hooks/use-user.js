@@ -7,6 +7,7 @@ export const useUser = () => {
     const [verifyToken] = useVerifyTokenMutation();
     const [refreshToken] = useRefreshTokenMutation();
     const token = localStorage.getItem("refreshToken");
+    console.log("refreshToken");
 
     useEffect(() => {
         if (token) {
@@ -17,6 +18,7 @@ export const useUser = () => {
                 })
 
                 .catch((e) => {
+                    console.log(e);
                     refreshToken()
                         .unwrap()
                         .then(() => {

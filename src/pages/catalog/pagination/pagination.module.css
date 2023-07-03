@@ -1,0 +1,40 @@
+.item {
+    font-family: "Montserrat";
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    background-color: none;
+    cursor: pointer;
+}
+
+.item_active {
+    color: var(--border-color);
+}
+
+.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+.container {
+    display: flex;
+    gap: 12px;
+    justify-self: flex-end;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.arrow_inactive {
+    stroke: #cacaca;
+}
+
+@media screen and (max-width: 1440px) {
+    .container {
+        margin-right: 55px;
+    }
+}

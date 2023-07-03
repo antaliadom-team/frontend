@@ -1,0 +1,171 @@
+.advantages {
+    margin-top: 160px;
+    color: var(--text-color);
+}
+
+.title {
+    margin-bottom: 50px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.image {
+    margin-top: 29px;
+    width: 80px;
+    height: 80px;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    width: 413px;
+    height: 229px;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid var(--text-color);
+}
+
+.text {
+    margin-top: 15px;
+    width: 261px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.line1 {
+    position: absolute;
+    right: 0;
+    bottom: -13px;
+    width: 169px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.line2 {
+    position: absolute;
+    top: -13px;
+    right: 0;
+    width: 169px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.line3 {
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    width: 169px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+@media screen and (max-width: 1280px) {
+    .advantages {
+        position: relative;
+        margin-top: 120px;
+        margin-bottom: 160px;
+    }
+
+    .advantages::before {
+        position: absolute;
+        bottom: -40px;
+        left: calc(504px + 68px);
+        width: 2px;
+        height: 333px;
+        content: "";
+        background-color: var(--border-color);
+    }
+
+    .advantages::after {
+        position: absolute;
+        bottom: -40px;
+        left: 198px;
+        width: 376px;
+        height: 2px;
+        content: "";
+        background-color: var(--border-color);
+    }
+
+    .title {
+        text-align: start;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item {
+        width: 504px;
+        height: 137px;
+        flex-direction: row;
+        align-items: center;
+        border: 2px solid var(--text-color);
+    }
+
+    .image {
+        margin-top: 0;
+        margin-right: 20px;
+        margin-left: 40px;
+    }
+
+    .text {
+        margin-top: 0;
+        text-align: start;
+    }
+
+    .line1,
+    .line2,
+    .line3 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .advantages {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    .advantages::before,
+    .advantages::after {
+        display: none;
+    }
+
+    .container {
+        gap: 16px;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .title {
+        margin-bottom: 24px;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .item {
+        width: 288px;
+        height: 82px;
+    }
+
+    .image {
+        margin-left: 24px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .text {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}

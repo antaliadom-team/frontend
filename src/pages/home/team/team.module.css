@@ -1,0 +1,118 @@
+.team {
+    font-family: "Montserrat", sans-serif;
+    color: var(--text-color);
+}
+
+.title {
+    margin-top: 120px;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.list {
+    margin-top: 36px;
+    padding-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.list::-webkit-scrollbar {
+    height: 8px;
+}
+
+.photo {
+    width: 260px;
+    height: 260px;
+}
+
+.name {
+    margin: 5px 0 8px;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+}
+
+.underline {
+    width: 169px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.pos {
+    margin: 13px 0 128px;
+    font-family: "Open-Sans", sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 1280px) {
+    .list {
+        margin-top: 36px;
+        display: flex;
+        overflow: scroll;
+        list-style-type: none;
+        gap: 20px;
+    }
+
+    .photo {
+        width: 240px;
+        height: 280px;
+    }
+
+    .underline {
+        margin-bottom: 4px;
+        margin-left: 0;
+        width: 169px;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .pos {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        font-size: 18px;
+        line-height: 27px;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .photo {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        margin-top: 80px;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: start;
+    }
+
+    .photo {
+        width: 180px;
+        height: 180px;
+    }
+
+    .name {
+        font-family: "Open Sans", sans-serif;
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .pos {
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+        font-style: normal;
+    }
+}

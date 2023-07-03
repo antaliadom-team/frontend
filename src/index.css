@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
     margin: 0;
@@ -7,16 +9,49 @@
 }
 
 :root {
-    --main-color: #61dafb;
+    --container: 1280px;
+
+    --text-color: #0d1b44;
+    --border-color: #dd9b5c;
+    --link-color-hover: #db812a;
+
+    --animation-time: 0.3s;
+}
+
+@media screen and (max-width: 1280px) {
+    :root {
+        /* 88 это отступы слева 44 и справа 44 */
+        --container: calc(768px - 88px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        /* 32 - отступы по 16 */
+        --container: calc(320px - 32px);
+    }
 }
 
 body {
-    margin: 0;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
     font-family: "source-code-pro", "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+}
+
+*::-webkit-scrollbar {
+    width: 8px; /* ширина scrollbar */
+    height: 135px;
+}
+
+*::-webkit-scrollbar-track {
+    background: inherit; /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #dd9b5c; /* цвет плашки */
 }

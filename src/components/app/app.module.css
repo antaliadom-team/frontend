@@ -1,39 +1,67 @@
 .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main {
+    min-height: 100vh;
+}
+
+.exit {
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.exit > h2 {
+    width: 435px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
     text-align: center;
 }
 
-.logo {
-    height: 40vmin;
-    pointer-events: none;
+.password {
+    composes: exit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .logo {
-        animation: app-logo-spin infinite 20s linear;
-    }
-}
-
-.header {
+.object {
+    padding: 80px 120px 54px;
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    font-size: calc(10px + 2vmin);
-    color: #ffffff;
-    background-color: #282c34;
+    gap: 35px;
 }
 
-.link {
-    color: #61dafb;
+.object > h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+    color: var(--text-color);
 }
 
-@keyframes app-logo-spin {
-    from {
-        transform: rotate(0deg);
+.policyBtn {
+    padding-top: 40px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .exit {
+        padding: 36px 28px;
+        width: var(--container);
     }
 
-    to {
-        transform: rotate(360deg);
+    .exit > h2 {
+        width: 100%;
+        font-size: 16px;
+        line-height: 22px;
     }
 }

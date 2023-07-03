@@ -1,0 +1,67 @@
+.slider {
+    position: relative;
+}
+
+.activeImage {
+    display: block;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.fadeImage {
+    display: none;
+}
+
+.arrow_left {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 20%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.arrow_left:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.arrow_right {
+    right: 0;
+    left: initial;
+    transform: scaleX(-1);
+    composes: arrow_left;
+}
+
+.arrow_img {
+    width: 14px;
+    height: 27px;
+}
+
+.pagination {
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 4px;
+}
+
+.pagination_item {
+    width: 7px;
+    height: 7px;
+    background-color: #e9e9e9;
+    border-radius: 50%;
+}
+
+.pagination_item_active {
+    background-color: #db812a;
+}
+
+.pagination_item:hover {
+    cursor: pointer;
+}

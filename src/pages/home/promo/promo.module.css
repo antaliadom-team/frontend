@@ -1,0 +1,125 @@
+.promo {
+    position: relative;
+    width: var(--container);
+}
+
+.front {
+    position: absolute;
+    top: 131px;
+    left: 0;
+    display: flex;
+    width: 630px;
+    height: 352px;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    background-color: #234a5866;
+    backdrop-filter: blur(25px);
+}
+
+.image {
+    display: flex;
+    height: 705px;
+    justify-content: flex-end;
+}
+
+.title {
+    margin: 52px auto 36px;
+    font-size: 44px;
+    line-height: 54px;
+}
+
+.subtitle {
+    margin-bottom: 36px;
+    width: 403px;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1280px) {
+    .image {
+        height: 333px;
+    }
+
+    .front {
+        top: 30px;
+        width: 416px;
+        height: 273px;
+    }
+
+    .title {
+        margin: 28px auto 20px;
+        font-size: 32px;
+        line-height: 39px;
+        font-weight: 600;
+    }
+
+    .subtitle {
+        width: 328px;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .image {
+        position: relative;
+        z-index: 1;
+        width: 288px;
+        height: 191px;
+        justify-content: center;
+    }
+
+    .image::after {
+        position: absolute;
+        z-index: -1;
+        right: -8px;
+        bottom: -16px;
+        width: 217px;
+        height: 120px;
+        content: "";
+        border: 2px solid var(--border-color);
+    }
+
+    .front {
+        position: static;
+        width: 288px;
+        height: 222px;
+        background-color: #ffffff;
+    }
+
+    .title {
+        margin-top: 40px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 600;
+        font-style: normal;
+        text-align: center;
+        color: var(--text-color);
+    }
+
+    .subtitle {
+        width: 250px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        color: var(--text-color);
+    }
+
+    .link {
+        width: 100%;
+    }
+}

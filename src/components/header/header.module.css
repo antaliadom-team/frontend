@@ -1,40 +1,32 @@
-:root {
-    --screen-width: 1260px;
-    --header-height: 60px;
-    --text-size: 24px;
-    --aimation-time: 0.3s;
-}
-
 .container {
+    position: fixed;
+    z-index: 2;
+    padding: 28px 0;
     display: flex;
+    width: 100%;
     justify-content: center;
-    background-color: #282c34;
+    background-color: #ffffff;
 }
 
 .header {
     position: relative;
     display: flex;
-    min-width: var(--screen-width);
-    max-width: var(--screen-width);
-    height: var(--header-height);
+    width: var(--container);
+    height: 60px;
     justify-content: space-between;
     align-items: center;
 }
 
-.item {
-    padding: 0 10px;
-}
-
 .link {
-    font-size: var(--text-size);
+    font-size: 18px;
     text-decoration: none;
-    color: var(--main-color);
+    color: var(--text-color);
 }
 
 .active {
-    font-size: var(--text-size);
-    text-decoration: underline;
-    color: var(--main-color);
+    text-decoration: none;
+    text-shadow: 0.5px 0 var(--text-color), -0.5px 0 var(--text-color);
+    color: var(--text-color);
 }
 
 .link:hover {
@@ -46,19 +38,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: var(--text-size);
-    text-decoration: none;
-    color: var(--main-color);
-}
-
-.image {
-    height: calc(var(--header-height)*0.8);
+    font-family: "Inter", sans-serif;
 }
 
 .nav {
     position: absolute;
     display: flex;
-    min-width: var(--screen-width);
+    min-width: var(--container);
     justify-content: center;
 }
 
@@ -68,22 +54,143 @@
     justify-content: center;
     align-items: center;
     list-style: none;
+    font-family: "Open Sans", sans-serif;
+    gap: 44px;
+}
+
+.item {
+    line-height: 25px;
 }
 
 .button {
+    text-decoration: none;
+}
+
+.username {
     z-index: 1;
-    padding: 4px 24px;
-    font-size: var(--text-size);
-    color: var(--main-color);
-    background-color: transparent;
-    border-width: 2px;
-    border-color: var(--main-color);
-    border-radius: 6px;
-    transition: background-color var(--aimation-time) ease, color var(--aimation-time) ease;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-color);
     cursor: pointer;
 }
 
-.button:hover {
-    color: #ffffff;
-    background-color: var(--main-color);
+.menu {
+    position: relative;
+    z-index: 2;
+    width: 28px;
+    height: 28px;
+}
+
+.menu::after {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    height: 1px;
+    content: "";
+    background-color: var(--text-color);
+}
+
+.menu::before {
+    position: absolute;
+    top: 18px;
+    width: 68%;
+    height: 1px;
+    content: "";
+    background-color: var(--text-color);
+}
+
+.menu_list {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    padding: 33px 0 33px 33px;
+    display: flex;
+    width: 231px;
+    height: 244px;
+    flex-direction: column;
+    list-style: none;
+    background-color: #ffffff;
+    border: 2px solid var(--text-color);
+    gap: 24px;
+}
+
+.menu_item {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.user {
+    position: relative;
+    z-index: 2;
+}
+
+.user_menu {
+    position: absolute;
+    top: 35px;
+    right: 28px;
+    padding: 28px 0 28px 28px;
+    display: flex;
+    width: 232px;
+    height: 200px;
+    flex-direction: column;
+    list-style: none;
+    background-color: #ffffff;
+    border: 2px solid var(--text-color);
+}
+
+.user_menu_title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--text-color);
+}
+
+.user_menu_subtitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    color: #8d8d8d;
+}
+
+.hr {
+    margin-top: 16px;
+    width: 158px;
+    border: 1px solid #8d8d8d;
+}
+
+.user_menu_edit {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+    gap: 12px;
+}
+
+@media screen and (max-width: 1280px) {
+    .header {
+        height: 28px;
+    }
+
+    .logo {
+        position: absolute;
+        width: var(--container);
+        justify-content: center;
+    }
 }

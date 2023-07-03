@@ -1,0 +1,65 @@
+.ads {
+    margin-top: 130px;
+}
+
+.title {
+    margin-bottom: 36px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 600;
+    text-align: left;
+    color: #0d1b44;
+}
+
+.wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.button {
+    margin: 62px auto 0;
+    display: flex;
+    width: 247px;
+    justify-content: center;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1280px) {
+    .title {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .wrapper {
+        width: var(--container);
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .button {
+        width: 328px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ads {
+        margin-top: 0;
+    }
+
+    .title {
+        margin-bottom: 24px;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .wrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .button {
+        margin-top: 36px;
+        width: 288px;
+    }
+}

@@ -1,0 +1,75 @@
+:root {
+    --input-color: #0d1b44;
+}
+
+.wrapper {
+    padding-bottom: 16px;
+}
+
+.field {
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+}
+
+.input {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    padding: 6px 12px;
+    overflow: hidden;
+    width: 100%;
+    min-height: 120px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    resize: none;
+    color: var(--input-color);
+    border: 2px solid var(--input-color);
+    outline: none;
+}
+
+.input:focus {
+    box-shadow: 0 0 0 0.2rem rgb(167 183 188/ 50%);
+}
+
+.text {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+}
+
+.input::placeholder {
+    color: #818181;
+}
+
+.warning {
+    color: #f0000f;
+    border-color: #ff4850;
+    composes: input;
+}
+
+.warning:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 170, 170, 0.5);
+}
+
+.error {
+    display: block;
+    opacity: 1;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    font-style: normal;
+    transition: color 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+.warning + .error {
+    color: #f0000f;
+}
+
+.hide {
+    composes: error;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translate(0, 10px);
+}

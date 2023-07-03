@@ -1,0 +1,29 @@
+.amenities_item {
+    display: flex;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: start;
+    gap: 15px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.amenities_item_disabled {
+    color: #cbcbcb;
+    composes: amenities_item;
+}
+
+@media screen and (max-width: 768px) {
+    .amenities_item {
+        font-size: 14px;
+        line-height: 19px;
+        font-weight: 400;
+        gap: 10px;
+    }
+}

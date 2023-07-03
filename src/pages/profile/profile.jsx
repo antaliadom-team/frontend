@@ -17,7 +17,7 @@ const Profile = () => {
     const { data: favoriteObjects, isLoading, isError } = useGetFavouritesQuery(page);
 
     const token = localStorage.getItem("refreshToken");
-    console.log("favoriteObjects: ", isError);
+    // console.log("favoriteObjects: ", isError);
 
     useEffect(() => {
         setObjects(favoriteObjects);

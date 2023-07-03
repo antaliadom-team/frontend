@@ -20,7 +20,7 @@ const Card = ({ withBtn = true, withDesc = true, item }) => {
     const [refreshToken] = useRefreshTokenMutation();
     const [getUser] = useGetUserMutation();
 
-    console.log("addFavourite: ", isError);
+    // console.log("addFavourite: ", isError);
 
     useEffect(() => {
         if (isError) {
